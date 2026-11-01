@@ -7,7 +7,16 @@
   const { state, calculateAspectRatio } = window.PlaceholderState;
   const { renderCanvas } = window.PlaceholderRenderer;
   const { showToast, copyActiveCode, downloadPng, downloadWebp, downloadSvg } = window.PlaceholderExporter;
-  const { populatePresets, populateColorPalettes, resetFormToDefaults } = window.PlaceholderUI;
+  const { switchMode, populatePresets, populateColorPalettes, resetFormToDefaults } = window.PlaceholderUI;
+  const { updatePhotoPreview, refreshRandomPhoto } = window.PlaceholderRealPhoto;
+
+  function refreshActiveView() {
+    if (state.mode === 'graphic') {
+      renderCanvas();
+    } else {
+      updatePhotoPreview();
+    }
+  }
 
   function initDimensionEvents() {
     const inpW = document.getElementById('inpWidth');
@@ -21,7 +30,7 @@
         state.height = Math.round(val / state.lockedRatio);
         inpH.value = state.height;
       }
-      renderCanvas();
+      refreshActiveView();
     });
 
     inpH.addEventListener('input', (e) => {
@@ -31,7 +40,7 @@
         state.width = Math.round(val * state.lockedRatio);
         inpW.value = state.width;
       }
-      renderCanvas();
+      refreshActiveView();
     });
 
     btnLock.addEventListener('click', () => {
@@ -53,7 +62,38 @@
       state.lockedRatio = state.width / state.height;
       inpW.value = state.width;
       inpH.value = state.height;
-      renderCanvas();
+      refreshActiveView();
+    });
+  }
+
+  function initModeAndPhotoEvents() {
+    document.getElementById('btnModeGraphic').addEventListener('click', () => switchMode('graphic'));
+    document.getElementById('btnModePhoto').addEventListener('click', () => switchMode('photo'));
+
+    document.querySelectorAll('.photo-theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.photo-theme-btn').forEach(b => {
+          b.classList.remove('bg-cyan-600', 'text-white', 'font-bold');
+          b.classList.add('bg-slate-900', 'text-slate-400');
+        });
+        btn.classList.add('bg-cyan-600', 'text-white', 'font-bold');
+        btn.classList.remove('bg-slate-900', 'text-slate-400');
+        state.photoTheme = btn.dataset.theme;
+        updatePhotoPreview();
+      });
+    });
+
+    document.getElementById('btnRefreshRandomPhoto').addEventListener('click', refreshRandomPhoto);
+    document.getElementById('chkPhotoGrayscale').addEventListener('change', (e) => { state.photoGrayscale = e.target.checked; updatePhotoPreview(); });
+    document.getElementById('chkPhotoBlur').addEventListener('change', (e) => {
+      state.photoBlur = e.target.checked;
+      document.getElementById('photoBlurControls').classList.toggle('hidden', !state.photoBlur);
+      updatePhotoPreview();
+    });
+    document.getElementById('rangePhotoBlur').addEventListener('input', (e) => {
+      state.photoBlurAmount = parseInt(e.target.value, 10);
+      document.getElementById('lblPhotoBlur').textContent = state.photoBlurAmount;
+      updatePhotoPreview();
     });
   }
 
@@ -77,7 +117,6 @@
         });
         btn.classList.add('bg-pink-600', 'text-white');
         btn.classList.remove('text-slate-400');
-
         state.activeTab = mode;
         const isPrev = mode === 'preview';
         document.getElementById('viewPreview').classList.toggle('hidden', !isPrev);
@@ -145,6 +184,7 @@
     populatePresets();
     populateColorPalettes();
     initDimensionEvents();
+    initModeAndPhotoEvents();
     initTabAndActionEvents();
     initInputEvents();
     renderCanvas();

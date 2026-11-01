@@ -5,6 +5,8 @@
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-مشاهده%20دموی%20آنلاین-ec4899?style=for-the-badge&logo=googlechrome&logoColor=white)](https://hashemsh.github.io/ai-projects-persian/placeholder-pro/)
 [![Hub](https://img.shields.io/badge/AI%20Projects%20Hub-ویترین%20پروژه‌ها-06b6d4?style=for-the-badge&logo=github&logoColor=white)](https://hashemsh.github.io/ai-projects-persian/)
 
+![بنر معرفی استودیو پلیس‌هولدر پرو](assets/images/placeholder-pro-banner.jpg)
+
 ---
 
 ## 🎯 درباره پروژه
@@ -58,19 +60,34 @@
 
 ---
 
+### ۵. 📸 عکس‌های استوک واقعی رندوم (Picsum & Unsplash)
+- **۸ دسته‌بندی موضوعی:** طبیعت، معماری، تکنولوژی، بیزینس، پرتره، غذا، مینیمال و تصادفی.
+- **تولید سید تصادفی لحظه‌ای:** دکمه شانس دریافت عکس تازه و بدون تکرار.
+- **فیلترهای تصویر:** فیلتر سیاه‌وسفید (Grayscale) و فیلتر تاری (Blur) با اسلایدر شدت ۱ تا ۱۰.
+- **تولید خودکار کد و دانلود:** دانلود فایل تصویری یا کپی تگ `<img>` ریسپانسیو با ویژگی `loading="lazy"`.
+
+---
+
 ## 🏗️ معماری ماژولار پروژه
 
 ```plaintext
 placeholder-pro/
 │
-├── index.html                  # ساختار تمیز و رابط کاربری شیشه‌ای
+├── index.html                  # ساختار تمیز، مقاله سئو و رابط کاربری شیشه‌ای
 ├── README.md                   # مستندات اختصاصی پروژه
 └── assets/
+    ├── images/
+    │   └── placeholder-pro-banner.jpg # بنر سه‌بعدی و نئونی معرفی پروژه
     ├── css/
-    │   └── style.css           # استایل‌های شیشه‌ای، صفحه شطرنجی و انیمیشن‌ها
+    │   └── style.css           # استایل‌های شیشه‌ای، صفحه شطرنجی و اسکرول نرم
     └── js/
         ├── data.js             # دیتابیس سایزهای آماده و پالت‌های رنگی
-        └── app.js              # موتور رندر زنده Canvas و خروجی SVG
+        ├── state.js            # مدیریت متغیرهای وضعیت و محاسبات ابعاد
+        ├── renderer.js         # موتور رندر زنده Canvas و وکتور SVG
+        ├── real-photo.js       # ماژول ادغام و دریافت عکس‌های استوک Picsum
+        ├── exporter.js         # کنترلر دانلود مستقیم و کلیپ‌بورد کدها
+        ├── ui.js               # مدیریت سوئیچ حالت و پالت‌های رنگی
+        └── app.js              # بوت‌استرپ و لیسنرهای رویدادها
 ```
 
 ---

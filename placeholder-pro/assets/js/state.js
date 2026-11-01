@@ -5,6 +5,7 @@
 
 (function () {
   const defaultState = {
+    mode: "graphic", // 'graphic' یا 'photo'
     width: 800,
     height: 600,
     ratioLock: false,
@@ -25,7 +26,13 @@
     borderWidth: 0,
     borderColor: "#6366f1",
     activeCategory: "web",
-    activeTab: "preview"
+    activeTab: "preview",
+    // Real Photo Settings
+    photoTheme: "nature",
+    photoRandomSeed: 1,
+    photoGrayscale: false,
+    photoBlur: false,
+    photoBlurAmount: 3
   };
 
   const state = { ...defaultState };

@@ -1,5 +1,5 @@
 /**
- * پلیس‌هولدر پرو | ماژول المان‌های رابط کاربری و پالت‌ها
+ * پلیس‌هولدر پرو | ماژول المان‌های رابط کاربری، پالت‌ها و سوئیچ حالت‌ها
  * زیر ۲۰۰ سطر - سازگار با Clean Modular Web
  */
 
@@ -7,6 +7,42 @@
   const { state, resetState } = window.PlaceholderState;
   const { renderCanvas } = window.PlaceholderRenderer;
   const { showToast } = window.PlaceholderExporter;
+
+  function switchMode(mode) {
+    state.mode = mode;
+    const btnGraphic = document.getElementById('btnModeGraphic');
+    const btnPhoto = document.getElementById('btnModePhoto');
+    const cardGraphic1 = document.getElementById('cardGraphicTypography');
+    const cardGraphic2 = document.getElementById('cardGraphicStyles');
+    const cardPhoto = document.getElementById('cardRealPhotoOptions');
+    const canvasWrap = document.getElementById('viewPreviewCanvas');
+    const photoWrap = document.getElementById('viewPreviewPhoto');
+
+    const isGraphic = mode === 'graphic';
+
+    btnGraphic.classList.toggle('bg-pink-600', isGraphic);
+    btnGraphic.classList.toggle('text-white', isGraphic);
+    btnGraphic.classList.toggle('shadow-glow-pink', isGraphic);
+    btnGraphic.classList.toggle('text-slate-400', !isGraphic);
+
+    btnPhoto.classList.toggle('bg-cyan-600', !isGraphic);
+    btnPhoto.classList.toggle('text-white', !isGraphic);
+    btnPhoto.classList.toggle('shadow-glow-cyan', !isGraphic);
+    btnPhoto.classList.toggle('text-slate-400', isGraphic);
+
+    if (cardGraphic1) cardGraphic1.classList.toggle('hidden', !isGraphic);
+    if (cardGraphic2) cardGraphic2.classList.toggle('hidden', !isGraphic);
+    if (cardPhoto) cardPhoto.classList.toggle('hidden', isGraphic);
+
+    if (canvasWrap) canvasWrap.classList.toggle('hidden', !isGraphic);
+    if (photoWrap) photoWrap.classList.toggle('hidden', isGraphic);
+
+    if (isGraphic) {
+      renderCanvas();
+    } else {
+      window.PlaceholderRealPhoto.updatePhotoPreview();
+    }
+  }
 
   function populatePresets() {
     const data = window.PLACEHOLDER_DATA || { categories: {} };
@@ -33,7 +69,11 @@
         state.lockedRatio = w / h;
         document.getElementById('inpWidth').value = w;
         document.getElementById('inpHeight').value = h;
-        renderCanvas();
+        if (state.mode === 'graphic') {
+          renderCanvas();
+        } else {
+          window.PlaceholderRealPhoto.updatePhotoPreview();
+        }
       });
     });
   }
@@ -54,7 +94,6 @@
       btn.addEventListener('click', () => {
         const p = data.colorPalettes[parseInt(btn.dataset.idx, 10)];
         if (!p) return;
-
         container.querySelectorAll('.color-swatch').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
@@ -83,6 +122,7 @@
 
   function resetFormToDefaults() {
     resetState();
+    switchMode('graphic');
     document.getElementById('inpWidth').value = 800;
     document.getElementById('inpHeight').value = 600;
     document.getElementById('inpText').value = "تصویر ماکت";
@@ -97,11 +137,15 @@
     document.getElementById('lblFontSize').textContent = "خودکار";
     document.getElementById('rangeBorderRadius').value = 0;
     document.getElementById('lblBorderRadius').textContent = "0px";
+    document.getElementById('chkPhotoGrayscale').checked = false;
+    document.getElementById('chkPhotoBlur').checked = false;
+    document.getElementById('photoBlurControls').classList.add('hidden');
     renderCanvas();
     showToast('تنظیمات بازنشانی شد', 'مقادیر به حالت پیش‌فرض بازگشتند.');
   }
 
   window.PlaceholderUI = {
+    switchMode,
     populatePresets,
     populateColorPalettes,
     resetFormToDefaults

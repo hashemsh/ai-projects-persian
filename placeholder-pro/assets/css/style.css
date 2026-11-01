@@ -7,6 +7,10 @@
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.5/dist/font-face.css');
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css');
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   font-family: 'Vazirmatn', sans-serif;
 }

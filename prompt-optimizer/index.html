@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پرامپت پلاس | استودیو مهندسی و بهینه‌سازی پرامپت هوش مصنوعی</title>
+  <meta name="description" content="ابزار پیشرفته مهندسی پرامپت فارسی برای تبدیل دستورات معمولی به پرامپت‌های سطح بالا">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    const _origWarn = console.warn;
+    console.warn = (...args) => { if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return; _origWarn.apply(console, args); };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { vazir: ['Vazirmatn', 'sans-serif'] },
+          colors: { dark: { 950: '#070913', 900: '#0c0f1d', 850: '#111528', 800: '#171c34', 700: '#232b4d' }, accent: { cyan: '#06b6d4', indigo: '#6366f1', purple: '#a855f7', pink: '#ec4899', emerald: '#10b981', amber: '#f59e0b' } },
+          boxShadow: { 'glow-indigo': '0 0 35px -5px rgba(99, 102, 241, 0.35)', 'glow-cyan': '0 0 35px -5px rgba(6, 182, 212, 0.35)', 'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)' }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-dark-950 text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden"><div class="absolute -top-32 right-1/4 w-96 h-96 bg-indigo-600/25 rounded-full blur-[140px] animate-pulse-slow"></div><div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-cyan-500/20 rounded-full blur-[160px] animate-pulse-slow" style="animation-delay: 2s;"></div><div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-[150px] animate-pulse-slow" style="animation-delay: 4s;"></div><div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 flex flex-col min-h-screen">
+    <header class="text-center mb-10 md:mb-12 relative">
+      <div class="flex items-center justify-between mb-8 sm:mb-12 flex-wrap gap-3">
+        <a href="../" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl glass-card text-xs font-semibold text-slate-300 hover:text-white hover:border-indigo-500/50 transition"><svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg><span>بازگشت به ویترین پروژه‌ها (Hub)</span></a>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-indigo-500/30 text-indigo-300 text-xs font-medium shadow-sm"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span><span>پروژه شماره ۲</span><span class="text-slate-500">•</span><span class="text-cyan-400">بهینه‌ساز پرامپت هوش مصنوعی</span></div>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-4 mt-2">استودیو مهندسی پرامپت <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">پرامپت پلاس</span></h1>
+      <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed mb-6">تبدیل هوشمند دستورات معمولی به پرامپت‌های سطح بالا برای ChatGPT، Claude، Gemini و DeepSeek با ترجمه خودکار و فریم‌ورک‌های استاندارد.</p>
+      <div class="flex items-center justify-center gap-3 flex-wrap">
+        <button id="btnOpenPresets" type="button" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card hover:border-indigo-500/50 text-xs font-bold text-slate-200 transition"><span>📚 بانک الگوهای آماده (۱۰ الگو)</span></button>
+        <button id="btnOpenGuide" type="button" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card hover:border-amber-500/50 text-xs font-bold text-amber-300 transition"><span>💡 ترفندهای پرامپت‌نویسی</span></button>
+        <a href="#seo-guide" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card hover:border-cyan-500/50 text-xs font-bold text-cyan-300 transition"><span>📖 راهنمای جامع ابزار</span></a>
+      </div>
+    </header>
+
+    <main class="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1 items-start">
+      <section class="glass-card rounded-2xl p-5 sm:p-6 flex flex-col gap-5 border border-white/10 shadow-glass">
+        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+          <h2 class="text-base font-bold text-white flex items-center gap-2">✍️ دستور اولیه کاربر</h2>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-medium">مهندسی و ترجمه خودکار</span>
+        </div>
+        <div>
+          <div class="flex items-center justify-between mb-2"><label for="rawPromptInput" class="text-xs font-semibold text-slate-300">درخواست معمولی خود را بنویسید:</label><div id="placeholderChips" class="flex items-center gap-1.5 flex-wrap"></div></div>
+          <textarea id="rawPromptInput" rows="4" class="w-full glass-input rounded-xl p-3.5 text-xs sm:text-sm resize-y leading-relaxed" placeholder="مثال: یه کد پایتون برای سرچ محصولات با لینک و عنوان بنویس، بدون مقدمه چینی و سبک..."></textarea>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <select id="selectModel" class="glass-input rounded-xl px-3 py-2.5 text-xs cursor-pointer"></select>
+          <select id="selectPersona" class="glass-input rounded-xl px-3 py-2.5 text-xs cursor-pointer"></select>
+          <select id="selectTone" class="glass-input rounded-xl px-3 py-2.5 text-xs cursor-pointer"></select>
+          <select id="selectLang" class="glass-input rounded-xl px-3 py-2.5 text-xs cursor-pointer"></select>
+        </div>
+        <div class="flex flex-col gap-1.5 p-3 rounded-xl bg-dark-900/60 border border-white/5">
+          <div class="flex items-center gap-2 text-xs text-slate-200"><input type="checkbox" id="toggleCot" checked class="rounded accent-indigo-500 cursor-pointer"><label for="toggleCot" class="cursor-pointer font-bold">فعال‌سازی استدلال گام‌به‌گام (Chain-of-Thought)</label></div>
+          <p class="text-[11px] text-slate-400 mr-5 leading-relaxed">وادار کردن مدل به تحلیل فرضیات و استدلال مرحله‌به‌مرحله قبل از پاسخ نهایی؛ ایده‌آل برای برنامه‌نویسی و مسائل تحلیلی.</p>
+        </div>
+        <button id="btnOptimize" type="button" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold text-sm shadow-glow-indigo transition transform hover:scale-[1.01] active:scale-100 flex items-center justify-center gap-2"><span>🚀 مهندسی و ارتقای پرامپت</span></button>
+        <div class="bg-dark-900/90 rounded-xl p-4 border border-white/10 flex flex-col gap-3">
+          <div class="flex items-center justify-between"><span class="text-xs font-bold text-white">سنجش عیار و ساختار پرامپت</span><div id="auditBadge" class="px-2.5 py-1 rounded-full text-xs font-bold border flex items-center gap-1.5"><span id="auditScoreText">0</span> <span class="text-[10px]">/ ۱۰۰</span></div></div>
+          <div class="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden"><div id="auditScoreBar" class="h-full bg-slate-700 w-0 transition-all duration-500"></div></div>
+          <div id="auditCriteriaList" class="grid grid-cols-2 gap-2 pt-1"></div>
+          <div id="auditTipsList" class="flex flex-col gap-1.5 mt-1"></div>
+        </div>
+      </section>
+
+      <section class="glass-card rounded-2xl p-5 sm:p-6 flex flex-col gap-4 border border-white/10 shadow-glass">
+        <div class="flex items-center justify-between border-b border-white/10 pb-3 flex-wrap gap-2">
+          <div class="flex items-center gap-2"><button id="tabOutput" type="button" class="px-3 py-1 rounded-lg text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">🎯 خروجی پرامپت</button><button id="tabDiff" type="button" class="px-3 py-1 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition">⚖️ مقایسه قبل و بعد</button></div>
+          <button id="btnClear" type="button" class="px-3 py-1 rounded-lg text-xs bg-slate-800 text-slate-300 hover:text-white border border-white/10 transition">🗑️ پاکسازی</button>
+        </div>
+        <div class="bg-dark-900/90 rounded-xl p-4 border border-white/10 min-h-[380px] flex flex-col justify-between">
+          <pre id="outputResult" class="output-code text-xs sm:text-sm text-slate-500 italic flex-1">خروجی پرامپت مهندسی‌شده در این بخش نمایش داده خواهد شد...</pre>
+          <div id="diffResult" class="hidden flex-1 overflow-y-auto"></div>
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center gap-2"><button id="btnOpenChatGpt" type="button" class="px-2.5 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 text-xs font-semibold flex items-center gap-1 transition">🤖 ChatGPT</button><button id="btnOpenClaude" type="button" class="px-2.5 py-1.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-300 text-xs font-semibold flex items-center gap-1 transition">🧠 Claude</button><button id="btnDownloadMd" type="button" class="px-2.5 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/30 text-cyan-300 text-xs font-semibold flex items-center gap-1 transition">📥 .md</button></div>
+            <button id="btnCopy" type="button" class="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 text-white font-bold text-xs shadow-md transition transform hover:scale-105 flex items-center gap-1.5"><span>📋 کپی پرامپت</span></button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Comprehensive SEO Guide Article with Extended Deep Explanations -->
+    <article id="seo-guide" class="mt-14 glass-card rounded-2xl p-6 sm:p-8 md:p-10 border border-white/10 shadow-glass">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs font-bold mb-4"><span>📖 راهنمای تخصصی و استاندارد مهندسی پرامپت</span></div>
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-black text-white mb-6 leading-snug">چرا مهندسی پرامپت کیفیت پاسخ‌های <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">هوش مصنوعی</span> را چندبرابر می‌کند؟</h2>
+          <p class="text-xs sm:text-sm text-slate-300 text-justify leading-loose mb-6">مدل‌های زبانی بزرگ (LLM) نظیر GPT-4o، Claude 3.5 Sonnet، Gemini 2.0 و DeepSeek سیستم‌های احتمالی پیشرفته‌ای هستند که پاسخ نهایی را بر اساس وزن کلمات ورودی شما شکل می‌دهند. هنگامی که یک درخواست به صورت ساده یا مبهم مطرح می‌شود، مدل با اتکا بر محتمل‌ترین و عمومی‌ترین پاسخ‌های اینترنتی عمل می‌کند که نتیجه آن خروجی‌های کلیشه‌ای، کدهای ناقص یا متن‌های کم‌محتوا خواهد بود. استودیو «پرامپت‌پلاس» با تبدیل دستور خام شما به یک پرامپت چندلایه، به مدل دستور می‌دهد که در نقش یک متخصص ارشد عمل کرده و تمام خط‌قرمزها و فرضیات منطقی را قبل از پاسخ‌دهی لحاظ کند.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
+            <div class="p-4 rounded-xl bg-dark-900/80 border border-white/5"><h3 class="font-bold text-cyan-300 mb-2">🎭 چارچوب استاندارد RTFC</h3><p class="text-slate-400 text-justify leading-loose">تزریق خودکار نقش تخصصی (Role)، شرح وظیفه (Task)، فرمت خروجی (Format) و خط‌قرمزها (Constraints) جهت حذف حاشیه‌ها.</p></div>
+            <div class="p-4 rounded-xl bg-dark-900/80 border border-white/5"><h3 class="font-bold text-indigo-300 mb-2">🌐 ترفند طلایی دوزبانه (Bilingual)</h3><p class="text-slate-400 text-justify leading-loose">فعال‌سازی حداکثر توان تحلیلی و استدلال عمیق با پرامپت انگلیسی و دریافت کامل پاسخ به زبان فارسی سلیس و طبیعی.</p></div>
+          </div>
+        </div>
+        <figure class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+          <img src="assets/images/prompt-engineering-banner.jpg" alt="استودیو مهندسی پرامپت هوش مصنوعی پرامپت پلاس" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+          <figcaption class="absolute bottom-0 inset-x-0 bg-dark-950/85 backdrop-blur-md p-3 text-[11px] text-slate-300 text-center border-t border-white/10">معماری تبدیل دستورات معمولی به پرامپت‌های سطح بالا در استودیو پرامپت‌پلاس</figcaption>
+        </figure>
+      </div>
+
+      <!-- Extended Detailed Explanations Below the Media Grid -->
+      <div class="border-t border-white/10 pt-8 mt-4 space-y-8">
+        <div>
+          <h3 class="text-lg sm:text-xl font-black text-white mb-3 flex items-center gap-2"><span class="text-cyan-400">۱.</span><span>آناتومی یک پرامپت حرفه‌ای: فرار از پاسخ‌های سطحی و کلیشه‌ای</span></h3>
+          <p class="text-xs sm:text-sm text-slate-300 text-justify leading-loose mb-3">یک پرامپت سطح بالا تفاوت میان یک پاسخ سرهم‌بندی‌شده و یک نتیجه تجاری آماده استقرار را رقم می‌زند. در پرامپت‌پلاس، هر دستور ساده از ۴ فیلتر الزامی عبور می‌کند: تعریف هویت (مثلاً مهندس نرم‌افزار ارشد، استراتژیست ارشد سئو یا کپی‌رایتر مستقیم)، پالایش وظیفه اصلی به زبان دقیق و صریح، تبیین دقیق قالب خروجی (مانند کدهای کامل با مدیریت خطا یا ساختار جدول مقایسه‌ای)، و در نهایت تعیین قیود منفی (Negative Constraints) که از رفتارهای اضافه مانند مقدمه‌چینی، تعارفات بی‌مورد یا تولید کدهای اسکلتی و دارای جای خالی (Placeholder) به شدت جلوگیری می‌کند.</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg sm:text-xl font-black text-white mb-3 flex items-center gap-2"><span class="text-indigo-400">۲.</span><span>راز تکنیک استدلال گام‌به‌گام (Chain-of-Thought) و تاثیر آن در برنامه‌نویسی</span></h3>
+          <p class="text-xs sm:text-sm text-slate-300 text-justify leading-loose mb-3">پژوهش‌های نوین دانشگاه استنفورد و آزمایشگاه‌های هوش مصنوعی نشان می‌دهد که وادار کردن مدل زبانی به استدلال مرحله‌به‌مرحله با تکنیک CoT، خطای محاسباتی و توهم (Hallucination) را تا ۶۰ درصد در وظایف منطقی کاهش می‌دهد. زمانی که گزینه استدلال گام‌به‌گام را در این ابزار فعال نگه می‌دارید، مدل موظف می‌شود پیش از تولید کد یا پاسخ نهایی، نقشه راه، فرضیات فنی و ساختار ماژولار را در ذهن تحلیلی خود بازبینی کند که نتیجه آن، خروجی‌های بهینه‌تر، مقیاس‌پذیرتر و با ضریب امنیت بالاتر خواهد بود.</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg sm:text-xl font-black text-white mb-3 flex items-center gap-2"><span class="text-purple-400">۳.</span><span>چرا دستور انگلیسی با پاسخ فارسی بیشترین دقت را در وب فارسی به همراه دارد؟</span></h3>
+          <p class="text-xs sm:text-sm text-slate-300 text-justify leading-loose">بیش از ۸۵ درصد داده‌های یادگیری ماشین در بزرگ‌ترین مدل‌های جهان به زبان انگلیسی آموزش دیده‌اند. بر همین اساس، مفاهیم عمیق معماری نرم‌افزار، الگوریتم‌های سئو و روانشناسی فروش به زبان انگلیسی بسیار بهتر و گسترده‌تر درک می‌شوند. با فعال‌سازی «ترفند دوزبانه»، استودیو پرامپت‌پلاس دستورات و قواعد پرامپت را به انگلیسی دقیق مهندسی می‌کند، اما در بند پایانی پرامپت صراحتاً الزام می‌نماید که پاسخ تحلیلی، توضیحات کدها و مقالات کاملاً به زبان فارسی اصیل، روان و حرفه‌ای ارائه گردند.</p>
+        </div>
+      </div>
+    </article>
+
+    <footer class="mt-12 md:mt-14 mb-4">
+      <div class="glass-card rounded-2xl px-6 py-5 border border-white/10 shadow-glass flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-right">
+        <div class="flex items-center gap-3 flex-wrap justify-center">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-extrabold text-sm shadow-glow-indigo">H</div>
+          <div class="text-xs sm:text-sm text-slate-300 font-medium tracking-wide flex items-center gap-1.5 flex-wrap" dir="ltr">
+            <span>Designed &amp; Developed by</span><a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer" class="font-black bg-gradient-to-r from-cyan-400 via-indigo-300 to-pink-400 bg-clip-text text-transparent px-1 hover:underline transition">Hashem Sh</a><span class="text-slate-600">•</span>
+            <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition" title="LinkedIn Profile"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45c-.95 0-1.72.78-1.72 1.73s.77 1.73 1.72 1.73 1.72-.78 1.72-1.73-.77-1.73-1.72-1.73Z"/></svg></a>
+          </div>
+        </div>
+        <div class="text-xs text-slate-400 hidden lg:block">توسعه‌یافته با بالاترین استانداردهای وب مدرن فارسی و مهندسی پرامپت</div>
+        <div class="flex items-center gap-2 text-xs flex-wrap justify-center" dir="ltr">
+          <span class="text-slate-400 font-medium">Powered by</span>
+          <a href="https://deepmind.google/technologies/gemini/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-500/30 text-indigo-300 font-semibold flex items-center gap-1.5 shadow-sm transition hover:scale-105"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span>Antigravity</a><span class="text-slate-500">&amp;</span>
+          <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-gradient-to-r from-cyan-500/15 to-purple-500/15 hover:from-cyan-500/25 hover:to-purple-500/25 border border-cyan-500/30 text-cyan-300 font-semibold flex items-center gap-1.5 shadow-sm transition hover:scale-105"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>Gemini Pro</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div id="presetsModal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden"><div class="glass-card bg-dark-900 border border-white/10 rounded-2xl max-w-3xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl"><div class="flex items-center justify-between p-4 border-b border-white/10"><h3 class="text-sm font-bold text-white">📚 بانک ۱۰ الگوی آماده و استاندارد پرامپت</h3><button id="btnClosePresets" type="button" class="text-slate-400 hover:text-white text-lg">&times;</button></div><div id="presetsContainer" class="p-4 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-3"></div></div></div>
+  <div id="guideModal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden"><div class="glass-card bg-dark-900 border border-white/10 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl"><div class="flex items-center justify-between p-4 border-b border-white/10"><h3 class="text-sm font-bold text-amber-300 flex items-center gap-2"><span>💡</span><span>تقلب‌نامه و تکنیک‌های طلایی مهندسی پرامپت</span></h3><button id="btnCloseGuide" type="button" class="text-slate-400 hover:text-white text-lg">&times;</button></div><div id="guideContainer" class="p-4 overflow-y-auto grid grid-cols-1 gap-3"></div></div></div>
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none"><div class="glass-card bg-slate-900/95 border-emerald-500/40 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border shadow-emerald-500/20"><div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg></div><div><p class="text-sm font-bold text-slate-100" id="toastTitle">با موفقیت کپی شد!</p><p class="text-xs text-slate-400" id="toastMessage">پرامپت در کلیپ‌بورد ذخیره گردید.</p></div></div></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/guide-data.js"></script>
+  <script src="assets/js/translator.js"></script>
+  <script src="assets/js/scorer.js"></script>
+  <script src="assets/js/generator.js"></script>
+  <script src="assets/js/export-ui.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -2,11 +2,12 @@
  * FAQ Renderer & Accordion Controller Module
  */
 
-import { faqList } from '../data/faq-data.js';
+window.HubUI = window.HubUI || {};
 
-export function initFAQ(containerSelector = '#faq-list') {
+window.HubUI.initFAQ = function(containerSelector = '#faq-list') {
   const container = document.querySelector(containerSelector);
-  if (!container) return;
+  const faqList = (window.HubData && window.HubData.faqList) || [];
+  if (!container || !faqList.length) return;
 
   container.innerHTML = faqList.map((item, index) => `
     <div class="faq-item">
@@ -54,4 +55,4 @@ export function initFAQ(containerSelector = '#faq-list') {
       }
     });
   });
-}
+};

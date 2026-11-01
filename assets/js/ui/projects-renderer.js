@@ -2,11 +2,12 @@
  * Project Cards Renderer Module
  */
 
-import { projects } from '../data/projects-data.js';
+window.HubUI = window.HubUI || {};
 
-export function renderProjects(containerSelector = '#projects-grid') {
+window.HubUI.renderProjects = function(containerSelector = '#projects-grid') {
   const container = document.querySelector(containerSelector);
-  if (!container) return;
+  const projects = (window.HubData && window.HubData.projects) || [];
+  if (!container || !projects.length) return;
 
   container.innerHTML = projects.map((p) => `
     <article class="project-card p-6 flex flex-col justify-between group">
@@ -46,4 +47,4 @@ export function renderProjects(containerSelector = '#projects-grid') {
       </a>
     </article>
   `).join('');
-}
+};

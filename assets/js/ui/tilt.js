@@ -2,7 +2,9 @@
  * 3D Tilt and Mouse Spotlight Interaction for Project Cards
  */
 
-export function initCardInteractions() {
+window.HubUI = window.HubUI || {};
+
+window.HubUI.initCardInteractions = function() {
   const cards = document.querySelectorAll('.project-card');
 
   cards.forEach((card) => {
@@ -46,4 +48,4 @@ export function initCardInteractions() {
     card.addEventListener('mouseenter', onMouseEnter);
     card.addEventListener('mouseleave', onMouseLeave);
   });
-}
+};

@@ -2,7 +2,9 @@
  * List of practical AI-powered web projects
  */
 
-export const projects = [
+window.HubData = window.HubData || {};
+
+window.HubData.projects = [
   {
     id: 1,
     title: 'لورم پلاس (Lorem Plus)',

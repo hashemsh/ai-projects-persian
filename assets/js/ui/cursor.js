@@ -2,7 +2,9 @@
  * Interactive Custom Cursor & Spotlight Follower Module
  */
 
-export function initCustomCursor() {
+window.HubUI = window.HubUI || {};
+
+window.HubUI.initCustomCursor = function() {
   // Disable on mobile / touch screen
   if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
     return;
@@ -58,4 +60,4 @@ export function initCustomCursor() {
       document.body.classList.remove('cursor-hover');
     }
   });
-}
+};

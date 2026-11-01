@@ -10,28 +10,29 @@ window.AuditorApp = {
     this.restoreSavedState();
   },
 
-  bindEvents() {
+  switchMode(mode) {
+    this.activeMode = mode;
     const tabUrl = document.getElementById('tab-mode-url');
     const tabHtml = document.getElementById('tab-mode-html');
     const secUrl = document.getElementById('section-input-url');
     const secHtml = document.getElementById('section-input-html');
 
-    tabUrl?.addEventListener('click', () => {
-      this.activeMode = 'url';
-      tabUrl.classList.add('active');
-      tabHtml.classList.remove('active');
-      secUrl.classList.remove('hidden');
-      secHtml.classList.add('hidden');
-    });
+    if (mode === 'url') {
+      tabUrl?.classList.add('active');
+      tabHtml?.classList.remove('active');
+      secUrl?.classList.remove('hidden');
+      secHtml?.classList.add('hidden');
+    } else {
+      tabHtml?.classList.add('active');
+      tabUrl?.classList.remove('active');
+      secHtml?.classList.remove('hidden');
+      secUrl?.classList.add('hidden');
+    }
+  },
 
-    tabHtml?.addEventListener('click', () => {
-      this.activeMode = 'html';
-      tabHtml.classList.add('active');
-      tabUrl.classList.remove('active');
-      secHtml.classList.remove('hidden');
-      secUrl.classList.add('hidden');
-    });
-
+  bindEvents() {
+    document.getElementById('tab-mode-url')?.addEventListener('click', () => this.switchMode('url'));
+    document.getElementById('tab-mode-html')?.addEventListener('click', () => this.switchMode('html'));
     document.getElementById('btn-run-audit')?.addEventListener('click', () => this.runAudit());
     document.getElementById('btn-sample-bad')?.addEventListener('click', () => this.loadSample('sample-ecommerce'));
     document.getElementById('btn-sample-good')?.addEventListener('click', () => this.loadSample('sample-perfect'));
@@ -76,6 +77,7 @@ window.AuditorApp = {
     if (!file) return;
     const reader = new FileReader();
     reader.onload = (evt) => {
+      this.switchMode('html');
       const ta = document.getElementById('input-raw-html');
       if (ta) ta.value = evt.target.result;
       window.AuditorToast.show(`فایل ${file.name} بارگذاری شد.`, 'info');
@@ -87,11 +89,12 @@ window.AuditorApp = {
   loadSample(sampleId) {
     const s = window.AuditorSamples.find(item => item.id === sampleId);
     if (!s) return;
+    this.switchMode('html');
     const ta = document.getElementById('input-raw-html');
     const urlIn = document.getElementById('input-website-url');
     if (ta) ta.value = s.html;
     if (urlIn) urlIn.value = s.url;
-    window.AuditorToast.show(`نمونه بارگذاری شد.`, 'info');
+    window.AuditorToast.show(`نمونه "${s.title.slice(0, 20)}..." بارگذاری شد.`, 'info');
     this.runAudit();
   },
 
@@ -114,11 +117,11 @@ window.AuditorApp = {
       }
       try {
         window.AuditorToast.show('در حال پردازش آدرس وب...', 'info');
-        const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`);
-        if (!res.ok) throw new Error();
-        return { html: await res.text(), source: url };
+        const html = await window.AuditorFetcher.fetch(url);
+        return { html, source: url };
       } catch (_) {
-        window.AuditorToast.show('خطا در دریافت مستقیم دامنه. از حالت پیست HTML استفاده کنید.', 'warning');
+        window.AuditorToast.show('به دلیل محدودیت CORS مرورگر، لطفاً سورس HTML را در تب کنار پیست فرمایید.', 'warning', 5000);
+        this.switchMode('html');
         return null;
       }
     }
@@ -163,6 +166,7 @@ window.AuditorApp = {
   restoreSavedState() {
     const saved = window.AuditorStorage.loadState();
     if (saved && saved.html) {
+      this.switchMode(saved.mode || 'html');
       const ta = document.getElementById('input-raw-html');
       if (ta) ta.value = saved.html;
       this.runAudit();

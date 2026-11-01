@@ -53,21 +53,22 @@ Use this skill whenever creating, scaffolding, or implementing a new micro-app o
    - **Dual Compatibility**: In vanilla web apps, ensure scripts run smoothly on both `file:///` and HTTP/HTTPS.
    - **Hard 200-line cap**: Every source file (HTML, CSS, JS) must strictly stay under 200 lines. Decompose proactively.
 
-3. **UI/UX & Persian Standards**:
+3. **Shared Header & Footer Layout Integration**:
+   - Every micro-app MUST integrate the central shared header and footer instead of duplicating code or creating custom back buttons:
+     - Set `<body data-root="sub" ...>` with container `<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col min-h-screen">`.
+     - Link shared nav styles in `<head>`: `<link rel="stylesheet" href="../assets/css/components/shared-nav.css">`.
+     - Place `<header id="shared-header"></header>` right at the top of the container.
+     - Place `<footer id="shared-footer"></footer>` at the bottom before closing the container.
+     - Include `<script src="../assets/js/components/shared-layout.js"></script>` before the micro-app scripts.
+
+4. **UI/UX & Persian Standards**:
    - `<html lang="fa" dir="rtl">` with Google Fonts **Vazirmatn** (`'Vazirmatn', sans-serif`).
    - **Never apply `font-mono` to Persian text or numbers.**
-   - Dark modern aesthetic (`#070913`, `#0c0f1d`), glassmorphism (`backdrop-filter: blur(16px)`), subtle neon accents, and responsive layout.
+   - Dark modern aesthetic (`#070913`, `#0c0f1d`), glassmorphism (`backdrop-filter: blur(16px)`), subtle neon accents, and responsive layout (`max-w-7xl`).
    - Interactive micro-interactions: smooth transitions, hover feedback, copy-to-clipboard toast notifications.
 
-4. **Mandatory Signature**:
-   - Include Hashem's signature in the footer of every app:
-     ```text
-     Designed & Developed by Hashem Sh | Powered by Antigravity & Gemini Pro
-     ```
-   - Profile links:
-     - GitHub: `https://github.com/hashemsh`
-     - LinkedIn: `https://www.linkedin.com/in/hashemsheikhypour`
-     - Telegram (Direct Chat): `https://t.me/init10`
+5. **Mandatory Signature & Branding**:
+   - Handled automatically by `shared-layout.js` (Hashem Sh branding, GitHub, LinkedIn, Telegram, Antigravity & Gemini Pro).
 
 ---
 

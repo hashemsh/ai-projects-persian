@@ -32,6 +32,7 @@
                   path.includes('/prompt-optimizer/') ||
                   path.includes('/placeholder-pro/') ||
                   path.includes('/site-auditor/') ||
+                  path.includes('/utm-builder/') ||
                   (document.body && document.body.dataset.root === 'sub');
 
     const rootPath = isSub ? '../' : './';

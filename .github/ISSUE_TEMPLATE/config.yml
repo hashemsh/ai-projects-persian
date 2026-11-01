@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 کانال ارتباط مستقیم در تلگرام
+    url: https://t.me/init10
+    about: پرسش، هماهنگی یا گفتگوی مستقیم با توسعه‌دهنده پروژه
+  - name: 🗺️ نقشه راه و وضعیت توسعه پروژه‌ها
+    url: https://github.com/hashemsh/ai-projects-persian/blob/main/ROADMAP.md
+    about: مشاهده ۲۲ ابزار برنامه‌ریزی‌شده و وضعیت استقرار هر کدام

@@ -1,9 +1,7 @@
 /**
- * UTM Builder Pro | Export, Storage & Notification Controller
+ * UTM Builder Pro | Export & Notification Controller (< 200 lines)
  */
 window.UtmExport = {
-  storageKey: 'utm_builder_history',
-
   showToast(title, message, type = 'success') {
     const toast = document.getElementById('toast');
     if (!toast) return;
@@ -36,39 +34,6 @@ window.UtmExport = {
       document.body.removeChild(area);
       this.showToast(successTitle, successMsg, 'success');
     }
-  },
-
-  saveHistory(utmItem) {
-    if (!utmItem || !utmItem.url) return;
-    try {
-      const history = this.getHistory();
-      // Remove duplicate if same URL already exists
-      const filtered = history.filter(h => h.url !== utmItem.url);
-      filtered.unshift({
-        url: utmItem.url,
-        campaign: utmItem.params?.campaign || 'بدون نام',
-        source: utmItem.params?.source || '-',
-        medium: utmItem.params?.medium || '-',
-        timestamp: new Date().toLocaleDateString('fa-IR')
-      });
-      // Keep maximum 15 items
-      localStorage.setItem(this.storageKey, JSON.stringify(filtered.slice(0, 15)));
-    } catch (_) {}
-  },
-
-  getHistory() {
-    try {
-      return JSON.parse(localStorage.getItem(this.storageKey)) || [];
-    } catch (_) {
-      return [];
-    }
-  },
-
-  clearHistory() {
-    try {
-      localStorage.removeItem(this.storageKey);
-      this.showToast('تاریخچه پاک شد', 'تمامی لینک‌های ذخیره‌شده حذف گردیدند.', 'info');
-    } catch (_) {}
   },
 
   exportJson(data, filename = 'utm-campaign.json') {

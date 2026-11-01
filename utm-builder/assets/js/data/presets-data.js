@@ -96,10 +96,8 @@ window.UtmPresets = {
     campaign: 'norooz1405-special',
     term: 'خرید آنلاین با تخفیف',
     content: 'gif-banner-300x250-v2',
-    customParamKey: 'voucher',
-    customParamVal: 'EID50',
     autoLowercase: true,
-    spaceHandling: 'hyphen'
+    spaceFormat: 'hyphen'
   },
 
   batchChannels: [

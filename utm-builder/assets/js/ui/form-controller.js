@@ -1,5 +1,5 @@
 /**
- * UTM Builder Pro | Form UI Controller & Event Handlers
+ * UTM Builder Pro | Form UI Controller & Event Handlers (< 200 lines)
  */
 window.UtmFormController = {
   init(onUpdateCallback) {
@@ -18,23 +18,27 @@ window.UtmFormController = {
       campaign: document.getElementById('inpCampaign')?.value || '',
       term: document.getElementById('inpTerm')?.value || '',
       content: document.getElementById('inpContent')?.value || '',
-      customKey: document.getElementById('inpCustomKey')?.value || '',
-      customVal: document.getElementById('inpCustomVal')?.value || '',
       autoLowercase: document.getElementById('chkLowercase')?.checked ?? true,
       spaceFormat: document.querySelector('input[name="spaceFormat"]:checked')?.value || 'hyphen'
     };
   },
 
   setValues(vals) {
-    if (vals.url !== undefined) document.getElementById('inpUrl').value = vals.url;
-    if (vals.source !== undefined) document.getElementById('inpSource').value = vals.source;
-    if (vals.medium !== undefined) document.getElementById('inpMedium').value = vals.medium;
-    if (vals.campaign !== undefined) document.getElementById('inpCampaign').value = vals.campaign;
-    if (vals.term !== undefined) document.getElementById('inpTerm').value = vals.term;
-    if (vals.content !== undefined) document.getElementById('inpContent').value = vals.content;
-    if (vals.customKey !== undefined) document.getElementById('inpCustomKey').value = vals.customKey;
-    if (vals.customVal !== undefined) document.getElementById('inpCustomVal').value = vals.customVal;
-    if (vals.autoLowercase !== undefined) document.getElementById('chkLowercase').checked = vals.autoLowercase;
+    const setSafe = (id, val) => {
+      const el = document.getElementById(id);
+      if (el && val !== undefined) el.value = val;
+    };
+
+    setSafe('inpUrl', vals.url);
+    setSafe('inpSource', vals.source);
+    setSafe('inpMedium', vals.medium);
+    setSafe('inpCampaign', vals.campaign);
+    setSafe('inpTerm', vals.term);
+    setSafe('inpContent', vals.content);
+
+    const chkLower = document.getElementById('chkLowercase');
+    if (chkLower && vals.autoLowercase !== undefined) chkLower.checked = vals.autoLowercase;
+
     if (vals.spaceFormat) {
       const radio = document.querySelector(`input[name="spaceFormat"][value="${vals.spaceFormat}"]`);
       if (radio) radio.checked = true;
@@ -44,8 +48,7 @@ window.UtmFormController = {
   },
 
   bindInputs() {
-    const ids = ['inpUrl', 'inpSource', 'inpMedium', 'inpCampaign', 'inpTerm', 'inpContent', 'inpCustomKey', 'inpCustomVal'];
-    ids.forEach(id => {
+    ['inpUrl', 'inpSource', 'inpMedium', 'inpCampaign', 'inpTerm', 'inpContent'].forEach(id => {
       document.getElementById(id)?.addEventListener('input', () => {
         this.saveState();
         this.triggerUpdate();
@@ -95,31 +98,30 @@ window.UtmFormController = {
         this.highlightActivePreset(btn);
         this.saveState();
         this.triggerUpdate();
-        window.UtmExport?.showToast('پریست اعمال شد', `تنظیمات کانال ${network.name} بارگذاری شد.`);
+        window.UtmExport?.showToast('پریست کانال اعمال شد', `تنظیمات پیش‌فرض ${network.name} بارگذاری شد.`);
       }
     });
   },
 
   highlightActivePreset(activeBtn) {
-    document.querySelectorAll('.preset-network-btn').forEach(b => {
-      b.classList.remove('active-preset');
-    });
-    activeBtn.classList.add('active-preset');
+    document.querySelectorAll('.preset-network-btn').forEach(b => b.classList.remove('active-preset'));
+    if (activeBtn) activeBtn.classList.add('active-preset');
   },
 
   resetForm() {
-    this.setValues({
-      url: '', source: '', medium: '', campaign: '', term: '', content: '', customKey: '', customVal: ''
-    });
+    this.setValues({ url: '', source: '', medium: '', campaign: '', term: '', content: '' });
+    this.highlightActivePreset(null);
     localStorage.removeItem('utm_builder_current_form');
-    window.UtmExport?.showToast('فرم پاک‌سازی شد', 'تمام فیلدها ریست شدند.', 'info');
+    window.UtmExport?.showToast('فرم پاک‌سازی شد', 'تمام فیلدها و پریست‌ها ریست شدند.', 'info');
   },
 
   loadSample() {
     const sample = window.UtmPresets?.sampleData;
     if (sample) {
       this.setValues(sample);
-      window.UtmExport?.showToast('داده نمونه بارگذاری شد', 'کمپین تخفیف نوروز در فیلدها قرار گرفت.');
+      const yektanetBtn = document.querySelector('.preset-network-btn[data-id="yektanet"]');
+      if (yektanetBtn) this.highlightActivePreset(yektanetBtn);
+      window.UtmExport?.showToast('نمونه آماده بارگذاری شد', 'کمپین تخفیف نوروز در فیلدها قرار گرفت.');
     }
   },
 
@@ -137,7 +139,6 @@ window.UtmFormController = {
         return;
       }
     } catch (_) {}
-    // Load default sample if first visit
     this.loadSample();
   },
 

@@ -21,8 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!urlDisplay) return;
 
     if (!res.success) {
-      urlDisplay.textContent = res.error || 'لطفاً آدرس معتبر وارد کنید...';
+      urlDisplay.textContent = res.error || 'در انتظار تکمیل فیلدهای اجباری...';
       urlDisplay.classList.add('text-rose-400');
+      if (paramsList) paramsList.innerHTML = '';
       return;
     }
 
@@ -45,10 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="font-bold">${i.v}</span>
         </span>
       `).join('');
-    }
-
-    if (res.success && res.params?.source && res.params?.campaign) {
-      window.UtmExport?.saveHistory(res);
     }
   }
 
@@ -89,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastQrSvg = '';
     document.getElementById('btnOpenQr')?.addEventListener('click', () => {
       if (!currentResult || !currentResult.success) {
-        return window.UtmExport.showToast('خطا', 'ابتدا یک آدرس معتبر وارد کنید.', 'error');
+        return window.UtmExport.showToast('خطا در آدرس', 'ابتدا یک آدرس معتبر وارد کنید.', 'error');
       }
       lastQrSvg = window.UtmQr.renderSvg(currentResult.url, { fgColor: '#0f172a', bgColor: '#ffffff', size: 220 });
       const box = document.getElementById('qrPreviewBox');
@@ -106,13 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnGenerateBatch')?.addEventListener('click', () => {
       const vals = window.UtmFormController.getValues();
       if (!vals.url || !vals.campaign) {
-        return window.UtmExport.showToast('نیاز به اطلاعات', 'لطفاً آدرس پایه و نام کمپین را وارد کنید.', 'error');
+        return window.UtmExport.showToast('نیاز به اطلاعات', 'لطفاً ابتدا آدرس سایت و نام کمپین را وارد کنید.', 'error');
       }
       renderBatchModal(window.UtmBatchEngine.generate(vals.url, vals.campaign, [], vals));
     });
-
-    // History Modal
-    document.getElementById('btnOpenHistory')?.addEventListener('click', () => renderHistoryModal());
   }
 
   function renderBatchModal(batchList) {
@@ -127,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <td class="py-2.5 px-3 font-mono text-indigo-300">${item.medium}</td>
         <td class="py-2.5 px-3 font-mono text-slate-300 max-w-xs truncate" dir="ltr">${item.url}</td>
         <td class="py-2.5 px-3">
-          <button type="button" class="btn-copy-batch p-1.5 rounded-lg bg-indigo-500/20 text-indigo-300 hover:bg-indigo-500 hover:text-white transition" data-url="${item.url}" title="کپی">📋</button>
+          <button type="button" class="btn-copy-batch p-1.5 rounded-lg bg-indigo-500/20 text-indigo-300 hover:bg-indigo-500 hover:text-white transition" data-url="${item.url}" title="کپی لینک">📋</button>
         </td>
       </tr>
     `).join('');
@@ -136,42 +130,18 @@ document.addEventListener('DOMContentLoaded', () => {
       b.addEventListener('click', (e) => window.UtmExport.copyText(e.currentTarget.getAttribute('data-url')));
     });
 
+    // Copy All Links Button
+    document.getElementById('btnCopyAllBatch')?.onclick = () => {
+      const allText = batchList.map(b => `${b.name} (${b.source}/${b.medium}):\n${b.url}`).join('\n\n');
+      window.UtmExport.copyText(allText, 'همه لینک‌ها کپی شدند', 'مجموعه لینک‌های چندکاناله در کلیپ‌بورد کپی شد.');
+    };
+
     document.getElementById('btnDownloadBatchCsv')?.onclick = () => {
       window.UtmBatchEngine.downloadCsv(window.UtmBatchEngine.toCsv(batchList));
     };
 
     modal.classList.remove('hidden');
     document.getElementById('btnCloseBatch')?.onclick = () => modal.classList.add('hidden');
-  }
-
-  function renderHistoryModal() {
-    const modal = document.getElementById('historyModal');
-    const list = document.getElementById('historyItemsList');
-    if (!modal || !list) return;
-
-    const history = window.UtmExport.getHistory();
-    list.innerHTML = !history.length 
-      ? '<p class="text-xs text-slate-400 text-center py-8">هنوز لینکی در تاریخچه ذخیره نشده است.</p>'
-      : history.map(h => `
-        <div class="p-3 rounded-xl border border-white/10 bg-dark-900 flex items-center justify-between gap-3 text-xs">
-          <div class="flex-1 truncate">
-            <div class="font-bold text-white mb-1">${h.campaign} <span class="font-mono text-[11px] text-cyan-300">(${h.source} / ${h.medium})</span></div>
-            <div class="text-[11px] text-slate-400 font-mono truncate" dir="ltr">${h.url}</div>
-          </div>
-          <button type="button" class="btn-copy-hist px-3 py-1.5 rounded-lg bg-indigo-500/20 text-indigo-300 hover:bg-indigo-500 hover:text-white transition" data-url="${h.url}">کپی</button>
-        </div>
-      `).join('');
-
-    list.querySelectorAll('.btn-copy-hist').forEach(b => {
-      b.addEventListener('click', (e) => window.UtmExport.copyText(e.currentTarget.getAttribute('data-url')));
-    });
-
-    modal.classList.remove('hidden');
-    document.getElementById('btnCloseHistory')?.onclick = () => modal.classList.add('hidden');
-    document.getElementById('btnClearHistory')?.onclick = () => {
-      window.UtmExport.clearHistory();
-      renderHistoryModal();
-    };
   }
 
   window.UtmFormController.init(updateAll);

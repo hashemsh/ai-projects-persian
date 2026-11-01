@@ -117,7 +117,7 @@
           </svg>
           <span>پروژه‌های توسعه‌یافته</span>
         </h2>
-        <span class="text-xs text-slate-400">۲ پروژه آماده • پروژه‌های جدید به‌زودی</span>
+        <span class="text-xs text-slate-400">۳ پروژه آماده • پروژه‌های جدید به‌زودی</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -196,32 +196,41 @@
           </a>
         </article>
 
-        <!-- Placeholder Card 3: Upcoming Project -->
-        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between opacity-60 border-dashed border-white/15 relative">
+        <!-- Card 3: Placeholder Pro (Featured Active Project) -->
+        <article class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between border-pink-500/40 relative overflow-hidden group">
+          <div class="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
+
           <div>
             <div class="flex items-center justify-between mb-3.5">
-              <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-800 text-slate-400">
-                پروژه شماره ۳ • به‌زودی
+              <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-pink-500/20 text-pink-300 border border-pink-500/30">
+                پروژه شماره ۳ • فعال
               </span>
-              <span class="text-xl">⚡</span>
+              <span class="text-2xl">🖼️</span>
             </div>
 
-            <h3 class="text-lg font-bold text-slate-300 mb-2">
-              تحلیل‌گر سرعت و ساختار سئو
+            <h3 class="text-xl font-black text-white group-hover:text-pink-300 transition mb-2">
+              پلیس‌هولدر پرو (Placeholder Pro)
             </h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-4">
-              ماژول بررسی سلامت تگ‌های متا، چگالی کلمات کلیدی و بهینه‌سازی خوانایی متون فارسی.
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+              استودیوی هوشمند طراحی و ساخت آنلاین تصاویر جایگزین و ماکت‌های گرافیکی؛ با ابعاد استاندارد سوشال و وب، پالت‌های گرادینت مدرن، خطوط گرید معماری، وکتور SVG، تایپوگرافی فارسی و دانلود در فرمت‌های PNG، WebP و SVG.
             </p>
 
+            <!-- Tech Badges -->
             <div class="flex items-center gap-1.5 flex-wrap mb-6">
-              <span class="text-[11px] px-2 py-0.5 rounded-md bg-dark-900 border border-white/5 text-slate-500">SEO Analyzer</span>
-              <span class="text-[11px] px-2 py-0.5 rounded-md bg-dark-900 border border-white/5 text-slate-500">Audit Tool</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-md bg-dark-900 border border-white/10 text-pink-300 font-mono">Canvas 2D API</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-md bg-dark-900 border border-white/10 text-purple-300 font-mono">SVG Vector</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-md bg-dark-900 border border-white/10 text-cyan-300 font-mono">WebP / PNG</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-md bg-dark-900 border border-white/10 text-emerald-300 font-mono">Tailwind CSS</span>
             </div>
           </div>
 
-          <button type="button" disabled class="w-full py-2.5 rounded-xl bg-slate-800/80 text-slate-500 font-semibold text-xs text-center cursor-not-allowed">
-            در حال توسعه...
-          </button>
+          <!-- Action Button Linking to ./placeholder-pro/ -->
+          <a href="./placeholder-pro/" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-xs sm:text-sm shadow-glow-pink transition-all transform group-hover:scale-[1.02]">
+            <span>مشاهده دمو زنده پروژه</span>
+            <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
         </article>
 
       </div>

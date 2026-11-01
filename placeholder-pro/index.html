@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پلیس‌هولدر پرو | ژنراتور هوشمند تصویر ماکت و وکتور SVG</title>
+  <meta name="description" content="ابزار پیشرفته طراحی، ساخت و دانلود آنلاین تصاویر جایگزین (Placeholder Images) و ماکت‌های SVG برای طراحان وب و اپلیکیشن">
+
+  <!-- Google Fonts: Vazirmatn -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Suppress Play CDN production warning in console -->
+  <script>
+    const _origWarn = console.warn;
+    console.warn = (...args) => {
+      if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
+      _origWarn.apply(console, args);
+    };
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            vazir: ['Vazirmatn', 'sans-serif'],
+          },
+          colors: {
+            dark: {
+              950: '#070913',
+              900: '#0c0f1d',
+              850: '#111528',
+              800: '#171c34',
+              700: '#232b4d',
+            },
+            accent: {
+              cyan: '#06b6d4',
+              indigo: '#6366f1',
+              purple: '#a855f7',
+              pink: '#ec4899',
+              emerald: '#10b981',
+              amber: '#f59e0b'
+            }
+          },
+          boxShadow: {
+            'glow-pink': '0 0 35px -5px rgba(236, 72, 153, 0.35)',
+            'glow-cyan': '0 0 35px -5px rgba(6, 182, 212, 0.35)',
+            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-dark-950 text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-pink-500 selection:text-white">
+
+  <!-- Ambient Glowing Background Elements -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-32 right-1/4 w-96 h-96 bg-pink-600/20 rounded-full blur-[140px] animate-pulse-slow"></div>
+    <div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-purple-600/20 rounded-full blur-[160px] animate-pulse-slow" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-indigo-600/20 rounded-full blur-[150px] animate-pulse-slow" style="animation-delay: 4s;"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 flex flex-col min-h-screen">
+
+    <!-- Header Section -->
+    <header class="text-center mb-8 md:mb-10 relative">
+      <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+        <a href="../" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl glass-card text-xs font-semibold text-slate-300 hover:text-white hover:border-pink-500/50 transition">
+          <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span>بازگشت به ویترین پروژه‌ها (Hub)</span>
+        </a>
+
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-pink-500/30 text-pink-300 text-xs font-medium shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-pink-400 animate-ping"></span>
+          <span>پروژه شماره ۳</span>
+          <span class="text-slate-500">•</span>
+          <span class="text-cyan-400">پلیس‌هولدر پرو</span>
+        </div>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-3">
+        ژنراتور هوشمند تصویر ماکت <span class="bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">پلیس‌هولدر پرو</span>
+      </h1>
+      <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed">
+        طراحی، شخصی‌سازی و دانلود فوری تصاویر جایگزین (Placeholder) و وکتور SVG با ابعاد دلخواه، فونت فارسی، خطوط گرید و پالت‌های گرادینت.
+      </p>
+    </header>
+
+    <!-- Main Workspace Grid -->
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start flex-grow">
+
+      <!-- Left Column: Controls & Configuration (5 cols) -->
+      <section class="lg:col-span-5 flex flex-col gap-5 md:gap-6">
+
+        <!-- Card 1: Dimensions & Presets -->
+        <div class="glass-card rounded-2xl p-5 md:p-6 shadow-glass">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-sm md:text-base font-bold text-white flex items-center gap-2">
+              <svg class="w-5 h-5 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+              <span>۱. ابعاد تصویر (Dimensions)</span>
+            </h2>
+            <div class="flex items-center gap-1.5">
+              <button type="button" id="btnRatioLock" title="قفل کردن نسبت ابعاد" class="px-2 py-1 rounded-lg bg-slate-800 text-slate-400 hover:text-white transition text-xs flex items-center gap-1">
+                <span>🔒</span>
+                <span>نسبت</span>
+              </button>
+              <button type="button" id="btnSwapDimensions" title="جابجایی طول و عرض" class="p-1 rounded-lg bg-slate-800 text-slate-400 hover:text-white transition text-xs">
+                🔄
+              </button>
+            </div>
+          </div>
+
+          <!-- Width & Height Inputs -->
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div>
+              <label for="inpWidth" class="text-xs text-slate-400 block mb-1.5">عرض (Width):</label>
+              <div class="flex items-center gap-1.5">
+                <input type="number" id="inpWidth" value="800" min="20" max="4000" class="w-full px-3 py-2 rounded-xl glass-input text-sm font-bold text-white text-center outline-none">
+                <span class="text-xs text-slate-500 font-mono">px</span>
+              </div>
+            </div>
+            <div>
+              <label for="inpHeight" class="text-xs text-slate-400 block mb-1.5">ارتفاع (Height):</label>
+              <div class="flex items-center gap-1.5">
+                <input type="number" id="inpHeight" value="600" min="20" max="4000" class="w-full px-3 py-2 rounded-xl glass-input text-sm font-bold text-white text-center outline-none">
+                <span class="text-xs text-slate-500 font-mono">px</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Presets -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs text-slate-400 font-medium">سایزهای استاندارد آماده:</span>
+            </div>
+            
+            <!-- Category Pills -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 mb-2.5">
+              <button type="button" class="cat-pill text-[11px] py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white transition font-medium" data-cat="social">📱 شبکه‌ها</button>
+              <button type="button" class="cat-pill text-[11px] py-1.5 rounded-lg bg-pink-600 text-white transition font-bold" data-cat="web">💻 وب</button>
+              <button type="button" class="cat-pill text-[11px] py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white transition font-medium" data-cat="mobile">📲 موبایل</button>
+              <button type="button" class="cat-pill text-[11px] py-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white transition font-medium" data-cat="ecommerce">🛍️ فروشگاه</button>
+            </div>
+
+            <!-- Presets Grid Container -->
+            <div id="presetsContainer" class="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto pr-1">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Text, Labels & Typography -->
+        <div class="glass-card rounded-2xl p-5 md:p-6 shadow-glass">
+          <h2 class="text-sm md:text-base font-bold text-white flex items-center gap-2 mb-4">
+            <svg class="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+            <span>۲. متن و تایپوگرافی ماکت</span>
+          </h2>
+
+          <div class="space-y-3.5">
+            <div>
+              <label for="inpText" class="text-xs text-slate-400 block mb-1">متن اصلی روی تصویر:</label>
+              <input type="text" id="inpText" value="تصویر ماکت" placeholder="مثلاً: تصویر ماکت یا محصول..." class="w-full px-3 py-2 rounded-xl glass-input text-xs sm:text-sm text-white outline-none">
+            </div>
+
+            <div>
+              <label for="inpSubtitle" class="text-xs text-slate-400 block mb-1">زیرنویس فرعی (اختیاری):</label>
+              <input type="text" id="inpSubtitle" placeholder="توضیح دلخواه..." class="w-full px-3 py-2 rounded-xl glass-input text-xs sm:text-sm text-slate-300 outline-none">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <div>
+                <label for="selectFont" class="text-[11px] text-slate-400 block mb-1">فونت متن:</label>
+                <select id="selectFont" class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-xs text-slate-200 outline-none">
+                  <option value="Vazirmatn" selected>وزیرمتن (Vazirmatn)</option>
+                  <option value="Shabnam">شبنم (Shabnam)</option>
+                  <option value="Samim">صمیم (Samim)</option>
+                  <option value="Sahel">ساهل (Sahel)</option>
+                  <option value="sans-serif">System Sans</option>
+                </select>
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="text-[11px] text-slate-400">اندازه فونت:</label>
+                  <span id="lblFontSize" class="text-[10px] text-pink-300 font-mono">خودکار</span>
+                </div>
+                <input type="range" id="rangeFontSize" min="0" max="140" value="0" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+              </div>
+            </div>
+
+            <label class="flex items-center gap-2 text-xs text-slate-300 cursor-pointer pt-1">
+              <input type="checkbox" id="chkShowDimensions" checked class="w-4 h-4 rounded text-pink-600 bg-dark-900 border-white/20 focus:ring-0">
+              <span>نمایش خودکار ابعاد و نسبت تصویر در زیر متن</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Card 3: Color, Gradient & Graphic Effects -->
+        <div class="glass-card rounded-2xl p-5 md:p-6 shadow-glass">
+          <h2 class="text-sm md:text-base font-bold text-white flex items-center gap-2 mb-4">
+            <svg class="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+            </svg>
+            <span>۳. رنگ‌بندی و استایل گرافیکی</span>
+          </h2>
+
+          <div class="space-y-4">
+            <!-- Colors Pickers -->
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex items-center gap-2.5 p-2 rounded-xl bg-slate-900/60 border border-white/5">
+                <input type="color" id="inpBgColor" value="#0f172a">
+                <div>
+                  <span class="text-xs text-slate-300 block font-medium">رنگ پس‌زمینه</span>
+                  <span class="text-[10px] text-slate-500 font-mono">Background</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5 p-2 rounded-xl bg-slate-900/60 border border-white/5">
+                <input type="color" id="inpTextColor" value="#38bdf8">
+                <div>
+                  <span class="text-xs text-slate-300 block font-medium">رنگ متن و آیکون</span>
+                  <span class="text-[10px] text-slate-500 font-mono">Foreground</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gradient Option -->
+            <div class="p-3 rounded-xl bg-slate-900/40 border border-white/5">
+              <label class="flex items-center justify-between cursor-pointer">
+                <span class="text-xs font-semibold text-slate-200">پس‌زمینه گرادینت نئونی</span>
+                <input type="checkbox" id="chkIsGradient" class="w-4 h-4 rounded text-pink-600 bg-dark-900 border-white/20 focus:ring-0">
+              </label>
+
+              <div id="gradientControls" class="hidden grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-white/10">
+                <div class="flex items-center gap-2">
+                  <input type="color" id="inpGradientEnd" value="#ec4899">
+                  <span class="text-xs text-slate-400">رنگ دوم</span>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+                    <span>زاویه:</span>
+                    <span id="lblGradientAngle" class="font-mono text-pink-300">135°</span>
+                  </div>
+                  <input type="range" id="rangeGradientAngle" min="0" max="360" value="135" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+                </div>
+              </div>
+            </div>
+
+            <!-- Pre-made Palette Swatches -->
+            <div>
+              <span class="text-xs text-slate-400 block mb-2 font-medium">پالت‌های رنگی جذاب و آماده:</span>
+              <div class="flex items-center gap-2.5 flex-wrap" id="palettesContainer">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+            <!-- Graphics Effects: Icon, Blueprint Grid, Border Radius -->
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <div>
+                <label for="selectIcon" class="text-[11px] text-slate-400 block mb-1">آیکون ماکت:</label>
+                <select id="selectIcon" class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-xs text-slate-200 outline-none">
+                  <option value="none">بدون آیکون</option>
+                  <option value="image" selected>تصویر (Image)</option>
+                  <option value="shopping">فروشگاه (Shopping)</option>
+                  <option value="mobile">موبایل (Mobile)</option>
+                  <option value="user">کاربر (User)</option>
+                  <option value="code">کدنویسی (Code)</option>
+                </select>
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="text-[11px] text-slate-400">گردی گوشه‌ها:</label>
+                  <span id="lblBorderRadius" class="text-[10px] text-pink-300 font-mono">0px</span>
+                </div>
+                <input type="range" id="rangeBorderRadius" min="0" max="100" value="0" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+              </div>
+            </div>
+
+            <label class="flex items-center gap-2 text-xs text-slate-300 cursor-pointer pt-1">
+              <input type="checkbox" id="chkShowGrid" class="w-4 h-4 rounded text-pink-600 bg-dark-900 border-white/20 focus:ring-0">
+              <span>افزودن خطوط معمارانه ماکت (Blueprint X-Grid Pattern)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Reset Button -->
+        <button type="button" id="btnReset" class="w-full py-2.5 rounded-xl border border-white/10 text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 transition">
+          بازنشانی تنظیمات به حالت اولیه
+        </button>
+
+      </section>
+
+      <!-- Right Column: Live Viewport & Formats (7 cols) -->
+      <section class="lg:col-span-7 flex flex-col gap-4">
+
+        <div class="glass-card rounded-2xl p-5 md:p-6 shadow-glass flex flex-col">
+
+          <!-- View Toolbar & Tabs -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-3 border-b border-white/10">
+            <!-- Mode Switcher -->
+            <div class="flex items-center gap-1 p-1 rounded-lg bg-dark-900 border border-white/10 flex-wrap">
+              <button type="button" id="tabPreview" class="px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-md bg-pink-600 text-white transition flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                <span>پیش‌نمایش تصویر</span>
+              </button>
+              <button type="button" id="tabImgTag" class="px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-md text-slate-400 hover:text-white transition flex items-center gap-1">
+                <span>تگ &lt;img&gt;</span>
+              </button>
+              <button type="button" id="tabSvgCode" class="px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-md text-slate-400 hover:text-white transition flex items-center gap-1">
+                <span>وکتور SVG</span>
+              </button>
+              <button type="button" id="tabOnlineUrl" class="px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-md text-slate-400 hover:text-white transition flex items-center gap-1">
+                <span>لینک آنلاین</span>
+              </button>
+              <button type="button" id="tabBase64" class="px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-md text-slate-400 hover:text-white transition flex items-center gap-1">
+                <span>Data URL</span>
+              </button>
+            </div>
+
+            <!-- Copy Button -->
+            <button type="button" id="btnCopyActiveCode" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-lg bg-pink-500/20 text-pink-300 hover:bg-pink-500 hover:text-white border border-pink-500/30 transition shadow-sm">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10a2 2 0 00-2 2v3a2 2 0 002 2h10a2 2 0 002-2v-3a2 2 0 00-2-2z" />
+              </svg>
+              <span>کپی کد خروجی</span>
+            </button>
+          </div>
+
+          <!-- Viewport Display Container -->
+          <div class="relative min-h-[380px] md:min-h-[460px] flex flex-col justify-center items-center rounded-2xl checkerboard-bg p-4 border border-white/10 overflow-hidden">
+            <!-- Canvas Preview Container -->
+            <div id="viewPreview" class="w-full h-full flex items-center justify-center overflow-auto max-h-[500px]">
+              <canvas id="placeholderCanvas" class="max-w-full max-h-[440px] shadow-2xl rounded-xl transition-all duration-300"></canvas>
+            </div>
+
+            <!-- Code Output Textarea -->
+            <textarea id="txtOutput" readonly class="hidden w-full h-[440px] p-4 rounded-xl bg-dark-900/95 border border-white/10 text-pink-300 font-mono text-xs md:text-sm leading-relaxed resize-none focus:outline-none overflow-y-auto" dir="ltr"></textarea>
+          </div>
+
+          <!-- Quick Downloads Row -->
+          <div class="mt-4 pt-3.5 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-xs text-slate-400 font-medium">دانلود مستقیم:</span>
+              <button type="button" id="btnDownloadPng" class="px-3 py-1.5 rounded-lg bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs shadow-glow-pink transition flex items-center gap-1.5">
+                <span>PNG</span>
+                <span class="text-[10px] opacity-80">(کیفیت بالا)</span>
+              </button>
+              <button type="button" id="btnDownloadWebp" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition flex items-center gap-1.5">
+                <span>WebP</span>
+                <span class="text-[10px] opacity-80">(فشرده)</span>
+              </button>
+              <button type="button" id="btnDownloadSvg" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs border border-white/10 transition flex items-center gap-1.5">
+                <span>SVG</span>
+                <span class="text-[10px] opacity-80">(وکتور برداری)</span>
+              </button>
+            </div>
+
+            <!-- Technical Metadata Badge -->
+            <div class="flex items-center gap-3 text-xs text-slate-400 font-mono">
+              <div>
+                <span>رزولوشن:</span>
+                <span id="statResolution" class="text-white font-bold">800 × 600 px</span>
+              </div>
+              <div>
+                <span>نسبت:</span>
+                <span id="statRatio" class="text-cyan-300 font-bold">4:3</span>
+              </div>
+              <div class="hidden sm:block">
+                <span>حجم:</span>
+                <span id="statEstSize" class="text-pink-300 font-bold">~ 25 KB</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Designer & Developer Guide -->
+        <div class="glass-card rounded-xl p-4 border-l-4 border-l-pink-400 flex items-start gap-3 text-xs leading-relaxed text-slate-300">
+          <div class="p-1.5 rounded-lg bg-pink-500/20 text-pink-300 shrink-0 mt-0.5">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <span class="font-bold text-white">راهنمای هوشمند طراحان و توسعه‌دهندگان:</span>
+            برای استفاده در پروژه‌های فرانت‌اند (React/Next.js) می‌توانید از وکتور SVG یا Base64 استفاده کنید تا بدون نیاز به آپلود هیچ فایل خارجی، ماکت تصاویر بلافاصله در کامپوننت‌های شما رندر شوند.
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Sleek & Modern Glassmorphic Footer -->
+    <footer class="mt-12 md:mt-14 mb-4">
+      <div class="glass-card rounded-2xl px-6 py-5 border border-white/10 shadow-glass flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-right">
+        
+        <!-- Developer Brand -->
+        <div class="flex items-center gap-3 flex-wrap justify-center">
+          <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-extrabold text-sm shadow-glow-pink hover:scale-105 transition transform">
+            H
+          </a>
+          <div class="text-xs sm:text-sm text-slate-300 font-medium tracking-wide">
+            Designed &amp; Developed by 
+            <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer" class="font-black bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-400 bg-clip-text text-transparent px-1 hover:underline hover:opacity-90 transition">Hashem Sh</a>
+          </div>
+        </div>
+
+        <!-- Persian Subtitle -->
+        <div class="text-xs text-slate-400 hidden lg:block">
+          ویترین پروژه‌های وب توسعه‌یافته با دستیاری هوش مصنوعی
+        </div>
+
+        <!-- Powered By Tech Badges -->
+        <div class="flex items-center gap-2 text-xs flex-wrap justify-center">
+          <span class="text-slate-400">Powered by</span>
+          <a href="https://deepmind.google/technologies/gemini/" target="_blank" rel="noopener noreferrer" title="Google Antigravity & DeepMind" class="px-2.5 py-1 rounded-lg bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-500/30 text-indigo-300 font-semibold tracking-wide flex items-center gap-1.5 shadow-sm transition hover:scale-105 transform">
+            <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span>
+            Antigravity
+          </a>
+          <span class="text-slate-500">&amp;</span>
+          <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" title="Google Gemini Pro" class="px-2.5 py-1 rounded-lg bg-gradient-to-r from-pink-500/15 to-purple-500/15 hover:from-pink-500/25 hover:to-purple-500/25 border border-pink-500/30 text-pink-300 font-semibold tracking-wide flex items-center gap-1.5 shadow-sm transition hover:scale-105 transform">
+            <span class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"></span>
+            Gemini Pro
+          </a>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Toast Notification Floating Widget -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="glass-card bg-slate-900/95 border-pink-500/40 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border shadow-pink-500/20">
+      <div class="w-7 h-7 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center shrink-0">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <div>
+        <p class="text-sm font-bold text-slate-100" id="toastTitle">با موفقیت کپی شد!</p>
+        <p class="text-xs text-slate-400" id="toastMessage">کد مورد نظر در کلیپ‌بورد سیستم شما ذخیره گردید.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modular Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/state.js"></script>
+  <script src="assets/js/renderer.js"></script>
+  <script src="assets/js/exporter.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

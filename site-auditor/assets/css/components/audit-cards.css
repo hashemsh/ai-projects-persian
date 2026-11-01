@@ -1,0 +1,72 @@
+/* Audit Check Items & Issue Cards */
+.audit-item {
+  position: relative;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  background: rgba(17, 21, 40, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.2s ease;
+}
+
+.audit-item:hover {
+  background: rgba(17, 21, 40, 0.8);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.audit-item.status-error {
+  border-right: 4px solid var(--accent-rose);
+}
+
+.audit-item.status-warning {
+  border-right: 4px solid var(--accent-amber);
+}
+
+.audit-item.status-success {
+  border-right: 4px solid var(--accent-emerald);
+}
+
+.audit-item.status-info {
+  border-right: 4px solid var(--accent-cyan);
+}
+
+/* Code Snippet Box in Checklist */
+.code-preview-box {
+  background: #090c17;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.85rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+  direction: ltr;
+  text-align: left;
+  overflow-x: auto;
+  color: #38bdf8;
+}
+
+/* Interactive Checkbox for Action Plan */
+.checklist-checkbox {
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+  transition: all 0.15s ease;
+}
+
+.checklist-checkbox:checked {
+  background: var(--accent-emerald);
+  border-color: var(--accent-emerald);
+}
+
+.checklist-checkbox:checked::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.35rem;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg) translate(1px, -1px);
+}

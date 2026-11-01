@@ -1,0 +1,47 @@
+@import './variables.css';
+@import './base.css';
+@import './components/score-gauge.css';
+@import './components/audit-cards.css';
+@import './components/serp-preview.css';
+@import './components/modal-toast.css';
+
+/* Tab Switcher Animation */
+.tab-btn {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+  background: rgba(99, 102, 241, 0.2);
+  color: #ffffff;
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* Metric Pill Badges */
+.metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Section Header Badge */
+.category-header-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Glow Effects */
+.shadow-glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.35);
+}
+
+.shadow-glow-indigo {
+  box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35);
+}

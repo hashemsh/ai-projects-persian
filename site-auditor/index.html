@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سایت آدیتور پرو | آنالیزور جامع سئو، پرفورمنس و UX وبسایت</title>
+  <meta name="description" content="ابزار تخصصی و حرفه‌ای ممیزی جامع صفحات وب بر اساس استانداردهای فنی سئو، Core Web Vitals، دسترسی‌پذیری و امنیت.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body class="bg-dark-950 text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-white">
+  <!-- Ambient Glows -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -top-32 right-1/4 w-96 h-96 bg-cyan-600/15 rounded-full blur-[140px] animate-pulse-slow"></div>
+    <div class="absolute top-1/2 -left-20 w-[420px] h-[420px] bg-indigo-600/15 rounded-full blur-[160px] animate-pulse-slow"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-600/15 rounded-full blur-[150px] animate-pulse-slow"></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 transition text-xs font-semibold">← بازگشت به هاب</a>
+        <h1 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+          <span>سایت آدیتور پرو</span>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Site Auditor Pro</span>
+        </h1>
+      </div>
+      <div class="flex items-center gap-2">
+        <button type="button" id="btn-sample-bad" class="px-2.5 py-1 text-xs rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/25 transition">نمونه دارای خطا ⚠️</button>
+        <button type="button" id="btn-sample-good" class="px-2.5 py-1 text-xs rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition">نمونه بهینه‌شده ✅</button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="space-y-6 flex-1">
+      <!-- Input Card -->
+      <section class="glass-card rounded-2xl p-5 shadow-xl">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <button type="button" id="tab-mode-html" class="tab-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold border border-white/10 bg-white/5">سورس کد HTML / فایل</button>
+            <button type="button" id="tab-mode-url" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold border border-white/10 bg-white/5">آنالیز URL</button>
+          </div>
+          <div class="flex items-center gap-2">
+            <label for="file-upload-html" class="cursor-pointer px-3 py-1.5 text-xs rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">📂 آپلود HTML</label>
+            <input type="file" id="file-upload-html" accept=".html,.htm" class="hidden">
+            <button type="button" id="btn-reset-form" class="px-2.5 py-1.5 text-xs rounded-xl bg-white/5 hover:bg-white/10 text-slate-400">پاکسازی 🔄</button>
+          </div>
+        </div>
+
+        <div id="section-input-html">
+          <textarea id="input-raw-html" rows="6" class="glass-input w-full p-3.5 rounded-xl text-xs font-mono text-cyan-200 resize-y" placeholder="کدهای HTML صفحه یا لندینگ پیج را اینجا پیست کنید..."></textarea>
+        </div>
+        <div id="section-input-url" class="hidden">
+          <input type="url" id="input-website-url" class="glass-input w-full p-3 rounded-xl text-xs" placeholder="https://example.com/page">
+        </div>
+
+        <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
+          <p class="text-xs text-slate-400">⚡ ممیزی کامل شامل سئو فنی، Core Web Vitals، دسترسی‌پذیری و امنیت.</p>
+          <button type="button" id="btn-run-audit" class="px-5 py-2 rounded-xl font-bold text-xs bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-glow-cyan transition">شروع آنالیز و ممیزی عمیق 🚀</button>
+        </div>
+      </section>
+
+      <!-- Audit Results -->
+      <section id="audit-results-wrapper" class="space-y-6 hidden">
+        <!-- Score Dashboard Bento -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <div class="glass-card rounded-2xl p-5 flex flex-col items-center justify-center text-center">
+            <h3 class="text-xs font-semibold text-slate-400 mb-2">شاخص کل سلامت و بهینگی</h3>
+            <div class="gauge-container mb-1">
+              <svg class="gauge-svg" viewBox="0 0 140 140">
+                <circle class="gauge-bg" cx="70" cy="70" r="58"></circle>
+                <circle id="gauge-circle-progress" class="gauge-progress" cx="70" cy="70" r="58"></circle>
+              </svg>
+              <div class="gauge-center"><span id="gauge-overall-val" class="gauge-value">--</span><span class="gauge-label">از ۱۰۰</span></div>
+            </div>
+            <div id="gauge-grade-badge" class="grade-badge my-1">رتبه --</div>
+            <div class="flex items-center gap-2 text-xs mt-1">
+              <span class="text-rose-400 font-bold"><span id="count-errors">0</span> خطا</span><span>•</span>
+              <span class="text-amber-400 font-bold"><span id="count-warnings">0</span> هشدار</span><span>•</span>
+              <span class="text-emerald-400 font-bold"><span id="count-passed">0</span> پاس‌شده</span>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 flex flex-col justify-between space-y-3">
+            <h3 class="text-xs font-semibold text-slate-400">تفکیک نمرات ۴ ستون ارزیابی</h3>
+            <div class="space-y-2.5 text-xs">
+              <div><div class="flex justify-between mb-1"><span class="text-slate-300">سئو فنی (On-Page)</span><span id="val-seo" class="font-bold text-cyan-400">--%</span></div><div class="sub-score-bar-bg"><div id="bar-seo" class="sub-score-bar-fill bg-cyan-400" style="width: 0%"></div></div></div>
+              <div><div class="flex justify-between mb-1"><span class="text-slate-300">پرفورمنس و سرعت</span><span id="val-perf" class="font-bold text-amber-400">--%</span></div><div class="sub-score-bar-bg"><div id="bar-perf" class="sub-score-bar-fill bg-amber-400" style="width: 0%"></div></div></div>
+              <div><div class="flex justify-between mb-1"><span class="text-slate-300">تجربه کاربری (UX & a11y)</span><span id="val-ux" class="font-bold text-emerald-400">--%</span></div><div class="sub-score-bar-bg"><div id="bar-ux" class="sub-score-bar-fill bg-emerald-400" style="width: 0%"></div></div></div>
+              <div><div class="flex justify-between mb-1"><span class="text-slate-300">امنیت و وب استاندارد</span><span id="val-sec" class="font-bold text-purple-400">--%</span></div><div class="sub-score-bar-bg"><div id="bar-sec" class="sub-score-bar-fill bg-purple-400" style="width: 0%"></div></div></div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 flex flex-col justify-between space-y-2.5">
+            <h3 class="text-xs font-semibold text-slate-400">خروجی و گزارش‌های رسمی</h3>
+            <button type="button" id="btn-export-html" class="w-full py-2 px-3 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 text-cyan-300 border border-cyan-500/20 transition flex items-center justify-between"><span>📄 دانلود گزارش HTML (قابل چاپ/PDF)</span><span>↓</span></button>
+            <button type="button" id="btn-export-json" class="w-full py-2 px-3 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition flex items-center justify-between"><span>💾 دانلود دیتای ساختاریافته JSON</span><span>↓</span></button>
+            <button type="button" id="btn-copy-markdown" class="w-full py-2 px-3 rounded-xl text-xs font-bold bg-white/5 hover:bg-white/10 text-indigo-300 border border-indigo-500/20 transition flex items-center justify-between"><span>📋 کپی خلاصه گزارش (Markdown)</span><span>✓</span></button>
+          </div>
+        </div>
+
+        <!-- Google SERP & Social Previews -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="glass-card rounded-2xl p-4">
+            <div class="flex items-center justify-between mb-2"><h3 class="text-xs font-bold text-white">🔍 شبیه‌ساز سرپ گوگل (Google SERP)</h3><span id="serp-title-length" class="text-[11px]"></span></div>
+            <div class="serp-card">
+              <div class="serp-url-row"><div class="serp-favicon-placeholder">🌐</div><span id="serp-preview-domain" class="serp-site-name">example.com</span><span class="text-slate-400">›</span><span id="serp-preview-url" class="serp-url-breadcrumb">...</span></div>
+              <div id="serp-preview-title" class="serp-title">عنوان صفحه</div>
+              <div id="serp-preview-desc" class="serp-desc">توضیحات متا...</div>
+            </div>
+            <div class="mt-1.5 text-left"><span id="serp-desc-length" class="text-[11px]"></span></div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-4">
+            <h3 class="text-xs font-bold text-white mb-2">📱 شبیه‌ساز کارت اشتراک شبکه‌های اجتماعی (Open Graph)</h3>
+            <div class="social-preview-card">
+              <div class="social-img-wrap"><img id="social-preview-img" src="" alt="OG Preview"></div>
+              <div class="social-content">
+                <div id="social-preview-domain" class="social-domain">YOURDOMAIN.COM</div>
+                <div id="social-preview-title" class="social-title">عنوان پیش‌نمایش</div>
+                <div id="social-preview-desc" class="social-desc">توضیحات کوتاه...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Plan Checklist -->
+        <div class="glass-card rounded-2xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-white/10">
+            <div><h3 class="text-sm font-black text-white">چک‌لیست ممیزی و اقدامات اصلاحی (Action Plan)</h3><p class="text-xs text-slate-400 mt-0.5">ایرادات برطرف‌شده را با تیک‌باکس علامت بزنید.</p></div>
+            <div class="flex items-center gap-1.5">
+              <button type="button" class="btn-filter-status active px-2.5 py-1 rounded-lg text-xs bg-white/5 border border-indigo-500" data-filter="all">همه</button>
+              <button type="button" class="btn-filter-status px-2.5 py-1 rounded-lg text-xs bg-white/5 border border-white/5" data-filter="errors">خطاها ❌</button>
+              <button type="button" class="btn-filter-status px-2.5 py-1 rounded-lg text-xs bg-white/5 border border-white/5" data-filter="warnings">هشدارها ⚠️</button>
+              <button type="button" class="btn-filter-status px-2.5 py-1 rounded-lg text-xs bg-white/5 border border-white/5" data-filter="passed">پاس‌شده ✅</button>
+            </div>
+          </div>
+          <div id="audit-items-container"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-10 pt-5 border-t border-white/10 text-center text-xs text-slate-400">
+      <p class="mb-2">Designed &amp; Developed by <strong>Hashem Sh</strong> | Powered by Antigravity &amp; Gemini Pro</p>
+      <div class="flex items-center justify-center gap-4 text-slate-400">
+        <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition">GitHub</a>
+        <span>•</span>
+        <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition">LinkedIn</a>
+        <span>•</span>
+        <a href="https://t.me/init10" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition">Telegram</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="./assets/js/data/samples.js"></script>
+  <script src="./assets/js/data/criteria.js"></script>
+  <script src="./assets/js/engine/dom-parser.js"></script>
+  <script src="./assets/js/engine/seo-evaluator.js"></script>
+  <script src="./assets/js/engine/perf-evaluator.js"></script>
+  <script src="./assets/js/engine/ux-evaluator.js"></script>
+  <script src="./assets/js/engine/sec-evaluator.js"></script>
+  <script src="./assets/js/ui/gauge-ui.js"></script>
+  <script src="./assets/js/ui/results-ui.js"></script>
+  <script src="./assets/js/ui/preview-ui.js"></script>
+  <script src="./assets/js/ui/toast-ui.js"></script>
+  <script src="./assets/js/utils/storage.js"></script>
+  <script src="./assets/js/utils/exporter.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

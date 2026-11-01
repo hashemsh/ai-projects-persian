@@ -10,15 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
       spaceFormat: formVals.spaceFormat
     });
     currentResult = res;
-    renderOutput(res);
+    renderOutput(res, formVals);
     window.UtmGa4Simulator.render('#ga4ReportContainer', res.params || {});
     renderAudit(formVals);
   }
 
-  function renderOutput(res) {
+  function renderOutput(res, formVals) {
     const urlDisplay = document.getElementById('outputFinalUrl');
     const paramsList = document.getElementById('paramsBreakdownList');
     if (!urlDisplay) return;
+
+    if (!formVals || !formVals.url) {
+      urlDisplay.textContent = 'در انتظار تکمیل فیلدهای اجباری...';
+      urlDisplay.classList.remove('text-rose-400');
+      if (paramsList) paramsList.innerHTML = '';
+      return;
+    }
 
     if (!res.success) {
       urlDisplay.textContent = res.error || 'در انتظار تکمیل فیلدهای اجباری...';
@@ -95,20 +102,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // QR Code Modal
     const qrModal = document.getElementById('qrModal');
-    let lastQrSvg = '';
+    const qrBox = document.getElementById('qrPreviewBox');
     document.getElementById('btnOpenQr')?.addEventListener('click', () => {
       if (!currentResult || !currentResult.success) {
         return window.UtmExport.showToast('خطا در آدرس', 'ابتدا یک آدرس معتبر وارد کنید.', 'error');
       }
-      lastQrSvg = window.UtmQr.renderSvg(currentResult.url, { fgColor: '#0f172a', bgColor: '#ffffff', size: 220 });
-      const box = document.getElementById('qrPreviewBox');
-      if (box) box.innerHTML = lastQrSvg;
+      if (qrBox) {
+        window.UtmQr.render(qrBox, currentResult.url, { size: 220 });
+      }
       qrModal?.classList.remove('hidden');
     });
 
     document.getElementById('btnCloseQr')?.addEventListener('click', () => qrModal?.classList.add('hidden'));
     document.getElementById('btnDownloadQr')?.addEventListener('click', () => {
-      if (lastQrSvg) window.UtmQr.downloadSvg(lastQrSvg, 'campaign-utm-qr.svg');
+      if (qrBox) window.UtmQr.download(qrBox, 'campaign-utm-qr.png');
     });
 
     // Batch Generation Modal

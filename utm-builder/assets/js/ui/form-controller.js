@@ -126,20 +126,12 @@ window.UtmFormController = {
   },
 
   saveState() {
-    try {
-      localStorage.setItem('utm_builder_current_form', JSON.stringify(this.getValues()));
-    } catch (_) {}
+    // Intentionally stateless to ensure fresh start on reload
   },
 
   loadSavedState() {
-    try {
-      const saved = JSON.parse(localStorage.getItem('utm_builder_current_form'));
-      if (saved && saved.url) {
-        this.setValues(saved);
-        return;
-      }
-    } catch (_) {}
-    this.loadSample();
+    // Start with a clean empty form as requested; users click "بارگذاری نمونه" on demand
+    this.triggerUpdate();
   },
 
   triggerUpdate() {

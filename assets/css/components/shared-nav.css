@@ -2,6 +2,8 @@
    Shared Header & Footer Navigation Component
    ========================================================================== */
 
+@import url('theme-light.css');
+
 .shared-navbar {
   background: rgba(12, 15, 29, 0.82);
   backdrop-filter: blur(20px);

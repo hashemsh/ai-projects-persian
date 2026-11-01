@@ -1,8 +1,31 @@
 /**
  * Universal Shared Header and Footer Navigation Component
- * Reusable across Hub and all sub-projects with zero code duplication.
+ * Reusable across Hub and all sub-projects with theme switcher and zero code duplication.
  */
 (function() {
+  function getTheme() {
+    const saved = localStorage.getItem('ai_hub_theme');
+    if (saved) return saved === 'light';
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  }
+
+  function applyTheme(isLight) {
+    document.documentElement.classList.toggle('light-theme', isLight);
+    const icon = document.getElementById('theme-toggle-icon');
+    if (icon) icon.textContent = isLight ? '☀️' : '🌙';
+  }
+
+  function toggleTheme() {
+    const isLight = !document.documentElement.classList.contains('light-theme');
+    applyTheme(isLight);
+    try {
+      localStorage.setItem('ai_hub_theme', isLight ? 'light' : 'dark');
+    } catch (_) {}
+  }
+
+  // Pre-apply theme immediately to prevent FOUC
+  applyTheme(getTheme());
+
   function initSharedLayout() {
     const path = window.location.pathname;
     const isSub = path.includes('/lorem-plus/') ||
@@ -14,7 +37,6 @@
     const rootPath = isSub ? '../' : './';
     const logoSrc = isSub ? '../assets/images/logo.svg' : 'assets/images/logo.svg';
 
-    // Active state: if in sub-project or hash is #tools -> 'tools', else 'hub'
     const isToolsActive = isSub || window.location.hash === '#tools' || window.location.hash === '#projects-grid';
     const activeId = isToolsActive ? 'tools' : 'hub';
 
@@ -25,6 +47,7 @@
 
     renderHeader(menuItems, activeId, rootPath, logoSrc);
     renderFooter(rootPath, logoSrc);
+    applyTheme(document.documentElement.classList.contains('light-theme'));
   }
 
   function renderHeader(items, activeId, rootPath, logoSrc) {
@@ -37,6 +60,8 @@
         <span>${item.title}</span>
       </a>
     `).join('');
+
+    const isLight = document.documentElement.classList.contains('light-theme');
 
     headerEl.innerHTML = `
       <nav class="shared-navbar px-4 sm:px-6 py-3.5 mb-8 md:mb-12 shadow-glass relative z-50">
@@ -52,17 +77,21 @@
             </div>
           </a>
 
-          <!-- Desktop Navigation Menu (Summarized) -->
+          <!-- Desktop Navigation Menu -->
           <div class="hidden sm:flex items-center gap-1.5 bg-dark-900/60 p-1.5 rounded-2xl border border-white/5">
             ${linksHtml}
           </div>
 
-          <!-- Quick Action / GitHub Star & Mobile Toggle -->
+          <!-- Actions: Star, Theme Toggle & Mobile Menu -->
           <div class="flex items-center gap-2">
-            <a href="https://github.com/hashemsh/ai-projects-persian" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white text-xs font-semibold border border-white/10 transition">
+            <a href="https://github.com/hashemsh/ai-projects-persian" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white text-xs font-semibold border border-white/10 transition">
               <span class="text-amber-400">★</span>
               <span>Star on GitHub</span>
             </a>
+            <!-- Theme Switcher Button -->
+            <button type="button" id="btn-theme-toggle" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition flex items-center justify-center text-sm" aria-label="تغییر تم" title="تغییر حالت شب و روز">
+              <span id="theme-toggle-icon">${isLight ? '☀️' : '🌙'}</span>
+            </button>
             <button type="button" id="btn-toggle-mobile-menu" class="sm:hidden p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition" aria-label="منوی سایت">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -78,11 +107,11 @@
       </nav>
     `;
 
-    const toggleBtn = headerEl.querySelector('#btn-toggle-mobile-menu');
-    const mobileMenu = headerEl.querySelector('#mobile-nav-menu');
-    toggleBtn?.addEventListener('click', () => {
-      mobileMenu?.classList.toggle('open');
+    headerEl.querySelector('#btn-toggle-mobile-menu')?.addEventListener('click', () => {
+      headerEl.querySelector('#mobile-nav-menu')?.classList.toggle('open');
     });
+
+    headerEl.querySelector('#btn-theme-toggle')?.addEventListener('click', toggleTheme);
   }
 
   function renderFooter(rootPath, logoSrc) {
@@ -120,7 +149,6 @@
           </div>
         </div>
 
-        <!-- Footer Bottom Links with Report Issue -->
         <div class="pt-3 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">
           <div>ویترین ابزارها و میکرواپ‌های وب توسعه‌یافته با دستیاری هوش مصنوعی</div>
           <div class="flex items-center gap-3">

@@ -6,6 +6,7 @@
 @import url('components/cards.css');
 @import url('components/about-faq.css');
 @import url('components/rocket.css');
+@import url('components/theme-light.css');
 
 :root {
   --color-primary: #6366f1;

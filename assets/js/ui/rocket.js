@@ -1,18 +1,15 @@
 /**
- * Interactive Scroll Rocket & Smooth Return-to-Top Component
- * Persian AI Projects Hub
+ * Interactive Left-Side Scroll Rocket & Return-to-Top Component
  */
 
 window.HubUI = window.HubUI || {};
 
 window.HubUI.initScrollRocket = function() {
-  const logoEl = document.getElementById('site-logo-container') || document.querySelector('nav img[src*="logo"]')?.parentElement;
-  
   const container = document.createElement('div');
   container.className = 'scroll-rocket-container';
 
   const btn = document.createElement('button');
-  btn.className = 'scroll-rocket-btn';
+  btn.className = 'scroll-rocket-btn is-visible';
   btn.setAttribute('type', 'button');
   btn.setAttribute('aria-label', 'پرتاب به بالای صفحه');
   btn.setAttribute('title', 'پرتاب به بالای صفحه');
@@ -50,10 +47,10 @@ window.HubUI.initScrollRocket = function() {
   let ticking = false;
 
   function spawnSparks(x, y) {
-    if (Math.random() > 0.4) return;
+    if (Math.random() > 0.45) return;
     const p = document.createElement('div');
     p.className = 'rocket-particle';
-    const size = Math.floor(Math.random() * 6 + 4);
+    const size = Math.floor(Math.random() * 5 + 4);
     const colors = ['#38bdf8', '#818cf8', '#f59e0b', '#ec4899'];
     const color = colors[Math.floor(Math.random() * colors.length)];
     p.style.cssText = `width:${size}px;height:${size}px;background:${color};box-shadow:0 0 8px ${color};left:${x}px;top:${y}px;`;
@@ -71,45 +68,38 @@ window.HubUI.initScrollRocket = function() {
     const maxScroll = Math.max(docHeight - winHeight, 1);
     const progress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
 
-    if (scrollY < 45) {
-      btn.classList.remove('is-visible', 'is-docked');
-      btn.style.transform = 'scale(0.3) rotate(0deg)';
-      lastScrollY = scrollY;
-      return;
-    }
-
-    btn.classList.add('is-visible');
-
-    const logoRect = logoEl ? logoEl.getBoundingClientRect() : { left: window.innerWidth - 70, top: 25, width: 44, height: 44 };
-    const startX = logoRect.left + (logoRect.width / 2) - 30;
-    const startY = Math.max(logoRect.top, 25);
-    const endX = 32;
-    const endY = winHeight - 88;
+    const startX = 28;
+    const startY = 32;
+    const endX = 28;
+    const endY = winHeight - 92;
 
     const isScrollingDown = scrollY >= lastScrollY;
-    const isNearBottom = progress >= 0.88;
-    let curX, curY, rotAngle;
+    let curX = startX + Math.sin(progress * Math.PI) * 14;
+    let curY = startY + (endY - startY) * progress;
+    let rotAngle = 0;
 
-    if (isNearBottom) {
+    if (progress < 0.05) {
+      btn.classList.add('is-idle-top');
+      btn.classList.remove('is-docked');
+      rotAngle = -15;
+    } else if (progress >= 0.88) {
+      btn.classList.remove('is-idle-top');
+      btn.classList.add('is-docked');
       curX = endX;
       curY = endY;
       rotAngle = 0;
-      btn.classList.add('is-docked');
     } else {
-      btn.classList.remove('is-docked');
-      const t = Math.min(Math.max((progress - 0.04) / 0.84, 0), 1);
-      const easeT = t * t * (3 - 2 * t);
-
-      curX = startX + (endX - startX) * easeT;
-      curY = startY + (endY - startY) * t;
-      rotAngle = isScrollingDown ? (145 - (easeT * 40)) : (-15 + (easeT * 15));
+      btn.classList.remove('is-idle-top', 'is-docked');
+      rotAngle = isScrollingDown ? (120 - progress * 40) : (-25 + progress * 20);
     }
 
     btn.style.left = `${curX}px`;
     btn.style.top = `${curY}px`;
-    btn.style.transform = `rotate(${rotAngle}deg) scale(1)`;
+    btn.style.transform = `rotate(${rotAngle}deg)`;
 
-    spawnSparks(curX + 30, curY + 45);
+    if (progress > 0.05) {
+      spawnSparks(curX + 28, curY + 40);
+    }
     lastScrollY = scrollY;
   }
 
@@ -120,30 +110,30 @@ window.HubUI.initScrollRocket = function() {
     }
   }, { passive: true });
 
-  window.addEventListener('resize', () => { updateRocket(); }, { passive: true });
+  window.addEventListener('resize', updateRocket, { passive: true });
 
   function launchRocket(e) {
     if (e) e.preventDefault();
     if (isLaunching) return;
 
     isLaunching = true;
-    btn.classList.remove('is-docked');
+    btn.classList.remove('is-docked', 'is-idle-top');
     btn.classList.add('is-launching');
 
     const rect = btn.getBoundingClientRect();
     for (let i = 0; i < 12; i++) {
       setTimeout(() => {
-        spawnSparks(rect.left + 24 + (Math.random() * 20 - 10), rect.top + 50 + (Math.random() * 20));
-      }, i * 30);
+        spawnSparks(rect.left + 24 + (Math.random() * 20 - 10), rect.top + 45 + Math.random() * 20);
+      }, i * 35);
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     setTimeout(() => {
-      btn.classList.remove('is-launching', 'is-visible');
+      btn.classList.remove('is-launching');
       isLaunching = false;
       updateRocket();
-    }, 1000);
+    }, 950);
   }
 
   btn.addEventListener('click', launchRocket);

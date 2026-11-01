@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Light Theme Palette & Glassmorphic Overrides
+   ========================================================================== */
+
+html.light-theme,
+html.light-theme body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html.light-theme body {
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.08) 0px, transparent 50%) !important;
+}
+
+/* Light Theme Glass Cards */
+html.light-theme .glass-card {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+html.light-theme .glass-card:hover {
+  border-color: rgba(99, 102, 241, 0.35) !important;
+  box-shadow: 0 16px 36px -10px rgba(99, 102, 241, 0.12) !important;
+}
+
+/* Light Theme Navigation & Footer */
+html.light-theme .shared-navbar {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+html.light-theme .shared-nav-link {
+  color: #475569 !important;
+}
+
+html.light-theme .shared-nav-link:hover {
+  color: #0f172a !important;
+  background: rgba(241, 245, 249, 0.8) !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light-theme .shared-nav-link.active {
+  color: #4f46e5 !important;
+  background: rgba(99, 102, 241, 0.1) !important;
+  border-color: rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 0 12px -2px rgba(99, 102, 241, 0.2) !important;
+}
+
+html.light-theme .shared-footer-card {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 4px 25px -4px rgba(15, 23, 42, 0.05) !important;
+}
+
+html.light-theme .social-pill {
+  background: rgba(241, 245, 249, 0.8) !important;
+  border-color: #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+html.light-theme .social-pill:hover {
+  background: rgba(99, 102, 241, 0.1) !important;
+  border-color: rgba(99, 102, 241, 0.35) !important;
+  color: #4f46e5 !important;
+}
+
+/* Light Theme Typography & Borders */
+html.light-theme .text-white {
+  color: #0f172a !important;
+}
+
+html.light-theme .text-slate-300,
+html.light-theme .text-slate-400 {
+  color: #475569 !important;
+}
+
+html.light-theme .text-slate-500 {
+  color: #64748b !important;
+}
+
+html.light-theme .border-white\/10,
+html.light-theme .border-white\/5 {
+  border-color: rgba(226, 232, 240, 0.8) !important;
+}
+
+html.light-theme .bg-white\/5 {
+  background-color: rgba(241, 245, 249, 0.85) !important;
+}
+
+html.light-theme .bg-dark-900,
+html.light-theme .bg-dark-950 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Light Scrollbar */
+html.light-theme ::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+}
+
+html.light-theme ::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.35) !important;
+}
+
+html.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.6) !important;
+}

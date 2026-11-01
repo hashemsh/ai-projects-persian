@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Interactive & Motion Styles: Custom Cursor & Spinning Orbital Rings
+   Interactive & Motion Styles: Custom Cursor & Vector Orbital Rings
    ========================================================================== */
 
 /* Interactive Custom Cursor */
@@ -29,7 +29,7 @@
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, opacity 0.25s ease;
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
   backdrop-filter: blur(1px);
 }
 
@@ -55,25 +55,29 @@ body.cursor-hover .custom-cursor-dot {
   }
 }
 
-/* Spinning Motion Rings / Orbital Circles */
+/* Spinning Motion Rings / High-Resolution Vector Orbital Elements */
 .orbital-wrapper {
   position: absolute;
   pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: transform;
+}
+
+.orbital-svg {
+  display: block;
+  transform-origin: center center;
+  shape-rendering: geometricPrecision;
+  will-change: transform;
 }
 
 .spin-slow {
-  animation: orbit-rotate 35s linear infinite;
+  animation: orbit-rotate 40s linear infinite;
 }
 
 .spin-reverse-slow {
-  animation: orbit-rotate-reverse 28s linear infinite;
-}
-
-.spin-medium {
-  animation: orbit-rotate 20s linear infinite;
+  animation: orbit-rotate-reverse 32s linear infinite;
 }
 
 @keyframes orbit-rotate {
@@ -92,38 +96,4 @@ body.cursor-hover .custom-cursor-dot {
   to {
     transform: rotate(0deg);
   }
-}
-
-/* Decorative tech ring borders */
-.tech-ring-1 {
-  width: 380px;
-  height: 380px;
-  border: 1.5px dashed rgba(99, 102, 241, 0.25);
-  border-radius: 50%;
-  position: relative;
-}
-
-.tech-ring-2 {
-  width: 270px;
-  height: 270px;
-  border: 1px dotted rgba(6, 182, 212, 0.35);
-  border-radius: 50%;
-  position: absolute;
-}
-
-.tech-ring-3 {
-  width: 170px;
-  height: 170px;
-  border: 1.5px solid rgba(236, 72, 153, 0.2);
-  border-radius: 50%;
-  position: absolute;
-}
-
-/* Satellites on rings */
-.ring-node {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px currentColor;
 }

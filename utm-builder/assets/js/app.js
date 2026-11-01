@@ -72,6 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function initActionButtons() {
+    // Generate Button
+    document.getElementById('btnBuildUtm')?.addEventListener('click', () => {
+      const vals = window.UtmFormController.getValues();
+      updateAll(vals);
+      if (currentResult && currentResult.success) {
+        window.UtmExport.showToast('لینک ساخته شد!', 'لینک نهایی با موفقیت ساخته شد و آماده کپی است.');
+        document.querySelector('.utm-output-card')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        window.UtmExport.showToast('نقص در اطلاعات', currentResult?.error || 'لطفاً فیلدهای ستاره‌دار را تکمیل کنید.', 'error');
+      }
+    });
+
     document.getElementById('btnCopyUrl')?.addEventListener('click', () => {
       if (currentResult && currentResult.success) {
         window.UtmExport.copyText(currentResult.url, 'کپی شد!', 'لینک استاندارد کمپین در کلیپ‌بورد کپی شد.');
@@ -130,18 +142,26 @@ document.addEventListener('DOMContentLoaded', () => {
       b.addEventListener('click', (e) => window.UtmExport.copyText(e.currentTarget.getAttribute('data-url')));
     });
 
-    // Copy All Links Button
-    document.getElementById('btnCopyAllBatch')?.onclick = () => {
-      const allText = batchList.map(b => `${b.name} (${b.source}/${b.medium}):\n${b.url}`).join('\n\n');
-      window.UtmExport.copyText(allText, 'همه لینک‌ها کپی شدند', 'مجموعه لینک‌های چندکاناله در کلیپ‌بورد کپی شد.');
-    };
+    const btnCopyAll = document.getElementById('btnCopyAllBatch');
+    if (btnCopyAll) {
+      btnCopyAll.onclick = () => {
+        const allText = batchList.map(b => `${b.name} (${b.source}/${b.medium}):\n${b.url}`).join('\n\n');
+        window.UtmExport.copyText(allText, 'همه لینک‌ها کپی شدند', 'مجموعه لینک‌های چندکاناله در کلیپ‌بورد کپی شد.');
+      };
+    }
 
-    document.getElementById('btnDownloadBatchCsv')?.onclick = () => {
-      window.UtmBatchEngine.downloadCsv(window.UtmBatchEngine.toCsv(batchList));
-    };
+    const btnDownloadCsv = document.getElementById('btnDownloadBatchCsv');
+    if (btnDownloadCsv) {
+      btnDownloadCsv.onclick = () => {
+        window.UtmBatchEngine.downloadCsv(window.UtmBatchEngine.toCsv(batchList));
+      };
+    }
 
     modal.classList.remove('hidden');
-    document.getElementById('btnCloseBatch')?.onclick = () => modal.classList.add('hidden');
+    const btnCloseBatch = document.getElementById('btnCloseBatch');
+    if (btnCloseBatch) {
+      btnCloseBatch.onclick = () => modal.classList.add('hidden');
+    }
   }
 
   window.UtmFormController.init(updateAll);

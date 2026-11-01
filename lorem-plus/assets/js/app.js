@@ -710,33 +710,39 @@ function initEvents() {
     });
   });
 
-  // Placeholder Image Tool Actions
-  DOM.imgChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      DOM.imgWidth.value = chip.dataset.w;
-      DOM.imgHeight.value = chip.dataset.h;
+  // Placeholder Image Tool Actions (if elements present)
+  if (DOM.imgChips) {
+    DOM.imgChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        if (DOM.imgWidth) DOM.imgWidth.value = chip.dataset.w;
+        if (DOM.imgHeight) DOM.imgHeight.value = chip.dataset.h;
+      });
     });
-  });
+  }
 
-  DOM.btnCopyImgTag.addEventListener('click', async () => {
-    const { tag } = getPlaceholderData();
-    try {
-      await navigator.clipboard.writeText(tag);
-      showToast('تگ تصویر کپی شد!', 'تگ <img> آماده قرارگیری در کد HTML شماست.');
-    } catch (e) {
-      showToast('کپی شد!', tag);
-    }
-  });
+  if (DOM.btnCopyImgTag) {
+    DOM.btnCopyImgTag.addEventListener('click', async () => {
+      const { tag } = getPlaceholderData();
+      try {
+        await navigator.clipboard.writeText(tag);
+        showToast('تگ تصویر کپی شد!', 'تگ <img> آماده قرارگیری در کد HTML شماست.');
+      } catch (e) {
+        showToast('کپی شد!', tag);
+      }
+    });
+  }
 
-  DOM.btnCopyImgUrl.addEventListener('click', async () => {
-    const { url } = getPlaceholderData();
-    try {
-      await navigator.clipboard.writeText(url);
-      showToast('لینک تصویر کپی شد!', 'آدرس مستقیم تصویر ماکت در کلیپ‌بورد ذخیره شد.');
-    } catch (e) {
-      showToast('کپی شد!', url);
-    }
-  });
+  if (DOM.btnCopyImgUrl) {
+    DOM.btnCopyImgUrl.addEventListener('click', async () => {
+      const { url } = getPlaceholderData();
+      try {
+        await navigator.clipboard.writeText(url);
+        showToast('لینک تصویر کپی شد!', 'آدرس مستقیم تصویر ماکت در کلیپ‌بورد ذخیره شد.');
+      } catch (e) {
+        showToast('کپی شد!', url);
+      }
+    });
+  }
 
   // SEO Keyword Input
   DOM.seoKeywordInput.addEventListener('input', (e) => {

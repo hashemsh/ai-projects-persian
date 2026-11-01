@@ -5,6 +5,8 @@
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-مشاهده%20دموی%20آنلاین-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white)](https://hashemsh.github.io/ai-projects-persian/lorem-plus/)
 [![Hub](https://img.shields.io/badge/AI%20Projects%20Hub-ویترین%20پروژه‌ها-06b6d4?style=for-the-badge&logo=github&logoColor=white)](https://hashemsh.github.io/ai-projects-persian/)
 
+![بنر معرفی استودیو لورم پلاس](assets/images/lorem-plus-banner.jpg)
+
 ---
 
 ## 🎯 درباره پروژه
@@ -87,11 +89,13 @@
 ```plaintext
 lorem-plus/
 │
-├── index.html                  # ساختار تمیز و معنایی HTML بدون استایل‌ها و اسکریپت‌های درون‌برنامه‌ای
+├── index.html                  # ساختار تمیز، مقاله سئو و معنایی HTML
 ├── README.md                   # مستندات اختصاصی پروژه
 └── assets/
+    ├── images/
+    │   └── lorem-plus-banner.jpg # بنر سه‌بعدی و نئونی معرفی استودیو
     ├── css/
-    │   └── style.css           # استایل‌های شیشه‌ای (Glassmorphism)، فونت‌های وب و انیمیشن‌ها
+    │   └── style.css           # استایل‌های شیشه‌ای، فونت‌های وب و اسکرول نرم
     └── js/
         ├── data.js             # مخزن جامع دیتای متون، مقالات، سوالات و قیمت‌ها
         └── app.js              # منطق پردازش، وضعیت برنامه، اسکیماساز و رویدادها

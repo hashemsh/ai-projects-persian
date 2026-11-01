@@ -1,5 +1,6 @@
 /* ==========================================================================
-   لورم پلاس | استایل‌های سفارشی، افکت‌های شیشه‌ای، فونت‌ها و کامپوننت‌های پیشرفته
+   لورم پلاس | استایل‌های سفارشی، افکت‌های شیشه‌ای، فونت‌ها و کامپوننت‌ها
+   زیر ۲۰۰ سطر - سازگار با Clean Modular Web
    ========================================================================== */
 
 /* Persian Web Fonts (Rastikerdar Open-Source Fonts via jsdelivr CDN) */
@@ -7,37 +8,24 @@
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.5/dist/font-face.css');
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css');
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   font-family: 'Vazirmatn', sans-serif;
 }
 
 /* Font Preview Classes for Output Box */
-.font-vazirmatn, .font-vazirmatn * {
-  font-family: 'Vazirmatn', sans-serif !important;
-}
-
-.font-shabnam, .font-shabnam * {
-  font-family: 'Shabnam', sans-serif !important;
-}
-
-.font-samim, .font-samim * {
-  font-family: 'Samim', sans-serif !important;
-}
-
-.font-sahel, .font-sahel * {
-  font-family: 'Sahel', sans-serif !important;
-}
+.font-vazirmatn, .font-vazirmatn * { font-family: 'Vazirmatn', sans-serif !important; }
+.font-shabnam, .font-shabnam * { font-family: 'Shabnam', sans-serif !important; }
+.font-samim, .font-samim * { font-family: 'Samim', sans-serif !important; }
+.font-sahel, .font-sahel * { font-family: 'Sahel', sans-serif !important; }
 
 /* Smooth Content Transition Animation */
 @keyframes content-fade {
-  from {
-    opacity: 0.3;
-    transform: translateY(3px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0.3; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .content-enter-active {
@@ -45,108 +33,113 @@
 }
 
 /* Custom Scrollbars */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
+::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.4); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.7); }
 
-::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.4);
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.7);
-}
-
-/* Glassmorphism Classes */
+/* Glassmorphism Styles */
 .glass-card {
-  background: rgba(17, 21, 40, 0.65);
+  background: rgba(15, 20, 42, 0.65);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.glass-card-hover {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.2);
+}
+
 .glass-input {
-  background: rgba(12, 15, 29, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(11, 15, 33, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
 }
 
 .glass-input:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 15px -3px rgba(99, 102, 241, 0.3);
 }
 
-/* Range Slider Customization */
-input[type=range] {
-  accent-color: #6366f1;
-}
-
-/* Background Ambient Pulse Animation */
+/* Background pulse glow animation */
 @keyframes pulse-slow {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.55;
-    transform: scale(1.08);
-  }
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.08); }
 }
 
 .animate-pulse-slow {
   animation: pulse-slow 8s infinite ease-in-out;
 }
 
-/* Rendered Preview Typography & Formatting */
-.rendered-preview h2 {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: #38bdf8;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 0.4rem;
+/* Type buttons active styling */
+.type-btn {
+  background: rgba(11, 15, 33, 0.6);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
-.rendered-preview h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #a78bfa;
-  margin-top: 1.25rem;
-  margin-bottom: 0.5rem;
+.type-btn:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.type-btn.active {
+  border-color: rgba(99, 102, 241, 0.8) !important;
+  background: rgba(99, 102, 241, 0.15) !important;
+  box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35);
+}
+
+/* Live Typography Output formatting */
+.rendered-preview {
+  line-height: 2.1;
+  color: #e2e8f0;
 }
 
 .rendered-preview p {
-  margin-bottom: 1rem;
-  line-height: 1.95;
-  color: #cbd5e1;
+  margin-bottom: 1.25rem;
+}
+
+.rendered-preview h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 1.5rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rendered-preview h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #93c5fd;
+  margin-top: 1.2rem;
+  margin-bottom: 0.6rem;
 }
 
 .rendered-preview ul {
   list-style-type: disc;
   padding-right: 1.5rem;
-  margin-bottom: 1.2rem;
-  color: #94a3b8;
+  margin-bottom: 1.25rem;
 }
 
 .rendered-preview li {
-  margin-bottom: 0.45rem;
-  line-height: 1.8;
+  margin-bottom: 0.4rem;
+  color: #cbd5e1;
 }
 
 .rendered-preview blockquote {
   border-right: 4px solid #6366f1;
-  padding: 0.85rem 1.25rem;
+  padding: 0.6rem 1rem;
   margin: 1.25rem 0;
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(99, 102, 241, 0.08);
   border-radius: 0 0.5rem 0.5rem 0;
-  color: #e2e8f0;
+  color: #cbd5e1;
   font-style: italic;
 }
 

@@ -41,12 +41,13 @@ window.HubData.projects = [
   {
     id: 4,
     title: 'سایت آدیتور پرو (Site Auditor Pro)',
-    badge: 'پروژه شماره ۴ • کاربردی و فعال',
+    badge: 'پروژه شماره ۴ • در حال توسعه ⏳',
+    badgeClass: 'bg-amber-500/20 text-amber-300 border border-amber-500/30',
     emoji: '🔍',
     description: 'ابزار تخصصی و عمیق ممیزی صفحات وب؛ ارزیابی سئو فنی، استانداردهای Core Web Vitals، دسترسی‌پذیری و امنیت، شبیه‌ساز نتایج گوگل و کارت‌های سوشال، و دانلود گزارش چاپی HTML و JSON.',
     techs: ['SEO Engine', 'Core Web Vitals', 'SERP Preview', 'Audit Report'],
     url: './site-auditor/',
-    accentGrad: 'from-cyan-400 via-teal-500 to-indigo-500',
-    buttonGrad: 'from-cyan-600 via-teal-600 to-indigo-600 hover:from-cyan-500 hover:to-teal-500'
+    accentGrad: 'from-amber-400 via-orange-500 to-indigo-500',
+    buttonGrad: 'from-amber-600 via-orange-600 to-indigo-600 hover:from-amber-500 hover:to-orange-500'
   }
 ];

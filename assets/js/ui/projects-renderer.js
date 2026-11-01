@@ -15,7 +15,7 @@ window.HubUI.renderProjects = function(containerSelector = '#projects-grid') {
 
       <div class="card-content">
         <div class="flex items-center justify-between mb-3.5">
-          <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+          <span class="px-2.5 py-1 rounded-lg text-xs font-bold ${p.badgeClass || 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'}">
             ${p.badge}
           </span>
           <span class="text-2xl card-icon">${p.emoji}</span>

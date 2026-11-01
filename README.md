@@ -89,7 +89,7 @@ ai-projects-persian/
 
 ---
 
-### ۴. سایت آدیتور پرو (Site Auditor Pro) — استودیوی ممیزی سئو، پرفورمنس و UX
+### ۴. سایت آدیتور پرو (Site Auditor Pro) — استودیوی ممیزی سئو، پرفورمنس و UX (در حال توسعه ⏳)
 > **دموی زنده سایت آدیتور:** [hashemsh.github.io/ai-projects-persian/site-auditor/](https://hashemsh.github.io/ai-projects-persian/site-auditor/)
 
 ابزار تخصصی و Production-Grade برای تحلیل موشکافانه صفحات وب، مناسب سئوکاران، طراحان محصول و توسعه‌دهندگان فرانت‌اند.

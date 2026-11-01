@@ -40,17 +40,20 @@
     const isToolsActive = isSub || window.location.hash === '#tools' || window.location.hash === '#projects-grid';
     const activeId = isToolsActive ? 'tools' : 'hub';
 
+    const hubUrl = isSub ? '../' : './';
+    const toolsUrl = isSub ? '../#tools' : '#tools';
+
     const menuItems = [
-      { id: 'hub', title: 'صفحه اصلی', icon: '🏠', url: `${rootPath}index.html` },
-      { id: 'tools', title: 'ابزارها', icon: '⚡', url: `${rootPath}index.html#tools` }
+      { id: 'hub', title: 'صفحه اصلی', icon: '🏠', url: hubUrl },
+      { id: 'tools', title: 'ابزارها', icon: '⚡', url: toolsUrl }
     ];
 
-    renderHeader(menuItems, activeId, rootPath, logoSrc);
-    renderFooter(rootPath, logoSrc);
+    renderHeader(menuItems, activeId, hubUrl, logoSrc);
+    renderFooter(hubUrl, toolsUrl, logoSrc);
     applyTheme(document.documentElement.classList.contains('light-theme'));
   }
 
-  function renderHeader(items, activeId, rootPath, logoSrc) {
+  function renderHeader(items, activeId, hubUrl, logoSrc) {
     const headerEl = document.getElementById('shared-header');
     if (!headerEl) return;
 
@@ -67,12 +70,12 @@
       <nav class="shared-navbar px-4 sm:px-6 py-3.5 mb-8 md:mb-12 shadow-glass relative z-50">
         <div class="flex items-center justify-between gap-3">
           <!-- Logo & Hub Brand -->
-          <a href="${rootPath}index.html" class="flex items-center gap-3 group transition">
+          <a href="${hubUrl}" class="flex items-center gap-3 group transition">
             <div class="w-10 h-10 rounded-xl bg-dark-900 border border-indigo-500/30 p-1 flex items-center justify-center shadow-glow-indigo group-hover:scale-105 transition">
               <img src="${logoSrc}" alt="AI Nexus Logo" class="w-full h-full object-contain">
             </div>
             <div>
-              <span class="font-black text-sm sm:text-base text-white group-hover:text-cyan-300 transition block">هاب پروژه‌های هوش مصنوعی</span>
+              <span class="brand-title font-black text-sm sm:text-base text-white group-hover:text-cyan-300 transition block">هاب پروژه‌های هوش مصنوعی</span>
               <span class="text-[10px] text-slate-400 font-mono tracking-wider">AI Apps &amp; Production Micro-Tools</span>
             </div>
           </a>
@@ -114,7 +117,7 @@
     headerEl.querySelector('#btn-theme-toggle')?.addEventListener('click', toggleTheme);
   }
 
-  function renderFooter(rootPath, logoSrc) {
+  function renderFooter(hubUrl, toolsUrl, logoSrc) {
     const footerEl = document.getElementById('shared-footer');
     if (!footerEl) return;
 
@@ -152,9 +155,9 @@
         <div class="pt-3 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">
           <div>ویترین ابزارها و میکرواپ‌های وب توسعه‌یافته با دستیاری هوش مصنوعی</div>
           <div class="flex items-center gap-3">
-            <a href="${rootPath}index.html" class="hover:text-slate-300 transition">صفحه اصلی</a>
+            <a href="${hubUrl}" class="hover:text-slate-300 transition">صفحه اصلی</a>
             <span>•</span>
-            <a href="${rootPath}index.html#tools" class="hover:text-slate-300 transition">ابزارها</a>
+            <a href="${toolsUrl}" class="hover:text-slate-300 transition">ابزارها</a>
             <span>•</span>
             <a href="https://github.com/hashemsh/ai-projects-persian/issues/new" target="_blank" rel="noopener noreferrer" class="text-amber-400/90 hover:text-amber-300 transition flex items-center gap-1">
               <span>⚠️</span><span>گزارش باگ یا پیشنهاد (Report Issue)</span>

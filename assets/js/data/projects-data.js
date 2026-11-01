@@ -49,5 +49,16 @@ window.HubData.projects = [
     url: './site-auditor/',
     accentGrad: 'from-amber-400 via-orange-500 to-indigo-500',
     buttonGrad: 'from-amber-600 via-orange-600 to-indigo-600 hover:from-amber-500 hover:to-orange-500'
+  },
+  {
+    id: 5,
+    title: 'یو‌تی‌ام بیلدر پرو (UTM Builder Pro)',
+    badge: 'پروژه شماره ۵ • کاربردی و فعال',
+    emoji: '🎯',
+    description: 'ابزار پیشرفته تولید و اعتبارسنجی لینک‌های کمپین بازاریابی برای GA4 با پریست‌های اختصاصی ادنتورک‌های ایرانی (یکتانت، تپسل)، شبیه‌ساز زنده گزارش‌های ترافیک، ساخت بارکد QR و خروجی گروهی اکسل.',
+    techs: ['UTM Engine', 'GA4 Simulator', 'Client-side QR', 'Batch Export CSV'],
+    url: './utm-builder/',
+    accentGrad: 'from-cyan-400 via-indigo-500 to-emerald-400',
+    buttonGrad: 'from-indigo-600 via-cyan-600 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500'
   }
 ];

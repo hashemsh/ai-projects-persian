@@ -1,0 +1,11 @@
+/* UTM Builder Pro | Color Palette & Theme Tokens */
+:root {
+  --utm-primary: #6366f1;
+  --utm-cyan: #06b6d4;
+  --utm-pink: #ec4899;
+  --utm-emerald: #10b981;
+  --utm-amber: #f59e0b;
+  --bg-dark-base: #070913;
+  --bg-dark-card: rgba(14, 18, 36, 0.7);
+  --border-glass: rgba(255, 255, 255, 0.08);
+}

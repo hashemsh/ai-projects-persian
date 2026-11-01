@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>یو‌تی‌ام بیلدر پرو | ساخت پیشرفته لینک‌های کمپین بازاریابی (UTM Builder)</title>
+  <meta name="description" content="تولیدکننده استاندارد پارامترهای UTM برای Google Analytics 4 با پریست‌های یکتانت، تپسل، سوشال و خروجی گروهی اکسل">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    const _origWarn = console.warn;
+    console.warn = (...args) => { if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return; _origWarn.apply(console, args); };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { vazir: ['Vazirmatn', 'sans-serif'] }, colors: { dark: { 950: '#070913', 900: '#0c0f1d', 850: '#111528', 800: '#171c34' } }, boxShadow: { 'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)' } } }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components/shared-nav.css">
+</head>
+<body data-root="sub" class="bg-dark-950 text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-32 right-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[140px] animate-pulse-slow"></div>
+    <div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-cyan-500/15 rounded-full blur-[160px] animate-pulse-slow"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col min-h-screen">
+    <header id="shared-header"></header>
+
+    <div class="text-center mb-10 md:mb-12 relative">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-3">
+        سازنده هوشمند لینک‌های کمپین <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">یو‌تی‌ام بیلدر پرو</span>
+      </h1>
+      <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed mb-6">
+        تولید استاندارد پارامترهای UTM برای GA4 با پریست‌های تبلیغات ایرانی (یکتانت، تپسل)، تولید گروهی، کیوآرکد و شبیه‌ساز ترافیک.
+      </p>
+      <div class="flex items-center justify-center gap-3 flex-wrap">
+        <button type="button" id="btnLoadSample" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl glass-card text-xs font-bold text-cyan-300 hover:border-cyan-500/50 transition"><span>⚡ بارگذاری نمونه آماده</span></button>
+        <button type="button" id="btnGenerateBatch" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl glass-card text-xs font-bold text-indigo-300 hover:border-indigo-500/50 transition"><span>📑 تولید گروهی (Batch)</span></button>
+        <button type="button" id="btnOpenHistory" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl glass-card text-xs font-bold text-amber-300 hover:border-amber-500/50 transition"><span>🕒 تاریخچه</span></button>
+        <button type="button" id="btnResetForm" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl glass-card text-xs font-bold text-rose-300 hover:border-rose-500/50 transition"><span>🔄 پاک‌سازی</span></button>
+        <a href="#utm-guide" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl glass-card text-xs font-bold text-slate-300 hover:border-indigo-500/50 transition"><span>📖 راهنمای کمپین</span></a>
+      </div>
+    </div>
+
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start flex-grow">
+      <!-- Left Column: Form & Presets (7 cols) -->
+      <section class="lg:col-span-7 flex flex-col gap-5">
+        <div class="glass-card rounded-2xl p-5 md:p-6 shadow-glass">
+          <div class="flex items-center justify-between mb-3 border-b border-white/10 pb-2.5">
+            <h2 class="text-sm md:text-base font-bold text-white flex items-center gap-2"><span>🎯</span><span>شبکه‌ها و کانال‌های تبلیغاتی آماده</span></h2>
+            <span class="text-xs text-slate-400">کلیک برای تکمیل آنی فیلدها</span>
+          </div>
+          <div id="networkPresetsContainer" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 md:p-6 shadow-glass space-y-4">
+          <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+            <h2 class="text-sm md:text-base font-bold text-white flex items-center gap-2"><span>🔗</span><span>اطلاعات اصلی کمپین</span></h2>
+            <span class="text-xs text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded-md font-mono">Google Analytics 4</span>
+          </div>
+          <div>
+            <label for="inpUrl" class="block text-xs font-semibold text-slate-300 mb-1.5">آدرس صفحه مقصد (Website URL) <span class="text-rose-400">*</span></label>
+            <input type="url" id="inpUrl" placeholder="https://example.com/landing-page" class="w-full px-3.5 py-2.5 rounded-xl utm-glass-input text-xs sm:text-sm font-mono text-left" dir="ltr">
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label for="inpSource" class="block text-xs font-semibold text-slate-300 mb-1.5">منبع کمپین (Source) <span class="text-rose-400">*</span></label>
+              <input type="text" id="inpSource" placeholder="yektanet, instagram, google" class="w-full px-3.5 py-2.5 rounded-xl utm-glass-input text-xs sm:text-sm font-mono text-left" dir="ltr">
+            </div>
+            <div>
+              <label for="inpMedium" class="block text-xs font-semibold text-slate-300 mb-1.5">رسانه کمپین (Medium) <span class="text-rose-400">*</span></label>
+              <input type="text" id="inpMedium" placeholder="banner, cpc, story, email" class="w-full px-3.5 py-2.5 rounded-xl utm-glass-input text-xs sm:text-sm font-mono text-left" dir="ltr">
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label for="inpCampaign" class="block text-xs font-semibold text-slate-300 mb-1.5">نام کمپین (Campaign) <span class="text-rose-400">*</span></label>
+              <input type="text" id="inpCampaign" placeholder="norooz-festival" class="w-full px-3.5 py-2.5 rounded-xl utm-glass-input text-xs sm:text-sm font-mono text-left" dir="ltr">
+            </div>
+            <div>
+              <label for="inpTerm" class="block text-xs font-semibold text-slate-300 mb-1.5">کلمه کلیدی (Term)</label>
+              <input type="text" id="inpTerm" placeholder="خرید آنلاین" class="w-full px-3.5 py-2.5 rounded-xl utm-glass-input text-xs sm:text-sm">
+            </div>
+            <div>
+              <label for="inpContent" class="block text-xs font-semibold text-slate-300 mb-1.5">محتوا / بنر (Content)</label>
+              <input type="text" id="inpContent" placeholder="banner-300x250-v1" class="w-full px-3.5 py-2.5 rounded-xl utm-glass-input text-xs sm:text-sm font-mono text-left" dir="ltr">
+            </div>
+          </div>
+          <div class="pt-2 border-t border-white/5 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+            <label class="flex items-center gap-2 cursor-pointer font-medium"><input type="checkbox" id="chkLowercase" checked class="rounded accent-indigo-500 cursor-pointer"><span>تبدیل خودکار به حروف کوچک (Lowercase)</span></label>
+            <div class="flex items-center gap-2"><span>جایگزین فواصل:</span><label class="inline-flex items-center gap-1 cursor-pointer"><input type="radio" name="spaceFormat" value="hyphen" checked class="accent-indigo-500"><span>خط تیره (-)</span></label><label class="inline-flex items-center gap-1 cursor-pointer"><input type="radio" name="spaceFormat" value="underscore" class="accent-indigo-500"><span>آندرلاین (_)</span></label></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Output, Simulator & Actions (5 cols) -->
+      <section class="lg:col-span-5 flex flex-col gap-5">
+        <div class="utm-output-card p-5 md:p-6 shadow-glass flex flex-col gap-4">
+          <div class="flex items-center justify-between border-b border-white/10 pb-3">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2"><span>⚡</span><span>لینک نهایی تولیدشده</span></h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">آماده انتشار</span>
+          </div>
+          <div class="p-3.5 rounded-xl bg-dark-900 border border-white/10 min-h-[85px] flex items-center"><p id="outputFinalUrl" class="url-code-box text-xs sm:text-sm font-mono text-cyan-300 select-all">در انتظار تکمیل فیلدها...</p></div>
+          <div id="paramsBreakdownList" class="flex flex-wrap gap-1.5 pt-1"></div>
+          <div class="grid grid-cols-2 gap-2.5 pt-1">
+            <button type="button" id="btnCopyUrl" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm shadow-md transition transform hover:scale-[1.02] flex items-center justify-center gap-1.5"><span>📋</span><span>کپی لینک نهایی</span></button>
+            <button type="button" id="btnOpenQr" class="w-full py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5"><span>📱</span><span>ساخت QR Code</span></button>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 shadow-glass">
+          <div class="flex items-center justify-between mb-3 border-b border-white/10 pb-2.5">
+            <h3 class="text-xs sm:text-sm font-bold text-white flex items-center gap-2"><span>📊</span><span>شبیه‌ساز گزارش ترافیک Google Analytics 4</span></h3>
+            <span class="text-[11px] text-cyan-300 font-mono">Traffic Acquisition</span>
+          </div>
+          <div id="ga4ReportContainer"></div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 shadow-glass space-y-2.5">
+          <div class="flex items-center justify-between"><span class="text-xs font-bold text-white">عیارسنجی استانداردهای UTM</span><span id="auditScoreText" class="text-xs font-mono font-bold text-emerald-400">100%</span></div>
+          <div class="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden"><div id="auditScoreBar" class="h-full bg-emerald-500 w-full transition-all duration-500"></div></div>
+          <div id="auditCriteriaContainer" class="grid grid-cols-2 gap-2"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Comprehensive SEO & UTM Campaign Guide Article -->
+    <article id="utm-guide" class="mt-14 glass-card rounded-2xl p-6 sm:p-8 border border-white/10 shadow-glass">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs font-bold mb-3"><span>📖 راهنمای تخصصی پرفورمنس مارکتینگ و UTM</span></div>
+      <h2 class="text-lg sm:text-xl md:text-2xl font-black text-white mb-3">چرا نام‌گذاری دقیق پارامترهای UTM پایه و اساس سودآوری کمپین‌هاست؟</h2>
+      <p class="text-xs sm:text-sm text-slate-300 text-justify leading-loose mb-5">پارامترهای UTM شناسه‌های استانداردی هستند که به انتهای پیوندهای وب اضافه شده و به ابزارهای تحلیل ترافیک نظیر Google Analytics 4 اجازه می‌دهند تا منبع، رسانه، و بازدهی هر ریال هزینه تبلیغاتی را با دقت رهگیری کنند. بدون درج اصولی UTM، ترافیک تبلیغاتی شما در GA4 تحت عنوان مبهم «Direct» یا «Unassigned» طبقه‌بندی شده و امکان سنجش نرخ بازگشت هزینه تبلیغات (ROAS) غیرممکن می‌گردد.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 text-xs text-slate-300">
+        <div class="p-3.5 rounded-xl bg-dark-900/80 border border-white/5"><h3 class="font-bold text-cyan-300 mb-1.5">🎯 منبع و رسانه (Source / Medium)</h3><p class="text-slate-400 text-justify leading-relaxed">تفکیک شفاف محل نمایش و نحوه تعامل؛ به عنوان مثال yektanet / banner برای بنرهای کلیکی و instagram / story برای استوری‌ها.</p></div>
+        <div class="p-3.5 rounded-xl bg-dark-900/80 border border-white/5"><h3 class="font-bold text-indigo-300 mb-1.5">🏷️ نام‌گذاری کمپین (Campaign Name)</h3><p class="text-slate-400 text-justify leading-relaxed">استفاده همیشگی از حروف کوچک و خط تیره به جای فاصله برای جلوگیری از چنددستگی آمارها در گزارشات تحلیلی فروش.</p></div>
+        <div class="p-3.5 rounded-xl bg-dark-900/80 border border-white/5"><h3 class="font-bold text-pink-300 mb-1.5">⚖️ آزمون A/B با utm_content</h3><p class="text-slate-400 text-justify leading-relaxed">تعیین رنگ دکمه، تصویر بنر یا تیتر تستی برای شناسایی پربازده‌ترین نسخه و بهینه‌سازی هدفمند بودجه در زمان واقعی.</p></div>
+      </div>
+    </article>
+
+    <footer id="shared-footer"></footer>
+  </div>
+
+  <!-- Modals & Toast -->
+  <div id="qrModal" class="modal-backdrop-blur fixed inset-0 z-50 flex items-center justify-center p-4 hidden"><div class="glass-card bg-dark-900 border border-white/10 rounded-2xl max-w-sm w-full p-6 text-center shadow-2xl flex flex-col items-center"><h3 class="text-sm font-bold text-white mb-3">📱 بارکد QR اختصاصی کمپین</h3><div class="qr-canvas-wrap mb-3" id="qrPreviewBox"></div><p class="text-[11px] text-slate-400 mb-4">مناسب برای چاپ در بنرهای فیزیکی، استندها و بسته‌بندی</p><div class="flex items-center gap-2 w-full"><button type="button" id="btnDownloadQr" class="flex-1 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs hover:bg-indigo-500 transition">دانلود وکتور SVG</button><button type="button" id="btnCloseQr" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs hover:bg-slate-700 transition">بستن</button></div></div></div>
+  <div id="batchModal" class="modal-backdrop-blur fixed inset-0 z-50 flex items-center justify-center p-4 hidden"><div class="glass-card bg-dark-900 border border-white/10 rounded-2xl max-w-4xl w-full p-6 shadow-2xl flex flex-col max-h-[85vh]"><div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3"><h3 class="text-sm font-bold text-white flex items-center gap-2"><span>📑</span><span>مجموعه لینک‌های چندکاناله کمپین (Batch Matrix)</span></h3><button type="button" id="btnCloseBatch" class="text-slate-400 hover:text-white text-lg">&times;</button></div><div class="overflow-y-auto flex-1 mb-3"><table class="w-full text-right"><thead class="border-b border-white/10 text-xs text-slate-400"><tr class="pb-2"><th class="p-2">کانال</th><th class="p-2">Source</th><th class="p-2">Medium</th><th class="p-2">لینک خروجی</th><th class="p-2">کپی</th></tr></thead><tbody id="batchTableBody" class="divide-y divide-white/5"></tbody></table></div><div class="flex items-center justify-between border-t border-white/10 pt-3"><span class="text-xs text-slate-400">خروجی سازگار با اکسل</span><button type="button" id="btnDownloadBatchCsv" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center gap-1.5"><span>📥 دانلود فایل اکسل / CSV</span></button></div></div></div>
+  <div id="historyModal" class="modal-backdrop-blur fixed inset-0 z-50 flex items-center justify-center p-4 hidden"><div class="glass-card bg-dark-900 border border-white/10 rounded-2xl max-w-2xl w-full p-6 shadow-2xl flex flex-col max-h-[85vh]"><div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3"><h3 class="text-sm font-bold text-amber-300 flex items-center gap-2"><span>🕒</span><span>تاریخچه لینک‌های ساخته‌شده اخیر</span></h3><button type="button" id="btnCloseHistory" class="text-slate-400 hover:text-white text-lg">&times;</button></div><div id="historyItemsList" class="overflow-y-auto flex-1 space-y-2 mb-3"></div><div class="flex items-center justify-between border-t border-white/10 pt-3"><button type="button" id="btnClearHistory" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500 hover:text-white text-xs font-semibold transition">پاک‌سازی تاریخچه</button></div></div></div>
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none"><div class="glass-card bg-slate-900/95 border-emerald-500/40 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border shadow-emerald-500/20"><div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg></div><div><p class="text-sm font-bold text-slate-100" id="toastTitle">انجام شد!</p><p class="text-xs text-slate-400" id="toastMessage">عملیات با موفقیت انجام شد.</p></div></div></div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/components/shared-layout.js"></script>
+  <script src="assets/js/data/presets-data.js"></script>
+  <script src="assets/js/engine/utm-builder.js"></script>
+  <script src="assets/js/engine/qr-generator.js"></script>
+  <script src="assets/js/engine/batch-engine.js"></script>
+  <script src="assets/js/ui/ga4-simulator.js"></script>
+  <script src="assets/js/ui/export-controller.js"></script>
+  <script src="assets/js/ui/form-controller.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

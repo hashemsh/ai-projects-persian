@@ -42,10 +42,15 @@ ai-projects-persian/
 │   ├── README.md                   # مستندات اختصاصی پلیس‌هولدر پرو
 │   └── assets/                     # استایل‌ها، پالت‌ها، وکتورها و موتور رندر Canvas
 │
-└── site-auditor/                   # پروژه شماره ۴: ممیزی و آنالیزور جامع سایت (Site Auditor Pro)
-    ├── index.html                  # اینترفیس سایت آدیتور
-    ├── README.md                   # مستندات تخصصی آدیتور
-    └── assets/                     # موتور ارزیابی ۴ ستونه، گیج SVG و اکسپورتر
+├── site-auditor/                   # پروژه شماره ۴: ممیزی و آنالیزور جامع سایت (Site Auditor Pro)
+│   ├── index.html                  # اینترفیس سایت آدیتور
+│   ├── README.md                   # مستندات تخصصی آدیتور
+│   └── assets/                     # موتور ارزیابی ۴ ستونه، گیج SVG و اکسپورتر
+│
+└── utm-builder/                    # پروژه شماره ۵: سازنده پیشرفته لینک‌های کمپین (UTM Builder Pro)
+    ├── index.html                  # اینترفیس یو‌تی‌ام بیلدر
+    ├── README.md                   # مستندات تخصصی ابزار
+    └── assets/                     # موتور سازنده، شبیه‌ساز GA4، کیوآرکد و Batch Matrix
 ```
 
 ---
@@ -65,6 +70,9 @@ ai-projects-persian/
 
 4. **[سایت آدیتور پرو (Site Auditor Pro)](https://hashemsh.github.io/ai-projects-persian/site-auditor/)** *(در حال توسعه ⏳)* • [مستندات کامل](./site-auditor/README.md)
    - استودیوی ممیزی سئو، پرفورمنس، پیش‌نمایش سرپ و بررسی دسترسی‌پذیری
+
+5. **[یو‌تی‌ام بیلدر پرو (UTM Builder Pro)](https://hashemsh.github.io/ai-projects-persian/utm-builder/)** • [مستندات کامل](./utm-builder/README.md)
+   - سازنده هوشمند لینک‌های کمپین، شبیه‌ساز GA4، کیوآرکد و خروجی گروهی اکسل
 
 ---
 

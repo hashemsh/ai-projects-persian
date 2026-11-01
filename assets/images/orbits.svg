@@ -1,0 +1,16 @@
+<svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="orbit-g1" x1="0" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06b6d4" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="orbit-g2" x1="400" y1="0" x2="0" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ec4899" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <circle cx="200" cy="200" r="180" stroke="url(#orbit-g1)" stroke-width="1.5" stroke-dasharray="10 16" stroke-linecap="round"/>
+  <circle cx="200" cy="200" r="120" stroke="url(#orbit-g2)" stroke-width="1.2" stroke-dasharray="6 12" stroke-linecap="round"/>
+  <circle cx="200" cy="20" r="4.5" fill="#38bdf8"/>
+  <circle cx="320" cy="200" r="3.5" fill="#ec4899"/>
+</svg>

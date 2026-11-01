@@ -148,15 +148,24 @@ html.light-theme .border-white\/10, html.light-theme .border-white\/5 { border-c
 html.light-theme .gauge-bg { stroke: #e2e8f0 !important; }
 html.light-theme .sub-score-bar-bg { background: #e2e8f0 !important; }
 
+/* Preserve Text Gradient Clips */
+html.light-theme .bg-clip-text,
+html.light-theme [class*="bg-clip-text"] {
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
 /* CRITICAL: Keep High-Contrast White Text on Action Buttons & Active Items */
-html.light-theme [class*="bg-gradient-"], html.light-theme [class*="bg-gradient-"] *,
-html.light-theme [class*="bg-indigo-600"], html.light-theme [class*="bg-indigo-600"] *,
-html.light-theme [class*="bg-emerald-600"], html.light-theme [class*="bg-emerald-600"] *,
-html.light-theme [class*="bg-pink-600"], html.light-theme [class*="bg-pink-600"] *,
-html.light-theme [class*="bg-cyan-600"], html.light-theme [class*="bg-cyan-600"] *,
+html.light-theme button[class*="bg-gradient-"], html.light-theme button[class*="bg-gradient-"] *,
+html.light-theme a[class*="bg-gradient-"], html.light-theme a[class*="bg-gradient-"] *,
+html.light-theme button[class*="bg-indigo-600"], html.light-theme a[class*="bg-indigo-600"],
+html.light-theme button[class*="bg-emerald-600"], html.light-theme a[class*="bg-emerald-600"],
+html.light-theme button[class*="bg-pink-600"], html.light-theme a[class*="bg-pink-600"],
+html.light-theme button[class*="bg-cyan-600"], html.light-theme a[class*="bg-cyan-600"],
 html.light-theme .active-size, html.light-theme .active-sub,
 html.light-theme .project-card a[class*="bg-gradient-"],
-html.light-theme #btnOptimize *, html.light-theme #btnCopy * { color: #ffffff !important; }
+html.light-theme #btnOptimize, html.light-theme #btnOptimize *,
+html.light-theme #btnCopy, html.light-theme #btnCopy * { color: #ffffff !important; }
 
 /* Modals & Scrollbars */
 html.light-theme .modal-backdrop { background: rgba(15, 23, 42, 0.5) !important; }

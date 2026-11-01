@@ -5,8 +5,8 @@
 (function() {
   function getTheme() {
     const saved = localStorage.getItem('ai_hub_theme');
-    if (saved) return saved === 'light';
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    // Dark mode is default unless user explicitly chose light
+    return saved === 'light';
   }
 
   function applyTheme(isLight) {

@@ -87,7 +87,9 @@ Use this skill whenever creating, scaffolding, or implementing a new micro-app o
    - Update project count badge in root [index.html](../../../index.html) (e.g. `۴ ابزار آنلاین • توسعه مستمر`).
 
 2. **Update Root `README.md`**:
-   - Add the new project section under `## 🌟 پروژه‌های فعال این ریپازیتوری` with live demo URL, feature bullets, and technologies.
+   - Add the new project to the list under `## 🌟 فهرست ابزارهای فعال (Active Projects)` in standard 1-line format:
+     - Format: `N. **[Title (Slug)](https://hashemsh.github.io/ai-projects-persian/<slug>/)** — خلاصه نصف خط ([مستندات کامل](./<slug>/README.md))`
+     - Do not add verbose feature bullet points to root README.md, as each micro-app maintains its own dedicated detailed `README.md`.
 
 ---
 

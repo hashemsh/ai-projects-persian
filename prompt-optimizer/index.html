@@ -26,24 +26,24 @@
     }
   </script>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components/shared-nav.css">
 </head>
-<body class="bg-dark-950 text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+<body data-root="sub" class="bg-dark-950 text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden"><div class="absolute -top-32 right-1/4 w-96 h-96 bg-indigo-600/25 rounded-full blur-[140px] animate-pulse-slow"></div><div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-cyan-500/20 rounded-full blur-[160px] animate-pulse-slow" style="animation-delay: 2s;"></div><div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-[150px] animate-pulse-slow" style="animation-delay: 4s;"></div><div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div></div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 flex flex-col min-h-screen">
-    <header class="text-center mb-10 md:mb-12 relative">
-      <div class="flex items-center justify-between mb-8 sm:mb-12 flex-wrap gap-3">
-        <a href="../" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl glass-card text-xs font-semibold text-slate-300 hover:text-white hover:border-indigo-500/50 transition"><svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg><span>بازگشت به ویترین پروژه‌ها (Hub)</span></a>
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-indigo-500/30 text-indigo-300 text-xs font-medium shadow-sm"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span><span>پروژه شماره ۲</span><span class="text-slate-500">•</span><span class="text-cyan-400">بهینه‌ساز پرامپت هوش مصنوعی</span></div>
-      </div>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-4 mt-2">استودیو مهندسی پرامپت <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">پرامپت پلاس</span></h1>
-      <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed mb-6">تبدیل هوشمند دستورات معمولی به پرامپت‌های سطح بالا برای ChatGPT، Claude، Gemini و DeepSeek با ترجمه خودکار و فریم‌ورک‌های استاندارد.</p>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col min-h-screen">
+    <!-- Shared Universal Header -->
+    <header id="shared-header"></header>
+
+    <div class="text-center mb-8 md:mb-10 relative">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-3">استودیو مهندسی پرامپت <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">پرامپت پلاس</span></h1>
+      <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed mb-5">تبدیل هوشمند دستورات معمولی به پرامپت‌های سطح بالا برای ChatGPT، Claude، Gemini و DeepSeek با ترجمه خودکار و فریم‌ورک‌های استاندارد.</p>
       <div class="flex items-center justify-center gap-3 flex-wrap">
         <button id="btnOpenPresets" type="button" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card hover:border-indigo-500/50 text-xs font-bold text-slate-200 transition"><span>📚 بانک الگوهای آماده (۱۰ الگو)</span></button>
         <button id="btnOpenGuide" type="button" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card hover:border-amber-500/50 text-xs font-bold text-amber-300 transition"><span>💡 ترفندهای پرامپت‌نویسی</span></button>
         <a href="#seo-guide" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card hover:border-cyan-500/50 text-xs font-bold text-cyan-300 transition"><span>📖 راهنمای جامع ابزار</span></a>
       </div>
-    </header>
+    </div>
 
     <main class="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1 items-start">
       <section class="glass-card rounded-2xl p-5 sm:p-6 flex flex-col gap-5 border border-white/10 shadow-glass">
@@ -127,29 +127,16 @@
       </div>
     </article>
 
-    <footer class="mt-12 md:mt-14 mb-4">
-      <div class="glass-card rounded-2xl px-6 py-5 border border-white/10 shadow-glass flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-right">
-        <div class="flex items-center gap-3 flex-wrap justify-center">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-extrabold text-sm shadow-glow-indigo">H</div>
-          <div class="text-xs sm:text-sm text-slate-300 font-medium tracking-wide flex items-center gap-1.5 flex-wrap" dir="ltr">
-            <span>Designed &amp; Developed by</span><a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer" class="font-black bg-gradient-to-r from-cyan-400 via-indigo-300 to-pink-400 bg-clip-text text-transparent px-1 hover:underline transition">Hashem Sh</a><span class="text-slate-600">•</span>
-            <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition" title="LinkedIn Profile"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45c-.95 0-1.72.78-1.72 1.73s.77 1.73 1.72 1.73 1.72-.78 1.72-1.73-.77-1.73-1.72-1.73Z"/></svg></a>
-          </div>
-        </div>
-        <div class="text-xs text-slate-400 hidden lg:block">توسعه‌یافته با بالاترین استانداردهای وب مدرن فارسی و مهندسی پرامپت</div>
-        <div class="flex items-center gap-2 text-xs flex-wrap justify-center" dir="ltr">
-          <span class="text-slate-400 font-medium">Powered by</span>
-          <a href="https://deepmind.google/technologies/gemini/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-500/30 text-indigo-300 font-semibold flex items-center gap-1.5 shadow-sm transition hover:scale-105"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span>Antigravity</a><span class="text-slate-500">&amp;</span>
-          <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-gradient-to-r from-cyan-500/15 to-purple-500/15 hover:from-cyan-500/25 hover:to-purple-500/25 border border-cyan-500/30 text-cyan-300 font-semibold flex items-center gap-1.5 shadow-sm transition hover:scale-105"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>Gemini Pro</a>
-        </div>
-      </div>
-    </footer>
+    <!-- Shared Universal Footer -->
+    <footer id="shared-footer"></footer>
   </div>
 
   <div id="presetsModal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden"><div class="glass-card bg-dark-900 border border-white/10 rounded-2xl max-w-3xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl"><div class="flex items-center justify-between p-4 border-b border-white/10"><h3 class="text-sm font-bold text-white">📚 بانک ۱۰ الگوی آماده و استاندارد پرامپت</h3><button id="btnClosePresets" type="button" class="text-slate-400 hover:text-white text-lg">&times;</button></div><div id="presetsContainer" class="p-4 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-3"></div></div></div>
   <div id="guideModal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden"><div class="glass-card bg-dark-900 border border-white/10 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl"><div class="flex items-center justify-between p-4 border-b border-white/10"><h3 class="text-sm font-bold text-amber-300 flex items-center gap-2"><span>💡</span><span>تقلب‌نامه و تکنیک‌های طلایی مهندسی پرامپت</span></h3><button id="btnCloseGuide" type="button" class="text-slate-400 hover:text-white text-lg">&times;</button></div><div id="guideContainer" class="p-4 overflow-y-auto grid grid-cols-1 gap-3"></div></div></div>
   <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none"><div class="glass-card bg-slate-900/95 border-emerald-500/40 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border shadow-emerald-500/20"><div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg></div><div><p class="text-sm font-bold text-slate-100" id="toastTitle">با موفقیت کپی شد!</p><p class="text-xs text-slate-400" id="toastMessage">پرامپت در کلیپ‌بورد ذخیره گردید.</p></div></div></div>
 
+  <!-- Shared Component Script -->
+  <script src="../assets/js/components/shared-layout.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/guide-data.js"></script>
   <script src="assets/js/translator.js"></script>

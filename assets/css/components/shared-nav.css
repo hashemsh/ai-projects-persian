@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Shared Header & Footer Navigation Component
+   ========================================================================== */
+
+.shared-navbar {
+  background: rgba(12, 15, 29, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.shared-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #94a3b8;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.shared-nav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.shared-nav-link.active {
+  color: #ffffff;
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(99, 102, 241, 0.45);
+  box-shadow: 0 0 15px -3px rgba(99, 102, 241, 0.3);
+  font-weight: 700;
+}
+
+.shared-nav-link.active .nav-icon {
+  transform: scale(1.15);
+}
+
+.nav-icon {
+  font-size: 0.95rem;
+  transition: transform 0.2s ease;
+}
+
+/* Mobile Nav Drawer */
+.mobile-nav-menu {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+}
+
+.mobile-nav-menu.open {
+  max-height: 380px;
+  opacity: 1;
+}
+
+/* Shared Footer Styling */
+.shared-footer-card {
+  background: rgba(12, 15, 29, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: #cbd5e1;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.social-pill:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.35);
+  color: #ffffff;
+  transform: translateY(-1px);
+}

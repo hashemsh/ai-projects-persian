@@ -1,19 +1,36 @@
 /* ==========================================================================
-   ویترین پروژه‌های هوش مصنوعی فارسی | استایل‌های سفارشی و افکت شیشه‌ای
+   ویترین پروژه‌های هوش مصنوعی فارسی | استایل اصلی و ایمپورت ماژول‌ها
    ========================================================================== */
 
+@import url('components/interactive.css');
+@import url('components/cards.css');
+@import url('components/about-faq.css');
+
+:root {
+  --color-primary: #6366f1;
+  --color-accent-cyan: #06b6d4;
+  --color-accent-pink: #ec4899;
+  --bg-dark: #070913;
+}
+
 * {
-  font-family: 'Vazirmatn', sans-serif;
+  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: #f8fafc;
 }
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: #090d1a;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -25,36 +42,33 @@
   background: rgba(99, 102, 241, 0.7);
 }
 
-/* Glassmorphism Cards */
+/* Glassmorphism Card Utility */
 .glass-card {
-  background: rgba(17, 21, 40, 0.65);
+  background: rgba(14, 18, 36, 0.65);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.glass-card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-card-hover:hover {
-  transform: translateY(-4px);
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 12px 35px -8px rgba(99, 102, 241, 0.25);
-}
-
 /* Ambient Pulse Animation */
 @keyframes pulse-slow {
   0%, 100% {
-    opacity: 0.3;
+    opacity: 0.25;
     transform: scale(1);
   }
   50% {
-    opacity: 0.55;
+    opacity: 0.5;
     transform: scale(1.08);
   }
 }
 
 .animate-pulse-slow {
   animation: pulse-slow 8s infinite ease-in-out;
+}
+
+/* Text Gradient Utilities */
+.text-gradient-cyan-indigo {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Interactive & Motion Styles: Custom Cursor & Spinning Orbital Rings
+   ========================================================================== */
+
+/* Interactive Custom Cursor */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #38bdf8;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease-out, background-color 0.2s ease;
+  box-shadow: 0 0 12px #38bdf8;
+}
+
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(99, 102, 241, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, opacity 0.25s ease;
+  backdrop-filter: blur(1px);
+}
+
+/* Hover state on clickable elements */
+body.cursor-hover .custom-cursor-follower {
+  width: 54px;
+  height: 54px;
+  border-color: rgba(6, 182, 212, 0.8);
+  background-color: rgba(6, 182, 212, 0.08);
+}
+
+body.cursor-hover .custom-cursor-dot {
+  transform: translate(-50%, -50%) scale(1.6);
+  background-color: #ec4899;
+  box-shadow: 0 0 16px #ec4899;
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-follower {
+    display: none !important;
+  }
+}
+
+/* Spinning Motion Rings / Orbital Circles */
+.orbital-wrapper {
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spin-slow {
+  animation: orbit-rotate 35s linear infinite;
+}
+
+.spin-reverse-slow {
+  animation: orbit-rotate-reverse 28s linear infinite;
+}
+
+.spin-medium {
+  animation: orbit-rotate 20s linear infinite;
+}
+
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-rotate-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Decorative tech ring borders */
+.tech-ring-1 {
+  width: 380px;
+  height: 380px;
+  border: 1.5px dashed rgba(99, 102, 241, 0.25);
+  border-radius: 50%;
+  position: relative;
+}
+
+.tech-ring-2 {
+  width: 270px;
+  height: 270px;
+  border: 1px dotted rgba(6, 182, 212, 0.35);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.tech-ring-3 {
+  width: 170px;
+  height: 170px;
+  border: 1.5px solid rgba(236, 72, 153, 0.2);
+  border-radius: 50%;
+  position: absolute;
+}
+
+/* Satellites on rings */
+.ring-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+}

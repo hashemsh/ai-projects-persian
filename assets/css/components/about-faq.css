@@ -1,0 +1,130 @@
+/* ==========================================================================
+   Creator Profile & FAQ Accordion Components
+   ========================================================================== */
+
+/* Profile Avatar Glowing Cyber-Ring */
+.creator-avatar-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .creator-avatar-wrap {
+    width: 170px;
+    height: 170px;
+  }
+}
+
+.creator-avatar-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #06b6d4,
+    #6366f1,
+    #ec4899,
+    #8b5cf6,
+    #06b6d4
+  );
+  filter: blur(10px);
+  opacity: 0.75;
+  animation: orbit-rotate 10s linear infinite;
+}
+
+.creator-avatar-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #06b6d4, #6366f1 50%, #ec4899);
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.4);
+  overflow: hidden;
+  z-index: 2;
+}
+
+.creator-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: contrast(1.08) brightness(1.02);
+  transition: transform 0.5s ease;
+}
+
+.creator-avatar-wrap:hover .creator-avatar-img {
+  transform: scale(1.06);
+}
+
+/* FAQ Accordion Styling */
+.faq-item {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 20, 38, 0.6);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.faq-item.active {
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(17, 24, 48, 0.85);
+  box-shadow: 0 8px 24px -6px rgba(6, 182, 212, 0.15);
+}
+
+.faq-trigger {
+  width: 100%;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: color 0.25s ease;
+}
+
+.faq-item.active .faq-trigger {
+  color: #38bdf8;
+}
+
+.faq-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #94a3b8;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+  color: #38bdf8;
+}
+
+.faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+  opacity: 0;
+}
+
+.faq-item.active .faq-body {
+  max-height: 400px;
+  opacity: 1;
+}
+
+.faq-content {
+  padding: 0 1.5rem 1.25rem 1.5rem;
+  color: #cbd5e1;
+  font-size: 0.925rem;
+  line-height: 1.8;
+}

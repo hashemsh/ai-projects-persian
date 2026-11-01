@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="logo-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <linearGradient id="logo-grad-2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+    <filter id="logo-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Base Shield -->
+  <rect x="2" y="2" width="44" height="44" rx="14" fill="#0d1226" stroke="rgba(99, 102, 241, 0.4)" stroke-width="1.5" />
+
+  <!-- Outer Isometric Hexagon Core -->
+  <path d="M24 8L38 16V32L24 40L10 32V16L24 8Z" stroke="url(#logo-grad-1)" stroke-width="2.5" stroke-linejoin="round" fill="none" opacity="0.9" />
+
+  <!-- Inner Dynamic Circuit Lines -->
+  <path d="M24 8V24M38 16L24 24M10 16L24 24" stroke="url(#logo-grad-2)" stroke-width="1.8" stroke-linecap="round" />
+  <path d="M24 24V40M24 24L38 32M24 24L10 32" stroke="rgba(255, 255, 255, 0.25)" stroke-width="1.5" stroke-dasharray="2 3" />
+
+  <!-- Central Glowing Neural Nexus -->
+  <circle cx="24" cy="24" r="4.5" fill="url(#logo-grad-1)" filter="url(#logo-glow)" />
+  <circle cx="24" cy="24" r="2" fill="#ffffff" />
+
+  <!-- Orbital Micro Satellites -->
+  <circle cx="24" cy="8" r="2" fill="#38bdf8" />
+  <circle cx="38" cy="16" r="2" fill="#818cf8" />
+  <circle cx="10" cy="16" r="2" fill="#06b6d4" />
+  <circle cx="24" cy="40" r="2" fill="#ec4899" />
+</svg>

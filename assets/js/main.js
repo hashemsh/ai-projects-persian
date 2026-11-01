@@ -25,4 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof window.HubUI.initCustomCursor === 'function') {
     window.HubUI.initCustomCursor();
   }
+
+  // 5. Initialize interactive scroll rocket & return-to-top
+  if (typeof window.HubUI.initScrollRocket === 'function') {
+    window.HubUI.initScrollRocket();
+  }
 });

@@ -12,14 +12,12 @@
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body class="bg-dark-950 text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-white">
-  <!-- Ambient Glows -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
     <div class="absolute -top-32 right-1/4 w-96 h-96 bg-cyan-600/15 rounded-full blur-[140px] animate-pulse-slow"></div>
     <div class="absolute top-1/2 -left-20 w-[420px] h-[420px] bg-indigo-600/15 rounded-full blur-[160px] animate-pulse-slow"></div>
-    <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-600/15 rounded-full blur-[150px] animate-pulse-slow"></div>
   </div>
 
-  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col min-h-screen">
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-7 flex flex-col min-h-screen">
     <!-- Header -->
     <header class="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
       <div class="flex items-center gap-3">
@@ -30,6 +28,7 @@
         </h1>
       </div>
       <div class="flex items-center gap-2">
+        <button type="button" id="btn-open-settings" class="px-2.5 py-1 text-xs rounded-lg bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 transition">⚙️ تنظیمات API</button>
         <button type="button" id="btn-sample-bad" class="px-2.5 py-1 text-xs rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/25 transition">نمونه دارای خطا ⚠️</button>
         <button type="button" id="btn-sample-good" class="px-2.5 py-1 text-xs rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition">نمونه بهینه‌شده ✅</button>
       </div>
@@ -37,12 +36,11 @@
 
     <!-- Main Workspace -->
     <main class="space-y-6 flex-1">
-      <!-- Input Card -->
       <section class="glass-card rounded-2xl p-5 shadow-xl">
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center gap-2">
             <button type="button" id="tab-mode-html" class="tab-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold border border-white/10 bg-white/5">سورس کد HTML / فایل</button>
-            <button type="button" id="tab-mode-url" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold border border-white/10 bg-white/5">آنالیز URL</button>
+            <button type="button" id="tab-mode-url" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold border border-white/10 bg-white/5">آنالیز آنلاین آدرس URL</button>
           </div>
           <div class="flex items-center gap-2">
             <label for="file-upload-html" class="cursor-pointer px-3 py-1.5 text-xs rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">📂 آپلود HTML</label>
@@ -55,18 +53,17 @@
           <textarea id="input-raw-html" rows="6" class="glass-input w-full p-3.5 rounded-xl text-xs font-mono text-cyan-200 resize-y" placeholder="کدهای HTML صفحه یا لندینگ پیج را اینجا پیست کنید..."></textarea>
         </div>
         <div id="section-input-url" class="hidden">
-          <input type="url" id="input-website-url" class="glass-input w-full p-3 rounded-xl text-xs" placeholder="https://example.com/page">
+          <input type="url" id="input-website-url" class="glass-input w-full p-3 rounded-xl text-xs font-mono" placeholder="https://example.com/page">
         </div>
 
         <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
-          <p class="text-xs text-slate-400">⚡ ممیزی کامل شامل سئو فنی، Core Web Vitals، دسترسی‌پذیری و امنیت.</p>
+          <p class="text-xs text-slate-400">⚡ موتور هیبریدی: مجهز به Jina AI Reader + پردازش مستقیم سورس کد HTML.</p>
           <button type="button" id="btn-run-audit" class="px-5 py-2 rounded-xl font-bold text-xs bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-glow-cyan transition">شروع آنالیز و ممیزی عمیق 🚀</button>
         </div>
       </section>
 
       <!-- Audit Results -->
       <section id="audit-results-wrapper" class="space-y-6 hidden">
-        <!-- Score Dashboard Bento -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
           <div class="glass-card rounded-2xl p-5 flex flex-col items-center justify-center text-center">
             <h3 class="text-xs font-semibold text-slate-400 mb-2">شاخص کل سلامت و بهینگی</h3>
@@ -103,7 +100,7 @@
           </div>
         </div>
 
-        <!-- Google SERP & Social Previews -->
+        <!-- Previews -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div class="glass-card rounded-2xl p-4">
             <div class="flex items-center justify-between mb-2"><h3 class="text-xs font-bold text-white">🔍 شبیه‌ساز سرپ گوگل (Google SERP)</h3><span id="serp-title-length" class="text-[11px]"></span></div>
@@ -144,14 +141,28 @@
       </section>
     </main>
 
+    <!-- API Settings Modal -->
+    <div id="modal-settings" class="modal-overlay">
+      <div class="modal-content text-right">
+        <div class="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
+          <h3 class="text-sm font-bold text-white">⚙️ تنظیمات سرویس‌های فچ آنلاین</h3>
+          <button type="button" id="btn-close-settings" class="text-slate-400 hover:text-white text-xs">✕</button>
+        </div>
+        <p class="text-xs text-slate-300 mb-3 leading-relaxed">به صورت پیش‌فرض از موتورهای ابری قدرتمند <strong>Jina AI Reader</strong> و <strong>Microlink</strong> استفاده می‌شود. در صورت تمایل می‌توانید کلید اختصاصی (اختیاری) ثبت نمایید:</p>
+        <input type="text" id="input-api-key" class="glass-input w-full p-2.5 rounded-xl text-xs mb-3 font-mono" placeholder="کلید Jina (jina_...) یا ScraperAPI Key (اختیاری)">
+        <div class="flex justify-between items-center text-xs">
+          <a href="https://jina.ai" target="_blank" class="text-cyan-400 hover:underline">دریافت رایگان کلید Jina AI ↗</a>
+          <button type="button" id="btn-save-settings" class="px-4 py-1.5 rounded-lg font-bold bg-cyan-500 hover:bg-cyan-400 text-dark-950">ذخیره تنظیمات</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="mt-10 pt-5 border-t border-white/10 text-center text-xs text-slate-400">
+    <footer class="mt-8 pt-5 border-t border-white/10 text-center text-xs text-slate-400">
       <p class="mb-2">Designed &amp; Developed by <strong>Hashem Sh</strong> | Powered by Antigravity &amp; Gemini Pro</p>
       <div class="flex items-center justify-center gap-4 text-slate-400">
-        <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition">GitHub</a>
-        <span>•</span>
-        <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition">LinkedIn</a>
-        <span>•</span>
+        <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition">GitHub</a><span>•</span>
+        <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition">LinkedIn</a><span>•</span>
         <a href="https://t.me/init10" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition">Telegram</a>
       </div>
     </footer>

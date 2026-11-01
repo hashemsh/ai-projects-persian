@@ -7,6 +7,7 @@ window.AuditorApp = {
 
   init() {
     this.bindEvents();
+    this.bindSettingsEvents();
     this.restoreSavedState();
   },
 
@@ -16,18 +17,12 @@ window.AuditorApp = {
     const tabHtml = document.getElementById('tab-mode-html');
     const secUrl = document.getElementById('section-input-url');
     const secHtml = document.getElementById('section-input-html');
+    const isUrl = mode === 'url';
 
-    if (mode === 'url') {
-      tabUrl?.classList.add('active');
-      tabHtml?.classList.remove('active');
-      secUrl?.classList.remove('hidden');
-      secHtml?.classList.add('hidden');
-    } else {
-      tabHtml?.classList.add('active');
-      tabUrl?.classList.remove('active');
-      secHtml?.classList.remove('hidden');
-      secUrl?.classList.add('hidden');
-    }
+    tabUrl?.classList.toggle('active', isUrl);
+    tabHtml?.classList.toggle('active', !isUrl);
+    secUrl?.classList.toggle('hidden', !isUrl);
+    secHtml?.classList.toggle('hidden', isUrl);
   },
 
   bindEvents() {
@@ -51,19 +46,34 @@ window.AuditorApp = {
     this.bindExportEvents();
   },
 
+  bindSettingsEvents() {
+    const modal = document.getElementById('modal-settings');
+    const inputKey = document.getElementById('input-api-key');
+
+    document.getElementById('btn-open-settings')?.addEventListener('click', () => {
+      if (inputKey) inputKey.value = window.AuditorFetcher.getApiKey();
+      modal?.classList.add('active');
+    });
+    document.getElementById('btn-close-settings')?.addEventListener('click', () => modal?.classList.remove('active'));
+    document.getElementById('btn-save-settings')?.addEventListener('click', () => {
+      const val = inputKey ? inputKey.value.trim() : '';
+      window.AuditorFetcher.setApiKey(val);
+      modal?.classList.remove('active');
+      window.AuditorToast.show(val ? 'کلید API ذخیره شد! 🔑' : 'تنظیمات روی حالت پیش‌فرض ابری قرار گرفت.', 'success');
+    });
+  },
+
   bindExportEvents() {
     document.getElementById('btn-export-html')?.addEventListener('click', () => {
       if (!this.currentData) return;
       window.AuditorExporter.exportHtmlReport(this.currentData);
       window.AuditorToast.show('گزارش HTML آماده و دانلود شد! 📄', 'success');
     });
-
     document.getElementById('btn-export-json')?.addEventListener('click', () => {
       if (!this.currentData) return;
       window.AuditorExporter.exportJson(this.currentData);
       window.AuditorToast.show('فایل ساختاریافته JSON ذخیره شد! 💾', 'success');
     });
-
     document.getElementById('btn-copy-markdown')?.addEventListener('click', () => {
       if (!this.currentData) return;
       navigator.clipboard.writeText(window.AuditorExporter.exportMarkdown(this.currentData)).then(() => {
@@ -94,7 +104,7 @@ window.AuditorApp = {
     const urlIn = document.getElementById('input-website-url');
     if (ta) ta.value = s.html;
     if (urlIn) urlIn.value = s.url;
-    window.AuditorToast.show(`نمونه "${s.title.slice(0, 20)}..." بارگذاری شد.`, 'info');
+    window.AuditorToast.show(`نمونه بارگذاری شد.`, 'info');
     this.runAudit();
   },
 
@@ -116,11 +126,11 @@ window.AuditorApp = {
         return null;
       }
       try {
-        window.AuditorToast.show('در حال پردازش آدرس وب...', 'info');
+        window.AuditorToast.show('در حال پردازش آدرس وب با موتور هوشمند...', 'info');
         const html = await window.AuditorFetcher.fetch(url);
         return { html, source: url };
       } catch (_) {
-        window.AuditorToast.show('به دلیل محدودیت CORS مرورگر، لطفاً سورس HTML را در تب کنار پیست فرمایید.', 'warning', 5000);
+        window.AuditorToast.show('سایت مقصد دسترسی پروکسی را مسدود کرد. سورس HTML را در تب کنار پیست فرمایید.', 'warning', 5000);
         this.switchMode('html');
         return null;
       }

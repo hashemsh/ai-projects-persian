@@ -14,22 +14,17 @@
     const rootPath = isSub ? '../' : './';
     const logoSrc = isSub ? '../assets/images/logo.svg' : 'assets/images/logo.svg';
 
-    let activeId = 'hub';
-    if (path.includes('lorem-plus')) activeId = 'lorem-plus';
-    else if (path.includes('prompt-optimizer')) activeId = 'prompt-optimizer';
-    else if (path.includes('placeholder-pro')) activeId = 'placeholder-pro';
-    else if (path.includes('site-auditor')) activeId = 'site-auditor';
+    // Active state: if in sub-project or hash is #tools -> 'tools', else 'hub'
+    const isToolsActive = isSub || window.location.hash === '#tools' || window.location.hash === '#projects-grid';
+    const activeId = isToolsActive ? 'tools' : 'hub';
 
     const menuItems = [
-      { id: 'hub', title: 'صفحه اصلی', icon: '🏠', url: isSub ? '../index.html' : './index.html' },
-      { id: 'lorem-plus', title: 'لورم پلاس', icon: '✨', url: isSub ? '../lorem-plus/' : './lorem-plus/' },
-      { id: 'prompt-optimizer', title: 'پرامپت پلاس', icon: '⚡', url: isSub ? '../prompt-optimizer/' : './prompt-optimizer/' },
-      { id: 'placeholder-pro', title: 'پلیس‌هولدر پرو', icon: '🖼️', url: isSub ? '../placeholder-pro/' : './placeholder-pro/' },
-      { id: 'site-auditor', title: 'سایت آدیتور', icon: '🔍', url: isSub ? '../site-auditor/' : './site-auditor/', badge: 'بتا' }
+      { id: 'hub', title: 'صفحه اصلی', icon: '🏠', url: `${rootPath}index.html` },
+      { id: 'tools', title: 'ابزارها', icon: '⚡', url: `${rootPath}index.html#tools` }
     ];
 
     renderHeader(menuItems, activeId, rootPath, logoSrc);
-    renderFooter(menuItems, rootPath, logoSrc);
+    renderFooter(rootPath, logoSrc);
   }
 
   function renderHeader(items, activeId, rootPath, logoSrc) {
@@ -40,7 +35,6 @@
       <a href="${item.url}" class="shared-nav-link ${item.id === activeId ? 'active' : ''}">
         <span class="nav-icon">${item.icon}</span>
         <span>${item.title}</span>
-        ${item.badge ? `<span class="text-[10px] px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">${item.badge}</span>` : ''}
       </a>
     `).join('');
 
@@ -58,19 +52,18 @@
             </div>
           </a>
 
-          <!-- Desktop Navigation Menu -->
-          <div class="hidden lg:flex items-center gap-1.5 bg-dark-900/60 p-1.5 rounded-2xl border border-white/5">
+          <!-- Desktop Navigation Menu (Summarized) -->
+          <div class="hidden sm:flex items-center gap-1.5 bg-dark-900/60 p-1.5 rounded-2xl border border-white/5">
             ${linksHtml}
           </div>
 
-          <!-- Quick Action / GitHub Star -->
+          <!-- Quick Action / GitHub Star & Mobile Toggle -->
           <div class="flex items-center gap-2">
-            <a href="https://github.com/hashemsh/ai-projects-persian" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white text-xs font-semibold border border-white/10 transition">
+            <a href="https://github.com/hashemsh/ai-projects-persian" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white text-xs font-semibold border border-white/10 transition">
               <span class="text-amber-400">★</span>
               <span>Star on GitHub</span>
             </a>
-            <!-- Mobile Menu Toggle Button -->
-            <button type="button" id="btn-toggle-mobile-menu" class="lg:hidden p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition" aria-label="منوی سایت">
+            <button type="button" id="btn-toggle-mobile-menu" class="sm:hidden p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition" aria-label="منوی سایت">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
               </svg>
@@ -79,7 +72,7 @@
         </div>
 
         <!-- Mobile Drawer Menu -->
-        <div id="mobile-nav-menu" class="mobile-nav-menu lg:hidden pt-3 border-t border-white/10 mt-3 flex flex-col gap-1.5">
+        <div id="mobile-nav-menu" class="mobile-nav-menu sm:hidden pt-3 border-t border-white/10 mt-3 flex flex-col gap-1.5">
           ${linksHtml}
         </div>
       </nav>
@@ -92,7 +85,7 @@
     });
   }
 
-  function renderFooter(items, rootPath, logoSrc) {
+  function renderFooter(rootPath, logoSrc) {
     const footerEl = document.getElementById('shared-footer');
     if (!footerEl) return;
 
@@ -127,10 +120,17 @@
           </div>
         </div>
 
+        <!-- Footer Bottom Links with Report Issue -->
         <div class="pt-3 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">
           <div>ویترین ابزارها و میکرواپ‌های وب توسعه‌یافته با دستیاری هوش مصنوعی</div>
           <div class="flex items-center gap-3">
-            ${items.map(m => `<a href="${m.url}" class="hover:text-slate-300 transition">${m.title}</a>`).join('<span>•</span>')}
+            <a href="${rootPath}index.html" class="hover:text-slate-300 transition">صفحه اصلی</a>
+            <span>•</span>
+            <a href="${rootPath}index.html#tools" class="hover:text-slate-300 transition">ابزارها</a>
+            <span>•</span>
+            <a href="https://github.com/hashemsh/ai-projects-persian/issues/new" target="_blank" rel="noopener noreferrer" class="text-amber-400/90 hover:text-amber-300 transition flex items-center gap-1">
+              <span>⚠️</span><span>گزارش باگ یا پیشنهاد (Report Issue)</span>
+            </a>
           </div>
         </div>
       </div>

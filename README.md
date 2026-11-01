@@ -98,8 +98,17 @@ ai-projects-persian/
 
 ---
 
+## 🗺️ نقشه راه و اهداف آینده (Roadmap)
+
+لیست کامل برنامه‌ها، تسک‌های در دست اجرا، قابلیت‌های زیرساختی (نظیر تم دارک/لایت، سیستم دونیت و ماژولارسازی هدر/فوتر) و فهرست میکرواپ‌های در نوبت توسعه در فایل اختصاصی زیر مستندسازی و پیگیری می‌شوند:
+
+👉 **[مشاهده چک‌لیست نقشه راه (ROADMAP.md)](./ROADMAP.md)**
+
+---
+
 ## 👨‍💻 سازنده و حقوق معنوی
 
 - **طراحی و توسعه:** [Hashem Sh](https://github.com/hashemsh)
 - **لینکدین:** [hashemsheikhypour](https://www.linkedin.com/in/hashemsheikhypour)
+- **تلگرام:** [@init10](https://t.me/init10)
 - **قدرت‌گرفته از:** [Google Antigravity](https://deepmind.google/technologies/gemini/) & [Gemini Pro](https://gemini.google.com/)

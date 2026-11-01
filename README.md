@@ -54,10 +54,17 @@ ai-projects-persian/
 
 هر پروژه دارای مستندات و راهنمای فنی مستقل در پوشه اختصاصی خود است:
 
-1. **[لورم پلاس (Lorem Plus)](https://hashemsh.github.io/ai-projects-persian/lorem-plus/)** — تولیدکننده هوشمند محتوای فارسی، مقاله‌ساز سئو و اسکیماساز FAQ ([مستندات کامل](./lorem-plus/README.md))
-2. **[پرامپت‌پلاس (Prompt+)](https://hashemsh.github.io/ai-projects-persian/prompt-optimizer/)** — استودیو مهندسی پرامپت هوش مصنوعی با ترفند دوزبانه و عیارسنجی زنده ([مستندات کامل](./prompt-optimizer/README.md))
-3. **[پلیس‌هولدر پرو (Placeholder Pro)](https://hashemsh.github.io/ai-projects-persian/placeholder-pro/)** — ژنراتور تصویر ماکت، وکتورهای SVG و عکس‌های استوک با ابعاد استاندارد ([مستندات کامل](./placeholder-pro/README.md))
-4. **[سایت آدیتور پرو (Site Auditor Pro)](https://hashemsh.github.io/ai-projects-persian/site-auditor/)** *(در حال توسعه ⏳)* — استودیوی ممیزی سئو، پرفورمنس، پیش‌نمایش سرپ و بررسی دسترسی‌پذیری ([مستندات کامل](./site-auditor/README.md))
+1. **[لورم پلاس (Lorem Plus)](https://hashemsh.github.io/ai-projects-persian/lorem-plus/)** • [مستندات کامل](./lorem-plus/README.md)
+   - تولیدکننده هوشمند محتوای فارسی، مقاله‌ساز سئو و اسکیماساز FAQ
+
+2. **[پرامپت‌پلاس (Prompt+)](https://hashemsh.github.io/ai-projects-persian/prompt-optimizer/)** • [مستندات کامل](./prompt-optimizer/README.md)
+   - استودیو مهندسی پرامپت هوش مصنوعی با ترفند دوزبانه و عیارسنجی زنده
+
+3. **[پلیس‌هولدر پرو (Placeholder Pro)](https://hashemsh.github.io/ai-projects-persian/placeholder-pro/)** • [مستندات کامل](./placeholder-pro/README.md)
+   - ژنراتور تصویر ماکت، وکتورهای SVG و عکس‌های استوک با ابعاد استاندارد
+
+4. **[سایت آدیتور پرو (Site Auditor Pro)](https://hashemsh.github.io/ai-projects-persian/site-auditor/)** *(در حال توسعه ⏳)* • [مستندات کامل](./site-auditor/README.md)
+   - استودیوی ممیزی سئو، پرفورمنس، پیش‌نمایش سرپ و بررسی دسترسی‌پذیری
 
 ---
 

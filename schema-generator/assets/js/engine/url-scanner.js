@@ -144,23 +144,47 @@ window.UrlScanner = (function() {
       return { html: sample.html, source: 'sample' };
     }
 
-    // 2. Multi-Engine Proxy Fetch
-    const proxies = [
+    // 2. Engine 1: Jina AI Reader (High-Trust Bot Bypass & Open CORS)
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 9000);
+      const normalizedTarget = cleanUrl.replace(/^https?:\/\//, 'https://');
+      const jinaUrl = `https://r.jina.ai/${normalizedTarget}`;
+
+      const res = await fetch(jinaUrl, {
+        headers: {
+          'X-Return-Format': 'html'
+        },
+        signal: controller.signal
+      });
+      clearTimeout(timeout);
+
+      if (res.ok) {
+        const text = await res.text();
+        if (text && text.length > 200 && text.includes('<')) {
+          return { html: text, source: 'jina' };
+        }
+      }
+    } catch (_) {}
+
+    // 3. Engine 2 & 3: Secondary CORS Gateways
+    const backupProxies = [
       `https://corsproxy.io/?url=${encodeURIComponent(cleanUrl)}`,
-      `https://api.allorigins.win/raw?url=${encodeURIComponent(cleanUrl)}`
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(cleanUrl)}`,
+      `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(cleanUrl)}`
     ];
 
-    for (const proxyUrl of proxies) {
+    for (const proxyUrl of backupProxies) {
       try {
         const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 8000);
+        const timeout = setTimeout(() => controller.abort(), 7000);
         const res = await fetch(proxyUrl, { signal: controller.signal });
         clearTimeout(timeout);
 
         if (res.ok) {
           const text = await res.text();
           if (text && text.length > 200 && text.includes('<')) {
-            return { html: text, source: 'network' };
+            return { html: text, source: 'proxy' };
           }
         }
       } catch (_) {}

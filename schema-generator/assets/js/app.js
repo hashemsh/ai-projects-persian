@@ -310,6 +310,19 @@ window.App = (function() {
       });
     }
 
+    // Direct HTML Source Extractor Button
+    const btnExtractFromHtml = document.getElementById('btnExtractFromDirectHtml');
+    if (btnExtractFromHtml) {
+      btnExtractFromHtml.addEventListener('click', () => {
+        const htmlInput = document.getElementById('valDirectHtmlInput');
+        if (!htmlInput || !htmlInput.value.trim()) {
+          showToast('ورودی خالی است', 'لطفاً سورس HTML صفحه را الصاق کنید.', true);
+          return;
+        }
+        processHtmlSchemas(htmlInput.value.trim(), 'سورس الصاق‌شده کاربر');
+      });
+    }
+
     // Quick Sample Buttons for URL Scanner
     document.querySelectorAll('.btn-url-sample').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -387,54 +400,7 @@ window.App = (function() {
 
     try {
       const { html, source } = await window.UrlScanner.fetchHtml(url);
-      const schemas = window.UrlScanner.extractSchemas(html);
-
-      if (!schemas || schemas.length === 0) {
-        if (discoveredBar) discoveredBar.classList.add('hidden');
-        resultBox.innerHTML = `
-          <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs space-y-3">
-            <div class="font-bold text-sm flex items-center gap-2">
-              <span>⚠️</span><span>هیچ تگ JSON-LD ساختاریافته‌ای در این صفحه یافت نشد</span>
-            </div>
-            <p class="leading-relaxed text-justify">
-              بررسی سورس نشان داد این صفحه فاقد تگ‌های <code class="font-mono text-amber-300">&lt;script type="application/ld+json"&gt;</code> است، یا از روش‌های قدیمی مانند Microdata استفاده می‌کند که مستعد خطا هستند.
-            </p>
-            <div class="p-3 rounded-xl bg-dark-900/60 border border-white/5 space-y-1">
-              <div class="font-semibold text-slate-300">💡 پیشنهاد اصلاح:</div>
-              <p class="text-slate-400">می‌توانید با استفاده از تب «سازنده تعاملی اسکیما» در همین ابزار، اسکیما مناسب این صفحه را بسازید و در قالب سایت قرار دهید.</p>
-            </div>
-          </div>
-        `;
-        return;
-      }
-
-      // Schemas found! Render pills
-      if (discoveredBar && discoveredList && countBadge) {
-        discoveredBar.classList.remove('hidden');
-        countBadge.textContent = `${schemas.length} اسکیما یافت شد`;
-        discoveredList.innerHTML = schemas.map((s, idx) => `
-          <button type="button" data-idx="${idx}" class="btn-discovered-schema px-3 py-1.5 rounded-xl border border-white/10 bg-dark-950 hover:border-cyan-500/50 text-xs font-semibold flex items-center gap-1.5 transition ${idx === 0 ? 'bg-indigo-600/30 border-cyan-400 text-cyan-300 shadow-sm' : 'text-slate-300'}">
-            <span>🏷️</span>
-            <span>${s.type}</span>
-          </button>
-        `).join('');
-
-        discoveredList.querySelectorAll('.btn-discovered-schema').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const idx = parseInt(btn.dataset.idx, 10);
-            discoveredList.querySelectorAll('.btn-discovered-schema').forEach(b => {
-              b.className = 'btn-discovered-schema px-3 py-1.5 rounded-xl border border-white/10 bg-dark-950 hover:border-cyan-500/50 text-xs font-semibold flex items-center gap-1.5 transition text-slate-300';
-            });
-            btn.className = 'btn-discovered-schema px-3 py-1.5 rounded-xl border border-cyan-400 bg-indigo-600/30 text-cyan-300 shadow-sm text-xs font-semibold flex items-center gap-1.5 transition';
-            displayAuditForSchema(schemas[idx]);
-          });
-        });
-      }
-
-      // Display audit for first schema
-      displayAuditForSchema(schemas[0]);
-      showToast('اسکن با موفقیت انجام شد', `${schemas.length} داده ساختاریافته در صفحه استخراج گردید.`);
-
+      processHtmlSchemas(html, url);
     } catch (err) {
       if (discoveredBar) discoveredBar.classList.add('hidden');
       resultBox.innerHTML = `
@@ -446,16 +412,70 @@ window.App = (function() {
             برخی وب‌سایت‌ها از فایروال‌های سخت‌گیرانه (مانند Cloudflare Bot Management یا لایه‌های امنیتی CDN) استفاده می‌کنند و اجازه دریافت مستقیم سورس صفحه از طریق مرورگر را نمی‌دهند.
           </p>
           <div class="p-3.5 rounded-xl bg-dark-900 border border-white/10 space-y-2 text-slate-300">
-            <div class="font-bold text-cyan-300">راهکار فوری جهت اعتبارسنجی:</div>
+            <div class="font-bold text-cyan-300">راهکارهای فوری جهت اعتبارسنجی:</div>
             <ol class="list-decimal list-inside space-y-1 text-slate-400">
-              <li>صفحه مورد نظر را در مرورگر باز کرده و کلیدهای <kbd class="px-1.5 py-0.5 rounded bg-white/10 font-mono text-[10px] text-white">Ctrl + U</kbd> را بزنید.</li>
-              <li>قطعه کد <code class="font-mono text-cyan-300">&lt;script type="application/ld+json"&gt;</code> را کپی کنید.</li>
-              <li>در همین بخش روی دکمه <strong>«الصاق دستی قطعه کد»</strong> کلیک کرده و کد را بررسی کنید.</li>
+              <li>در کادر بالا آکاردئون <strong>«یا الصاق مستقیم سورس HTML صفحه»</strong> را باز کرده و سورس را با Ctrl+U قرار دهید.</li>
+              <li>یا قطعه کد <code class="font-mono text-cyan-300">&lt;script type="application/ld+json"&gt;</code> را کپی کرده و در تب <strong>«الصاق دستی قطعه کد»</strong> بگذارید.</li>
             </ol>
           </div>
         </div>
       `;
     }
+  }
+
+  function processHtmlSchemas(html, sourceLabel) {
+    const resultBox = document.getElementById('validatorResultsArea');
+    const discoveredBar = document.getElementById('discoveredSchemasBar');
+    const discoveredList = document.getElementById('discoveredSchemasList');
+    const countBadge = document.getElementById('discoveredCountBadge');
+
+    const schemas = window.UrlScanner.extractSchemas(html);
+
+    if (!schemas || schemas.length === 0) {
+      if (discoveredBar) discoveredBar.classList.add('hidden');
+      resultBox.innerHTML = `
+        <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs space-y-3">
+          <div class="font-bold text-sm flex items-center gap-2">
+            <span>⚠️</span><span>هیچ تگ JSON-LD ساختاریافته‌ای در این صفحه یافت نشد</span>
+          </div>
+          <p class="leading-relaxed text-justify">
+            سورس این صفحه فاقد تگ‌های استاندارد <code class="font-mono text-amber-300">&lt;script type="application/ld+json"&gt;</code> است، یا از فرمت‌های قدیمی مانند Microdata استفاده کرده است.
+          </p>
+          <div class="p-3 rounded-xl bg-dark-900/60 border border-white/5 space-y-1">
+            <div class="font-semibold text-slate-300">💡 پیشنهاد سئو:</div>
+            <p class="text-slate-400">می‌توانید با استفاده از تب «سازنده تعاملی اسکیما» در همین ابزار، اسکیما متناسب با موضوع صفحه را تولید کرده و در سایت درج نمایید.</p>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    // Schemas found! Render pills
+    if (discoveredBar && discoveredList && countBadge) {
+      discoveredBar.classList.remove('hidden');
+      countBadge.textContent = `${schemas.length} اسکیما یافت شد`;
+      discoveredList.innerHTML = schemas.map((s, idx) => `
+        <button type="button" data-idx="${idx}" class="btn-discovered-schema px-3 py-1.5 rounded-xl border border-white/10 bg-dark-950 hover:border-cyan-500/50 text-xs font-semibold flex items-center gap-1.5 transition ${idx === 0 ? 'bg-indigo-600/30 border-cyan-400 text-cyan-300 shadow-sm' : 'text-slate-300'}">
+          <span>🏷️</span>
+          <span>${s.type}</span>
+        </button>
+      `).join('');
+
+      discoveredList.querySelectorAll('.btn-discovered-schema').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.dataset.idx, 10);
+          discoveredList.querySelectorAll('.btn-discovered-schema').forEach(b => {
+            b.className = 'btn-discovered-schema px-3 py-1.5 rounded-xl border border-white/10 bg-dark-950 hover:border-cyan-500/50 text-xs font-semibold flex items-center gap-1.5 transition text-slate-300';
+          });
+          btn.className = 'btn-discovered-schema px-3 py-1.5 rounded-xl border border-cyan-400 bg-indigo-600/30 text-cyan-300 shadow-sm text-xs font-semibold flex items-center gap-1.5 transition';
+          displayAuditForSchema(schemas[idx]);
+        });
+      });
+    }
+
+    // Display audit for first schema
+    displayAuditForSchema(schemas[0]);
+    showToast('استخراج موفقیت‌آمیز بود', `${schemas.length} داده ساختاریافته در صفحه کشف شد.`);
   }
 
   function displayAuditForSchema(schemaItem) {

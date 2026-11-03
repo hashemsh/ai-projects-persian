@@ -19,17 +19,6 @@ input, button, select, textarea, optgroup {
   font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* Architecture Infographic Typography */
-.architecture-svg text,
-.architecture-svg tspan {
-  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-}
-
-.architecture-svg text.font-mono,
-.architecture-svg .code-font {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace !important;
-}
-
 /* Glassmorphism Cards & Panels */
 .glass-card {
   background: rgba(12, 15, 29, 0.75);

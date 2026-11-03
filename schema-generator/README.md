@@ -54,7 +54,7 @@ schema-generator/
     ├── css/
     │   └── style.css            # استایل‌های شیشه‌ای، گلاس و پیش‌نمایش نتایج گوگل
     ├── images/
-    │   └── schema-architecture.svg # اینفوگرافیک معماری داده‌های ساختاریافته
+    │   └── schema-guide-banner.jpg # بنر سه بعدی هوش مصنوعی و گراف دانش اسکیما
     └── js/
         ├── data/
         │   └── schema-templates.js  # الگوها، دسته‌بندی‌ها و نمونه‌های آماده استاندارد

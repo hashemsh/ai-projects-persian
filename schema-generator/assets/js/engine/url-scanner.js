@@ -5,50 +5,73 @@ window.UrlScanner = (function() {
   // Pre-baked real-world samples for instant zero-latency demonstration
   const liveSamples = [
     {
-      id: 'sample-product',
-      title: 'محصول فروشگاهی دیجی‌کالا',
-      url: 'https://www.digikala.com/product/dkp-1425890/galaxy-ultra/',
+      id: 'sample-tablighma-home',
+      title: 'صفحه اصلی سایت تبلیغ ما (TablighMa)',
+      url: 'https://tablighma.com/',
       html: `
         <!DOCTYPE html>
-        <html>
+        <html lang="fa-IR">
         <head>
-          <title>گوشی موبایل سامسونگ مدل Galaxy S24 Ultra</title>
+          <title>تبلیغ ما - بهترین انتخاب برای تبلیغات رایگان - نیازمندی‌ های رایگان، آگهی‌های خرید، فروش نو و دست دوم</title>
           <script type="application/ld+json">
           {
             "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "گوشی موبایل سامسونگ مدل Galaxy S24 Ultra دو سیم کارت - ۲۵۶ گیگابایت",
-            "image": "https://dkstatics-public.digikala.com/digikala-products/galaxy-s24.jpg",
-            "description": "پرچمدار سامسونگ با هوش مصنوعی Galaxy AI، دوربین ۲۰۰ مگاپیکسلی و قلم S-Pen اختصاصی.",
-            "sku": "DKP-1425890",
-            "brand": {
-              "@type": "Brand",
-              "name": "سامسونگ"
-            },
-            "offers": {
-              "@type": "Offer",
-              "url": "https://www.digikala.com/product/dkp-1425890/",
-              "priceCurrency": "IRR",
-              "price": "675000000",
-              "priceValidUntil": "2026-12-31",
-              "availability": "https://schema.org/InStock"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.7",
-              "reviewCount": "320",
-              "bestRating": "5"
-            }
-          }
-          </script>
-          <script type="application/ld+json">
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "دیجی‌کالا", "item": "https://www.digikala.com" },
-              { "@type": "ListItem", "position": 2, "name": "موبایل", "item": "https://www.digikala.com/search/category-mobile-phone/" },
-              { "@type": "ListItem", "position": 3, "name": "گوشی سامسونگ", "item": "https://www.digikala.com/brand/samsung/" }
+            "@graph": [
+              {
+                "@type": "CollectionPage",
+                "@id": "https://tablighma.com/",
+                "url": "https://tablighma.com/",
+                "name": "تبلیغ ما - بهترین انتخاب برای تبلیغات رایگان - نیازمندی‌ های رایگان، آگهی‌های خرید، فروش نو و دست دوم و کارکرده",
+                "isPartOf": { "@id": "https://tablighma.com/#website" },
+                "about": { "@id": "https://tablighma.com/#organization" },
+                "description": "تبلیغات ویژه در تبلیغ ما | درج آگهی ویژه و ثبت کسب و کار شما برای بهتر دیده شدن",
+                "breadcrumb": { "@id": "https://tablighma.com/#breadcrumb" },
+                "inLanguage": "fa-IR"
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://tablighma.com/#breadcrumb",
+                "itemListElement": [
+                  { "@type": "ListItem", "position": 1, "name": "خانه" }
+                ]
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://tablighma.com/#website",
+                "url": "https://tablighma.com/",
+                "name": "تبلیغ ما - بهترین انتخاب برای تبلیغات رایگان",
+                "description": "نیازمندی‌ های رایگان، آگهی‌های خرید، فروش نو و دست دوم و کارکرده",
+                "publisher": { "@id": "https://tablighma.com/#organization" },
+                "potentialAction": [
+                  {
+                    "@type": "SearchAction",
+                    "target": { "@type": "EntryPoint", "urlTemplate": "https://tablighma.com/?s={search_term_string}" },
+                    "query-input": { "@type": "PropertyValueSpecification", "valueRequired": true, "valueName": "search_term_string" }
+                  }
+                ],
+                "inLanguage": "fa-IR"
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://tablighma.com/#organization",
+                "name": "تبلیغ ما | درج آگهی",
+                "url": "https://tablighma.com/",
+                "logo": {
+                  "@type": "ImageObject",
+                  "inLanguage": "fa-IR",
+                  "@id": "https://tablighma.com/#/schema/logo/image/",
+                  "url": "https://tablighma.com/wp-content/uploads/2019/08/logo.png",
+                  "contentUrl": "https://tablighma.com/wp-content/uploads/2019/08/logo.png",
+                  "width": 130,
+                  "height": 50,
+                  "caption": "تبلیغ ما | درج آگهی"
+                },
+                "image": { "@id": "https://tablighma.com/#/schema/logo/image/" },
+                "sameAs": [
+                  "https://www.instagram.com/tablighma/",
+                  "https://www.pinterest.com/tablighma/"
+                ]
+              }
             ]
           }
           </script>
@@ -58,36 +81,101 @@ window.UrlScanner = (function() {
       `
     },
     {
-      id: 'sample-article',
-      title: 'مقاله فناوری زومیت',
-      url: 'https://www.zoomit.ir/mobile/415820-samsung-galaxy-s24-ultra-review/',
+      id: 'sample-tablighma-article',
+      title: 'مقاله معرفی بهترین سایت‌های تبلیغاتی در ایران - تبلیغ ما',
+      url: 'https://tablighma.com/the-best-advertising-sites-in-iran/',
       html: `
         <!DOCTYPE html>
-        <html>
+        <html lang="fa-IR">
         <head>
-          <title>بررسی گلکسی اس ۲۴ اولترا سامسونگ؛ شاهکار هوش مصنوعی</title>
+          <title>بهترین سایت های تبلیغاتی در ایران - تبلیغ ما</title>
           <script type="application/ld+json">
           {
             "@context": "https://schema.org",
-            "@type": "NewsArticle",
-            "headline": "بررسی تخصصی گلکسی اس ۲۴ اولترا سامسونگ؛ ورود به عصر هوش مصنوعی",
-            "image": "https://cdn01.zoomit.ir/2024/2/galaxy-s24-ultra-cover.jpg",
-            "datePublished": "2026-02-10T12:00:00+03:30",
-            "dateModified": "2026-03-01T15:30:00+03:30",
-            "author": {
-              "@type": "Person",
-              "name": "مهرداد عیسی‌لو",
-              "url": "https://www.zoomit.ir/author/mehrdad/"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "زومیت",
-              "logo": {
+            "@graph": [
+              {
+                "@type": "Article",
+                "@id": "https://tablighma.com/the-best-advertising-sites-in-iran/#article",
+                "isPartOf": { "@id": "https://tablighma.com/the-best-advertising-sites-in-iran/" },
+                "author": {
+                  "@type": "Person",
+                  "name": "پشتیبانی سایت تبلیغ ما",
+                  "@id": "https://tablighma.com/#/schema/person/cb64682c387c1b8353ab8873af387ece"
+                },
+                "headline": "بهترین سایت های تبلیغاتی در ایران",
+                "datePublished": "2022-11-09T09:33:41+00:00",
+                "dateModified": "2026-09-30T20:18:01+00:00",
+                "mainEntityOfPage": { "@id": "https://tablighma.com/the-best-advertising-sites-in-iran/" },
+                "wordCount": 55,
+                "commentCount": 22,
+                "publisher": { "@id": "https://tablighma.com/#organization" },
+                "image": { "@id": "https://tablighma.com/the-best-advertising-sites-in-iran/#primaryimage" },
+                "thumbnailUrl": "https://tablighma.com/wp-content/uploads/2019/11/bestsiteforads.jpg",
+                "keywords": ["تبلیغات", "تبلیغات اینترنتی", "انواع تبلیغات", "روش های تبلیغات", "سایت تبلیغاتی", "بهترین سایت های تبلیغاتی"],
+                "articleSection": ["روش های تبلیغاتی", "وبلاگ", "تبلیغات"],
+                "inLanguage": "fa-IR"
+              },
+              {
+                "@type": "WebPage",
+                "@id": "https://tablighma.com/the-best-advertising-sites-in-iran/",
+                "url": "https://tablighma.com/the-best-advertising-sites-in-iran/",
+                "name": "بهترین سایت های تبلیغاتی در ایران - تبلیغ ما - بهترین انتخاب برای تبلیغات رایگان",
+                "isPartOf": { "@id": "https://tablighma.com/#website" },
+                "primaryImageOfPage": { "@id": "https://tablighma.com/the-best-advertising-sites-in-iran/#primaryimage" },
+                "image": { "@id": "https://tablighma.com/the-best-advertising-sites-in-iran/#primaryimage" },
+                "thumbnailUrl": "https://tablighma.com/wp-content/uploads/2019/11/bestsiteforads.jpg",
+                "datePublished": "2022-11-09T09:33:41+00:00",
+                "dateModified": "2026-09-30T20:18:01+00:00",
+                "description": "بهترین سایت های تبلیغاتی در ایران ، با توجه به مهم بودن نقش تبلیغات در این مقاله بهترین سایت های تبلیغاتی در ایران را معرفی کنیم",
+                "breadcrumb": { "@id": "https://tablighma.com/the-best-advertising-sites-in-iran/#breadcrumb" },
+                "inLanguage": "fa-IR"
+              },
+              {
                 "@type": "ImageObject",
-                "url": "https://www.zoomit.ir/assets/images/logo.png"
+                "inLanguage": "fa-IR",
+                "@id": "https://tablighma.com/the-best-advertising-sites-in-iran/#primaryimage",
+                "url": "https://tablighma.com/wp-content/uploads/2019/11/bestsiteforads.jpg",
+                "contentUrl": "https://tablighma.com/wp-content/uploads/2019/11/bestsiteforads.jpg",
+                "width": 800,
+                "height": 800,
+                "caption": "بهترین سایت های تبلیغاتی در ایران"
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://tablighma.com/the-best-advertising-sites-in-iran/#breadcrumb",
+                "itemListElement": [
+                  { "@type": "ListItem", "position": 1, "name": "خانه", "item": "https://tablighma.com/" },
+                  { "@type": "ListItem", "position": 2, "name": "بهترین سایت های تبلیغاتی در ایران" }
+                ]
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://tablighma.com/#organization",
+                "name": "تبلیغ ما | درج آگهی",
+                "url": "https://tablighma.com/",
+                "logo": {
+                  "@type": "ImageObject",
+                  "inLanguage": "fa-IR",
+                  "@id": "https://tablighma.com/#/schema/logo/image/",
+                  "url": "https://tablighma.com/wp-content/uploads/2019/08/logo.png",
+                  "contentUrl": "https://tablighma.com/wp-content/uploads/2019/08/logo.png",
+                  "width": 130,
+                  "height": 50,
+                  "caption": "تبلیغ ما | درج آگهی"
+                }
               }
-            },
-            "description": "گلکسی اس ۲۴ اولترا با تکیه بر ویژگی‌های هوش مصنوعی Galaxy AI و طراحی تیتانیومی آمده تا استانداردهای گوشی‌های پرچمدار را بازتعریف کند."
+            ]
+          }
+          </script>
+          <script type="application/ld+json">
+          {
+            "@context": "https://schema.org/",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "item": { "name": "خانه", "@id": "https://tablighma.com" } },
+              { "@type": "ListItem", "position": 2, "item": { "name": "روش های تبلیغاتی", "@id": "https://tablighma.com/category/advertising-methods/" } },
+              { "@type": "ListItem", "position": 3, "item": { "name": "بهترین سایت های تبلیغاتی در ایران", "@id": "https://tablighma.com/the-best-advertising-sites-in-iran/" } }
+            ]
           }
           </script>
         </head>

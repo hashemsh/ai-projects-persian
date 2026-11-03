@@ -1,0 +1,264 @@
+/* ==========================================================================
+   Schema Generator Pro - JSON-LD Stylesheet
+   Modern Glassmorphic Dark UI & Google SERP Simulator Styling
+   ========================================================================== */
+
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
+/* Universal Persian Typography */
+*, *::before, *::after {
+  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+input, button, select, textarea, optgroup {
+  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Glassmorphism Cards & Panels */
+.glass-card {
+  background: rgba(12, 15, 29, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(17, 21, 40, 0.85);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.25);
+}
+
+/* Glass Inputs & Textareas */
+.schema-input {
+  background: rgba(7, 9, 19, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.schema-input:focus {
+  outline: none;
+  border-color: #06b6d4;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+  background: rgba(12, 15, 29, 0.9);
+}
+
+.schema-input::placeholder {
+  color: #64748b;
+}
+
+/* Code Output Area - Strict Monospace */
+.code-container,
+.code-container * {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  direction: ltr;
+  text-align: left;
+  tab-size: 2;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(7, 9, 19, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.5);
+}
+
+/* Google SERP Simulator - Desktop & Mobile */
+.serp-card {
+  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  direction: rtl;
+  text-align: right;
+  transition: all 0.3s ease;
+}
+
+.serp-desktop {
+  max-width: 650px;
+}
+
+.serp-mobile {
+  max-width: 420px;
+  border-radius: 24px;
+  padding: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  background: #111528;
+}
+
+.serp-title {
+  color: #8ab4f8;
+  font-size: 19px;
+  line-height: 1.35;
+  cursor: pointer;
+}
+.serp-title:hover {
+  text-decoration: underline;
+}
+
+.serp-url-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #bdc1c6;
+  margin-bottom: 4px;
+}
+
+.serp-snippet {
+  color: #bdc1c6;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+/* Google Rich Result Chips & Badges */
+.serp-rating-stars {
+  color: #fbbc04;
+  letter-spacing: 1px;
+}
+
+.serp-faq-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 0;
+}
+
+.serp-faq-q {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8ab4f8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.serp-faq-a {
+  font-size: 12.5px;
+  color: #9aa0a6;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* Tab Cards & Active States */
+.schema-tab-btn {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.schema-tab-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.4);
+  background: rgba(17, 21, 40, 0.85);
+  box-shadow: 0 8px 20px -6px rgba(99, 102, 241, 0.25);
+}
+
+.schema-tab-btn.active {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.16), rgba(99, 102, 241, 0.22)) !important;
+  border-color: #06b6d4 !important;
+  box-shadow: 0 0 20px -3px rgba(6, 182, 212, 0.35), inset 0 0 14px rgba(99, 102, 241, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+.schema-tab-btn.active .schema-tab-icon {
+  background: rgba(6, 182, 212, 0.25);
+  border-color: rgba(6, 182, 212, 0.5);
+  transform: scale(1.1);
+}
+
+.schema-tab-btn.active .schema-tab-title {
+  color: #38bdf8 !important;
+}
+
+.light-theme .schema-tab-btn {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.light-theme .schema-tab-btn .schema-tab-title {
+  color: #0f172a;
+}
+
+.light-theme .schema-tab-btn:hover {
+  background: #f8fafc;
+  border-color: #6366f1;
+}
+
+.light-theme .schema-tab-btn.active {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.12), rgba(99, 102, 241, 0.15)) !important;
+  border-color: #4f46e5 !important;
+}
+
+/* Validation Score Gauge */
+.score-circle {
+  transition: stroke-dashoffset 0.8s ease-in-out;
+}
+
+/* Pulse Glow Keyframes */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s infinite ease-in-out;
+}
+
+/* Light Mode Overrides */
+.light-theme .glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.light-theme .schema-input {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.light-theme .schema-input:focus {
+  background: #ffffff;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.light-theme .code-container {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.light-theme .serp-mobile {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.light-theme .serp-title {
+  color: #1a0dab;
+}
+
+.light-theme .serp-url-box {
+  color: #202124;
+}
+
+.light-theme .serp-snippet {
+  color: #4d5156;
+}
+
+.light-theme .serp-faq-q {
+  color: #1a0dab;
+}
+
+.light-theme .serp-faq-a {
+  color: #4d5156;
+}

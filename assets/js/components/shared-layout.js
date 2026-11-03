@@ -33,6 +33,7 @@
                   path.includes('/placeholder-pro/') ||
                   path.includes('/site-auditor/') ||
                   path.includes('/utm-builder/') ||
+                  path.includes('/schema-generator/') ||
                   (document.body && document.body.dataset.root === 'sub');
 
     const rootPath = isSub ? '../' : './';

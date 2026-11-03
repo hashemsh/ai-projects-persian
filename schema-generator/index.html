@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اسکیما ژنراتور پرو | ساخت و اعتبارسنجی داده‌های ساختاریافته (JSON-LD)</title>
+  <meta name="description" content="سازنده هوشمند کدهای ساختاریافته Schema.org در فرمت JSON-LD با پیش‌نمایش زنده در نتایج گوگل (Rich Results) و عیب‌یاب خطاهای سئو فنی">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
+  <!-- Dual CDN Vazirmatn Typography (Google Fonts + jsDelivr High-Speed Fallback) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+  <script>
+    const _origWarn = console.warn;
+    console.warn = (...args) => { if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return; _origWarn.apply(console, args); };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Vazirmatn', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            vazir: ['Vazirmatn', 'sans-serif']
+          },
+          colors: { dark: { 950: '#070913', 900: '#0c0f1d', 850: '#111528', 800: '#171c34' } },
+          boxShadow: { 'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)' }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components/shared-nav.css">
+</head>
+<body data-root="sub" class="bg-dark-950 text-slate-100 font-vazir min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+  <!-- Glowing Ambient Background Orbs -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-32 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-[140px] animate-pulse-slow"></div>
+    <div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-indigo-500/15 rounded-full blur-[160px] animate-pulse-slow"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col min-h-screen">
+    <!-- Universal Shared Header -->
+    <header id="shared-header"></header>
+
+    <!-- Hero Showcase Header with Balanced Spacing -->
+    <div class="text-center mb-12 md:mb-16 relative">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border-cyan-500/30 text-cyan-300 text-xs md:text-sm font-semibold mb-5 shadow-sm">
+        <span>⚡ استودیوی تخصصی سئو فنی (Technical SEO)</span>
+        <span class="text-slate-500">•</span>
+        <span class="text-emerald-400 font-mono">Google Rich Results Ready</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-4 leading-tight">
+        سازنده و اعتبارسنج داده‌های ساختاریافته <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-emerald-400 bg-clip-text text-transparent">اسکیما پرو</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed mb-7">
+        تولید آنی کدهای استاندارد <span class="text-cyan-300 font-mono">JSON-LD</span> همراه با شبیه‌ساز زنده نمایش در گوگل (ستاره‌ها، قیمت، سوالات متداول)، رفع خطاهای سینتکس و اعتبارسنجی ۱۰۰٪ کلاینت‌ساید.
+      </p>
+
+      <!-- Main Mode Switcher (Builder vs Validator) -->
+      <div class="inline-flex items-center p-1.5 rounded-2xl bg-dark-900 border border-white/10 shadow-glass mb-6">
+        <button type="button" id="tabModeBuilder" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white shadow-md transition flex items-center gap-2">
+          <span>🛠️</span><span>سازنده تعاملی اسکیما (Builder)</span>
+        </button>
+        <button type="button" id="tabModeValidator" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-400 hover:text-white transition flex items-center gap-2">
+          <span>🔍</span><span>اعتبارسنج و عیب‌یاب کد (Validator)</span>
+        </button>
+      </div>
+
+      <!-- Quick Action Controls with Enhanced Spacing -->
+      <div class="flex items-center justify-center gap-3 sm:gap-4 flex-wrap text-xs">
+        <button type="button" id="btnLoadSample" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass-card text-cyan-300 hover:border-cyan-500/50 hover:scale-105 transition transform shadow-sm font-semibold">
+          <span>⚡ بارگذاری نمونه آماده</span>
+        </button>
+        <button type="button" id="btnResetForm" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass-card text-rose-300 hover:border-rose-500/50 hover:scale-105 transition transform shadow-sm font-semibold">
+          <span>🔄 پاک‌سازی فرم</span>
+        </button>
+        <a href="#schema-guide" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass-card text-slate-300 hover:border-indigo-500/50 hover:scale-105 transition transform shadow-sm font-semibold">
+          <span>📖 راهنمای سئو و ادغام در سایت</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- PANEL 1: SCHEMA BUILDER -->
+    <div id="panelBuilder" class="space-y-6">
+      <!-- Type Selector Grid (5 items per row with smooth vertical scroll) -->
+      <div class="glass-card rounded-2xl p-4 sm:p-5 md:p-6 shadow-glass">
+        <div class="flex items-center justify-between mb-4 border-b border-white/10 pb-3 flex-wrap gap-2">
+          <div class="flex items-center gap-2.5">
+            <span class="text-xl">🎯</span>
+            <div>
+              <h2 class="text-sm sm:text-base font-bold text-white">انتخاب نوع داده ساختاریافته (Schema Type)</h2>
+              <p class="text-[11px] text-slate-400">یکی از ۱۶ فرمت استاندارد گوگل را جهت تولید و اعتبارسنجی انتخاب کنید (هر سطر ۵ آیتم):</p>
+            </div>
+          </div>
+          <span class="text-xs font-semibold px-3 py-1 rounded-xl bg-indigo-500/15 text-indigo-300 border border-indigo-500/25">
+            ۱۶ اسکیما استاندارد Google SERP
+          </span>
+        </div>
+        <div id="schemaTypeTabs" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-h-[350px] overflow-y-auto pl-1 pr-1">
+          <!-- Filled by App.js -->
+        </div>
+      </div>
+
+      <main class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
+        <!-- Form Section (7 cols) -->
+        <section class="lg:col-span-7 flex flex-col gap-5">
+          <div class="glass-card rounded-2xl p-5 md:p-6 shadow-glass">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+              <h2 class="text-sm md:text-base font-bold text-white flex items-center gap-2">
+                <span>📝</span><span>اطلاعات و پارامترهای اسکیما</span>
+              </h2>
+              <div id="quickAuditBadge" class="text-[11px] px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold flex items-center gap-1">
+                <span>✓</span><span>ریچ اسنیپت آماده</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Form Fields Container -->
+            <form id="schemaFormContainer" onsubmit="return false;" class="space-y-4">
+              <!-- Rendered via JS based on selected type -->
+            </form>
+          </div>
+        </section>
+
+        <!-- Preview & Output Section (5 cols) -->
+        <section class="lg:col-span-5 flex flex-col gap-5 sticky top-6">
+          <!-- Live Google SERP Simulator -->
+          <div class="glass-card rounded-2xl p-5 shadow-glass">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-base">🌐</span>
+                <h3 class="text-xs sm:text-sm font-bold text-white">پیش‌نمایش زنده در گوگل</h3>
+              </div>
+              <!-- Mobile/Desktop Switcher -->
+              <div class="flex items-center p-1 rounded-xl bg-dark-900 border border-white/10 text-[11px]">
+                <button type="button" id="btnSerpDesktop" class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-semibold transition">
+                  دسکتاپ
+                </button>
+                <button type="button" id="btnSerpMobile" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition">
+                  موبایل
+                </button>
+              </div>
+            </div>
+
+            <!-- Google Result Simulation Canvas -->
+            <div id="serpPreviewContent" class="overflow-hidden p-2 rounded-xl bg-dark-950/80 border border-white/5">
+              <!-- Rendered via serp-preview.js -->
+            </div>
+          </div>
+
+          <!-- Code Output Card -->
+          <div class="glass-card rounded-2xl p-5 shadow-glass space-y-3">
+            <div class="flex items-center justify-between border-b border-white/10 pb-2.5 flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <span class="text-base">💻</span>
+                <h3 class="text-xs sm:text-sm font-bold text-white">کد خروجی JSON-LD</h3>
+              </div>
+              <div class="flex items-center gap-3 text-[11px] text-slate-300">
+                <label class="flex items-center gap-1.5 cursor-pointer">
+                  <input type="checkbox" id="toggleScriptTag" checked class="rounded border-slate-700 text-indigo-600 focus:ring-0">
+                  <span>تگ &lt;script&gt;</span>
+                </label>
+                <label class="flex items-center gap-1.5 cursor-pointer">
+                  <input type="checkbox" id="toggleMinify" class="rounded border-slate-700 text-indigo-600 focus:ring-0">
+                  <span>فشرده (Minify)</span>
+                </label>
+              </div>
+            </div>
+
+            <textarea id="schemaOutputCode" readonly rows="9" class="code-container w-full p-3 rounded-xl text-xs text-cyan-300 resize-none font-mono focus:outline-none"></textarea>
+
+            <!-- Export Buttons -->
+            <div class="grid grid-cols-2 gap-2 pt-1">
+              <button type="button" id="btnCopyCode" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white text-xs font-bold shadow-lg transition flex items-center justify-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                <span>کپی کد اسکیما</span>
+              </button>
+              <button type="button" id="btnDownloadJson" class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-white text-xs font-bold transition flex items-center justify-center gap-1.5">
+                <span>📥 ذخیره فایل JSON</span>
+              </button>
+            </div>
+
+            <!-- External Official Test Links -->
+            <div class="border-t border-white/10 pt-3 flex items-center justify-between text-[11px] text-slate-400">
+              <span>ابزارهای رسمی اعتبارسنجی:</span>
+              <div class="flex items-center gap-2">
+                <button type="button" id="btnTestGoogle" class="text-cyan-400 hover:text-cyan-300 underline font-semibold">Rich Results Test گوگل</button>
+                <span>•</span>
+                <button type="button" id="btnTestSchemaOrg" class="text-indigo-400 hover:text-indigo-300 underline font-semibold">Schema.org</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- PANEL 2: SCHEMA VALIDATOR & TESTER -->
+    <div id="panelValidator" class="hidden space-y-6">
+      <div class="glass-card rounded-2xl p-6 shadow-glass space-y-5">
+        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+          <div>
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <span>🔍</span><span>اعتبارسنجی و عیب‌یابی کدهای دلخواه JSON-LD</span>
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">کد اسکیما را وارد کنید تا خطاهای سینتکس، کاماهای جاافتاده و انطباق با دستورالعمل‌های گوگل بررسی شوند.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" id="btnLoadValSample" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-slate-300 font-semibold">
+              بارگذاری نمونه تستی
+            </button>
+            <button type="button" id="btnBeautifyVal" class="px-3 py-1.5 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-400/30 text-xs text-indigo-300 font-semibold">
+              مرتب‌سازی (Beautify)
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">قطعه کد JSON-LD یا تگ &lt;script&gt; را اینجا الصاق کنید:</label>
+          <textarea id="rawJsonInput" rows="10" placeholder='{&#10;  "@context": "https://schema.org",&#10;  "@type": "Product",&#10;  "name": "عنوان محصول..."&#10;}' class="code-container w-full p-4 rounded-xl text-xs text-emerald-300 font-mono resize-y focus:outline-none focus:border-cyan-400"></textarea>
+        </div>
+
+        <button type="button" id="btnRunValidation" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-600 via-indigo-600 to-purple-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm shadow-lg transition flex items-center justify-center gap-2">
+          <span>🚀</span><span>تست و آنالیز عمیق دستورالعمل‌های گوگل</span>
+        </button>
+
+        <!-- Validator Output Diagnostics -->
+        <div id="validatorResultsArea" class="pt-2">
+          <div class="text-center py-8 text-slate-500 text-xs">
+            کد JSON-LD را در کادر بالا وارد کرده و دکمه تست را بزنید.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Educational & Technical SEO Article Section -->
+    <article id="schema-guide" class="mt-16 glass-card rounded-2xl p-6 md:p-10 shadow-glass space-y-8">
+      <div class="border-b border-white/10 pb-5">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">📚</span>
+          <h2 class="text-xl sm:text-2xl font-black text-white">
+            دانشنامه جامع داده‌های ساختاریافته (Schema.org &amp; JSON-LD Mastery)
+          </h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-3xl">
+          داده‌های ساختاریافته زبان مشترک بین وب‌سایت‌ها و موتورهای جستجو هستند. با تزریق استاندارد نشانه‌گذاری‌های JSON-LD، موتورهای گوگل و مدل‌های هوش مصنوعی نوین (SearchGPT, Perplexity, Gemini) ماهیت موجودیت‌های صفحه شما را مانند انسان درک کرده و نرخ کلیک (CTR) ارگانیک را تا ۳۵٪ ارتقا می‌دهند.
+        </p>
+      </div>
+
+      <!-- Infographic Architecture Diagram -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+          <span class="font-bold text-slate-200">🔍 نمودار جریان کارکرد داده‌های ساختاریافته و تولید ریچ اسنیپت</span>
+          <span class="font-mono text-[11px] text-cyan-400">Schema Pipeline Architecture</span>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-dark-900/60 p-2">
+          <img src="assets/images/schema-architecture.svg" alt="معماری اسکیما و ریچ اسنیپت‌های گوگل" class="w-full h-auto rounded-xl">
+        </div>
+      </div>
+
+      <!-- 4 Pillars Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs text-slate-300">
+        <div class="p-4 rounded-xl bg-dark-900/80 border border-white/5 space-y-2.5">
+          <h3 class="font-bold text-cyan-300 flex items-center gap-1.5 text-sm">
+            <span>⚡</span><span>۱. چرا JSON-LD برنده است؟</span>
+          </h3>
+          <p class="text-slate-400 text-justify leading-relaxed">
+            برخلاف Microdata و RDFa که با دستکاری تگ‌های HTML اجرا می‌شدند، JSON-LD یک بلوک اسکریپت مستقل در هدر است که با تغییرات ظاهری، بازطراحی قالب وردپرس یا فریم‌ورک‌های مدرن دچار آسیب و شکستگی نمی‌شود.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-dark-900/80 border border-white/5 space-y-2.5">
+          <h3 class="font-bold text-indigo-300 flex items-center gap-1.5 text-sm">
+            <span>⭐</span><span>۲. تسخیر توجه با Rich Snippet</span>
+          </h3>
+          <p class="text-slate-400 text-justify leading-relaxed">
+            ستاره‌های طلایی امتیاز کاربران، قیمت و نشان موجودی کالا، آکاردئون بازشونده سوالات متداول و تصویر بندانگشتی در صفحه اول سرپ، چگالی کلیک کاربران را به شکل چشمگیری به سمت لینک شما هدایت می‌کند.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-dark-900/80 border border-white/5 space-y-2.5">
+          <h3 class="font-bold text-pink-300 flex items-center gap-1.5 text-sm">
+            <span>🛠️</span><span>۳. اتصال پایدار به E-E-A-T</span>
+          </h3>
+          <p class="text-slate-400 text-justify leading-relaxed">
+            با اسکیماهای Person و Organization و آرایه <code class="font-mono text-pink-300">sameAs</code>، هویت مولفان، پزشکان، وکلای رسمی و اعتبار حقوقی برند مستقیماً به گراف دانش رسمی گوگل پیوند داده می‌شود.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-dark-900/80 border border-white/5 space-y-2.5">
+          <h3 class="font-bold text-emerald-300 flex items-center gap-1.5 text-sm">
+            <span>🤖</span><span>۴. سئو در عصر مدل‌های زبانی (GEO)</span>
+          </h3>
+          <p class="text-slate-400 text-justify leading-relaxed">
+            خزنده‌های هوش مصنوعی (GPTBot, ClaudeBot, Perplexity) محتواهای دارای اسکیما را با دقت ۱۰۰٪ به عنوان منبع قابل استناد انتخاب کرده و در نتایج گفتگویی هوش مصنوعی ارجاع می‌دهند.
+          </p>
+        </div>
+      </div>
+
+      <!-- Comparative Matrix Table -->
+      <div class="space-y-3 pt-2">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <span>⚖️</span><span>جدول مقایسه روش‌های پیاده‌سازی داده‌های ساختاریافته در وب</span>
+        </h3>
+        <div class="overflow-x-auto rounded-xl border border-white/10 bg-dark-900/50">
+          <table class="w-full text-right text-xs">
+            <thead class="bg-dark-900 text-slate-300 border-b border-white/10">
+              <tr>
+                <th class="p-3">فرمت پیاده‌سازی</th>
+                <th class="p-3">توصیه رسمی گوگل</th>
+                <th class="p-3">جداسازی منطق از کد HTML</th>
+                <th class="p-3">نگهداری و توسعه (Maintenance)</th>
+                <th class="p-3">سرعت ایندکس و پردازش</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-slate-300">
+              <tr class="bg-cyan-500/5 font-semibold text-white">
+                <td class="p-3 text-cyan-300 font-mono">JSON-LD (توصیه‌شده)</td>
+                <td class="p-3 text-emerald-400">✓ انتخاب اول و رسمی</td>
+                <td class="p-3 text-emerald-400">۱۰۰٪ ایزوله در تگ اسکریپت</td>
+                <td class="p-3">بسیار آسان بدون وابستگی به قالب</td>
+                <td class="p-3">حداکثر سرعت خزش</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-mono text-slate-400">Microdata</td>
+                <td class="p-3 text-amber-400">پشتیبانی می‌شود اما قدیمی</td>
+                <td class="p-3 text-rose-400">مخلوط مستقیم در تگ‌های HTML</td>
+                <td class="p-3">دشوار با ریسک بالای شکستگی ظاهر</td>
+                <td class="p-3">متوسط</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-mono text-slate-400">RDFa</td>
+                <td class="p-3 text-slate-400">پشتیبانی محدود</td>
+                <td class="p-3 text-rose-400">وابسته به کدهای فرانت‌اند</td>
+                <td class="p-3">پیچیده و غیرمنعطف</td>
+                <td class="p-3">کندتر</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Practical Integration Snippets -->
+      <div class="border-t border-white/10 pt-6 space-y-4">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <span>🚀</span><span>راهنمای گام‌به‌گام تزریق در پلتفرم‌های پرکاربرد وب</span>
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <!-- WordPress Injection -->
+          <div class="p-4 rounded-xl bg-dark-900 border border-white/5 space-y-2">
+            <div class="font-bold text-indigo-300 flex items-center justify-between">
+              <span>در پوسته وردپرس (functions.php یا wp_head)</span>
+              <span class="font-mono text-[10px] text-slate-500">WordPress PHP</span>
+            </div>
+            <p class="text-slate-400 leading-relaxed">
+              کد زیر را در انتهای فایل <code class="font-mono text-indigo-300">functions.php</code> قالب فرزند قرار دهید تا اسکیما در هدر تمام مقالات تزریق شود:
+            </p>
+            <pre class="p-3 rounded-lg bg-dark-950 font-mono text-[11px] text-cyan-300 overflow-x-auto leading-relaxed" dir="ltr">add_action('wp_head', function() {
+  if (is_single()) {
+    echo '&lt;script type="application/ld+json"&gt;' . "\n";
+    // چاپ خروجی JSON-LD ساخته‌شده
+    echo '&lt;/script&gt;' . "\n";
+  }
+});</pre>
+          </div>
+
+          <!-- Next.js / React Injection -->
+          <div class="p-4 rounded-xl bg-dark-900 border border-white/5 space-y-2">
+            <div class="font-bold text-cyan-300 flex items-center justify-between">
+              <span>در پروژه‌های Next.js (App Router)</span>
+              <span class="font-mono text-[10px] text-slate-500">React / Next.js</span>
+            </div>
+            <p class="text-slate-400 leading-relaxed">
+              در کامپوننت سروری یا صفحه صفحه مورد نظر از تگ استاندارد اسکریپت با متد <code class="font-mono text-cyan-300">dangerouslySetInnerHTML</code> استفاده کنید:
+            </p>
+            <pre class="p-3 rounded-lg bg-dark-950 font-mono text-[11px] text-emerald-300 overflow-x-auto leading-relaxed" dir="ltr">&lt;script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(schemaJson)
+  }}
+/&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Universal Shared Footer -->
+    <footer id="shared-footer"></footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="glass-card bg-slate-900/95 border-emerald-500/40 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border shadow-emerald-500/20">
+      <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+      </div>
+      <div>
+        <p class="text-sm font-bold text-slate-100" id="toastTitle">انجام شد!</p>
+        <p class="text-xs text-slate-400" id="toastMessage">عملیات با موفقیت انجام شد.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/components/shared-layout.js"></script>
+  <script src="assets/js/data/schema-templates.js"></script>
+  <script src="assets/js/engine/schema-builder.js"></script>
+  <script src="assets/js/engine/schema-validator.js"></script>
+  <script src="assets/js/ui/serp-preview.js"></script>
+  <script src="assets/js/ui/form-renderer.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -47,10 +47,16 @@ ai-projects-persian/
 │   ├── README.md                   # مستندات تخصصی آدیتور
 │   └── assets/                     # موتور ارزیابی ۴ ستونه، گیج SVG و اکسپورتر
 │
-└── utm-builder/                    # پروژه شماره ۵: سازنده پیشرفته لینک‌های کمپین (UTM Builder Pro)
-    ├── index.html                  # اینترفیس یو‌تی‌ام بیلدر
-    ├── README.md                   # مستندات تخصصی ابزار
-    └── assets/                     # موتور سازنده، شبیه‌ساز GA4، کیوآرکد و Batch Matrix
+├── utm-builder/                    # پروژه شماره ۵: سازنده پیشرفته لینک‌های کمپین (UTM Builder Pro)
+│   ├── index.html                  # اینترفیس یو‌تی‌ام بیلدر
+│   ├── README.md                   # مستندات تخصصی ابزار
+│   └── assets/                     # موتور سازنده، شبیه‌ساز GA4، کیوآرکد و Batch Matrix
+│
+└── schema-generator/               # پروژه شماره ۶: سازنده و اعتبارسنج داده‌های ساختاریافته (Schema Generator Pro)
+    ├── index.html                  # اینترفیس اسکیما ژنراتور
+    ├── README.md                   # مستندات تخصصی اسکیما ژنراتور
+    ├── favicon.svg                 # آیکون وکتور اختصاصی
+    └── assets/                     # الگوها، موتور ساخت و اعتبارسنجی و پیش‌نمایش گوگل
 ```
 
 ---
@@ -73,6 +79,9 @@ ai-projects-persian/
 
 5. **[یو‌تی‌ام بیلدر پرو (UTM Builder Pro)](https://hashemsh.github.io/ai-projects-persian/utm-builder/)** • [مستندات کامل](./utm-builder/README.md)
    - سازنده هوشمند لینک‌های کمپین، شبیه‌ساز GA4، کیوآرکد و خروجی گروهی اکسل
+
+6. **[اسکیما ژنراتور پرو (Schema Generator Pro)](https://hashemsh.github.io/ai-projects-persian/schema-generator/)** • [مستندات کامل](./schema-generator/README.md)
+   - سازنده و اعتبارسنج داده‌های ساختاریافته JSON-LD برای ۱۰ نوع محتوا، شبیه‌ساز زنده نتایج گوگل و عیب‌یاب خطاهای سئو فنی
 
 ---
 

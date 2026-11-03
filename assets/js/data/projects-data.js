@@ -60,5 +60,16 @@ window.HubData.projects = [
     url: './utm-builder/',
     accentGrad: 'from-cyan-400 via-indigo-500 to-emerald-400',
     buttonGrad: 'from-indigo-600 via-cyan-600 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500'
+  },
+  {
+    id: 6,
+    title: 'اسکیما ژنراتور پرو (Schema Generator Pro)',
+    badge: 'پروژه شماره ۶ • کاربردی و فعال',
+    emoji: '⚡',
+    description: 'ابزار هوشمند تولید و اعتبارسنجی داده‌های ساختاریافته (JSON-LD) برای ۱۶ نوع محتوای استاندارد گوگل با شبیه‌ساز زنده پیش‌نمایش در نتایج گوگل (Rich Results) و عیب‌یاب خطاهای سئو فنی.',
+    techs: ['JSON-LD', 'Google Rich Results', 'SERP Simulator', 'Schema Validator'],
+    url: './schema-generator/',
+    accentGrad: 'from-emerald-400 via-cyan-500 to-indigo-500',
+    buttonGrad: 'from-emerald-600 via-cyan-600 to-indigo-600 hover:from-emerald-500 hover:to-cyan-500'
   }
 ];

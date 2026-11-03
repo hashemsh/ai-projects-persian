@@ -200,39 +200,88 @@
       </main>
     </div>
 
-    <!-- PANEL 2: SCHEMA VALIDATOR & TESTER -->
+    <!-- PANEL 2: SCHEMA VALIDATOR & TESTER (Live URL + Code Modes) -->
     <div id="panelValidator" class="hidden space-y-6">
-      <div class="glass-card rounded-2xl p-6 shadow-glass space-y-5">
-        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+      <div class="glass-card rounded-2xl p-5 md:p-6 shadow-glass space-y-5">
+        <div class="flex items-center justify-between border-b border-white/10 pb-3.5 flex-wrap gap-3">
           <div>
             <h2 class="text-base font-bold text-white flex items-center gap-2">
-              <span>🔍</span><span>اعتبارسنجی و عیب‌یابی کدهای دلخواه JSON-LD</span>
+              <span>🔍</span><span>اعتبارسنجی و عیب‌یاب هوشمند اسکیما (Schema Validator)</span>
             </h2>
-            <p class="text-xs text-slate-400 mt-1">کد اسکیما را وارد کنید تا خطاهای سینتکس، کاماهای جاافتاده و انطباق با دستورالعمل‌های گوگل بررسی شوند.</p>
+            <p class="text-xs text-slate-400 mt-1">تست زنده از روی آدرس صفحه (URL) یا بررسی مستقیم کدهای JSON-LD بر اساس دستورالعمل‌های رسمی گوگل.</p>
           </div>
-          <div class="flex items-center gap-2">
-            <button type="button" id="btnLoadValSample" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-slate-300 font-semibold">
-              بارگذاری نمونه تستی
+          <!-- Mode Switcher: Live URL vs Code Paste -->
+          <div class="flex items-center p-1 rounded-xl bg-dark-900 border border-white/10 text-xs">
+            <button type="button" id="btnValModeUrl" class="px-3.5 py-1.5 rounded-lg font-bold bg-indigo-600 text-white transition flex items-center gap-1.5 shadow-sm">
+              <span>🌐</span><span>استخراج از URL زنده</span>
             </button>
-            <button type="button" id="btnBeautifyVal" class="px-3 py-1.5 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-400/30 text-xs text-indigo-300 font-semibold">
-              مرتب‌سازی (Beautify)
+            <button type="button" id="btnValModeCode" class="px-3.5 py-1.5 rounded-lg font-bold text-slate-400 hover:text-white transition flex items-center gap-1.5">
+              <span>📝</span><span>الصاق دستی قطعه کد</span>
             </button>
           </div>
         </div>
 
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1.5">قطعه کد JSON-LD یا تگ &lt;script&gt; را اینجا الصاق کنید:</label>
-          <textarea id="rawJsonInput" rows="10" placeholder='{&#10;  "@context": "https://schema.org",&#10;  "@type": "Product",&#10;  "name": "عنوان محصول..."&#10;}' class="code-container w-full p-4 rounded-xl text-xs text-emerald-300 font-mono resize-y focus:outline-none focus:border-cyan-400"></textarea>
+        <!-- SUB-PANEL A: LIVE URL SCANNER -->
+        <div id="valSubPanelUrl" class="space-y-4">
+          <div>
+            <label for="valUrlInput" class="block text-xs font-semibold text-slate-300 mb-1.5">
+              آدرس اینترنتی صفحه وب را وارد کنید (Live Web URL):
+            </label>
+            <div class="flex items-center gap-2">
+              <input type="url" id="valUrlInput" placeholder="https://example.com/product/..." value="https://www.digikala.com/product/dkp-1425890/galaxy-ultra/" class="schema-input w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-mono" dir="ltr">
+              <button type="button" id="btnRunUrlScan" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm shrink-0 shadow-lg transition flex items-center gap-1.5">
+                <span>🚀</span><span>اسکن و استخراج اسکیما</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Samples for URL Scanner -->
+          <div class="flex items-center gap-2 text-xs flex-wrap">
+            <span class="text-slate-400 text-[11px]">نمونه‌های آماده تست زنده:</span>
+            <button type="button" class="btn-url-sample px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-cyan-300 text-[11px]" data-sample="sample-product">
+              🛍️ محصول دیجی‌کالا
+            </button>
+            <button type="button" class="btn-url-sample px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-indigo-300 text-[11px]" data-sample="sample-article">
+              📰 مقاله زومیت
+            </button>
+            <button type="button" class="btn-url-sample px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-emerald-300 text-[11px]" data-sample="sample-faq">
+              ❓ سوالات متداول (FAQ)
+            </button>
+          </div>
+
+          <!-- Discovered Schemas Container (Hidden until scanned) -->
+          <div id="discoveredSchemasBar" class="hidden p-3.5 rounded-xl bg-dark-900 border border-white/10 space-y-2.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-slate-200">اسکیماهای استخراج‌شده از این صفحه:</span>
+              <span id="discoveredCountBadge" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-[11px]"></span>
+            </div>
+            <div id="discoveredSchemasList" class="flex items-center gap-2 flex-wrap"></div>
+          </div>
         </div>
 
-        <button type="button" id="btnRunValidation" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-600 via-indigo-600 to-purple-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm shadow-lg transition flex items-center justify-center gap-2">
-          <span>🚀</span><span>تست و آنالیز عمیق دستورالعمل‌های گوگل</span>
-        </button>
+        <!-- SUB-PANEL B: RAW CODE TEXTAREA (Toggled via button) -->
+        <div id="valSubPanelCode" class="hidden space-y-4">
+          <div class="flex items-center justify-between">
+            <label class="block text-xs font-semibold text-slate-300">قطعه کد JSON-LD یا تگ &lt;script&gt; را اینجا الصاق کنید:</label>
+            <div class="flex items-center gap-2">
+              <button type="button" id="btnLoadValSample" class="px-3 py-1 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-slate-300 font-semibold">
+                بارگذاری نمونه
+              </button>
+              <button type="button" id="btnBeautifyVal" class="px-3 py-1 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-400/30 text-xs text-indigo-300 font-semibold">
+                مرتب‌سازی (Beautify)
+              </button>
+            </div>
+          </div>
+          <textarea id="rawJsonInput" rows="9" placeholder='{&#10;  "@context": "https://schema.org",&#10;  "@type": "Product",&#10;  "name": "عنوان محصول..."&#10;}' class="code-container w-full p-4 rounded-xl text-xs text-emerald-300 font-mono resize-y focus:outline-none focus:border-cyan-400"></textarea>
+          <button type="button" id="btnRunValidation" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-600 via-indigo-600 to-purple-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm shadow-lg transition flex items-center justify-center gap-2">
+            <span>🚀</span><span>تست و آنالیز عمیق دستورالعمل‌های گوگل</span>
+          </button>
+        </div>
 
         <!-- Validator Output Diagnostics -->
         <div id="validatorResultsArea" class="pt-2">
           <div class="text-center py-8 text-slate-500 text-xs">
-            کد JSON-LD را در کادر بالا وارد کرده و دکمه تست را بزنید.
+            آدرس صفحه را در کادر بالا وارد کرده یا روی «اسکن و استخراج اسکیما» کلیک کنید.
           </div>
         </div>
       </div>
@@ -408,6 +457,7 @@
   <script src="assets/js/data/schema-templates.js"></script>
   <script src="assets/js/engine/schema-builder.js"></script>
   <script src="assets/js/engine/schema-validator.js"></script>
+  <script src="assets/js/engine/url-scanner.js"></script>
   <script src="assets/js/ui/serp-preview.js"></script>
   <script src="assets/js/ui/form-renderer.js"></script>
   <script src="assets/js/app.js"></script>

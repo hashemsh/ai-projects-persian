@@ -271,14 +271,65 @@ window.App = (function() {
       });
     }
 
+    // Validator Mode Switching (URL vs Code)
+    const btnValModeUrl = document.getElementById('btnValModeUrl');
+    const btnValModeCode = document.getElementById('btnValModeCode');
+    const valSubPanelUrl = document.getElementById('valSubPanelUrl');
+    const valSubPanelCode = document.getElementById('valSubPanelCode');
+
+    if (btnValModeUrl && btnValModeCode) {
+      btnValModeUrl.addEventListener('click', () => {
+        btnValModeUrl.classList.add('bg-indigo-600', 'text-white', 'shadow-sm');
+        btnValModeUrl.classList.remove('text-slate-400');
+        btnValModeCode.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm');
+        btnValModeCode.classList.add('text-slate-400');
+        valSubPanelUrl.classList.remove('hidden');
+        valSubPanelCode.classList.add('hidden');
+      });
+
+      btnValModeCode.addEventListener('click', () => {
+        btnValModeCode.classList.add('bg-indigo-600', 'text-white', 'shadow-sm');
+        btnValModeCode.classList.remove('text-slate-400');
+        btnValModeUrl.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm');
+        btnValModeUrl.classList.add('text-slate-400');
+        valSubPanelCode.classList.remove('hidden');
+        valSubPanelUrl.classList.add('hidden');
+      });
+    }
+
+    // URL Scanner Actions
+    const btnRunUrlScan = document.getElementById('btnRunUrlScan');
+    if (btnRunUrlScan) {
+      btnRunUrlScan.addEventListener('click', runUrlScanner);
+    }
+
+    const valUrlInput = document.getElementById('valUrlInput');
+    if (valUrlInput) {
+      valUrlInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') runUrlScanner();
+      });
+    }
+
+    // Quick Sample Buttons for URL Scanner
+    document.querySelectorAll('.btn-url-sample').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sampleId = btn.dataset.sample;
+        const sample = window.UrlScanner.liveSamples.find(s => s.id === sampleId);
+        if (sample && valUrlInput) {
+          valUrlInput.value = sample.url;
+          runUrlScanner();
+        }
+      });
+    });
+
     // Validator Panel Buttons & Live input
     const btnRunValidation = document.getElementById('btnRunValidation');
     const rawJsonInput = document.getElementById('rawJsonInput');
     if (btnRunValidation) {
-      btnRunValidation.addEventListener('click', runValidation);
+      btnRunValidation.addEventListener('click', () => runValidation());
     }
     if (rawJsonInput) {
-      rawJsonInput.addEventListener('input', debounce(runValidation, 400));
+      rawJsonInput.addEventListener('input', debounce(() => runValidation(), 400));
     }
 
     const btnBeautifyVal = document.getElementById('btnBeautifyVal');
@@ -309,7 +360,180 @@ window.App = (function() {
     }
   }
 
-  function runValidation() {
+  async function runUrlScanner() {
+    const urlInput = document.getElementById('valUrlInput');
+    const resultBox = document.getElementById('validatorResultsArea');
+    const discoveredBar = document.getElementById('discoveredSchemasBar');
+    const discoveredList = document.getElementById('discoveredSchemasList');
+    const countBadge = document.getElementById('discoveredCountBadge');
+
+    if (!urlInput || !resultBox || !window.UrlScanner) return;
+
+    const url = urlInput.value.trim();
+    if (!url) {
+      showToast('خطا', 'لطفاً آدرس اینترنتی صفحه را وارد کنید.', true);
+      return;
+    }
+
+    // Show loading state
+    resultBox.innerHTML = `
+      <div class="p-8 rounded-2xl bg-dark-900 border border-indigo-500/20 text-center space-y-3">
+        <div class="w-10 h-10 border-3 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+        <div class="text-sm font-bold text-white">در حال دریافت و اسکن سورس صفحه...</div>
+        <div class="text-xs text-slate-400 font-mono" dir="ltr">${url}</div>
+        <p class="text-[11px] text-slate-500">خزنده‌های ابزار در حال استخراج تگ‌های application/ld+json هستند.</p>
+      </div>
+    `;
+
+    try {
+      const { html, source } = await window.UrlScanner.fetchHtml(url);
+      const schemas = window.UrlScanner.extractSchemas(html);
+
+      if (!schemas || schemas.length === 0) {
+        if (discoveredBar) discoveredBar.classList.add('hidden');
+        resultBox.innerHTML = `
+          <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs space-y-3">
+            <div class="font-bold text-sm flex items-center gap-2">
+              <span>⚠️</span><span>هیچ تگ JSON-LD ساختاریافته‌ای در این صفحه یافت نشد</span>
+            </div>
+            <p class="leading-relaxed text-justify">
+              بررسی سورس نشان داد این صفحه فاقد تگ‌های <code class="font-mono text-amber-300">&lt;script type="application/ld+json"&gt;</code> است، یا از روش‌های قدیمی مانند Microdata استفاده می‌کند که مستعد خطا هستند.
+            </p>
+            <div class="p-3 rounded-xl bg-dark-900/60 border border-white/5 space-y-1">
+              <div class="font-semibold text-slate-300">💡 پیشنهاد اصلاح:</div>
+              <p class="text-slate-400">می‌توانید با استفاده از تب «سازنده تعاملی اسکیما» در همین ابزار، اسکیما مناسب این صفحه را بسازید و در قالب سایت قرار دهید.</p>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      // Schemas found! Render pills
+      if (discoveredBar && discoveredList && countBadge) {
+        discoveredBar.classList.remove('hidden');
+        countBadge.textContent = `${schemas.length} اسکیما یافت شد`;
+        discoveredList.innerHTML = schemas.map((s, idx) => `
+          <button type="button" data-idx="${idx}" class="btn-discovered-schema px-3 py-1.5 rounded-xl border border-white/10 bg-dark-950 hover:border-cyan-500/50 text-xs font-semibold flex items-center gap-1.5 transition ${idx === 0 ? 'bg-indigo-600/30 border-cyan-400 text-cyan-300 shadow-sm' : 'text-slate-300'}">
+            <span>🏷️</span>
+            <span>${s.type}</span>
+          </button>
+        `).join('');
+
+        discoveredList.querySelectorAll('.btn-discovered-schema').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.dataset.idx, 10);
+            discoveredList.querySelectorAll('.btn-discovered-schema').forEach(b => {
+              b.className = 'btn-discovered-schema px-3 py-1.5 rounded-xl border border-white/10 bg-dark-950 hover:border-cyan-500/50 text-xs font-semibold flex items-center gap-1.5 transition text-slate-300';
+            });
+            btn.className = 'btn-discovered-schema px-3 py-1.5 rounded-xl border border-cyan-400 bg-indigo-600/30 text-cyan-300 shadow-sm text-xs font-semibold flex items-center gap-1.5 transition';
+            displayAuditForSchema(schemas[idx]);
+          });
+        });
+      }
+
+      // Display audit for first schema
+      displayAuditForSchema(schemas[0]);
+      showToast('اسکن با موفقیت انجام شد', `${schemas.length} داده ساختاریافته در صفحه استخراج گردید.`);
+
+    } catch (err) {
+      if (discoveredBar) discoveredBar.classList.add('hidden');
+      resultBox.innerHTML = `
+        <div class="p-5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-200 text-xs space-y-3">
+          <div class="font-bold text-sm flex items-center gap-2">
+            <span>🚫</span><span>دسترسی مستقیم مرورگر توسط فایروال این سایت مسدود شد</span>
+          </div>
+          <p class="leading-relaxed text-justify text-slate-300">
+            برخی وب‌سایت‌ها از فایروال‌های سخت‌گیرانه (مانند Cloudflare Bot Management یا لایه‌های امنیتی CDN) استفاده می‌کنند و اجازه دریافت مستقیم سورس صفحه از طریق مرورگر را نمی‌دهند.
+          </p>
+          <div class="p-3.5 rounded-xl bg-dark-900 border border-white/10 space-y-2 text-slate-300">
+            <div class="font-bold text-cyan-300">راهکار فوری جهت اعتبارسنجی:</div>
+            <ol class="list-decimal list-inside space-y-1 text-slate-400">
+              <li>صفحه مورد نظر را در مرورگر باز کرده و کلیدهای <kbd class="px-1.5 py-0.5 rounded bg-white/10 font-mono text-[10px] text-white">Ctrl + U</kbd> را بزنید.</li>
+              <li>قطعه کد <code class="font-mono text-cyan-300">&lt;script type="application/ld+json"&gt;</code> را کپی کنید.</li>
+              <li>در همین بخش روی دکمه <strong>«الصاق دستی قطعه کد»</strong> کلیک کرده و کد را بررسی کنید.</li>
+            </ol>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  function displayAuditForSchema(schemaItem) {
+    const resultBox = document.getElementById('validatorResultsArea');
+    if (!resultBox || !window.SchemaValidator) return;
+
+    if (!schemaItem.parsed) {
+      resultBox.innerHTML = `
+        <div class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
+          خطا در خواندن داده: این اسکریپت دارای ساختار نامعتبر JSON است: ${schemaItem.error || ''}
+        </div>
+      `;
+      return;
+    }
+
+    const audit = window.SchemaValidator.auditSchema(schemaItem.parsed);
+
+    let issuesHtml = audit.issues.map(iss => {
+      let icon = '✓';
+      let border = 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300';
+      if (iss.severity === 'error') {
+        icon = '❌';
+        border = 'border-rose-500/30 bg-rose-500/10 text-rose-300';
+      } else if (iss.severity === 'warning') {
+        icon = '⚠️';
+        border = 'border-amber-500/30 bg-amber-500/10 text-amber-300';
+      }
+
+      return `
+        <div class="p-3 rounded-xl border ${border} text-xs flex items-start gap-2.5">
+          <span class="shrink-0 mt-0.5">${icon}</span>
+          <div class="flex-1">
+            ${iss.field ? `<span class="font-mono font-bold ml-1 px-1.5 py-0.5 rounded bg-white/10 text-[11px]" dir="ltr">${iss.field}</span>` : ''}
+            <span>${iss.text}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    resultBox.innerHTML = `
+      <div class="space-y-4">
+        <!-- Score Bar -->
+        <div class="p-4 rounded-xl bg-dark-900 border border-white/10 flex items-center justify-between flex-wrap gap-3">
+          <div>
+            <div class="text-xs text-slate-400">موجودیت انتخاب‌شده:</div>
+            <div class="text-base font-bold text-white font-mono" dir="ltr">@type: "${schemaItem.type}"</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">${schemaItem.name}</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="text-right">
+              <div class="text-xs text-slate-400">نمره سازگاری ریچ اسنیپت:</div>
+              <div class="text-xl font-black ${audit.score >= 80 ? 'text-emerald-400' : (audit.score >= 50 ? 'text-amber-400' : 'text-rose-400')}">
+                ${audit.score} از ۱۰۰
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Issues List -->
+        <div class="space-y-2">
+          <div class="text-xs font-bold text-slate-300 mb-2">گزارش انطباق با دستورالعمل‌های گوگل:</div>
+          ${issuesHtml}
+        </div>
+
+        <!-- Raw Schema Code Preview -->
+        <div class="pt-2">
+          <details class="group">
+            <summary class="cursor-pointer text-xs font-bold text-slate-400 hover:text-cyan-300 flex items-center gap-1.5 select-none">
+              <span>▾</span><span>مشاهده قطعه کد استخراج‌شده JSON-LD</span>
+            </summary>
+            <pre class="code-container w-full p-3 rounded-xl text-xs text-cyan-300 mt-2 max-h-48 overflow-y-auto font-mono" dir="ltr">${schemaItem.rawJson}</pre>
+          </details>
+        </div>
+      </div>
+    `;
+  }
+
+  function runValidation(targetJson = null) {
     const input = document.getElementById('rawJsonInput');
     const resultBox = document.getElementById('validatorResultsArea');
     if (!input || !resultBox || !window.SchemaValidator) return;

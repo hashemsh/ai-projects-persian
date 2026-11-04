@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استودیو و ژنراتور کیوآرکد پیشرفته | QR Code Studio Pro</title>
+  <meta name="description" content="طراحی و ساخت آنلاین کدهای QR فوق‌سفارشی؛ با استایل‌های مدرن نقاط، دیتاهای وای‌فای، کارت ویزیت، بانکی، لوگوی مرکزی، گرادینت و دانلود برداری SVG و PNG">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
+  <!-- Dual CDN Vazirmatn Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+  <script>
+    const _origWarn = console.warn;
+    console.warn = (...args) => { if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return; _origWarn.apply(console, args); };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Vazirmatn', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            vazir: ['Vazirmatn', 'sans-serif']
+          },
+          colors: { dark: { 950: '#070913', 900: '#0c0f1d', 850: '#111528', 800: '#171c34' } },
+          boxShadow: { 'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)' }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components/shared-nav.css">
+</head>
+<body data-root="sub" class="bg-dark-950 text-slate-100 font-vazir min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-white">
+  <!-- Glowing Ambient Background Orbs -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-32 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-[140px] animate-pulse-slow"></div>
+    <div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-indigo-500/15 rounded-full blur-[160px] animate-pulse-slow"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col min-h-screen">
+    <!-- Universal Shared Header -->
+    <header id="shared-header"></header>
+
+    <!-- Hero Showcase Header -->
+    <section class="mt-4 sm:mt-6 mb-8 text-center max-w-3xl mx-auto space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-semibold backdrop-blur-md">
+        <span>⚡</span><span>ابزار کاربردی شماره ۷ • ۱۰۰٪ کلاینت‌ساید و امن</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+        استودیو و ژنراتور کیوآرکد پیشرفته <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-400 bg-clip-text text-transparent">(QR Studio Pro)</span>
+      </h1>
+      <p class="text-slate-400 text-xs sm:text-sm leading-relaxed text-justify sm:text-center">
+        طراحی و ساخت آنلاین کدهای QR فوق‌سفارشی؛ با استایل‌های مدرن نقاط، پشتیبانی از انواع دیتا (وای‌فای، کارت ویزیت دیجیتال، کارت بانکی، لوکیشن و تقویم)، لوگوی مرکزی، گرادینت‌های چشم‌نواز و دانلود وکتور بدون افت کیفیت SVG و PNG.
+      </p>
+    </section>
+
+    <!-- Main Studio Grid -->
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start flex-grow mb-12">
+      <!-- Left Column: Controls & Data Configuration (7 cols) -->
+      <section class="lg:col-span-7 space-y-5">
+        <!-- 1. Data Type Selector Card -->
+        <div class="glass-card rounded-2xl p-4 sm:p-5 shadow-glass space-y-4">
+          <div class="flex items-center justify-between border-b border-white/5 pb-3">
+            <h2 class="text-sm font-bold text-white flex items-center gap-2">
+              <span class="text-cyan-400">۱.</span><span>انتخاب نوع محتوای QR Code</span>
+            </h2>
+            <span class="text-[11px] text-slate-400">۹ فرمت استاندارد</span>
+          </div>
+
+          <!-- Type Selection Grid -->
+          <div class="grid grid-cols-3 sm:grid-cols-3 gap-2 text-xs">
+            <button type="button" class="type-tab active p-2.5 rounded-xl border border-white/10 hover:border-cyan-400/50 flex flex-col items-center gap-1.5 transition text-slate-300" data-type="url">
+              <span class="text-lg">🔗</span><span class="font-semibold text-[11px]">وب‌سایت / لینک</span>
+            </button>
+            <button type="button" class="type-tab p-2.5 rounded-xl border border-white/10 hover:border-cyan-400/50 flex flex-col items-center gap-1.5 transition text-slate-300" data-type="wifi">
+              <span class="text-lg">📶</span><span class="font-semibold text-[11px]">اتصال وای‌فای</span>
+            </button>
+            <button type="button" class="type-tab p-2.5 rounded-xl border border-white/10 hover:border-cyan-400/50 flex flex-col items-center gap-1.5 transition text-slate-300" data-type="vcard">
+              <span class="text-lg">👤</span><span class="font-semibold text-[11px]">کارت ویزیت (vCard)</span>
+            </button>
+            <button type="button" class="type-tab p-2.5 rounded-xl border border-white/10 hover:border-cyan-400/50 flex flex-col items-center gap-1.5 transition text-slate-300" data-type="bank">
+              <span class="text-lg">💳</span><span class="font-semibold text-[11px]">کارت بانکی و شبا</span>
+            </button>
+            <button type="button" class="type-tab p-2.5 rounded-xl border border-white/10 hover:border-cyan-400/50 flex flex-col items-center gap-1.5 transition text-slate-300" data-type="sms">
+              <span class="text-lg">💬</span><span class="font-semibold text-[11px]">پیامک (SMS)</span>
+            </button>
+            <button type="button" class="type-tab p-2.5 rounded-xl border border-white/10 hover:border-cyan-400/50 flex flex-col items-center gap-1.5 transition text-slate-300" data-type="email">
+              <span class="text-lg">✉️</span><span class="font-semibold text-[11px]">ارسال ایمیل</span>
+            </button>
+            <button type="button" class="type-tab p-2.5 rounded-xl border border-white/10 hover:border-cyan-400/50 flex flex-col items-center gap-1.5 transition text-slate-300" data-type="geo">
+              <span class="text-lg">📍</span><span class="font-semibold text-[11px]">موقعیت مکانی</span>
+            </button>
+            <button type="button" class="type-tab p-2.5 rounded-xl border border-white/10 hover:border-cyan-400/50 flex flex-col items-center gap-1.5 transition text-slate-300" data-type="event">
+              <span class="text-lg">📅</span><span class="font-semibold text-[11px]">رویداد تقویم</span>
+            </button>
+            <button type="button" class="type-tab p-2.5 rounded-xl border border-white/10 hover:border-cyan-400/50 flex flex-col items-center gap-1.5 transition text-slate-300" data-type="text">
+              <span class="text-lg">📝</span><span class="font-semibold text-[11px]">متن آزاد</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Form Inputs Container -->
+          <div id="dynamicFormContainer" class="p-3.5 rounded-xl bg-dark-900/80 border border-white/5">
+            <!-- Injected via form-handlers.js -->
+          </div>
+        </div>
+
+        <!-- 2. Visual Styling & Branding Accordions -->
+        <div class="glass-card rounded-2xl p-4 sm:p-5 shadow-glass space-y-5">
+          <div class="border-b border-white/5 pb-3">
+            <h2 class="text-sm font-bold text-white flex items-center gap-2">
+              <span class="text-indigo-400">۲.</span><span>شخصی‌سازی بصری، رنگ‌ها و لوگوی مرکزی</span>
+            </h2>
+          </div>
+
+          <!-- Sub-Section A: Colors & Gradients -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-slate-300">پالت‌های رنگی آماده:</span>
+              <label class="flex items-center gap-1.5 cursor-pointer text-slate-400 hover:text-cyan-300 text-[11px]">
+                <input type="checkbox" id="chkEnableGradient" checked class="rounded bg-dark-900 border-white/20 text-cyan-500">
+                <span>گرادینت دورنگ</span>
+              </label>
+            </div>
+            <div id="colorPresetsList" class="flex flex-wrap gap-2">
+              <!-- Rendered via palette-picker.js -->
+            </div>
+
+            <!-- Custom Color Pickers -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs">
+              <div class="p-2.5 rounded-xl bg-dark-900 border border-white/5 space-y-1">
+                <span class="text-[11px] text-slate-400">رنگ اصلی (Color 1):</span>
+                <div class="flex items-center gap-2">
+                  <input type="color" id="inpColor1" value="#06b6d4">
+                  <span class="text-slate-300 text-xs font-mono">#06B6D4</span>
+                </div>
+              </div>
+              <div id="gradientSecondColorWrapper" class="p-2.5 rounded-xl bg-dark-900 border border-white/5 space-y-1">
+                <span class="text-[11px] text-slate-400">رنگ دوم (Color 2):</span>
+                <div class="flex items-center gap-2">
+                  <input type="color" id="inpColor2" value="#4f46e5">
+                  <span class="text-slate-300 text-xs font-mono">#4F46E5</span>
+                </div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-dark-900 border border-white/5 space-y-1">
+                <span class="text-[11px] text-slate-400">پس‌زمینه:</span>
+                <div class="flex items-center gap-2">
+                  <input type="color" id="inpBgColor" value="#ffffff">
+                  <label class="flex items-center gap-1 cursor-pointer text-[10px] text-slate-400">
+                    <input type="checkbox" id="chkTransparentBg" class="rounded bg-dark-900 text-cyan-500">
+                    <span>شفاف</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-Section B: Dot & Corner Patterns -->
+          <div class="space-y-3 pt-2 border-t border-white/5">
+            <span class="block text-xs font-bold text-slate-300">الگوی چیدمان نقاط کیوآرکد:</span>
+            <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 text-xs">
+              <button type="button" class="dot-style-pill style-pill active p-2 rounded-xl border border-white/10 hover:border-cyan-400/40 text-center transition text-slate-300 text-[11px]" data-style="rounded">گرد (Rounded)</button>
+              <button type="button" class="dot-style-pill style-pill p-2 rounded-xl border border-white/10 hover:border-cyan-400/40 text-center transition text-slate-300 text-[11px]" data-style="dots">نقطه‌ای (Dots)</button>
+              <button type="button" class="dot-style-pill style-pill p-2 rounded-xl border border-white/10 hover:border-cyan-400/40 text-center transition text-slate-300 text-[11px]" data-style="classy">کلاسیک نرم</button>
+              <button type="button" class="dot-style-pill style-pill p-2 rounded-xl border border-white/10 hover:border-cyan-400/40 text-center transition text-slate-300 text-[11px]" data-style="classy-rounded">مدرن منحنی</button>
+              <button type="button" class="dot-style-pill style-pill p-2 rounded-xl border border-white/10 hover:border-cyan-400/40 text-center transition text-slate-300 text-[11px]" data-style="square">مربعی دقیق</button>
+              <button type="button" class="dot-style-pill style-pill p-2 rounded-xl border border-white/10 hover:border-cyan-400/40 text-center transition text-slate-300 text-[11px]" data-style="extra-rounded">فوق‌منحنی</button>
+            </div>
+
+            <!-- Corners Customization -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div>
+                <label class="block text-[11px] text-slate-400 mb-1">فریم چشم‌های گوشه (Corner Square):</label>
+                <select id="selCornerSquare" class="qr-input w-full px-3 py-2 rounded-xl text-xs">
+                  <option value="extra-rounded" selected>گوشه‌های خمیده و نرم (Extra Rounded)</option>
+                  <option value="dot">دایره‌ای کامل (Circular Dot)</option>
+                  <option value="square">مربعی کلاسیک (Square)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] text-slate-400 mb-1">مردمک چشم‌های گوشه (Corner Dot):</label>
+                <select id="selCornerDot" class="qr-input w-full px-3 py-2 rounded-xl text-xs">
+                  <option value="dot" selected>مردمک گرد و دایره‌ای (Dot)</option>
+                  <option value="square">مردمک چهارگوش (Square)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-Section C: Center Brand Logo -->
+          <div class="space-y-3 pt-2 border-t border-white/5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-slate-300">لوگو و نشان مرکزی (Brand Icon):</span>
+              <button type="button" id="btnClearLogo" class="text-rose-400 hover:text-rose-300 text-[11px]">حذف لوگو</button>
+            </div>
+            <div id="brandIconsList" class="flex flex-wrap gap-2">
+              <!-- Rendered via palette-picker.js -->
+            </div>
+            <div class="p-3 rounded-xl bg-dark-900 border border-white/5 flex items-center justify-between gap-3 text-xs">
+              <span class="text-slate-400 text-[11px]">یا آپلود لوگوی دلخواه (PNG / SVG / JPG):</span>
+              <input type="file" id="inpCustomLogo" accept="image/*" class="text-[11px] text-slate-400 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[11px] file:bg-cyan-600/30 file:text-cyan-300 hover:file:bg-cyan-600/50 cursor-pointer">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Live High-Definition Preview & Actions (5 cols) -->
+      <section class="lg:col-span-5 space-y-5 lg:sticky lg:top-24">
+        <!-- Live Preview Stage Box -->
+        <div class="glass-card rounded-2xl p-5 shadow-glass space-y-4 text-center">
+          <div class="flex items-center justify-between border-b border-white/5 pb-3">
+            <span class="text-xs font-bold text-white flex items-center gap-1.5">
+              <span>📱</span><span>پیش‌نمایش زنده کیوآرکد</span>
+            </span>
+            <span id="qrReadyBadge" class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[10px] font-semibold">
+              ✓ آماده اسکن
+            </span>
+          </div>
+
+          <!-- Interactive QR Canvas Container -->
+          <div class="qr-stage-wrapper p-6 rounded-2xl flex items-center justify-center min-h-[340px] relative">
+            <div id="qrCanvasBox" class="qr-preview-box rounded-xl p-2 bg-white shadow-2xl inline-block">
+              <!-- Rendered via QRCodeStyling Canvas -->
+            </div>
+          </div>
+
+          <!-- Live Camera Verification Tester -->
+          <div class="space-y-2">
+            <button type="button" id="btnVerifyScan" class="w-full py-2.5 rounded-xl bg-dark-900 hover:bg-dark-850 border border-cyan-500/30 text-cyan-300 text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm">
+              <span>🔍</span><span>تست خوانش و شبیه‌سازی اسکن دوربین (jsQR)</span>
+            </button>
+            <div id="scanVerifyResult" class="text-xs"></div>
+          </div>
+
+          <!-- Download & Export Actions Grid -->
+          <div class="grid grid-cols-2 gap-2.5 pt-2">
+            <button type="button" id="btnDownloadPng" class="py-2.5 px-3 rounded-xl bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-bold text-xs shadow-lg transition flex items-center justify-center gap-1.5">
+              <span>📥</span><span>دانلود PNG باکیفیت</span>
+            </button>
+            <button type="button" id="btnDownloadSvg" class="py-2.5 px-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-xs shadow-lg transition flex items-center justify-center gap-1.5">
+              <span>📐</span><span>دانلود وکتور SVG</span>
+            </button>
+            <button type="button" id="btnDownloadWebp" class="py-2 px-3 rounded-xl bg-dark-900 hover:bg-dark-850 border border-white/10 text-slate-300 text-xs font-semibold transition flex items-center justify-center gap-1.5">
+              <span>🖼️</span><span>دانلود WebP</span>
+            </button>
+            <button type="button" id="btnCopyClipboard" class="py-2 px-3 rounded-xl bg-dark-900 hover:bg-dark-850 border border-white/10 text-slate-300 text-xs font-semibold transition flex items-center justify-center gap-1.5">
+              <span>📋</span><span>کپی در کلیپ‌بورد</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Comprehensive Educational Guide Section -->
+    <section id="qr-guide" class="mt-8 mb-12 glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3 border-b border-white/10 pb-4">
+        <span class="text-2xl">💡</span>
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-white">راهنمای تخصصی چاپ و استانداردهای کیوآرکد</h2>
+          <p class="text-xs text-slate-400">نکات حیاتی برای جلوگیری از خطای اسکن در چاپ بنر، کاتالوگ، بسته‌بندی و کارت ویزیت</p>
+        </div>
+      </div>
+
+      <!-- 3D Architecture Visual Showcase -->
+      <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+        <img src="assets/images/qr-studio-banner.jpg" alt="معماری استودیو و اسکن کدهای کیوآرکد پیشرفته" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 ease-out" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-4 right-4 left-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+          <span class="px-3 py-1 rounded-lg bg-dark-950/80 backdrop-blur-md border border-cyan-500/30 text-cyan-300 font-semibold shadow-md">
+            📱 استاندارد ISO/IEC 18004 • پشتیبانی ۱۰۰٪ توسط دوربین‌های iOS و Android
+          </span>
+          <span class="text-[11px] text-slate-400 bg-dark-950/60 px-2.5 py-1 rounded-lg backdrop-blur-md">
+            موتور رندر کلاینت‌ساید بدون ارسال دیتا به سرور
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-300 leading-relaxed">
+        <div class="p-4 rounded-xl bg-dark-900/60 border border-white/5 space-y-2">
+          <div class="font-bold text-cyan-300 flex items-center gap-1.5"><span>۱.</span><span>قانون کنتراست رنگی</span></div>
+          <p class="text-slate-400 text-justify">همواره اطمینان حاصل کنید که رنگ نقاط QR تیره و رنگ پس‌زمینه روشن باشد. سنسورهای دوربین گوشی‌های موبایل برای تفکیک سریع سلول‌ها به تضاد نوری حداقل ۷۰ درصدی نیاز دارند.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-dark-900/60 border border-white/5 space-y-2">
+          <div class="font-bold text-indigo-300 flex items-center gap-1.5"><span>۲.</span><span>حاشیه امن (Quiet Zone)</span></div>
+          <p class="text-slate-400 text-justify">حاشیه سفید یا شفاف دور کیوآرکد نباید با متون یا المان‌های گرافیکی مجاور پوشانده شود. حداقل ۴ سلول خالی دور تا دور کد الزامی است تا الگوریتم شناسایی دوربین خطا ندهد.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-dark-900/60 border border-white/5 space-y-2">
+          <div class="font-bold text-emerald-300 flex items-center gap-1.5"><span>۳.</span><span>سطح تصحیح خطا (Error Correction H)</span></div>
+          <p class="text-slate-400 text-justify">وقتی در مرکز کیوآرکد لوگو یا عکس قرار می‌دهید، سطح مقاومت (H) تا ۳۰٪ مخدوش شدن فیزیکی یا پوشش سلول‌ها را بازسازی می‌کند و تضمین می‌کند بارکد در تمام شرایط اسکن شود.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Universal Shared Footer -->
+    <footer id="shared-footer" class="mt-auto"></footer>
+  </div>
+
+  <!-- Floating Toast Notification -->
+  <div id="qrToast" class="fixed bottom-6 left-6 z-50 p-4 rounded-2xl bg-dark-900/90 border border-cyan-500/30 backdrop-blur-xl shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none max-w-sm"></div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/components/shared-layout.js"></script>
+  <script src="assets/js/vendor/qr-code-styling.js"></script>
+  <script src="assets/js/vendor/jsqr.min.js"></script>
+  <script src="assets/js/data/presets.js"></script>
+  <script src="assets/js/engine/qr-payload.js"></script>
+  <script src="assets/js/engine/qr-renderer.js"></script>
+  <script src="assets/js/ui/form-templates.js"></script>
+  <script src="assets/js/ui/form-handlers.js"></script>
+  <script src="assets/js/ui/palette-picker.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

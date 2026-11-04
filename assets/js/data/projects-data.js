@@ -71,5 +71,16 @@ window.HubData.projects = [
     url: './schema-generator/',
     accentGrad: 'from-emerald-400 via-cyan-500 to-indigo-500',
     buttonGrad: 'from-emerald-600 via-cyan-600 to-indigo-600 hover:from-emerald-500 hover:to-cyan-500'
+  },
+  {
+    id: 7,
+    title: 'استودیو کیوآرکد پرو (QR Studio Pro)',
+    badge: 'پروژه شماره ۷ • کاربردی و فعال',
+    emoji: '📱',
+    description: 'استودیوی آنلاین و فوق‌سفارشی ساخت کدهای QR برای ۹ نوع دیتا (وای‌فای، کارت ویزیت دیجیتال، کارت بانکی، لوکیشن و تقویم) با استایل‌های مدرن نقاط، لوگوی مرکزی، گرادینت و دانلود وکتور SVG و PNG.',
+    techs: ['Canvas API', 'Vector SVG', 'QR Styling', 'jsQR Scanner'],
+    url: './qr-studio/',
+    accentGrad: 'from-cyan-400 via-indigo-500 to-pink-500',
+    buttonGrad: 'from-cyan-600 via-indigo-600 to-pink-600 hover:from-cyan-500 hover:to-pink-500'
   }
 ];

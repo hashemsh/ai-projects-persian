@@ -4,6 +4,10 @@
 
 @import url('theme-light.css');
 
+html {
+  scroll-behavior: smooth;
+}
+
 .shared-navbar {
   background: rgba(12, 15, 29, 0.82);
   backdrop-filter: blur(20px);

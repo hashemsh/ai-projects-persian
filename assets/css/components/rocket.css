@@ -1,5 +1,6 @@
 /* ==========================================================================
    Interactive Scroll Rocket & Back-to-Top Component
+   Realistic Aerodynamic Physics, Blastoff Particles & Mobile UX
    ========================================================================== */
 
 .scroll-rocket-container {
@@ -28,7 +29,7 @@
   transform-origin: center center;
   will-change: transform, left, top;
   opacity: 1;
-  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -40,65 +41,76 @@
   border-radius: 9999px;
 }
 
-/* Rocket SVG Graphic Core */
+/* Rocket SVG Graphic Core - Sleeker on Mobile */
 .rocket-svg-wrap {
   position: relative;
-  width: 52px;
-  height: 52px;
-  filter: drop-shadow(0 8px 18px rgba(6, 182, 212, 0.35));
+  width: 44px;
+  height: 44px;
+  filter: drop-shadow(0 6px 14px rgba(6, 182, 212, 0.35));
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @media (min-width: 768px) {
   .rocket-svg-wrap {
-    width: 62px;
-    height: 62px;
+    width: 58px;
+    height: 58px;
+    filter: drop-shadow(0 8px 18px rgba(6, 182, 212, 0.35));
   }
 }
 
 .scroll-rocket-btn:hover .rocket-svg-wrap {
-  transform: scale(1.15);
-  filter: drop-shadow(0 10px 28px rgba(99, 102, 241, 0.6));
+  transform: scale(1.15) rotate(-4deg);
+  filter: drop-shadow(0 12px 28px rgba(99, 102, 241, 0.65));
 }
 
-/* Idle Hovering in Top-Left Corner */
+/* Idle Hovering State */
 .scroll-rocket-btn.is-idle-top .rocket-svg-wrap {
   animation: idleTopFloat 3s infinite ease-in-out;
 }
 
 @keyframes idleTopFloat {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-7px) rotate(-3deg); }
+  50% { transform: translateY(-6px) rotate(-3deg); }
 }
 
 /* Thruster Flame Animation */
 .rocket-flame-core {
   transform-origin: 24px 44px;
-  animation: thrusterCore 0.18s infinite alternate ease-in-out;
+  animation: thrusterCore 0.16s infinite alternate ease-in-out;
 }
 
 .rocket-flame-outer {
   transform-origin: 24px 44px;
-  animation: thrusterOuter 0.22s infinite alternate ease-in-out;
+  animation: thrusterOuter 0.2s infinite alternate ease-in-out;
 }
 
 @keyframes thrusterCore {
-  0% { transform: scaleY(0.85) scaleX(0.92); opacity: 0.85; }
-  100% { transform: scaleY(1.25) scaleX(1.08); opacity: 1; }
+  0% { transform: scaleY(0.85) scaleX(0.9); opacity: 0.85; }
+  100% { transform: scaleY(1.3) scaleX(1.1); opacity: 1; }
 }
 
 @keyframes thrusterOuter {
   0% { transform: scaleY(0.9) scaleX(0.9); opacity: 0.65; }
-  100% { transform: scaleY(1.3) scaleX(1.15); opacity: 0.95; }
+  100% { transform: scaleY(1.35) scaleX(1.2); opacity: 0.95; }
+}
+
+/* Ignition Rumble State Before Launch */
+.scroll-rocket-btn.is-rumbling {
+  animation: rocketRumble 0.1s infinite alternate;
+}
+
+@keyframes rocketRumble {
+  0% { transform: translate(-1.5px, 1px) rotate(-1deg); }
+  100% { transform: translate(1.5px, -1px) rotate(1deg); }
 }
 
 /* Docked State at Bottom Left */
 .scroll-rocket-btn.is-docked {
-  filter: drop-shadow(0 12px 28px rgba(6, 182, 212, 0.45));
+  filter: drop-shadow(0 12px 28px rgba(6, 182, 212, 0.55));
 }
 
 .scroll-rocket-btn.is-docked .rocket-svg-wrap {
-  animation: dockedFloat 2.6s infinite ease-in-out;
+  animation: dockedFloat 2.4s infinite ease-in-out;
 }
 
 @keyframes dockedFloat {
@@ -108,27 +120,42 @@
 
 /* Blast Off / Launch State */
 .scroll-rocket-btn.is-launching {
-  transition: transform 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
-  transform: translateY(-120vh) scale(1.2) rotate(0deg) !important;
+  transition: transform 0.9s cubic-bezier(0.12, 0.8, 0.18, 1) !important;
+  transform: translateY(-130vh) scale(1.25) rotate(0deg) !important;
   pointer-events: none;
 }
 
 .scroll-rocket-btn.is-launching .rocket-flame-core {
-  animation: launchFlameCore 0.08s infinite alternate !important;
+  animation: launchFlameCore 0.07s infinite alternate !important;
 }
 
 .scroll-rocket-btn.is-launching .rocket-flame-outer {
-  animation: launchFlameOuter 0.1s infinite alternate !important;
+  animation: launchFlameOuter 0.08s infinite alternate !important;
 }
 
 @keyframes launchFlameCore {
-  0% { transform: scaleY(2.2) scaleX(1.3); }
-  100% { transform: scaleY(3.0) scaleX(1.5); }
+  0% { transform: scaleY(2.4) scaleX(1.3); }
+  100% { transform: scaleY(3.4) scaleX(1.6); }
 }
 
 @keyframes launchFlameOuter {
-  0% { transform: scaleY(2.4) scaleX(1.4); opacity: 0.9; }
-  100% { transform: scaleY(3.4) scaleX(1.7); opacity: 1; }
+  0% { transform: scaleY(2.6) scaleX(1.4); opacity: 0.9; }
+  100% { transform: scaleY(3.8) scaleX(1.8); opacity: 1; }
+}
+
+/* Shockwave Ring on Ignition */
+.rocket-shockwave {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(6, 182, 212, 0.85);
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.6);
+  pointer-events: none;
+  animation: shockwaveExpand 0.55s ease-out forwards;
+}
+
+@keyframes shockwaveExpand {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
 }
 
 /* Docked Tooltip Badge */
@@ -139,7 +166,7 @@
   transform: translateX(-50%) translateY(4px);
   opacity: 0;
   pointer-events: none;
-  background: rgba(12, 16, 32, 0.88);
+  background: rgba(12, 16, 32, 0.92);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(6, 182, 212, 0.35);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
@@ -161,16 +188,16 @@
   transform: translateX(-50%) translateY(0);
 }
 
-/* Particles */
+/* Smoke & Energy Particles */
 .rocket-particle {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
   will-change: transform, opacity;
-  animation: particleFade 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: particleFade 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 @keyframes particleFade {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
-  100% { transform: translate(-50%, calc(-50% + 22px)) scale(0.2); opacity: 0; }
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.95; }
+  100% { transform: translate(-50%, calc(-50% + 24px)) scale(0.15); opacity: 0; }
 }

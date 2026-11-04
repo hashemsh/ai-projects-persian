@@ -12,13 +12,15 @@ window.QRRenderer = (function() {
       return;
     }
     qrInstance = new window.QRCodeStyling({
-      width: 320,
-      height: 320,
+      width: 300,
+      height: 300,
       data: 'https://tablighma.com/',
       margin: 10,
       qrOptions: { errorCorrectionLevel: 'H' },
-      dotsOptions: { type: 'rounded', color: '#06b6d4' },
-      backgroundOptions: { color: '#ffffff' }
+      dotsOptions: { type: 'square', color: '#000000' },
+      backgroundOptions: { color: '#ffffff' },
+      cornersSquareOptions: { type: 'square', color: '#000000' },
+      cornersDotOptions: { type: 'square', color: '#000000' }
     });
     containerEl.innerHTML = '';
     qrInstance.append(containerEl);
@@ -33,8 +35,8 @@ window.QRRenderer = (function() {
 
     const stylingConfig = {
       data: options.data || 'https://tablighma.com/',
-      width: 320,
-      height: 320,
+      width: 300,
+      height: 300,
       margin: options.margin !== undefined ? options.margin : 10,
       qrOptions: {
         errorCorrectionLevel: options.errorCorrection || 'H'
@@ -42,12 +44,12 @@ window.QRRenderer = (function() {
       image: options.logo || undefined,
       imageOptions: {
         hideBackgroundDots: true,
-        imageSize: options.logoSize || 0.28,
+        imageSize: options.logoSize || 0.26,
         margin: options.logoMargin !== undefined ? options.logoMargin : 4,
         crossOrigin: 'anonymous'
       },
       dotsOptions: {
-        type: options.dotType || 'rounded',
+        type: options.dotType || 'square',
         ...(options.gradient ? {
           gradient: {
             type: options.gradientType || 'linear',
@@ -65,21 +67,16 @@ window.QRRenderer = (function() {
         color: options.transparentBg ? 'transparent' : (options.bgColor || '#ffffff')
       },
       cornersSquareOptions: {
-        type: options.cornerSquareType || 'extra-rounded',
-        color: options.cornerColor || (options.gradient ? options.color1 : options.color1)
+        type: options.cornerSquareType || 'square',
+        color: options.gradient ? options.color1 : (options.color1 || '#000000')
       },
       cornersDotOptions: {
-        type: options.cornerDotType || 'dot',
-        color: options.cornerColor || (options.gradient ? options.color2 : options.color1)
+        type: options.cornerDotType || 'square',
+        color: options.gradient ? options.color2 : (options.color1 || '#000000')
       }
     };
 
     qrInstance.update(stylingConfig);
-  }
-
-  async function getRawCanvas() {
-    if (!qrInstance) return null;
-    return await qrInstance.getRawData('canvas');
   }
 
   async function download(extension = 'png', filename = 'qrcode-studio-pro', size = 1024) {
@@ -114,22 +111,30 @@ window.QRRenderer = (function() {
 
   async function decodeCurrentQR() {
     if (typeof window.jsQR !== 'function') {
-      return { success: false, error: 'موتور رمزگشایی بارگذاری نشده است.' };
+      return { success: false, error: 'موتور رمزگشایی jsQR لود نشده است.' };
     }
     const canvas = document.querySelector('#qrCanvasBox canvas');
     if (!canvas) {
       return { success: false, error: 'کانواس کیوآرکد در صفحه یافت نشد.' };
     }
     try {
-      const ctx = canvas.getContext('2d');
-      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      // Draw onto a white-backed offscreen canvas for high-contrast scanning
+      const tempCanvas = document.createElement('canvas');
+      tempCanvas.width = canvas.width;
+      tempCanvas.height = canvas.height;
+      const ctx = tempCanvas.getContext('2d');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+      ctx.drawImage(canvas, 0, 0);
+
+      const imgData = ctx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
       const code = window.jsQR(imgData.data, imgData.width, imgData.height, {
-        inversionAttempts: 'dontInvert'
+        inversionAttempts: 'attemptBoth'
       });
       if (code && code.data) {
         return { success: true, data: code.data };
       }
-      return { success: false, error: 'کد توسط دوربین قابل خواندن نبود (کنتراست یا اندازه لوگو را بررسی کنید).' };
+      return { success: false, error: 'بارکد با این ترکیب رنگ یا لوگو توسط دوربین قابل تشخیص نبود؛ لطفاً تضاد رنگ را افزایش دهید یا از چیدمان مربعی استفاده کنید.' };
     } catch (e) {
       return { success: false, error: e.message };
     }
@@ -140,7 +145,6 @@ window.QRRenderer = (function() {
     render,
     download,
     copyToClipboard,
-    decodeCurrentQR,
-    getRawCanvas
+    decodeCurrentQR
   };
 })();

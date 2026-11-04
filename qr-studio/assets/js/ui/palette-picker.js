@@ -23,7 +23,7 @@ window.QRPalettePicker = (function() {
     if (!boxEl || !window.QRPresets) return;
     boxEl.innerHTML = window.QRPresets.brandIcons.map(icon => `
       <button type="button" class="btn-brand-icon p-2 rounded-xl border border-white/10 hover:border-cyan-400/50 bg-dark-900 transition flex items-center justify-center text-xs" data-id="${icon.id}" title="${icon.name}">
-        ${icon.svg ? `<img src="${icon.svg}" class="w-5 h-5 pointer-events-none" alt="${icon.name}">` : `<span class="text-[11px] text-slate-400">بدون لوگو</span>`}
+        ${icon.path ? `<img src="${icon.path}" class="w-6 h-6 pointer-events-none rounded" alt="${icon.name}">` : `<span class="text-[11px] text-slate-400 font-semibold px-1">بدون لوگو</span>`}
       </button>
     `).join('');
 
@@ -32,7 +32,7 @@ window.QRPalettePicker = (function() {
         boxEl.querySelectorAll('.btn-brand-icon').forEach(b => b.classList.remove('border-cyan-400', 'bg-cyan-500/10'));
         btn.classList.add('border-cyan-400', 'bg-cyan-500/10');
         const found = window.QRPresets.brandIcons.find(i => i.id === btn.dataset.id);
-        onSelect(found && found.svg ? found.svg : null);
+        onSelect(found && found.path ? found.path : null);
       });
     });
   }

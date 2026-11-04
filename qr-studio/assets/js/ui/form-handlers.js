@@ -8,15 +8,6 @@ window.QRFormHandlers = (function() {
     if (!tpl) return;
     containerEl.innerHTML = tpl();
 
-    // Auto format card number input
-    const bankCard = containerEl.querySelector('#inpBankCard');
-    if (bankCard) {
-      bankCard.addEventListener('input', (e) => {
-        let v = e.target.value.replace(/\D/g, '').slice(0, 16);
-        e.target.value = v.replace(/(.{4})/g, '$1-').replace(/-$/, '');
-      });
-    }
-
     // Toggle wifi password visibility
     const btnToggleWifi = containerEl.querySelector('#btnToggleWifiPass');
     const inpWifiPass = containerEl.querySelector('#inpWifiPass');
@@ -40,50 +31,22 @@ window.QRFormHandlers = (function() {
           type: document.getElementById('inpWifiType')?.value || 'WPA',
           hidden: document.getElementById('inpWifiHidden')?.checked || false
         };
-      case 'vcard':
+      case 'whatsapp':
         return {
-          firstName: document.getElementById('inpVcFirst')?.value || '',
-          lastName: document.getElementById('inpVcLast')?.value || '',
-          org: document.getElementById('inpVcOrg')?.value || '',
-          title: document.getElementById('inpVcTitle')?.value || '',
-          phone: document.getElementById('inpVcPhone')?.value || '',
-          email: document.getElementById('inpVcEmail')?.value || '',
-          url: document.getElementById('inpVcUrl')?.value || ''
+          phone: document.getElementById('inpWaPhone')?.value || '',
+          text: document.getElementById('inpWaText')?.value || ''
         };
-      case 'bank':
+      case 'telegram':
         return {
-          cardNumber: document.getElementById('inpBankCard')?.value || '',
-          sheba: document.getElementById('inpBankSheba')?.value || '',
-          ownerName: document.getElementById('inpBankOwner')?.value || '',
-          bankName: document.getElementById('inpBankName')?.value || ''
+          target: document.getElementById('inpTgTarget')?.value || '',
+          text: document.getElementById('inpTgText')?.value || ''
         };
-      case 'sms':
+      case 'instagram':
         return {
-          phone: document.getElementById('inpSmsPhone')?.value || '',
-          message: document.getElementById('inpSmsMsg')?.value || ''
+          username: document.getElementById('inpIgUser')?.value || ''
         };
-      case 'email':
-        return {
-          to: document.getElementById('inpMailTo')?.value || '',
-          subject: document.getElementById('inpMailSub')?.value || '',
-          body: document.getElementById('inpMailBody')?.value || ''
-        };
-      case 'geo':
-        return {
-          lat: document.getElementById('inpGeoLat')?.value || '',
-          lng: document.getElementById('inpGeoLng')?.value || '',
-          title: document.getElementById('inpGeoTitle')?.value || ''
-        };
-      case 'event':
-        return {
-          title: document.getElementById('inpEventTitle')?.value || '',
-          startDate: document.getElementById('inpEventStart')?.value || '',
-          endDate: document.getElementById('inpEventEnd')?.value || '',
-          location: document.getElementById('inpEventLoc')?.value || ''
-        };
-      case 'text':
       default:
-        return { text: document.getElementById('inpRawText')?.value || '' };
+        return { url: document.getElementById('inpUrl')?.value || '' };
     }
   }
 

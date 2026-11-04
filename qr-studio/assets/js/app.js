@@ -4,17 +4,17 @@
 window.QRApp = (function() {
   const state = {
     type: 'url',
-    dotType: 'rounded',
-    cornerSquareType: 'extra-rounded',
-    cornerDotType: 'dot',
-    color1: '#06b6d4',
-    color2: '#4f46e5',
-    gradient: true,
+    dotType: 'square',
+    cornerSquareType: 'square',
+    cornerDotType: 'square',
+    color1: '#000000',
+    color2: '#000000',
+    gradient: false,
     gradientType: 'linear',
     bgColor: '#ffffff',
     transparentBg: false,
     logo: null,
-    logoSize: 0.28,
+    logoSize: 0.26,
     errorCorrection: 'H',
     margin: 10
   };
@@ -28,7 +28,7 @@ window.QRApp = (function() {
       const container = document.getElementById('qrCanvasBox');
       window.QRRenderer.render({ ...state, data: payload }, container);
       updateScanBadge();
-    }, 150);
+    }, 120);
   }
 
   function initUI() {
@@ -96,16 +96,27 @@ window.QRApp = (function() {
       state.color2 = p.color2;
       state.bgColor = p.bg;
       state.transparentBg = false;
-      document.getElementById('inpColor1').value = p.color1;
-      document.getElementById('inpColor2').value = p.color2;
-      document.getElementById('inpBgColor').value = p.bg;
-      document.getElementById('chkTransparentBg').checked = false;
+
+      const c1 = document.getElementById('inpColor1');
+      const c2 = document.getElementById('inpColor2');
+      const bg = document.getElementById('inpBgColor');
+      const trans = document.getElementById('chkTransparentBg');
+      const chkGrad = document.getElementById('chkEnableGradient');
+
+      if (c1) c1.value = p.color1;
+      if (c2) c2.value = p.color2;
+      if (bg) bg.value = p.bg;
+      if (trans) trans.checked = false;
+      if (chkGrad) {
+        chkGrad.checked = state.gradient;
+        document.getElementById('gradientSecondColorWrapper')?.classList.toggle('hidden', !state.gradient);
+      }
       triggerRender();
     });
 
     const iconBox = document.getElementById('brandIconsList');
-    window.QRPalettePicker.renderBrandIcons(iconBox, (svg) => {
-      state.logo = svg;
+    window.QRPalettePicker.renderBrandIcons(iconBox, (iconPath) => {
+      state.logo = iconPath;
       triggerRender();
     });
 
@@ -135,25 +146,20 @@ window.QRApp = (function() {
       state.logo = null;
       const f = document.getElementById('inpCustomLogo');
       if (f) f.value = '';
+      document.querySelectorAll('.btn-brand-icon').forEach(b => b.classList.remove('border-cyan-400', 'bg-cyan-500/10'));
       triggerRender();
     });
   }
 
   function bindActionButtons() {
-    document.getElementById('btnDownloadPng')?.addEventListener('click', () => {
-      window.QRRenderer.download('png', `qrcode-${state.type}-${Date.now()}`, 1200);
-      window.QRPalettePicker.showToast('دانلود آغاز شد', 'تصویر باکیفیت PNG آماده و ذخیره شد.');
-    });
+    const handleDownload = (ext, size, label) => {
+      window.QRRenderer.download(ext, `qrcode-${state.type}-${Date.now()}`, size);
+      window.QRPalettePicker.showToast('دانلود آغاز شد', `فایل ${label} با موفقیت ذخیره گردید.`);
+    };
 
-    document.getElementById('btnDownloadSvg')?.addEventListener('click', () => {
-      window.QRRenderer.download('svg', `qrcode-${state.type}-${Date.now()}`);
-      window.QRPalettePicker.showToast('دانلود آغاز شد', 'فایل برداری SVG بدون افت کیفیت ذخیره شد.');
-    });
-
-    document.getElementById('btnDownloadWebp')?.addEventListener('click', () => {
-      window.QRRenderer.download('webp', `qrcode-${state.type}-${Date.now()}`, 1024);
-      window.QRPalettePicker.showToast('دانلود آغاز شد', 'فایل فشرده WebP ذخیره شد.');
-    });
+    document.getElementById('btnDownloadPng')?.addEventListener('click', () => handleDownload('png', 1200, 'PNG باکیفیت'));
+    document.getElementById('btnDownloadSvg')?.addEventListener('click', () => handleDownload('svg', null, 'وکتور SVG'));
+    document.getElementById('btnDownloadWebp')?.addEventListener('click', () => handleDownload('webp', 1024, 'WebP'));
 
     document.getElementById('btnCopyClipboard')?.addEventListener('click', async () => {
       try {
@@ -171,30 +177,24 @@ window.QRApp = (function() {
       if (res.success) {
         statusBox.innerHTML = `
           <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs space-y-1">
-            <div class="font-bold flex items-center gap-1.5"><span>✓</span><span>اسکن با دوربین ۱۰۰٪ موفق بود!</span></div>
+            <div class="font-bold flex items-center gap-1.5"><span>✓</span><span>تست دوربین ۱۰۰٪ موفق بود!</span></div>
             <div class="text-[11px] text-slate-300 break-all font-mono select-all bg-dark-950/60 p-2 rounded-lg">${res.data}</div>
-          </div>
-        `;
+          </div>`;
       } else {
         statusBox.innerHTML = `
           <div class="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
             خطا در خوانش اسکنر: ${res.error}
-          </div>
-        `;
+          </div>`;
       }
     });
   }
 
   function updateScanBadge() {
     const badge = document.getElementById('qrReadyBadge');
-    if (badge) {
-      badge.textContent = `✓ آماده اسکن | نوع: ${state.type.toUpperCase()}`;
-    }
+    if (badge) badge.textContent = `✓ آماده اسکن | نسخه استاندارد`;
   }
 
   return { init: initUI };
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
-  window.QRApp.init();
-});
+document.addEventListener('DOMContentLoaded', () => window.QRApp.init());

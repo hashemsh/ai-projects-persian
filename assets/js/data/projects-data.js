@@ -77,7 +77,7 @@ window.HubData.projects = [
     title: 'استودیو کیوآرکد پرو (QR Studio Pro)',
     badge: 'پروژه شماره ۷ • کاربردی و فعال',
     emoji: '📱',
-    description: 'استودیوی آنلاین و فوق‌سفارشی ساخت کدهای QR برای ۹ نوع دیتا (وای‌فای، کارت ویزیت دیجیتال، کارت بانکی، لوکیشن و تقویم) با استایل‌های مدرن نقاط، لوگوی مرکزی، گرادینت و دانلود وکتور SVG و PNG.',
+    description: 'استودیوی آنلاین ساخت کدهای QR برای ۵ فرمت کاربردی (لینک وب، وای‌فای، واتساپ با پیام آماده، تلگرام، پیج اینستاگرام) با آپلود لوگو، گرادینت و خروجی وکتور SVG و PNG.',
     techs: ['Canvas API', 'Vector SVG', 'QR Styling', 'jsQR Scanner'],
     url: './qr-studio/',
     accentGrad: 'from-cyan-400 via-indigo-500 to-pink-500',

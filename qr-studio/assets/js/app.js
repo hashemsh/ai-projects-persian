@@ -59,14 +59,8 @@ window.QRApp = (function() {
     });
 
     // 4. Corner Style Selectors
-    document.getElementById('selCornerSquare')?.addEventListener('change', (e) => {
-      state.cornerSquareType = e.target.value;
-      triggerRender();
-    });
-    document.getElementById('selCornerDot')?.addEventListener('change', (e) => {
-      state.cornerDotType = e.target.value;
-      triggerRender();
-    });
+    document.getElementById('selCornerSquare')?.addEventListener('change', (e) => { state.cornerSquareType = e.target.value; triggerRender(); });
+    document.getElementById('selCornerDot')?.addEventListener('change', (e) => { state.cornerDotType = e.target.value; triggerRender(); });
 
     // 5. Palettes & Brand Logos
     setupColorAndLogos();
@@ -114,12 +108,6 @@ window.QRApp = (function() {
       triggerRender();
     });
 
-    const iconBox = document.getElementById('brandIconsList');
-    window.QRPalettePicker.renderBrandIcons(iconBox, (iconPath) => {
-      state.logo = iconPath;
-      triggerRender();
-    });
-
     document.getElementById('inpColor1')?.addEventListener('input', (e) => { state.color1 = e.target.value; triggerRender(); });
     document.getElementById('inpColor2')?.addEventListener('input', (e) => { state.color2 = e.target.value; triggerRender(); });
     document.getElementById('inpBgColor')?.addEventListener('input', (e) => { state.bgColor = e.target.value; triggerRender(); });
@@ -130,14 +118,22 @@ window.QRApp = (function() {
       triggerRender();
     });
 
+    document.getElementById('inpLogoSize')?.addEventListener('input', (e) => {
+      state.logoSize = parseFloat(e.target.value);
+      const lbl = document.getElementById('lblLogoSize');
+      if (lbl) lbl.textContent = `${Math.round(state.logoSize * 100)}%`;
+      triggerRender();
+    });
+
     document.getElementById('inpCustomLogo')?.addEventListener('change', (e) => {
       const file = e.target.files[0];
       if (!file) return;
       const reader = new FileReader();
       reader.onload = (evt) => {
         state.logo = evt.target.result;
+        document.getElementById('logoControlsWrapper')?.classList.remove('hidden');
         triggerRender();
-        window.QRPalettePicker.showToast('لوگو بارگذاری شد', 'لوگوی دلخواه شما در مرکز کیوآرکد قرار گرفت.');
+        window.QRPalettePicker.showToast('لوگو بارگذاری شد', 'لوگو در مرکز کیوآرکد قرار گرفت.');
       };
       reader.readAsDataURL(file);
     });
@@ -146,8 +142,9 @@ window.QRApp = (function() {
       state.logo = null;
       const f = document.getElementById('inpCustomLogo');
       if (f) f.value = '';
-      document.querySelectorAll('.btn-brand-icon').forEach(b => b.classList.remove('border-cyan-400', 'bg-cyan-500/10'));
+      document.getElementById('logoControlsWrapper')?.classList.add('hidden');
       triggerRender();
+      window.QRPalettePicker.showToast('لوگو حذف شد', 'کیوآرکد بدون لوگو بازنشانی گردید.');
     });
   }
 

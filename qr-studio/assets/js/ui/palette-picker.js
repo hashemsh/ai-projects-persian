@@ -1,5 +1,5 @@
 /**
- * QR Code Studio Pro - Palette Picker, Icon Selector & Toast Helper
+ * QR Code Studio Pro - Palette Picker & Toast Helper
  */
 window.QRPalettePicker = (function() {
   function renderColorPresets(listEl, onSelect) {
@@ -15,24 +15,6 @@ window.QRPalettePicker = (function() {
       btn.addEventListener('click', () => {
         const p = window.QRPresets.colorPalettes[parseInt(btn.dataset.idx, 10)];
         onSelect(p);
-      });
-    });
-  }
-
-  function renderBrandIcons(boxEl, onSelect) {
-    if (!boxEl || !window.QRPresets) return;
-    boxEl.innerHTML = window.QRPresets.brandIcons.map(icon => `
-      <button type="button" class="btn-brand-icon p-2 rounded-xl border border-white/10 hover:border-cyan-400/50 bg-dark-900 transition flex items-center justify-center text-xs" data-id="${icon.id}" title="${icon.name}">
-        ${icon.path ? `<img src="${icon.path}" class="w-6 h-6 pointer-events-none rounded" alt="${icon.name}">` : `<span class="text-[11px] text-slate-400 font-semibold px-1">بدون لوگو</span>`}
-      </button>
-    `).join('');
-
-    boxEl.querySelectorAll('.btn-brand-icon').forEach(btn => {
-      btn.addEventListener('click', () => {
-        boxEl.querySelectorAll('.btn-brand-icon').forEach(b => b.classList.remove('border-cyan-400', 'bg-cyan-500/10'));
-        btn.classList.add('border-cyan-400', 'bg-cyan-500/10');
-        const found = window.QRPresets.brandIcons.find(i => i.id === btn.dataset.id);
-        onSelect(found && found.path ? found.path : null);
       });
     });
   }
@@ -54,7 +36,6 @@ window.QRPalettePicker = (function() {
 
   return {
     renderColorPresets,
-    renderBrandIcons,
     showToast
   };
 })();

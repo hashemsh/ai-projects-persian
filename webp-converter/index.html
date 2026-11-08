@@ -83,7 +83,7 @@
     </section>
 
     <!-- Drag & Drop Zone -->
-    <section class="mb-10">
+    <section class="mb-6">
       <div id="dropzone" class="glass-card dropzone-box rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden shadow-glass group">
         <input type="file" id="fileInput" multiple accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer z-20" title="تصاویر خود را انتخاب یا اینجا رها کنید" />
         <div class="relative z-10 flex flex-col items-center pointer-events-none">
@@ -95,6 +95,19 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Fetch Image by URL Section -->
+    <section class="glass-card p-4 sm:p-5 mb-10 border-emerald-500/20 shadow-glass">
+      <form id="urlForm" class="flex flex-col sm:flex-row items-center gap-3">
+        <div class="flex items-center gap-2 text-emerald-400 font-bold text-xs whitespace-nowrap">
+          <span>🔗</span><span>دریافت با لینک اینترنتی:</span>
+        </div>
+        <input type="url" id="urlInput" placeholder="https://example.com/image.jpg" class="glass-input flex-1 w-full px-4 py-2.5 text-xs font-mono" dir="ltr" />
+        <button type="submit" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold text-xs transition shadow-md whitespace-nowrap flex items-center justify-center gap-1.5">
+          <span>دریافت و تبدیل</span><span>⚡</span>
+        </button>
+      </form>
     </section>
 
     <!-- Processing Loader Indicator -->

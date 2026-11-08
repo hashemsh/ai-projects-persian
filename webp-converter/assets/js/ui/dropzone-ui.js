@@ -102,6 +102,24 @@ window.WebpDropzoneUI = (function() {
       }
       showToast('گالری با موفقیت پاکسازی شد.');
     });
+
+    // URL Fetching Form
+    const urlForm = document.getElementById('urlForm');
+    const urlInput = document.getElementById('urlInput');
+
+    urlForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const url = urlInput?.value?.trim();
+      if (!url) return;
+      showToast('در حال دریافت تصویر از لینک اینترنتی...');
+      try {
+        const file = await window.WebpUtils.fetchImageFromUrl(url);
+        handleNewFiles([file], onFilesChange);
+        if (urlInput) urlInput.value = '';
+      } catch (err) {
+        showToast(err.message || 'خطا در دریافت تصویر از آدرس اینترنتی.');
+      }
+    });
   }
 
   function handleNewFiles(files, callback) {

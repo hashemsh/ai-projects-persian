@@ -6,9 +6,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   if (!window.HubUI) return;
 
-  // 1. Render project cards
+  // 1. Render categorized project cards
   if (typeof window.HubUI.renderProjects === 'function') {
-    window.HubUI.renderProjects('#projects-grid');
+    window.HubUI.renderProjects('#projects-container');
   }
 
   // 2. Initialize 3D tilt and mouse spotlight on cards

@@ -1,0 +1,93 @@
+/* ==========================================================================
+   WebP Dropzone & Range Slider Styles (< 200 lines)
+   ========================================================================== */
+
+.dropzone-box {
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dropzone-box:hover, .dropzone-box.drag-active {
+  border-color: #10b981;
+  background-color: rgba(16, 185, 129, 0.06);
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Custom Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  transition: background 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #10b981;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.7);
+  border: 2px solid #ffffff;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: #34d399;
+}
+
+/* Scale Buttons */
+.scale-btn {
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.scale-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.scale-btn.active {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.6);
+  color: #34d399;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Light Theme Overrides */
+html.light-theme .dropzone-box {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #cbd5e1;
+}
+
+html.light-theme .dropzone-box:hover, html.light-theme .dropzone-box.drag-active {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: #10b981;
+}
+
+html.light-theme .scale-btn {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+html.light-theme .scale-btn.active {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: #10b981;
+  color: #065f46;
+}

@@ -134,5 +134,17 @@ window.HubData.projects = [
     url: './regex-studio/',
     accentGrad: 'from-indigo-400 via-cyan-400 to-pink-500',
     buttonGrad: 'from-indigo-600 via-cyan-600 to-pink-600 hover:from-indigo-500 hover:to-cyan-500'
+  },
+  {
+    id: 9,
+    category: 'dev',
+    title: 'مبدل و فشرده‌ساز تصاویر (WebP Studio Pro)',
+    badge: 'پروژه شماره ۹ • کاربردی و فعال',
+    emoji: '🖼️',
+    description: 'ابزار آنلاین تبدیل و فشرده‌سازی انواع فرمت‌های تصویری به WebP با کاهش حجم تا ۸۵٪، حفظ شفافیت آلفا، پردازش دسته‌ای و ۱۰۰٪ کلاینت‌ساید بدون ارسال به سرور.',
+    techs: ['Canvas API', 'Blob Engine', 'Batch WebP', 'Zero-Server'],
+    url: './webp-converter/',
+    accentGrad: 'from-emerald-400 via-cyan-400 to-indigo-500',
+    buttonGrad: 'from-emerald-600 via-cyan-600 to-indigo-600 hover:from-emerald-500 hover:to-cyan-500'
   }
 ];

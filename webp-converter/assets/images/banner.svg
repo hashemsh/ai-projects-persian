@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%" fill="none">
+  <defs>
+    <radialGradient id="bannerBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0f2027" />
+      <stop offset="50%" stop-color="#0c192c" />
+      <stop offset="100%" stop-color="#070913" />
+    </radialGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bannerBg)" />
+  <circle cx="200" cy="180" r="180" fill="#10b981" fill-opacity="0.12" filter="blur(70px)" />
+  <circle cx="1000" cy="450" r="220" fill="#06b6d4" fill-opacity="0.1" filter="blur(80px)" />
+
+  <g transform="translate(600, 240)">
+    <circle cx="0" cy="0" r="90" stroke="#10b981" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="8 6"/>
+    <circle cx="0" cy="0" r="68" fill="#0c0f1d" stroke="#34d399" stroke-width="2.5" />
+    <text x="0" y="16" font-family="Courier New, monospace" font-size="44" font-weight="black" fill="#34d399" text-anchor="middle">.webp</text>
+  </g>
+
+  <text x="600" y="390" font-family="system-ui, sans-serif" font-size="44" font-weight="900" fill="url(#textGrad)" text-anchor="middle">WebP Studio Pro</text>
+  <text x="600" y="440" font-family="system-ui, sans-serif" font-size="20" font-weight="bold" fill="#cbd5e1" text-anchor="middle">مبدل و فشرده‌ساز تصاویر به WebP با حفظ نهایت کیفیت</text>
+  <text x="600" y="480" font-family="system-ui, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">۱۰۰٪ کلاینت‌ساید و محرمانه • پردازش گروهی • کاهش حجم تا ۸۵٪ • مقایسه زنده</text>
+</svg>

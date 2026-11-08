@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Regex AI Studio - Main Stylesheet (< 200 lines)
+   ========================================================================== */
+
+@import url('components/editor.css');
+@import url('components/cheatsheet.css');
+
+:root {
+  --color-primary: #6366f1;
+  --color-accent: #06b6d4;
+  --color-pink: #ec4899;
+}
+
+body {
+  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Glassmorphism Surface Cards */
+.glass-panel {
+  background: rgba(14, 18, 36, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+}
+
+.glass-input {
+  background: rgba(7, 9, 19, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  color: #f8fafc;
+  transition: all 0.25s ease;
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 20px -3px rgba(99, 102, 241, 0.3);
+}
+
+/* Light Theme Overrides */
+html.light-theme .glass-panel {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(226, 232, 240, 0.95);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+}
+
+html.light-theme .glass-input {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+html.light-theme .glass-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 15px -2px rgba(99, 102, 241, 0.25);
+}

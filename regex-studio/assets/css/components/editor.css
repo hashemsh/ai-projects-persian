@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Regex Editor & Live Match Highlight Styles (< 200 lines)
+   ========================================================================== */
+
+/* Live Match Marks */
+.regex-match-mark {
+  border-radius: 4px;
+  padding: 1px 3px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.match-highlight-a {
+  background-color: rgba(6, 182, 212, 0.25);
+  color: #38bdf8;
+  border-bottom: 2px solid #06b6d4;
+}
+
+.match-highlight-b {
+  background-color: rgba(236, 72, 153, 0.25);
+  color: #f472b6;
+  border-bottom: 2px solid #ec4899;
+}
+
+/* Flag Toggle Buttons */
+.flag-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.flag-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.flag-toggle-btn.active {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.6);
+  color: #a5b4fc;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+}
+
+/* Preset Chips */
+.preset-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.preset-chip:hover, .preset-chip.active {
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #ffffff;
+  box-shadow: 0 0 15px -3px rgba(99, 102, 241, 0.3);
+  transform: translateY(-1px);
+}
+
+.preset-tab {
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+
+.preset-tab:hover { color: #ffffff; }
+.preset-tab.active {
+  background: rgba(99, 102, 241, 0.2);
+  color: #ffffff;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+/* Code Language Buttons */
+.code-lang-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.code-lang-btn:hover { color: #ffffff; background: rgba(255, 255, 255, 0.08); }
+.code-lang-btn.active {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.6);
+  color: #ffffff;
+}

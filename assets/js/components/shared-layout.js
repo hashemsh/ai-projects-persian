@@ -23,7 +23,7 @@
 
   function initSharedLayout() {
     const path = window.location.pathname;
-    const isSub = /\/(lorem-plus|prompt-optimizer|placeholder-pro|site-auditor|utm-builder|schema-generator|qr-studio)\//.test(path) || (document.body && document.body.dataset.root === 'sub');
+    const isSub = /\/(lorem-plus|prompt-optimizer|placeholder-pro|site-auditor|utm-builder|schema-generator|qr-studio|regex-studio)\//.test(path) || (document.body && document.body.dataset.root === 'sub');
     const rootPath = isSub ? '../' : './';
     const logoSrc = isSub ? '../assets/images/logo.svg' : 'assets/images/logo.svg';
     const hubUrl = isSub ? '../' : './';

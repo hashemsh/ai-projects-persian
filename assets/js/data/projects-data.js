@@ -122,5 +122,17 @@ window.HubData.projects = [
     url: './placeholder-pro/',
     accentGrad: 'from-pink-500 via-purple-500 to-indigo-500',
     buttonGrad: 'from-pink-600 via-purple-600 to-indigo-600 hover:from-pink-500 hover:to-purple-500'
+  },
+  {
+    id: 8,
+    category: 'dev',
+    title: 'سازنده و تحلیل‌گر عبارات منظم (Regex AI Studio)',
+    badge: 'پروژه شماره ۸ • کاربردی و فعال',
+    emoji: '⚡',
+    description: 'ابزار تخصصی ساخت، تست زنده، اعتبارسنجی و تشریح مرحله‌به‌مرحله الگوهای Regex با پریست‌های بومی ایران، تبدیل زبان طبیعی به Regex و تولید خودکار کد برای ۸ زبان.',
+    techs: ['Regex Engine', 'Visual Explainer', 'Multi-Lang Code', 'Persian NLP'],
+    url: './regex-studio/',
+    accentGrad: 'from-indigo-400 via-cyan-400 to-pink-500',
+    buttonGrad: 'from-indigo-600 via-cyan-600 to-pink-600 hover:from-indigo-500 hover:to-cyan-500'
   }
 ];

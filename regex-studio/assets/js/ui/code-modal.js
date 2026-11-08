@@ -11,7 +11,7 @@ window.RegexCodeModal = (function() {
     modalDiv.id = 'code-modal';
     modalDiv.className = 'fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 hidden';
     modalDiv.innerHTML = `
-      <div class="glass-panel p-6 max-w-2xl w-full flex flex-col border border-indigo-500/40">
+      <div class="glass-card p-6 max-w-2xl w-full flex flex-col border border-indigo-500/40 shadow-2xl">
         <div class="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
           <h3 class="text-sm font-black text-white">تولید کد عبارت منظم (Code Export)</h3>
           <button type="button" id="btn-close-code-modal" class="text-slate-400 hover:text-white text-lg">✕</button>

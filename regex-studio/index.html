@@ -10,15 +10,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="../assets/js/config/tailwind-setup.js"></script>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+  <script>
+    const _origWarn = console.warn;
+    console.warn = (...args) => { if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return; _origWarn.apply(console, args); };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { vazir: ['Vazirmatn', 'sans-serif'], sans: ['Vazirmatn', 'sans-serif'] }, colors: { dark: { 950: '#070913', 900: '#0c0f1d', 850: '#111528', 800: '#171c34' } }, boxShadow: { glass: '0 8px 32px 0 rgba(0, 0, 0, 0.37)' } } }
+    }
+  </script>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/components/shared-nav.css">
 </head>
-<body data-root="sub" class="bg-dark-950 text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white font-sans">
+<body data-root="sub" class="bg-dark-950 text-slate-100 font-vazir min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
-    <div class="absolute -top-32 right-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[140px]"></div>
-    <div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-cyan-500/15 rounded-full blur-[160px]"></div>
+    <div class="absolute -top-32 right-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[140px] animate-pulse-slow"></div>
+    <div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-cyan-500/15 rounded-full blur-[160px] animate-pulse-slow"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col min-h-screen">
@@ -26,13 +37,11 @@
 
     <!-- Hero Title Section with Ample Vertical Spacing -->
     <header class="text-center my-10 md:my-14 py-2 relative">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border-indigo-500/30 text-indigo-300 text-xs md:text-sm font-semibold mb-4 shadow-sm">
-        <span>⚡ موتور هوشمند مهندسی عبارات منظم</span>
-        <span class="text-slate-500">•</span>
-        <span class="text-cyan-400 font-mono">Regex AI Studio</span>
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border-indigo-500/30 text-indigo-300 text-xs md:text-sm font-semibold mb-4 shadow-sm">
+        <span>⚡ موتور هوشمند مهندسی عبارات منظم</span><span class="text-slate-500">•</span><span class="text-cyan-400 font-mono">Regex AI Studio</span>
       </div>
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-5 leading-tight">
-        سازنده و تحلیل‌گر <span class="bg-gradient-to-r from-indigo-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent">عبارات منظم (Regex)</span>
+        سازنده و تحلیل‌گر <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">عبارات منظم (Regex)</span>
       </h1>
       <p class="max-w-3xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed">
         تست زنده، اعتبارسنجی بلادرنگ، تشریح ساختار به زبان ساده فارسی، پریست‌های پرکاربرد بومی ایران و تولید خودکار کد برای ۸ زبان برنامه‌نویسی.
@@ -40,15 +49,13 @@
     </header>
 
     <!-- AI Prompt to Regex Bar -->
-    <section class="glass-panel p-4 sm:p-5 mb-8 border-indigo-500/20">
+    <section class="glass-card p-4 sm:p-5 mb-8 border-indigo-500/20 shadow-glass">
       <form id="ai-prompt-form" class="flex flex-col sm:flex-row items-center gap-3">
         <div class="flex items-center gap-2 text-indigo-400 font-bold text-xs sm:text-sm whitespace-nowrap">
           <span>✨</span><span>تولید با هوش مصنوعی:</span>
         </div>
         <input type="text" id="ai-prompt-input" placeholder="به فارسی بنویسید (مثلاً: شماره موبایل ایران، کد ملی، آدرس سایت، ایمیل معتبر...)" class="glass-input flex-1 w-full px-4 py-2.5 text-xs sm:text-sm" />
-        <button type="submit" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-bold text-xs sm:text-sm transition shadow-md whitespace-nowrap">
-          تولید الگوی هوشمند
-        </button>
+        <button type="submit" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-bold text-xs sm:text-sm transition shadow-md whitespace-nowrap">تولید الگوی هوشمند</button>
       </form>
     </section>
 
@@ -71,11 +78,10 @@
       <!-- Left Column: Pattern & Test Editor (7 Cols) -->
       <div class="lg:col-span-7 space-y-6">
         <!-- Regex Input Box -->
-        <div class="glass-panel p-5">
+        <div class="glass-card p-5 shadow-glass">
           <div class="flex items-center justify-between mb-3">
             <label for="regex-pattern-input" class="text-xs font-bold text-slate-300 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-              <span>الگوی عبارت منظم (Regular Expression)</span>
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span><span>الگوی عبارت منظم (Regular Expression)</span>
             </label>
             <div id="regex-status-badge" class="text-xs"></div>
           </div>
@@ -101,7 +107,7 @@
         </div>
 
         <!-- Test String Input & Match Highlighter -->
-        <div class="glass-panel p-5">
+        <div class="glass-card p-5 shadow-glass">
           <div class="flex items-center justify-between mb-3">
             <label for="regex-test-input" class="text-xs font-bold text-slate-300">متن تستی جهت اعتبارسنجی زنده (Test String)</label>
             <div class="flex items-center gap-3 text-xs">
@@ -115,7 +121,7 @@
         </div>
 
         <!-- Replace Tool Box -->
-        <div class="glass-panel p-5">
+        <div class="glass-card p-5 shadow-glass">
           <div class="text-xs font-bold text-slate-300 mb-3 flex items-center gap-2">🔄 جایگزینی متنی (Regex Replace)</div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
@@ -134,7 +140,7 @@
 
       <!-- Right Column: Visual Explainer (5 Cols) -->
       <div class="lg:col-span-5 space-y-6">
-        <div class="glass-panel p-5 sticky top-24">
+        <div class="glass-card p-5 shadow-glass sticky top-24">
           <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
             <h2 class="text-sm font-black text-white flex items-center gap-2">
               <span class="text-indigo-400 text-base">🔍</span><span>تشریح گام‌به‌گام الگو (Breakdown)</span>
@@ -147,7 +153,7 @@
     </main>
 
     <!-- Educational Guide Section with Infographic -->
-    <section class="glass-panel p-6 sm:p-8 mb-16 border-white/10">
+    <section class="glass-card p-6 sm:p-8 mb-16 border-white/10 shadow-glass">
       <div class="text-center mb-8">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-cyan-300 text-xs font-bold mb-3">📚 راهنمای جامع عبارات منظم</div>
         <h2 class="text-2xl sm:text-3xl font-black text-white mb-2">آناتومی و جدول کلیدهای حیاتی Regex</h2>

@@ -135,10 +135,10 @@
             <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
               <div class="flex items-center gap-2">
                 <span class="text-base">🌐</span>
-                <h3 class="text-xs sm:text-sm font-bold text-white">پیش‌نمایش زنده در گوگل</h3>
+                <h3 class="card-header-title text-xs sm:text-sm font-bold text-white">پیش‌نمایش زنده در گوگل</h3>
               </div>
               <!-- Mobile/Desktop Switcher -->
-              <div class="flex items-center p-1 rounded-xl bg-dark-900 border border-white/10 text-[11px]">
+              <div class="serp-switcher flex items-center p-1 rounded-xl bg-dark-900 border border-white/10 text-[11px]">
                 <button type="button" id="btnSerpDesktop" class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-semibold transition">
                   دسکتاپ
                 </button>
@@ -149,7 +149,7 @@
             </div>
 
             <!-- Google Result Simulation Canvas -->
-            <div id="serpPreviewContent" class="overflow-hidden p-2 rounded-xl bg-dark-950/80 border border-white/5">
+            <div id="serpPreviewContent" class="serp-preview-wrapper overflow-hidden p-3 rounded-xl">
               <!-- Rendered via serp-preview.js -->
             </div>
           </div>
@@ -159,21 +159,21 @@
             <div class="flex items-center justify-between border-b border-white/10 pb-2.5 flex-wrap gap-2">
               <div class="flex items-center gap-2">
                 <span class="text-base">💻</span>
-                <h3 class="text-xs sm:text-sm font-bold text-white">کد خروجی JSON-LD</h3>
+                <h3 class="card-header-title text-xs sm:text-sm font-bold text-white">کد خروجی JSON-LD</h3>
               </div>
               <div class="flex items-center gap-3 text-[11px] text-slate-300">
                 <label class="flex items-center gap-1.5 cursor-pointer">
                   <input type="checkbox" id="toggleScriptTag" checked class="rounded border-slate-700 text-indigo-600 focus:ring-0">
-                  <span>تگ &lt;script&gt;</span>
+                  <span class="card-meta-text">تگ &lt;script&gt;</span>
                 </label>
                 <label class="flex items-center gap-1.5 cursor-pointer">
                   <input type="checkbox" id="toggleMinify" class="rounded border-slate-700 text-indigo-600 focus:ring-0">
-                  <span>فشرده (Minify)</span>
+                  <span class="card-meta-text">فشرده (Minify)</span>
                 </label>
               </div>
             </div>
 
-            <textarea id="schemaOutputCode" readonly rows="9" class="code-container w-full p-3 rounded-xl text-xs text-cyan-300 resize-none font-mono focus:outline-none"></textarea>
+            <textarea id="schemaOutputCode" readonly rows="9" class="code-container w-full p-3.5 rounded-xl text-xs resize-none font-mono focus:outline-none"></textarea>
 
             <!-- Export Buttons -->
             <div class="grid grid-cols-2 gap-2 pt-1">

@@ -53,13 +53,31 @@ input, button, select, textarea, optgroup {
   color: #64748b;
 }
 
-/* Code Output Area - Strict Monospace */
+/* Code Output Area - Strict Monospace & Dark Terminal Theme */
 .code-container,
-.code-container * {
+textarea.code-container {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
-  direction: ltr;
-  text-align: left;
+  direction: ltr !important;
+  text-align: left !important;
   tab-size: 2;
+  background-color: #070913 !important;
+  color: #38bdf8 !important;
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6) !important;
+  line-height: 1.6;
+}
+
+.code-container:focus,
+textarea.code-container:focus {
+  border-color: rgba(6, 182, 212, 0.65) !important;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6), 0 0 15px -3px rgba(6, 182, 212, 0.3) !important;
+}
+
+/* Google SERP Canvas Default (Dark) */
+.serp-preview-wrapper {
+  background: rgba(7, 9, 19, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
 }
 
 /* Custom Scrollbar */
@@ -216,9 +234,17 @@ input, button, select, textarea, optgroup {
 
 /* Light Mode Overrides */
 .light-theme .glass-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+
+.light-theme .card-header-title {
+  color: #0f172a !important;
+}
+
+.light-theme .card-meta-text {
+  color: #475569 !important;
 }
 
 .light-theme .schema-input {
@@ -233,32 +259,100 @@ input, button, select, textarea, optgroup {
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
 
-.light-theme .code-container {
-  background: #0f172a;
-  color: #f8fafc;
+.light-theme .code-container,
+.light-theme textarea.code-container {
+  background-color: #0c1222 !important;
+  color: #38bdf8 !important;
+  border-color: #334155 !important;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Light Mode Google SERP Simulator */
+.light-theme .serp-preview-wrapper {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 15px -3px rgba(15, 23, 42, 0.06) !important;
+}
+
+.light-theme .serp-switcher {
+  background: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light-theme .serp-switcher button:not(.bg-indigo-600) {
+  color: #64748b !important;
+}
+
+.light-theme .serp-switcher button:not(.bg-indigo-600):hover {
+  color: #0f172a !important;
+}
+
+.light-theme .serp-card {
+  color: #202124 !important;
 }
 
 .light-theme .serp-mobile {
-  background: #ffffff;
-  border-color: #e2e8f0;
+  background: #ffffff !important;
+  border: 2px solid #dadce0 !important;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.1) !important;
 }
 
 .light-theme .serp-title {
-  color: #1a0dab;
+  color: #1a0dab !important;
+}
+
+.light-theme .serp-title:hover {
+  text-decoration: underline !important;
 }
 
 .light-theme .serp-url-box {
-  color: #202124;
+  color: #202124 !important;
+}
+
+.light-theme .serp-url-box .shrink-0 {
+  background: #f1f3f4 !important;
+  color: #1a73e8 !important;
+  border-color: #dadce0 !important;
+}
+
+.light-theme .serp-url-box span.text-slate-200 {
+  color: #202124 !important;
+}
+
+.light-theme .serp-url-box span.text-slate-400 {
+  color: #5f6368 !important;
 }
 
 .light-theme .serp-snippet {
-  color: #4d5156;
+  color: #4d5156 !important;
+}
+
+.light-theme .serp-faq-item {
+  border-top-color: #ebebeb !important;
 }
 
 .light-theme .serp-faq-q {
-  color: #1a0dab;
+  color: #1a0dab !important;
 }
 
 .light-theme .serp-faq-a {
-  color: #4d5156;
+  color: #4d5156 !important;
+  border-right-color: #1a73e8 !important;
+}
+
+.light-theme .serp-card ol {
+  color: #4d5156 !important;
+}
+
+.light-theme .serp-card ol li span {
+  color: #202124 !important;
+}
+
+.light-theme .serp-card .border-t {
+  border-color: #ebebeb !important;
+}
+
+.light-theme .serp-card .text-slate-300,
+.light-theme .serp-card .text-slate-400 {
+  color: #5f6368 !important;
 }

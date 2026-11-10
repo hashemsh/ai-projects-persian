@@ -155,16 +155,22 @@ window.HubUI.initSearch = function() {
     });
   });
 
-  // Keyboard Shortcuts: Ctrl+K or '/' to focus, Esc to clear
-  document.addEventListener('keydown', (e) => {
+  // Keyboard Shortcuts: Ctrl+K / Cmd+K / '/' to focus, Esc to clear
+  window.addEventListener('keydown', (e) => {
     const isEditing = ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName);
-    if ((e.ctrlKey && (e.key === 'k' || e.key === 'K')) || (e.key === '/' && !isEditing)) {
+    const isK = e.code === 'KeyK' || e.key === 'k' || e.key === 'K' || e.key === 'ن';
+    const isSlash = (e.code === 'Slash' || e.key === '/') && !isEditing;
+
+    if (((e.ctrlKey || e.metaKey) && isK) || isSlash) {
       e.preventDefault();
+      e.stopPropagation();
       searchInput.focus();
       searchInput.select();
+      const searchBox = document.getElementById('tools-search-section');
+      if (searchBox) searchBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else if (e.key === 'Escape' && document.activeElement === searchInput) {
       resetSearch();
       searchInput.blur();
     }
-  });
+  }, true);
 };

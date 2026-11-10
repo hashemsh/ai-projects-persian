@@ -1,6 +1,12 @@
+<p align="center">
+  <img src="./assets/images/banner.jpg" alt="AI Projects Hub - Hashem Sh" width="100%" style="border-radius: 18px;">
+</p>
+
 # 🚀 پروژه‌های ساخته‌شده با هوش مصنوعی (AI Projects Hub)
 
-مجموعه ابزارها و میکرواپ‌های وب مدرن که با دستیاری مدل‌های هوش مصنوعی کدنویسی و توسعه یافته‌اند (میزبانی شده روی **GitHub Pages**).
+مجموعه ابزارها و میکرواپ‌های وب مدرن که با دستیاری هوش مصنوعی کدنویسی و توسعه یافته‌اند (میزبانی شده روی **GitHub Pages**).
+
+> ⭐️ **اگر این مجموعه ابزارها برای شما کاربردی بود، لطفاً با زدن یک Star در گیت‌هاب و دنبال کردن در لینکدین از توسعه ابزارهای جدیدتر حمایت کنید!**
 
 🔗 **مشاهده ویترین آنلاین پروژه‌ها:** [hashemsh.github.io/ai-projects-persian](https://hashemsh.github.io/ai-projects-persian/)
 

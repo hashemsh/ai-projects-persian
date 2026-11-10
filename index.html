@@ -50,6 +50,68 @@
       <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-400 leading-relaxed">
         مجموعه‌ای از میکرواپ‌های آنلاین و ماژولار جهت ارتقای تولید محتوا، مهندسی پرامپت، و طراحی دارایی‌های گرافیکی؛ بدون وابستگی‌های سنگین و آماده بهره‌برداری.
       </p>
+
+      <!-- Modern Live Search Bar with Debounce -->
+      <div class="search-wrapper max-w-2xl mx-auto mt-8 px-2" id="tools-search-section">
+        <div class="search-input-container relative">
+          <div class="search-glow" aria-hidden="true"></div>
+          <div class="search-input-box relative flex items-center p-1.5 sm:p-2">
+            <span class="search-icon pr-3 pl-2 text-slate-400 flex items-center justify-center">
+              <svg class="w-5 h-5 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              id="tool-search-input" 
+              class="w-full bg-transparent text-white placeholder-slate-400 text-sm sm:text-base font-medium px-2 py-2 focus:outline-none" 
+              placeholder="جستجوی ابزارها (مثلاً: سئو، پرامپت، QR، WebP، اسکیما)..." 
+              autocomplete="off"
+              aria-label="جستجوی زنده ابزارها"
+            >
+            <!-- Debounce spinner -->
+            <div id="search-spinner" class="hidden items-center px-2 text-cyan-400 animate-spin">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+              </svg>
+            </div>
+            <!-- Clear button -->
+            <button 
+              type="button" 
+              id="search-clear-btn" 
+              class="hidden items-center justify-center w-8 h-8 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-all text-sm ml-1" 
+              title="پاک کردن جستجو (Esc)"
+              aria-label="پاک کردن جستجو"
+            >
+              ✕
+            </button>
+            <!-- Keyboard Shortcut Badge -->
+            <div class="hidden sm:flex items-center gap-1 pl-2 pr-1 text-[11px] text-slate-400 select-none">
+              <kbd class="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 font-mono text-[10px] text-slate-300">Ctrl</kbd>
+              <span>+</span>
+              <kbd class="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 font-mono text-[10px] text-slate-300">K</kbd>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Search Tags / Preset Filters -->
+        <div class="flex items-center justify-center gap-2 flex-wrap mt-3 text-xs">
+          <span class="text-slate-400 text-[11px] font-medium">پیشنهاد سریع:</span>
+          <button type="button" class="quick-filter-tag" data-query="سئو">🔍 سئو</button>
+          <button type="button" class="quick-filter-tag" data-query="پرامپت">⚡ پرامپت</button>
+          <button type="button" class="quick-filter-tag" data-query="QR">📱 QR کد</button>
+          <button type="button" class="quick-filter-tag" data-query="WebP">🖼️ تبدیل عکس</button>
+          <button type="button" class="quick-filter-tag" data-query="Regex">⚙️ عبارات منظم</button>
+          <button type="button" class="quick-filter-tag" data-query="مارکتینگ">🎯 مارکتینگ</button>
+        </div>
+
+        <!-- Search Status / Result Count Indicator -->
+        <div id="search-status-bar" class="hidden mt-3 text-center text-xs">
+          <span id="search-status-text" class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/25 inline-flex items-center gap-1.5 shadow-sm">
+          </span>
+        </div>
+      </div>
     </header>
 
     <!-- Categorized Projects Showcase Section -->
@@ -182,6 +244,7 @@
   <script src="assets/js/ui/projects-renderer.js"></script>
   <script src="assets/js/ui/faq.js"></script>
   <script src="assets/js/ui/rocket.js"></script>
+  <script src="assets/js/ui/search.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

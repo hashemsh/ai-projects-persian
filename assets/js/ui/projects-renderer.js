@@ -10,7 +10,7 @@ window.HubUI.renderProjects = function(targetSelector = '#projects-container') {
   const categories = (window.HubData && window.HubData.categories) || [];
   if (!container || !projects.length) return;
 
-  function renderCard(p) {
+  window.HubUI.renderProjectCard = function(p) {
     return `
       <article class="project-card p-6 flex flex-col justify-between group">
         <div class="card-accent-bar bg-gradient-to-r ${p.accentGrad}"></div>
@@ -47,7 +47,9 @@ window.HubUI.renderProjects = function(targetSelector = '#projects-container') {
         </a>
       </article>
     `;
-  }
+  };
+
+  const renderCard = window.HubUI.renderProjectCard;
 
   // Quick category navigation pills bar
   const navPillsHtml = `

@@ -30,4 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof window.HubUI.initScrollRocket === 'function') {
     window.HubUI.initScrollRocket();
   }
+
+  // 6. Initialize live debounced search
+  if (typeof window.HubUI.initSearch === 'function') {
+    window.HubUI.initSearch();
+  }
 });

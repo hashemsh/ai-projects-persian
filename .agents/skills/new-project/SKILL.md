@@ -68,7 +68,7 @@ Use this skill whenever creating, scaffolding, or implementing a new micro-app o
    - Interactive micro-interactions: smooth transitions, hover feedback, copy-to-clipboard toast notifications.
 
 5. **Mandatory Signature & Branding**:
-   - Handled automatically by `shared-layout.js` (Hashem Sh branding, GitHub, LinkedIn, Telegram, Antigravity & Gemini Pro).
+   - Handled automatically by `shared-layout.js` (Hashem Sh branding, GitHub, LinkedIn, Telegram, Antigravity).
 
 ---
 

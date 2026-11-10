@@ -73,4 +73,4 @@ schema-generator/
 
 - **طراحی و پیاده‌سازی:** [Hashem Sh](https://github.com/hashemsh)
 - **پلتفرم:** [هاب ابزارهای کاربردی هوش مصنوعی فارسی](https://hashemsh.github.io/ai-projects-persian/)
-- **قدرت‌گرفته از:** Google Antigravity & Gemini Pro
+- **قدرت‌گرفته از:** Antigravity

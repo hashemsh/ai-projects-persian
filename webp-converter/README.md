@@ -58,5 +58,5 @@ webp-converter/
 ## 👨‍💻 توسعه‌دهنده و حق تالیف
 
 - **طراحی و توسعه:** هاشم شیخی‌پور ([Hashem Sh](https://github.com/hashemsh))
-- **توسعه‌یافته با:** Google Antigravity & Gemini Pro
+- **توسعه‌یافته با:** Antigravity
 - **مجوز:** MIT License

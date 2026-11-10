@@ -136,4 +136,4 @@ ai-projects-persian/
 - **طراحی و توسعه:** [Hashem Sh](https://github.com/hashemsh)
 - **لینکدین:** [hashemsheikhypour](https://www.linkedin.com/in/hashemsheikhypour)
 - **تلگرام:** [@init10](https://t.me/init10)
-- **قدرت‌گرفته از:** [Google Antigravity](https://deepmind.google/technologies/gemini/) & [Gemini Pro](https://gemini.google.com/)
+- **قدرت‌گرفته از:** [Antigravity](https://deepmind.google/technologies/gemini/)

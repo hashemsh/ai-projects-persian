@@ -109,5 +109,5 @@ placeholder-pro/
 ## 👨‍💻 سازنده و حقوق معنوی
 
 - **طراحی و توسعه:** [Hashem Sh](https://github.com/hashemsh)
-- **قدرت‌گرفته از:** [Google Antigravity](https://deepmind.google/technologies/gemini/) & [Gemini Pro](https://gemini.google.com/)
+- **قدرت‌گرفته از:** [Antigravity](https://deepmind.google/technologies/gemini/)
 - بخشی از مجموعه پروژه‌های ریپازیتوری [ai-projects-persian](https://github.com/hashemsh/ai-projects-persian)

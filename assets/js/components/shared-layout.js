@@ -157,8 +157,6 @@
           <div class="flex items-center gap-1.5 text-xs text-slate-400 font-medium" dir="ltr">
             <span>Powered by</span>
             <span class="px-2 py-0.5 rounded-lg bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 font-semibold">Antigravity</span>
-            <span>&amp;</span>
-            <span class="px-2 py-0.5 rounded-lg bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-semibold">Gemini Pro</span>
           </div>
         </div>
         <div class="pt-3 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">

@@ -74,7 +74,7 @@ site-auditor/
 
 ## 👨‍💻 توسعه‌دهنده
 
-**Designed & Developed by Hashem Sh | Powered by Antigravity & Gemini Pro**
+**Designed & Developed by Hashem Sh | Powered by Antigravity**
 - GitHub: [hashemsh](https://github.com/hashemsh)
 - LinkedIn: [hashemsheikhypour](https://www.linkedin.com/in/hashemsheikhypour)
 - Telegram: [@init10](https://t.me/init10)

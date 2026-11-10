@@ -79,4 +79,4 @@ prompt-optimizer/
 ## 👨‍💻 توسعه‌دهنده و سازنده
 - **توسعه‌یافته توسط:** [Hashem Sh](https://github.com/hashemsh)
 - **پروفایل لینکدین:** [hashemsheikhypour](https://www.linkedin.com/in/hashemsheikhypour)
-- **قدرت‌گرفته از:** [Google Antigravity](https://deepmind.google/technologies/gemini/) & [Gemini Pro](https://gemini.google.com/)
+- **قدرت‌گرفته از:** [Antigravity](https://deepmind.google/technologies/gemini/)

@@ -88,6 +88,7 @@
 | ۷ | **استودیو کیوآرکد پرو (QR Studio Pro)** | 🎯 ابزار مارکتینگ و ارتباطات | Canvas API, Vector SVG, QR Styling, jsQR Scanner | [مشاهده آنلاین](./qr-studio/) | فعال ✅ |
 | ۸ | **سازنده و تحلیل‌گر عبارات منظم (Regex AI Studio)** | 💻 ابزار برنامه‌نویسی و AI | Regex Engine, Visual Explainer, Multi-Lang Code | [مشاهده آنلاین](./regex-studio/) | فعال ✅ |
 | ۹ | **مبدل و فشرده‌ساز تصاویر (WebP Studio Pro)** | 💻 ابزار برنامه‌نویسی و وب | Canvas API, Blob Engine, Batch WebP, Zero-Server | [مشاهده آنلاین](./webp-converter/) | فعال ✅ |
+| ۱۰ | **محاسبه‌گر هزینه هوش مصنوعی (AI Cost Estimator)** | 💻 ابزار برنامه‌نویسی و AI | Pricing Engine, Live Toman Converter, WebP Directory | [مشاهده آنلاین](./ai-cost-estimator/) | فعال ✅ |
 
 ---
 
@@ -98,6 +99,9 @@
 2. **[پرامپت پلاس (Prompt+)](./prompt-optimizer/):**
    - دستیار تخصصی مهندسی پرامپت فارسی برای مدل‌های زبانی (ChatGPT، Claude، Gemini، DeepSeek) به همراه عیارسنج درصدی کیفیت پرامپت.
 3. **[پلیس‌هولدر پرو (Placeholder Pro)](./placeholder-pro/):**
+   - استودیوی ساخت آنلاین تصاویر موکاپ و پلیس‌هولدر وب با ابعاد استاندارد سوشال و فرمت WebP و SVG.
+4. **[محاسبه‌گر و مقایسه‌گر هزینه مدل‌های AI (AI Cost Estimator)](./ai-cost-estimator/):**
+   - ارزیابی، مقایسه زنده و برآورد هزینه‌های تولید عکس (Google Nano Banana, Midjourney, FLUX)، تولید ویدیو (Runway, Luma, Kling)، کدنویسی و توسعه اپلیکیشن (Claude 3.5 Sonnet, DeepSeek V3, Cursor, v0) و چت هوشمند به دلار و معادل تومان، همراه با دانشنامه مشخصات و اشتراک ماهانه.
    - استودیوی ساخت تصاویر موقت و ماکت‌های گرافیکی وب بر پایه HTML5 Canvas با خروجی ابعاد استاندارد سوشال و فرمت‌های WebP و SVG.
 4. **[سایت آدیتور پرو (Site Auditor Pro)](./site-auditor/):**
    - ممیزی فنی صفحات وب، ارزیابی متاتگ‌ها، استانداردهای Core Web Vitals، امنیت و شبیه‌ساز پیش‌نمایش در نتایج گوگل و کارت‌های شبکه‌های اجتماعی.

@@ -1,0 +1,101 @@
+/* AI Cost Estimator - Table & Component Styles (< 200 lines) */
+.comparison-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.4) rgba(12, 15, 29, 0.6);
+}
+
+.comparison-table {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: right;
+  font-family: 'Vazirmatn', sans-serif !important;
+}
+
+.comparison-table th,
+.comparison-table td {
+  font-family: 'Vazirmatn', sans-serif !important;
+}
+
+.comparison-table th {
+  background: rgba(12, 15, 29, 0.95);
+  padding: 1rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #94a3b8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.comparison-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+  transition: background 0.2s ease;
+}
+
+.comparison-table tr:hover td {
+  background: rgba(99, 102, 241, 0.06);
+}
+
+.model-logo-box {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  background: rgba(12, 15, 29, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.model-logo-box img {
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: contain;
+}
+
+.currency-toggle-pill {
+  border-radius: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.currency-toggle-pill.active {
+  background: #6366f1;
+  color: #ffffff;
+}
+
+.stat-card-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #06b6d4, #6366f1, #ec4899);
+}
+
+.badge-nowrap {
+  white-space: nowrap !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}

@@ -146,5 +146,17 @@ window.HubData.projects = [
     url: './webp-converter/',
     accentGrad: 'from-emerald-400 via-cyan-400 to-indigo-500',
     buttonGrad: 'from-emerald-600 via-cyan-600 to-indigo-600 hover:from-emerald-500 hover:to-cyan-500'
+  },
+  {
+    id: 10,
+    category: 'dev',
+    title: 'محاسبه‌گر هزینه هوش مصنوعی (AI Cost Estimator)',
+    badge: 'پروژه شماره ۱۰ • کاربردی و فعال',
+    emoji: '💰',
+    description: 'محاسبه و مقایسه لحظه‌ای هزینه‌های تولید عکس (Nano Banana, Midjourney)، ویدیو، کدنویسی، ساخت نرم‌افزار و چت به دلار و معادل تومان همراه با دانشنامه اشتراک ماهیانه.',
+    techs: ['AI Pricing Engine', 'Live Toman Converter', 'Model Suggester', 'WebP Directory'],
+    url: './ai-cost-estimator/',
+    accentGrad: 'from-amber-400 via-pink-500 to-indigo-500',
+    buttonGrad: 'from-amber-600 via-pink-600 to-indigo-600 hover:from-amber-500 hover:to-pink-500'
   }
 ];

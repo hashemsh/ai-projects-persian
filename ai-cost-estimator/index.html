@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محاسبه‌گر و مقایسه‌گر هوشمند هزینه مدل‌های AI | هاب هوش مصنوعی</title>
+  <meta name="description" content="محاسبه و مقایسه لحظه‌ای هزینه‌های تولید عکس، ویدیو، کدنویسی، ساخت اپلیکیشن و چت مدل‌های هوش مصنوعی با تبدیل به تومان و پیشنهاد مدل">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+  <script>
+    const _origWarn = console.warn;
+    console.warn = (...args) => { if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return; _origWarn.apply(console, args); };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { vazir: ['Vazirmatn', 'sans-serif'], sans: ['Vazirmatn', 'sans-serif'] }, colors: { dark: { 950: '#070913', 900: '#0c0f1d', 850: '#111528', 800: '#171c34' } }, boxShadow: { glass: '0 8px 32px 0 rgba(0, 0, 0, 0.37)' } } }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components/shared-nav.css">
+</head>
+<body data-root="sub" class="bg-dark-950 text-slate-100 font-vazir min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -top-32 right-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-cyan-500/15 rounded-full blur-[160px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col min-h-screen">
+    <header id="shared-header"></header>
+
+    <!-- Hero Title Section with Enhanced Vertical Spacing -->
+    <header class="text-center my-14 md:my-20 py-4 relative">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border-indigo-500/30 text-indigo-300 text-xs md:text-sm font-semibold mb-6 shadow-sm">
+        <span>💰 هوش مصنوعی اقتصادی و هوشمند</span><span class="text-slate-500">•</span><span class="text-cyan-400 font-mono">AI Cost &amp; Model Estimator</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
+        محاسبه‌گر و مقایسه‌گر هوشمند <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-400 bg-clip-text text-transparent">هزینه مدل‌های AI</span>
+      </h1>
+      <p class="max-w-3xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed">
+        بررسی دقیق هزینه‌های تولید عکس (شامل Google Nano Banana و Midjourney v7)، ویدیو، کدنویسی و اپلیکیشن (Claude Sonnet 5.5 و DeepSeek-V4-Pro) و چت به دلار و معادل تومان همراه با پیشنهاد بهترین گزینه‌ها.
+      </p>
+    </header>
+
+    <!-- Currency & Sync Settings Bar -->
+    <section class="glass-card p-4 sm:p-5 mb-10 border-indigo-500/20 shadow-glass flex flex-col lg:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl">💵</div>
+        <div>
+          <div class="text-xs font-bold text-slate-200">تنظیم نرخ مبنای ارز (تومان / تتر)</div>
+          <div class="text-[11px] text-slate-400">محاسبه آنی کلیه هزینه‌ها بر اساس نرخ روز تومان</div>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-2.5 w-full lg:w-auto justify-end">
+        <div class="relative flex-1 sm:w-48">
+          <input type="number" id="usd-rate-input" value="270000" class="glass-input w-full px-3 py-2 text-sm text-center font-bold text-cyan-300" />
+          <span class="absolute left-3 top-2.5 text-[11px] text-slate-500">تومان</span>
+        </div>
+        <button type="button" id="btn-fetch-rate" class="px-3.5 py-2 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-200 border border-indigo-500/30 text-xs font-bold transition flex items-center gap-1.5" title="دریافت و اعتبارسنجی نرخ آنلاین">
+          <span>🔄</span><span>بررسی آنلاین</span>
+        </button>
+        <button type="button" id="reset-rate-btn" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs text-slate-400 border border-white/10 transition">پیش‌فرض</button>
+      </div>
+    </section>
+
+    <!-- Task Selector Tabs -->
+    <nav class="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 mb-8 scrollbar-none" aria-label="انتخاب وظیفه">
+      <button type="button" class="category-tab active px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="image">
+        <span>🖼️</span><span>تولید عکس و طراحی</span>
+      </button>
+      <button type="button" class="category-tab px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="video">
+        <span>🎬</span><span>تولید ویدیو و تیزر</span>
+      </button>
+      <button type="button" class="category-tab px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="code">
+        <span>💻</span><span>نرم‌افزار، وبسایت و کد</span>
+      </button>
+      <button type="button" class="category-tab px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="chat">
+        <span>💬</span><span>چت و دستیار متنی</span>
+      </button>
+    </nav>
+
+    <!-- Dynamic Requirement Controls Area -->
+    <section class="glass-card p-6 mb-10 border-white/10 shadow-glass">
+      <div id="controls-container"></div>
+    </section>
+
+    <!-- Top Recommendations Cards -->
+    <section id="recommendations-container" class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10"></section>
+
+    <!-- Main Comparison Table Section -->
+    <main class="glass-card p-6 border-white/10 shadow-glass mb-14">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/5">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-1">جدول برآورد هزینه مدل‌ها برای نیاز شما</h2>
+          <div class="flex items-center gap-2 text-xs text-slate-400">
+            <span>تخمین زنده بر اساس مقادیر وارد شده</span>
+            <span>•</span>
+            <span id="sync-status-badge" class="text-slate-400">آخرین همگام‌سازی تعرفه‌ها: پاییز ۲۰۲۶</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <button type="button" id="btn-sync-data" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs font-bold transition flex items-center gap-1.5">
+            <span class="sync-icon">⚡</span><span>به‌روزرسانی تعرفه‌ها</span>
+          </button>
+          <div class="flex items-center p-1 rounded-xl bg-dark-900 border border-white/10 text-xs">
+            <button type="button" class="currency-toggle-pill active" data-cur="both">هردو ($ و تومان)</button>
+            <button type="button" class="currency-toggle-pill" data-cur="usd">فقط $</button>
+            <button type="button" class="currency-toggle-pill" data-cur="toman">فقط تومان</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>مدل هوش مصنوعی</th>
+              <th>توسعه‌دهنده</th>
+              <th>تعرفه پایه واحد</th>
+              <th>هزینه تخمینی نیاز شما</th>
+              <th>نوع مدل</th>
+              <th>نشان پیشنهاد</th>
+            </tr>
+          </thead>
+          <tbody id="models-table-body"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <!-- Secondary Comprehensive Directory Table: Capabilities & Monthly Subscriptions -->
+    <section class="glass-card p-6 border-white/10 shadow-glass mb-16">
+      <div class="mb-6 pb-4 border-b border-white/5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-cyan-300 text-xs font-bold mb-3">
+          📚 دانشنامه و راهنمای جامع ابزارها
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-white mb-2">جدول کارایی‌ها، تخصص و اشتراک ماهانه مدل‌ها</h2>
+        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+          مرجع کامل ویژگی‌های اختصاصی هر مدل، هزینه پلن‌های ماهیانه به دلار و تومان، و وضعیت سهمیه‌های رایگان.
+        </p>
+      </div>
+
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>نام مدل هوش مصنوعی</th>
+              <th class="hidden sm:table-cell">شرکت سازنده</th>
+              <th>تخصص و کارایی اصلی</th>
+              <th>هزینه پلن ماهانه ($)</th>
+              <th>معادل ماهیانه (تومان)</th>
+              <th>وضعیت سهمیه رایگان</th>
+            </tr>
+          </thead>
+          <tbody id="directory-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer id="shared-footer"></footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/components/shared-layout.js"></script>
+  <script src="assets/js/data/models-data.js"></script>
+  <script src="assets/js/data/models-code-chat.js"></script>
+  <script src="assets/js/data/directory-data.js"></script>
+  <script src="assets/js/engine/calculator.js"></script>
+  <script src="assets/js/ui/tabs-ui.js"></script>
+  <script src="assets/js/ui/table-renderer.js"></script>
+  <script src="assets/js/ui/directory-renderer.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

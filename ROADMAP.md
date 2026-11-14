@@ -88,7 +88,7 @@
 | ۷ | **استودیو کیوآرکد پرو (QR Studio Pro)** | 🎯 ابزار مارکتینگ و ارتباطات | Canvas API, Vector SVG, QR Styling, jsQR Scanner | [مشاهده آنلاین](./qr-studio/) | فعال ✅ |
 | ۸ | **سازنده و تحلیل‌گر عبارات منظم (Regex AI Studio)** | 💻 ابزار برنامه‌نویسی و AI | Regex Engine, Visual Explainer, Multi-Lang Code | [مشاهده آنلاین](./regex-studio/) | فعال ✅ |
 | ۹ | **مبدل و فشرده‌ساز تصاویر (WebP Studio Pro)** | 💻 ابزار برنامه‌نویسی و وب | Canvas API, Blob Engine, Batch WebP, Zero-Server | [مشاهده آنلاین](./webp-converter/) | فعال ✅ |
-| ۱۰ | **محاسبه‌گر هزینه هوش مصنوعی (AI Cost Estimator)** | 💻 ابزار برنامه‌نویسی و AI | Pricing Engine, Live Toman Converter, WebP Directory | [مشاهده آنلاین](./ai-cost-estimator/) | فعال ✅ |
+| ۱۰ | **محاسبه‌گر هزینه هوش مصنوعی (AI Cost Estimator)** | 💻 ابزار برنامه‌نویسی و AI | Pricing Engine, Live Toman Converter, WebP Directory | [مشاهده آنلاین](./ai-cost-estimator/) | در حال توسعه ⏳ |
 
 ---
 

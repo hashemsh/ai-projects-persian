@@ -118,7 +118,7 @@ ai-projects-persian/
 9. **[مبدل و فشرده‌ساز تصاویر به WebP (WebP Studio Pro)](https://hashemsh.github.io/ai-projects-persian/webp-converter/)** • [مستندات کامل](./webp-converter/README.md)
    - تبدیل و فشرده‌سازی آنلاین انواع تصاویر به WebP با کاهش حجم تا ۸۵٪، حفظ ترنسپرنسی و دانلود گروهی ۱۰۰٪ محلی در مرورگر
 
-10. **[محاسبه‌گر هزینه هوش مصنوعی (AI Cost Estimator)](https://hashemsh.github.io/ai-projects-persian/ai-cost-estimator/)** • [مستندات کامل](./ai-cost-estimator/README.md)
+10. **[محاسبه‌گر هزینه هوش مصنوعی (AI Cost Estimator)](https://hashemsh.github.io/ai-projects-persian/ai-cost-estimator/)** *(در حال توسعه ⏳)* • [مستندات کامل](./ai-cost-estimator/README.md)
     - محاسبه و مقایسه زنده هزینه‌های تصویر (Google Nano Banana, Midjourney, FLUX)، ویدیو (Runway, Luma, Kling)، کدنویسی (Claude 3.5, DeepSeek V3, Cursor, v0) و چت به دلار و معادل تومان همراه با دانشنامه اشتراک ماهانه
 
 ---

@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>محاسبه‌گر و مقایسه‌گر هوشمند هزینه مدل‌های AI | هاب هوش مصنوعی</title>
-  <meta name="description" content="محاسبه و مقایسه لحظه‌ای هزینه‌های تولید عکس، ویدیو، کدنویسی، ساخت اپلیکیشن و چت مدل‌های هوش مصنوعی با تبدیل به تومان و پیشنهاد مدل">
+  <title>محاسبه‌گر و مقایسه‌گر هزینه مدل‌های هوش مصنوعی (AI Cost Estimator) | هاب ابزارها</title>
+  <meta name="description" content="برآورد تقریبی و مقایسه لحظه‌ای هزینه‌های تولید عکس، ویدیو، کدنویسی، ساخت نرم‌افزار و چت هوش مصنوعی به دلار و معادل تومان">
+  <link rel="canonical" href="https://hashemsh.github.io/ai-projects-persian/ai-cost-estimator/">
+  <meta property="og:title" content="محاسبه‌گر هزینه مدل‌های هوش مصنوعی (AI Cost Estimator)">
+  <meta property="og:description" content="برآورد تقریبی و مقایسه شفاف هزینه‌های ابزارهای هوش مصنوعی به دلار و تومان با مستندات رسمی">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/images/banner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
   <script>
     const _origWarn = console.warn;
     console.warn = (...args) => { if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return; _origWarn.apply(console, args); };
@@ -35,34 +40,35 @@
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col min-h-screen">
     <header id="shared-header"></header>
 
-    <!-- Hero Title Section with Enhanced Vertical Spacing -->
-    <header class="text-center my-14 md:my-20 py-4 relative">
+    <!-- Hero Title Section -->
+    <section class="text-center my-14 md:my-20 py-4 relative" aria-labelledby="main-heading">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border-amber-500/35 bg-amber-500/10 text-amber-300 text-xs md:text-sm font-semibold mb-6 shadow-sm">
         <span>⚡ نسخه بتا و در حال توسعه ⏳</span><span class="text-amber-500/50">•</span><span class="text-cyan-400 font-mono">AI Cost &amp; Model Estimator</span>
       </div>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
+      <h1 id="main-heading" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
         محاسبه‌گر و مقایسه‌گر هوشمند <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-400 bg-clip-text text-transparent">هزینه مدل‌های AI</span>
       </h1>
       <p class="max-w-3xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed">
-        بررسی دقیق هزینه‌های تولید عکس (شامل Google Nano Banana و Midjourney v7)، ویدیو، کدنویسی و اپلیکیشن (Claude Sonnet 5.5 و DeepSeek-V4-Pro) و چت به دلار و معادل تومان همراه با پیشنهاد بهترین گزینه‌ها.
+        برآورد تقریبی و مقایسه شفاف هزینه‌های تولید عکس (Google Nano Banana, Midjourney v8.2)، ویدیو (Seedance 2.5, Runway)، کدنویسی (Claude 3.7 Sonnet, DeepSeek V4-Pro) و چت به دلار و معادل تومان.
       </p>
-    </header>
+    </section>
 
     <!-- Currency & Sync Settings Bar -->
-    <section class="glass-card p-4 sm:p-5 mb-10 border-indigo-500/20 shadow-glass flex flex-col lg:flex-row items-center justify-between gap-4">
+    <section class="glass-card p-4 sm:p-5 mb-10 border-indigo-500/20 shadow-glass flex flex-col lg:flex-row items-center justify-between gap-4" aria-label="تنظیمات نرخ ارز">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl">💵</div>
+        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl" aria-hidden="true">💵</div>
         <div>
           <div class="text-xs font-bold text-slate-200">تنظیم نرخ مبنای ارز (تومان / تتر)</div>
-          <div class="text-[11px] text-slate-400">محاسبه آنی کلیه هزینه‌ها بر اساس نرخ روز تومان</div>
+          <div class="text-[11px] text-slate-400">محاسبه آنی بر اساس نرخ پایه بازار با امکان شخصی‌سازی</div>
         </div>
       </div>
       <div class="flex flex-wrap items-center gap-2.5 w-full lg:w-auto justify-end">
+        <label for="usd-rate-input" class="text-xs text-slate-400 whitespace-nowrap">هر ۱ دلار:</label>
         <div class="relative flex-1 sm:w-48">
-          <input type="number" id="usd-rate-input" value="270000" class="glass-input w-full px-3 py-2 text-sm text-center font-bold text-cyan-300" />
-          <span class="absolute left-3 top-2.5 text-[11px] text-slate-500">تومان</span>
+          <input type="number" id="usd-rate-input" min="1000" step="1000" value="270000" class="glass-input w-full px-3 py-2 text-sm text-center font-bold text-cyan-300" aria-label="نرخ دلار به تومان" />
+          <span class="absolute left-3 top-2.5 text-[11px] text-slate-500" aria-hidden="true">تومان</span>
         </div>
-        <button type="button" id="btn-fetch-rate" class="px-3.5 py-2 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-200 border border-indigo-500/30 text-xs font-bold transition flex items-center gap-1.5" title="دریافت و اعتبارسنجی نرخ آنلاین">
+        <button type="button" id="btn-fetch-rate" class="px-3.5 py-2 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-200 border border-indigo-500/30 text-xs font-bold transition flex items-center gap-1.5" title="استعلام نرخ آنلاین از صرافی">
           <span>🔄</span><span>بررسی آنلاین</span>
         </button>
         <button type="button" id="reset-rate-btn" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs text-slate-400 border border-white/10 transition">پیش‌فرض</button>
@@ -70,62 +76,63 @@
     </section>
 
     <!-- Task Selector Tabs -->
-    <nav class="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 mb-8 scrollbar-none" aria-label="انتخاب وظیفه">
-      <button type="button" class="category-tab active px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="image">
+    <nav class="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 mb-8 scrollbar-none" role="tablist" aria-label="انتخاب نوع وظیفه هوش مصنوعی">
+      <button type="button" role="tab" aria-selected="true" class="category-tab active px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="image">
         <span>🖼️</span><span>تولید عکس و طراحی</span>
       </button>
-      <button type="button" class="category-tab px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="video">
+      <button type="button" role="tab" aria-selected="false" class="category-tab px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="video">
         <span>🎬</span><span>تولید ویدیو و تیزر</span>
       </button>
-      <button type="button" class="category-tab px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="code">
+      <button type="button" role="tab" aria-selected="false" class="category-tab px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="code">
         <span>💻</span><span>نرم‌افزار، وبسایت و کد</span>
       </button>
-      <button type="button" class="category-tab px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="chat">
+      <button type="button" role="tab" aria-selected="false" class="category-tab px-5 py-3 rounded-2xl glass-card flex items-center gap-2 text-xs sm:text-sm font-bold whitespace-nowrap" data-category="chat">
         <span>💬</span><span>چت و دستیار متنی</span>
       </button>
     </nav>
 
     <!-- Dynamic Requirement Controls Area -->
-    <section class="glass-card p-6 mb-10 border-white/10 shadow-glass">
+    <section class="glass-card p-6 mb-10 border-white/10 shadow-glass" aria-label="تنظیم پارامترهای تسک">
       <div id="controls-container"></div>
     </section>
 
     <!-- Top Recommendations Cards -->
-    <section id="recommendations-container" class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10"></section>
+    <section id="recommendations-container" class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10" aria-label="مدل‌های پیشنهادی"></section>
 
     <!-- Main Comparison Table Section -->
-    <main class="glass-card p-6 border-white/10 shadow-glass mb-14">
+    <main class="glass-card p-6 border-white/10 shadow-glass mb-14" aria-label="بخش جدول مقایسه">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/5">
         <div>
           <h2 class="text-xl sm:text-2xl font-black text-white mb-1">جدول برآورد هزینه مدل‌ها برای نیاز شما</h2>
           <div class="flex items-center gap-2 text-xs text-slate-400">
-            <span>تخمین زنده بر اساس مقادیر وارد شده</span>
+            <span>برآورد تقریبی بر اساس مقادیر وارد شده</span>
             <span>•</span>
-            <span id="sync-status-badge" class="text-slate-400">آخرین همگام‌سازی تعرفه‌ها: پاییز ۲۰۲۶</span>
+            <span id="sync-status-badge" class="text-slate-400">تعرفه‌ها با منبع رسمی همگام هستند</span>
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-3">
           <button type="button" id="btn-sync-data" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs font-bold transition flex items-center gap-1.5">
-            <span class="sync-icon">⚡</span><span>به‌روزرسانی تعرفه‌ها</span>
+            <span class="sync-icon">⚡</span><span>همگام‌سازی تعرفه‌ها</span>
           </button>
-          <div class="flex items-center p-1 rounded-xl bg-dark-900 border border-white/10 text-xs">
-            <button type="button" class="currency-toggle-pill active" data-cur="both">هردو ($ و تومان)</button>
-            <button type="button" class="currency-toggle-pill" data-cur="usd">فقط $</button>
-            <button type="button" class="currency-toggle-pill" data-cur="toman">فقط تومان</button>
+          <div class="flex items-center p-1 rounded-xl bg-dark-900 border border-white/10 text-xs" role="group" aria-label="انتخاب واحد نمایش ارز">
+            <button type="button" class="currency-toggle-pill active" data-cur="both" aria-pressed="true">هردو ($ و تومان)</button>
+            <button type="button" class="currency-toggle-pill" data-cur="usd" aria-pressed="false">فقط $</button>
+            <button type="button" class="currency-toggle-pill" data-cur="toman" aria-pressed="false">فقط تومان</button>
           </div>
         </div>
       </div>
 
       <div class="comparison-table-wrapper">
         <table class="comparison-table">
+          <caption class="sr-only">جدول برآورد هزینه مدل‌های هوش مصنوعی</caption>
           <thead>
             <tr>
-              <th>مدل هوش مصنوعی</th>
-              <th>توسعه‌دهنده</th>
-              <th>تعرفه پایه واحد</th>
-              <th>هزینه تخمینی نیاز شما</th>
-              <th>نوع مدل</th>
-              <th>نشان پیشنهاد</th>
+              <th scope="col">مدل هوش مصنوعی</th>
+              <th scope="col">توسعه‌دهنده</th>
+              <th scope="col">تعرفه پایه واحد</th>
+              <th scope="col">برآورد هزینه نیاز شما</th>
+              <th scope="col">نوع دسترسی / پلن</th>
+              <th scope="col">شاخص پیشنهاد</th>
             </tr>
           </thead>
           <tbody id="models-table-body"></tbody>
@@ -133,28 +140,29 @@
       </div>
     </main>
 
-    <!-- Secondary Comprehensive Directory Table: Capabilities & Monthly Subscriptions -->
-    <section class="glass-card p-6 border-white/10 shadow-glass mb-16">
+    <!-- Secondary Comprehensive Directory Table -->
+    <section class="glass-card p-6 border-white/10 shadow-glass mb-16" aria-labelledby="directory-heading">
       <div class="mb-6 pb-4 border-b border-white/5">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-cyan-300 text-xs font-bold mb-3">
           📚 دانشنامه و راهنمای جامع ابزارها
         </div>
-        <h2 class="text-2xl sm:text-3xl font-black text-white mb-2">جدول کارایی‌ها، تخصص و اشتراک ماهانه مدل‌ها</h2>
+        <h2 id="directory-heading" class="text-2xl sm:text-3xl font-black text-white mb-2">جدول کارایی‌ها، تخصص و اشتراک ماهانه مدل‌ها</h2>
         <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-          مرجع کامل ویژگی‌های اختصاصی هر مدل، هزینه پلن‌های ماهیانه به دلار و تومان، و وضعیت سهمیه‌های رایگان.
+          مرجع کامل ویژگی‌های اختصاصی هر مدل، هزینه پلن‌های ماهیانه به دلار و تومان و سهمیه‌های رایگان رسمی.
         </p>
       </div>
 
       <div class="comparison-table-wrapper">
         <table class="comparison-table">
+          <caption class="sr-only">جدول کارایی‌ها و اشتراک ماهانه مدل‌های هوش مصنوعی</caption>
           <thead>
             <tr>
-              <th>نام مدل هوش مصنوعی</th>
-              <th class="hidden sm:table-cell">شرکت سازنده</th>
-              <th>تخصص و کارایی اصلی</th>
-              <th>هزینه پلن ماهانه ($)</th>
-              <th>معادل ماهیانه (تومان)</th>
-              <th>وضعیت سهمیه رایگان</th>
+              <th scope="col">نام مدل هوش مصنوعی</th>
+              <th scope="col" class="hidden md:table-cell">شرکت سازنده</th>
+              <th scope="col">تخصص و کارایی اصلی</th>
+              <th scope="col">هزینه پلن ماهانه ($)</th>
+              <th scope="col">معادل ماهیانه (تومان)</th>
+              <th scope="col">وضعیت سهمیه رایگان</th>
             </tr>
           </thead>
           <tbody id="directory-table-body"></tbody>
@@ -165,10 +173,12 @@
     <footer id="shared-footer"></footer>
   </div>
 
-  <!-- Scripts -->
+  <!-- Scripts: Single Source of Truth Modular Architecture -->
   <script src="../assets/js/components/shared-layout.js"></script>
   <script src="assets/js/data/models-data.js"></script>
-  <script src="assets/js/data/models-code-chat.js"></script>
+  <script src="assets/js/data/models-video.js"></script>
+  <script src="assets/js/data/models-code.js"></script>
+  <script src="assets/js/data/models-chat.js"></script>
   <script src="assets/js/data/directory-data.js"></script>
   <script src="assets/js/engine/calculator.js"></script>
   <script src="assets/js/ui/tabs-ui.js"></script>

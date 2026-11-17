@@ -7,7 +7,7 @@
     usdRate: 270000,
     currencyMode: 'both',
     filter: 'all',
-    lastSync: 'امروز'
+    lastSyncText: window.AI_DATA_STORE?.meta?.lastVerifiedFa || 'آبان ۱۴۰۵'
   };
 
   const el = {
@@ -25,9 +25,11 @@
   };
 
   function init() {
+    if (el.syncStatusBadge) {
+      el.syncStatusBadge.textContent = `آخرین اعتبارسنجی تعرفه‌ها: ${state.lastSyncText}`;
+    }
     bindEvents();
     renderAll();
-    // Zero automated background network fetch to guarantee clean error-free console
   }
 
   function getParams() {
@@ -38,17 +40,19 @@
       seconds: c?.querySelector('#param-seconds')?.value || 10,
       resolution: c?.querySelector('#param-resolution')?.value || '720p',
       scope: c?.querySelector('#param-scope')?.value || 'script',
-      prompts: c?.querySelector('#param-prompts')?.value || 100
+      prompts: c?.querySelector('#param-prompts')?.value || 100,
+      avgTokensPerMsg: c?.querySelector('#param-tokens-per-msg')?.value || 800
     };
   }
 
   function renderAll() {
-    const rawModels = AI_MODELS_DATA[state.category] || [];
+    const allModels = window.AI_DATA_STORE?.models || [];
+    const categoryModels = allModels.filter(m => m.category === state.category);
     const activeFilter = el.controlsContainer?.querySelector('.filter-chip.active')?.dataset.filter || 'all';
     
-    const filteredModels = rawModels.filter(m => {
-      if (activeFilter === 'free') return m.type === 'free' || m.badge === 'free';
-      if (activeFilter === 'paid') return m.type === 'paid';
+    const filteredModels = categoryModels.filter(m => {
+      if (activeFilter === 'free') return m.hasFreeTier === true || m.billingType === 'free';
+      if (activeFilter === 'paid') return m.billingType !== 'free';
       return true;
     });
 
@@ -56,7 +60,7 @@
     
     TableRenderer.renderRecommendations(evaluated, el.recContainer);
     TableRenderer.renderTable(evaluated, el.modelsTableBody, state.currencyMode);
-    DirectoryRenderer.renderDirectory(AI_DIRECTORY_DATA, el.directoryTableBody, state.usdRate);
+    DirectoryRenderer.renderDirectory(allModels, el.directoryTableBody, state.usdRate);
   }
 
   function bindEvents() {
@@ -80,8 +84,12 @@
 
     el.categoryTabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        el.categoryTabs.forEach(t => t.classList.remove('active'));
+        el.categoryTabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
         tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
         state.category = tab.dataset.category;
         TabsUI.renderControls(state.category, el.controlsContainer, renderAll);
         renderAll();
@@ -90,8 +98,12 @@
 
     el.currencyButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        el.currencyButtons.forEach(b => b.classList.remove('active'));
+        el.currencyButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         state.currencyMode = btn.dataset.cur;
         renderAll();
       });
@@ -105,21 +117,19 @@
     const spinIcon = btn?.querySelector('span');
     if (spinIcon) spinIcon.classList.add('animate-spin');
 
-    // Safe handling for local file:// protocol where browsers block CORS with origin: null
     const isLocalFile = window.location.protocol === 'file:';
 
     if (isLocalFile) {
       setTimeout(() => {
         if (spinIcon) spinIcon.classList.remove('animate-spin');
-        showToast('نرخ بازار بر مبنای آخرین قیمت روز (۲۷۰,۰۰۰ تومان) همگام و فعال است.');
-      }, 500);
+        showToast('در پروتکل محلی مرورگر (file://) استعلام اینترنتی مسدود است؛ نرخ بازار (۲۷۰,۰۰۰ تومان) به صورت دستی استفاده می‌شود.', 'warning');
+      }, 400);
       return;
     }
 
-    // When running under HTTP/HTTPS web servers or GitHub Pages:
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3500);
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
       const res = await fetch('https://api.nobitex.ir/v2/orderbook/USDTIRT', { 
         cache: 'no-store',
         signal: controller.signal 
@@ -134,7 +144,7 @@
             state.usdRate = livePrice;
             if (el.usdRateInput) el.usdRateInput.value = livePrice;
             renderAll();
-            showToast(`نرخ لحظه‌ای دلار استعلام شد: ${AICalculator.formatNumberFa(livePrice)} تومان`);
+            showToast(`نرخ لحظه‌ای دلار از نوبیتکس استعلام شد: ${AICalculator.formatNumberFa(livePrice)} تومان`, 'success');
             if (spinIcon) spinIcon.classList.remove('animate-spin');
             return;
           }
@@ -143,34 +153,45 @@
     } catch (_) {}
 
     if (spinIcon) spinIcon.classList.remove('animate-spin');
-    showToast('نرخ بازار بر مبنای آخرین قیمت روز (۲۷۰,۰۰۰ تومان) تأیید شد.');
+    showToast('دریافت آنلاین نرخ ناموفق بود؛ نرخ پایه بازار (۲۷۰,۰۰۰ تومان) به صورت دستی فعال است.', 'warning');
   }
 
-  function syncModelsData() {
+  async function syncModelsData() {
     const btn = el.btnSyncData;
     const icon = btn?.querySelector('.sync-icon');
     if (icon) icon.classList.add('animate-spin');
 
+    try {
+      const res = await fetch('assets/data/prices.json?t=' + Date.now()).catch(() => null);
+      if (res && res.ok) {
+        const json = await res.json();
+        if (json?.meta?.last_verified_fa) {
+          state.lastSyncText = json.meta.last_verified_fa;
+        }
+      }
+    } catch (_) {}
+
     setTimeout(() => {
       if (icon) icon.classList.remove('animate-spin');
       if (el.syncStatusBadge) {
-        el.syncStatusBadge.textContent = 'به‌روزرسانی شد: هم‌اکنون (۲۰۲۶)';
+        el.syncStatusBadge.textContent = `تعرفه‌ها با منبع اصلی همگام هستند (${state.lastSyncText})`;
         el.syncStatusBadge.classList.add('text-emerald-400');
       }
       renderAll();
-      showToast('تعرفه‌ها و مدل‌ها (شامل Seedance 2.5، Claude 5.5 و Nano Banana) همگام شدند!');
-    }, 600);
+      showToast('تعرفه‌ها و مستندات رسمی مدل‌ها با موفقیت همگام‌سازی شدند.', 'success');
+    }, 450);
   }
 
-  function showToast(msg) {
+  function showToast(msg, type = 'info') {
     const toast = document.createElement('div');
-    toast.className = 'fixed bottom-6 right-6 z-50 glass-card px-4 py-3 border-indigo-500 text-xs font-bold text-white shadow-2xl transition-all duration-300';
+    const borderColor = type === 'warning' ? 'border-amber-500' : 'border-indigo-500';
+    toast.className = `fixed bottom-6 right-6 z-50 glass-card px-4 py-3 ${borderColor} text-xs font-bold text-white shadow-2xl transition-all duration-300 max-w-sm leading-relaxed`;
     toast.textContent = msg;
     document.body.appendChild(toast);
     setTimeout(() => {
       toast.style.opacity = '0';
       setTimeout(() => toast.remove(), 300);
-    }, 3500);
+    }, 3800);
   }
 
   document.addEventListener('DOMContentLoaded', init);

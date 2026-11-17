@@ -1,178 +1,153 @@
 /**
- * AI Models Cost Dataset - Updated to Latest 2026 Models (< 200 lines)
+ * AI Models Master Dataset - Image Models (< 200 lines)
+ * Single Source of Truth with official sources and last verification dates.
  */
-const AI_MODELS_DATA = {
-  image: [
+window.AI_DATA_STORE = window.AI_DATA_STORE || {
+  meta: {
+    version: '2.4.0',
+    lastVerified: '2026-11-14',
+    lastVerifiedFa: '۲۴ آبان ۱۴۰۵ (نوامبر ۲۰۲۶)',
+    defaultUsdToman: 270000
+  },
+  models: []
+};
+
+(function() {
+  const imageModels = [
     {
       id: 'nano-banana-pro',
       name: 'Google Nano Banana Pro',
       provider: 'Google DeepMind',
       logo: 'assets/images/models/nanobanana.webp',
-      badge: 'best-quality',
-      badgeText: '🌟 برترین کیفیت ادیت و 4K',
-      type: 'paid',
-      typeText: 'API / Google AI Studio',
-      unitCostUSD: 0.134,
-      unitCostDesc: '$0.134 / رندر استودیویی 4K',
+      category: 'image',
+      billingType: 'per_unit',
+      baseUSD: 0.134,
+      unitDesc: '$0.134 / تصویر 4K',
+      hasFreeTier: true,
       freeQuota: 'سهمیه آزمایشی در AI Studio',
-      desc: 'مدل پرچمدار بومی جمینای؛ ادیت تعاملی چندمرحله‌ای، نگارش دقیق متن و پرسونای کاراکتر.'
+      badge: 'best-quality',
+      badgeText: 'کیفیت استودیویی 4K',
+      capability: 'تولید و ویرایش تعاملی چندمرحله‌ای تصویر با کیفیت 4K و رندر دقیق متن',
+      source_url: 'https://ai.google.dev/pricing',
+      monthlyUSD: 0,
+      monthlyDesc: 'پرداخت به میزان مصرف (Pay-as-you-go)',
+      desc: 'مدل پرچمدار تصویرسازی جمینای با پشتیبانی از ویرایش تعاملی و پرسونای کاراکتر.'
     },
     {
       id: 'nano-banana-2',
       name: 'Google Nano Banana 2.1',
       provider: 'Google',
       logo: 'assets/images/models/nanobanana.webp',
+      category: 'image',
+      billingType: 'per_unit',
+      baseUSD: 0.038,
+      unitDesc: '$0.038 / تصویر استاندارد 1K',
+      hasFreeTier: true,
+      freeQuota: 'سهمیه روزانه رایگان در AI Studio',
       badge: 'best-value',
-      badgeText: '⚡ سریع و اقتصادی',
-      type: 'paid',
-      typeText: 'API / Gemini Flash Image',
-      unitCostUSD: 0.038,
-      unitCostDesc: '$0.038 / رندر استاندارد 1K',
-      freeQuota: 'تست رایگان روزانه در AI Studio',
-      desc: 'سرعت پردازش زیر ۲ ثانیه، کیفیت عالی و مصرف بهینه مناسب تولید انبوه.'
+      badgeText: 'سریع و بهینه',
+      capability: 'تولید سریع و کم‌هزینه تصاویر مناسب کاربردهای وب و شبکه‌های اجتماعی',
+      source_url: 'https://ai.google.dev/pricing',
+      monthlyUSD: 0,
+      monthlyDesc: 'پرداخت به میزان مصرف (Pay-as-you-go)',
+      desc: 'مدل سبک و پرسرعت برای پردازش‌های بلادرنگ و خروجی‌های استاندارد.'
     },
     {
-      id: 'midjourney-v7',
-      name: 'Midjourney v7',
+      id: 'midjourney-v8-2',
+      name: 'Midjourney v8.2',
       provider: 'Midjourney Inc.',
       logo: 'assets/images/models/midjourney.webp',
+      category: 'image',
+      billingType: 'subscription_or_unit',
+      baseUSD: 0.050,
+      unitDesc: '$0.050 / تصویر تخمینی',
+      hasFreeTier: false,
+      freeQuota: 'فاقد طرح رایگان دائمی',
       badge: 'best-quality',
-      badgeText: '🌟 فوتورئالیسم سینمایی',
-      type: 'paid',
-      typeText: 'اشتراک ماهانه / Fast Hours',
-      unitCostUSD: 0.050,
-      unitCostDesc: '$0.050 / عکس معادل',
-      freeQuota: 'فاقد پلن رایگان دائمی',
-      desc: 'استاندارد طلایی رندرینگ هنری، نورپردازی طبیعی و کنترل عمق میدان.'
+      badgeText: 'رندر فوتورئال هنری',
+      capability: 'خلق تصاویر هنری و فوتورئال با بافت واقعی و نورپردازی سینمایی',
+      source_url: 'https://docs.midjourney.com/docs/plans',
+      monthlyUSD: 10,
+      monthlyDesc: 'پلن Basic ۱۰$، Standard ۳۰$، Pro ۶۰$، Mega ۱۲۰$',
+      desc: 'استاندارد صنعت در بازنمایی بافت، فوتورئالیسم و کارهای گرافیکی پیچیده.'
     },
     {
       id: 'flux-1-1-ultra',
       name: 'FLUX.1.1 Pro / Ultra',
       provider: 'Black Forest Labs',
       logo: 'assets/images/models/flux.webp',
+      category: 'image',
+      billingType: 'per_unit',
+      baseUSD: 0.040,
+      unitDesc: '$0.040 / تصویر 2K',
+      hasFreeTier: true,
+      freeQuota: 'نسخه Schnell رایگان در HuggingFace',
       badge: 'best-value',
-      badgeText: '⚡ وضوح فوق‌العاده و ارزش خرید',
-      type: 'paid',
-      typeText: 'API تجاری BFL',
-      unitCostUSD: 0.040,
-      unitCostDesc: '$0.040 / تصویر 2K',
-      freeQuota: 'مدل دانلودی رایگان روی سیستم شخصی',
-      desc: 'نسخه نسل جدید فلکس با جزئیات آناتومی بی‌نقص و دقت تایپوگرافی.'
+      badgeText: 'ارزش خرید بالا',
+      capability: 'تولید تصویر با آناتومی واقع‌گرایانه و تایپوگرافی شفاف ۲ هزار پیکسلی',
+      source_url: 'https://blackforestlabs.ai/',
+      monthlyUSD: 0,
+      monthlyDesc: 'پرداخت بر مبنای API',
+      desc: 'مدل نسل جدید مبتنی بر معماری دگرگون‌ساز، با درک فضایی قوی.'
     },
     {
       id: 'flux-schnell',
       name: 'FLUX.1 [schnell] / Copilot',
       provider: 'BFL / Microsoft',
       logo: 'assets/images/models/flux.webp',
-      badge: 'free',
-      badgeText: '🎁 بهترین گزینه رایگان',
-      type: 'free',
-      typeText: 'کاملاً رایگان / وب',
-      unitCostUSD: 0.000,
-      unitCostDesc: '$0.00 (کاملاً رایگان)',
+      category: 'image',
+      billingType: 'free',
+      baseUSD: 0.000,
+      unitDesc: '$0.00 (طرح رایگان)',
+      hasFreeTier: true,
       freeQuota: 'رایگان در HuggingFace و Copilot',
-      desc: 'تولید برق‌آسا در ۴ استپ با کیفیتی فراتر از انتظار.'
+      badge: 'free',
+      badgeText: 'گزینه رایگان',
+      capability: 'تولید فوری در ۴ مرحله بدون نیاز به اشتراک یا پرداخت',
+      source_url: 'https://huggingface.co/black-forest-labs',
+      monthlyUSD: 0,
+      monthlyDesc: 'کاملاً رایگان در پلتفرم‌های همکار',
+      desc: 'تولید سریع با کیفیت مناسب برای سناریوهای رایگان و دانشجویی.'
     },
     {
-      id: 'dall-e-3-5',
-      name: 'OpenAI DALL-E 3.5 / DALL-E 4',
+      id: 'dall-e-3',
+      name: 'OpenAI DALL-E 3',
       provider: 'OpenAI',
       logo: 'assets/images/models/openai.webp',
+      category: 'image',
+      billingType: 'per_unit',
+      baseUSD: 0.040,
+      unitDesc: '$0.040 استاندارد / $0.080 HD',
+      hasFreeTier: true,
+      freeQuota: 'سهمیه هفتگی در مایکروسافت Designer',
       badge: '',
       badgeText: '',
-      type: 'paid',
-      typeText: 'API / ChatGPT Plus',
-      unitCostUSD: 0.040,
-      unitCostDesc: '$0.040 / تصویر استاندارد',
-      freeQuota: 'سهمیه روزانه در وب مایکروسافت',
-      desc: 'بالاترین میزان درک دستورات پرامپت و سناریوهای فانتزی چندلایه.'
+      capability: 'تفسیر دقیق پرامپت‌های مفهومی و متون توصیفی چندلایه',
+      source_url: 'https://openai.com/api/pricing/',
+      monthlyUSD: 20,
+      monthlyDesc: 'موجود در اشتراک ChatGPT Plus (۲۰$)',
+      desc: 'دقت بالا در درک توصیفات جزئی و صحنه‌های چندعنصری.'
     },
     {
       id: 'ideogram-2-5',
       name: 'Ideogram 2.5',
       provider: 'Ideogram AI',
       logo: 'assets/images/models/ideogram.webp',
+      category: 'image',
+      billingType: 'per_unit',
+      baseUSD: 0.080,
+      unitDesc: '$0.080 / رندر تجاری',
+      hasFreeTier: true,
+      freeQuota: '۱۰ پرامپت رایگان در هر روز',
       badge: '',
       badgeText: '',
-      type: 'paid',
-      typeText: 'Freemium / API',
-      unitCostUSD: 0.080,
-      unitCostDesc: '$0.080 / رندر گرافیکی',
-      freeQuota: '۱۰ پرامپت رایگان روزانه',
-      desc: 'قهرمان تایپوگرافی حروف فارسی و انگلیسی، طراحی پوستر و لوگو.'
+      capability: 'طراحی پوستر، کارت ویزیت و متون فارسی/انگلیسی در داخل تصویر',
+      source_url: 'https://ideogram.ai/pricing',
+      monthlyUSD: 8,
+      monthlyDesc: 'طرح ماهانه پایه از ۸ دلار',
+      desc: 'بهترین عملکرد در گنجاندن کلمات و عبارات خوانا درون اثر گرافیکی.'
     }
-  ],
+  ];
 
-  video: [
-    {
-      id: 'seedance-2-5',
-      name: 'Seedance 2.5 (ByteDance)',
-      provider: 'ByteDance / Doubao',
-      logo: 'assets/images/models/seedance.webp',
-      badge: 'best-quality',
-      badgeText: '🌟 پیشگام سینمایی با صدای بومی',
-      type: 'paid',
-      typeText: 'API بایت‌دنس / Volcano',
-      unitCostUSD: 0.080,
-      unitCostDesc: '$0.080 / هر ثانیه 4K با صدا',
-      freeQuota: 'سهمیه روزانه در اپلیکیشن‌های بایت‌دنس',
-      desc: 'انقلاب در تولید ویدیو؛ پشتیبانی از Lip-Sync طبیعی، شبیه‌سازی رقص و حرکت با رفرنس ویدیو.'
-    },
-    {
-      id: 'runway-gen4-turbo',
-      name: 'Runway Gen-4 / Turbo',
-      provider: 'Runway ML',
-      logo: 'assets/images/models/runway.webp',
-      badge: 'best-value',
-      badgeText: '⚡ سریع‌ترین و اقتصادی',
-      type: 'paid',
-      typeText: 'پلن کردیت / API',
-      unitCostUSD: 0.025,
-      unitCostDesc: '$0.025 / هر ثانیه',
-      freeQuota: 'کردیت آزمایشی اولیه',
-      desc: 'فیزیک طبیعی، حرکات سیال دوربین و تولید ویدیوهای ۱۰ تا ۳۰ ثانیه‌ای.'
-    },
-    {
-      id: 'luma-dream-ray2',
-      name: 'Luma Dream Machine (Ray 2)',
-      provider: 'Luma AI',
-      logo: 'assets/images/models/luma.webp',
-      badge: '',
-      badgeText: '',
-      type: 'paid',
-      typeText: 'API / اشتراک وب',
-      unitCostUSD: 0.064,
-      unitCostDesc: '$0.064 / هر ثانیه',
-      freeQuota: '۳۰ جنریشن رایگان اولیه در ماه',
-      desc: 'روشنایی دراماتیک، جزئیات بافت و حرکات پیچیده کاراکتر.'
-    },
-    {
-      id: 'kling-2-0',
-      name: 'Kling AI 2.0',
-      provider: 'Kuaishou',
-      logo: 'assets/images/models/kling.webp',
-      badge: 'free',
-      badgeText: '🎁 بهترین با کردیت روزانه',
-      type: 'free',
-      typeText: 'Freemium با سهمیه روزانه',
-      unitCostUSD: 0.035,
-      unitCostDesc: '$0.035 / هر ثانیه معادل',
-      freeQuota: '۶۶ کردیت رایگان هر روز',
-      desc: 'حرکت خارق‌العاده، ویدیوهای طولانی تا ۱۵ ثانیه با کیفیت عالی 1080p.'
-    },
-    {
-      id: 'openai-sora-pro',
-      name: 'OpenAI Sora Pro',
-      provider: 'OpenAI',
-      logo: 'assets/images/models/openai.webp',
-      badge: '',
-      badgeText: '',
-      type: 'paid',
-      typeText: 'ChatGPT Plus / Pro',
-      unitCostUSD: 0.080,
-      unitCostDesc: '$0.080 / هر ثانیه تخمینی',
-      freeQuota: 'مخصوص مشترکین پلاس و پرو',
-      desc: 'شبیه‌ساز سه‌بعدی دنیای فیزیکی و رندرهای یکپارچه ۶۰ ثانیه‌ای.'
-    }
-  ]
-};
+  window.AI_DATA_STORE.models.push(...imageModels);
+})();

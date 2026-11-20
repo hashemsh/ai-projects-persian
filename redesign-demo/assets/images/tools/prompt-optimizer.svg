@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 170" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_prompt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1020"/>
+      <stop offset="100%" stop-color="#141830"/>
+    </linearGradient>
+    <radialGradient id="glow_prompt" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="spark_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="170" fill="url(#bg_prompt)"/>
+  <circle cx="180" cy="85" r="90" fill="url(#glow_prompt)"/>
+  <!-- Central Glass Card -->
+  <rect x="70" y="25" width="220" height="120" rx="16" fill="#131b33" fill-opacity="0.75" stroke="#313d66" stroke-width="1.2"/>
+  <!-- Terminal Header Dots -->
+  <circle cx="92" cy="42" r="3.5" fill="#f43f5e" opacity="0.8"/>
+  <circle cx="104" cy="42" r="3.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="116" cy="42" r="3.5" fill="#10b981" opacity="0.8"/>
+  <rect x="135" y="38" width="55" height="8" rx="4" fill="#1e293b"/>
+  <!-- Main Prompt Star Icon (Large Glowing Sparkle) -->
+  <g transform="translate(180, 85)">
+    <circle cx="0" cy="0" r="28" fill="#6366f1" fill-opacity="0.15"/>
+    <path d="M0 -22 L4 -6 L20 -2 L6 5 L3 21 L-3 7 L-19 3 L-5 -4 Z" fill="url(#spark_grad)"/>
+    <circle cx="0" cy="0" r="3.5" fill="#ffffff"/>
+  </g>
+  <!-- Orbiting Mini Stars -->
+  <path d="M125 70 L126.5 74 L131 75.5 L126.5 77 L125 81 L123.5 77 L119 75.5 L123.5 74 Z" fill="#38bdf8" opacity="0.8"/>
+  <path d="M235 60 L236 63 L239 64 L236 65 L235 68 L234 65 L231 64 L234 63 Z" fill="#c084fc" opacity="0.8"/>
+  <path d="M240 105 L241 108 L244 109 L241 110 L240 113 L239 110 L236 109 L239 108 Z" fill="#818cf8" opacity="0.7"/>
+  <!-- Prompt Sliders / Tuning Bars -->
+  <g transform="translate(90, 115)">
+    <rect x="0" y="5" width="70" height="4" rx="2" fill="#1e293b"/>
+    <rect x="0" y="5" width="45" height="4" rx="2" fill="#38bdf8"/>
+    <circle cx="45" cy="7" r="4.5" fill="#38bdf8"/>
+  </g>
+  <g transform="translate(200, 115)">
+    <rect x="0" y="5" width="70" height="4" rx="2" fill="#1e293b"/>
+    <rect x="0" y="5" width="55" height="4" rx="2" fill="#818cf8"/>
+    <circle cx="55" cy="7" r="4.5" fill="#818cf8"/>
+  </g>
+</svg>

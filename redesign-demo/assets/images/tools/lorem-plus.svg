@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 170" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_lorem" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1224"/>
+      <stop offset="100%" stop-color="#121e38"/>
+    </linearGradient>
+    <radialGradient id="glow_lorem" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="360" height="170" fill="url(#bg_lorem)"/>
+  <circle cx="180" cy="85" r="90" fill="url(#glow_lorem)"/>
+  <!-- Central Glass Card: Editorial Sheet -->
+  <rect x="70" y="25" width="220" height="120" rx="16" fill="#0f1d36" fill-opacity="0.8" stroke="#1d4ed8" stroke-width="1.2"/>
+  <!-- Left: Minimal Typographic Glyph / Paragraph Symbol -->
+  <g transform="translate(100, 52)">
+    <rect width="40" height="66" rx="8" fill="#1e3a8a" fill-opacity="0.4" stroke="#3b82f6" stroke-width="1"/>
+    <text x="20" y="44" fill="#60a5fa" font-size="28" font-family="'Times New Roman', serif" font-weight="900" text-anchor="middle">¶</text>
+  </g>
+  <!-- Right: Editorial Layout Lines -->
+  <g transform="translate(152, 54)">
+    <!-- Header line -->
+    <rect x="0" y="0" width="100" height="8" rx="4" fill="#3b82f6"/>
+    <!-- Paragraph lines -->
+    <rect x="0" y="18" width="118" height="5" rx="2.5" fill="#334155"/>
+    <rect x="0" y="28" width="95" height="5" rx="2.5" fill="#334155"/>
+    <rect x="0" y="38" width="110" height="5" rx="2.5" fill="#1e293b"/>
+    <rect x="0" y="48" width="75" height="5" rx="2.5" fill="#1e293b"/>
+    <!-- Micro check / spark -->
+    <circle cx="110" cy="50" r="3" fill="#60a5fa"/>
+  </g>
+</svg>

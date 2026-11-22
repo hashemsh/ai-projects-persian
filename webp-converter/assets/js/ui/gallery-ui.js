@@ -74,7 +74,7 @@ window.WebpGalleryUI = (function() {
           </div>
 
           <!-- Action Button -->
-          <a href="${item.webpUrl}" download="${outputFilename}" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold text-xs shadow-md transition transform group-hover:scale-[1.02]">
+          <a href="${item.webpUrl}" download="${outputFilename}" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition transform group-hover:scale-[1.01]">
             <span>دانلود WebP</span>
             <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />

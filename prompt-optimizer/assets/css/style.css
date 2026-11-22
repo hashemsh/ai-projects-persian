@@ -1,40 +1,60 @@
 /* ==========================================================================
-   پرامپت پلاس | استایل‌های سفارشی، افکت‌های شیشه‌ای و انیمیشن‌ها
+   پرامپت پلاس | استایل‌های مدرن با الهام از قالب جدید هاب (بدون Neon)
+   سازگار کامل با تم تیره و روشن (Dark / Light Theme Tokens)
    ========================================================================== */
 
 * {
+  box-sizing: border-box;
   font-family: 'Vazirmatn', sans-serif;
 }
 
-/* Glassmorphism Styles */
+body {
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Subtle Grid Background (Clean & Non-Neon) */
+.tool-gridbg {
+  position: absolute;
+  inset: 0;
+  height: 520px;
+  background: radial-gradient(50% 60% at 50% 0%, var(--g1), transparent 70%),
+              radial-gradient(30% 45% at 88% 15%, var(--g2), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Clean Cards */
 .glass-card {
-  background: rgba(17, 21, 40, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 4px 16px var(--sh0) !important;
+  color: var(--ink) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.glass-card-hover {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+.glass-card:hover {
+  border-color: var(--bdh) !important;
 }
 
-.glass-card-hover:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.25);
+/* Inputs, Textareas & Selects */
+.glass-input, textarea, select, input[type="text"] {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  border-radius: 10px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.glass-input {
-  background: rgba(12, 15, 29, 0.75);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #f1f5f9;
-}
-
-.glass-input:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
-  outline: none;
+.glass-input:focus, textarea:focus, select:focus, input[type="text"]:focus {
+  border-color: var(--bt) !important;
+  box-shadow: 0 0 0 3px var(--hl) !important;
+  outline: none !important;
 }
 
 /* Custom Scrollbars */
@@ -42,40 +62,22 @@
   width: 7px;
   height: 7px;
 }
-
 ::-webkit-scrollbar-track {
-  background: rgba(12, 15, 29, 0.8);
+  background: var(--sub);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.4);
+  background: var(--line);
   border-radius: 9999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.7);
-}
-
-/* Background Ambient Pulse Animation */
-@keyframes pulse-slow {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.55;
-    transform: scale(1.08);
-  }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 8s infinite ease-in-out;
+  background: var(--mut);
 }
 
 /* Modals */
 .modal-backdrop {
-  background: rgba(7, 9, 19, 0.8);
+  background: rgba(1, 4, 9, 0.65);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
@@ -91,9 +93,127 @@
   pointer-events: auto;
 }
 
+.modal-backdrop .glass-card {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  box-shadow: 0 20px 48px var(--sh) !important;
+}
+
 /* Output Code Pre Formatting */
 .output-code {
   white-space: pre-wrap;
   word-break: break-word;
   line-height: 1.85;
+  color: var(--ink) !important;
+}
+
+/* Optimize Button */
+#btnOptimize {
+  background: var(--bt) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  border: none !important;
+  box-shadow: 0 4px 14px var(--sh0) !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#btnOptimize:hover {
+  opacity: 0.94;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--sh) !important;
+}
+
+/* Copy Button */
+#btnCopy {
+  background: var(--brand) !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  border: none !important;
+  font-weight: 800 !important;
+  box-shadow: 0 3px 10px var(--sh0) !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#btnCopy:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+}
+
+/* Quick Action Chips & Tabs */
+#tabOutput, #tabDiff {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+#tabOutput.bg-indigo-500\/20, #tabOutput.active {
+  background: var(--bt) !important;
+  color: #fff !important;
+  border-color: var(--bt) !important;
+}
+
+#tabDiff.bg-indigo-500\/20, #tabDiff.active {
+  background: var(--bt) !important;
+  color: #fff !important;
+  border-color: var(--bt) !important;
+}
+
+/* Secondary Buttons */
+#btnOpenPresets, #btnOpenGuide, #btnClear, #btnDownloadMd, #btnOpenChatGpt, #btnOpenClaude {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  transition: all 0.2s ease;
+}
+
+#btnOpenPresets:hover, #btnOpenGuide:hover, #btnClear:hover, #btnDownloadMd:hover, #btnOpenChatGpt:hover, #btnOpenClaude:hover {
+  border-color: var(--bt) !important;
+  color: var(--bt) !important;
+}
+
+/* Sub-panels & Preview Area */
+.sub-panel, #outputResult, #diffResult, .bg-dark-900\/90, .bg-dark-900\/60, .bg-dark-900\/80 {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+}
+
+/* SEO Guide */
+#seo-guide {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+}
+
+#seo-guide h2, #seo-guide h3 {
+  color: var(--ink) !important;
+}
+
+#seo-guide p {
+  color: var(--mut) !important;
+}
+
+#seo-guide .guide-subcard {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 14px;
+}
+
+/* Toast */
+#toast > div {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  box-shadow: 0 12px 32px var(--sh) !important;
+}
+
+#toastTitle {
+  color: var(--ink) !important;
+}
+
+#toastMessage {
+  color: var(--mut) !important;
 }

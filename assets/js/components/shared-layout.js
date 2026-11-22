@@ -8,8 +8,8 @@
   var logoSrc = rootPath + 'assets/images/logo.svg';
   var hubUrl = isSub ? rootPath + 'index.html' : './';
   var toolsUrl = isSub ? rootPath + 'index.html#tools' : '#tools';
-  var roadmapUrl = rootPath + 'ROADMAP.md';
-  var readmeUrl = rootPath + 'README.md';
+  var roadmapUrl = 'https://github.com/hashemsh/ai-projects-persian/blob/main/ROADMAP.md';
+  var readmeUrl = 'https://github.com/hashemsh/ai-projects-persian/blob/main/README.md';
   var aboutUrl = isSub ? rootPath + 'index.html#about' : '#about';
 
   var root = document.documentElement;
@@ -43,8 +43,8 @@
       '  <div class="links">',
       '    <a class="' + (!isSub ? 'on' : '') + '" href="' + hubUrl + '">خانه</a>',
       '    <a href="' + toolsUrl + '">ابزارها</a>',
-      '    <a href="' + roadmapUrl + '">نقشه راه</a>',
-      '    <a href="' + readmeUrl + '">مستندات</a>',
+      '    <a href="' + roadmapUrl + '" target="_blank" rel="noopener noreferrer">نقشه راه</a>',
+      '    <a href="' + readmeUrl + '" target="_blank" rel="noopener noreferrer">مستندات</a>',
       '    <a href="' + aboutUrl + '">درباره</a>',
       '  </div>',
       '  <button class="nav-srch-btn" type="button" aria-label="جستجو در ابزارها">',
@@ -81,8 +81,8 @@
       '<nav class="drawer-nav">',
       '  <a class="' + (!isSub ? 'on' : '') + '" href="' + hubUrl + '">خانه</a>',
       '  <a href="' + toolsUrl + '">ابزارها</a>',
-      '  <a href="' + roadmapUrl + '">نقشه راه</a>',
-      '  <a href="' + readmeUrl + '">مستندات</a>',
+      '  <a href="' + roadmapUrl + '" target="_blank" rel="noopener noreferrer">نقشه راه</a>',
+      '  <a href="' + readmeUrl + '" target="_blank" rel="noopener noreferrer">مستندات</a>',
       '  <a href="' + aboutUrl + '">درباره‌ی هاب</a>',
       '</nav>',
       '<div class="drawer-foot">',
@@ -104,7 +104,7 @@
     if (!el) return;
     el.innerHTML = [
       '<div class="ft"><div class="sh">',
-      '  <span>طراحی و توسعه توسط <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer" style="color:var(--ink);font-weight:700">هاشم شیخی‌پور (Hashem Sh)</a> | قدرت‌گرفته از <a href="https://antigravity.google" target="_blank" rel="noopener noreferrer" style="color:var(--bt);font-weight:700">Antigravity</a></span>',
+      '  <span>طراحی و توسعه توسط <a href="https://hashemsh.github.io/" target="_blank" rel="noopener noreferrer" style="color:var(--ink);font-weight:700">hashemsh</a> | قدرت‌گرفته از <a href="https://antigravity.google" target="_blank" rel="noopener noreferrer" style="color:var(--bt);font-weight:700">Antigravity</a></span>',
       '  <span><a href="https://t.me/init10" target="_blank" rel="noopener noreferrer">تلگرام</a> · <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer">لینکدین</a> · <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer">گیت‌هاب</a></span>',
       '</div></div>'
     ].join('\n');

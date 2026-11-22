@@ -10,7 +10,7 @@
 <script>try{var t=localStorage.getItem("theme")||localStorage.getItem("ai_hub_theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/hub-theme.css?v=6">
+<link rel="stylesheet" href="assets/css/hub-theme.css?v=7">
 </head>
 <body>
 <div class="pg">
@@ -28,6 +28,7 @@
 <span class="kb">/</span>
 <button type="button" id="hero-search-clear" class="srch-clear" aria-label="پاک کردن جستجو" style="display:none">✕</button>
 </div>
+<div id="hero-search-suggestions" class="search-suggestions-dropdown" style="display:none;" role="listbox" aria-label="پیشنهادات جستجو"></div>
 </div>
 <div class="cta"><a class="btn bp" href="#tools">دیدن همه‌ی ۱۰ ابزار ←</a></div>
 <div class="live"><i class="dot"></i><span><b style="color:var(--ink)">۱۰</b> ابزار فعال</span><span>·</span><span>متن‌باز با لایسنس MIT</span></div>
@@ -126,6 +127,55 @@
 </div></div>
 
 <div class="cb"><div class="sh"><div><span class="eb">همین امروز</span><h2>قدم اول را <span class="gg">با هم برداریم.</span></h2><p class="mu" style="margin:0">ابزارها را امتحان کن و نظرت را برایم بفرست.</p></div><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn bg2" href="#tools">دیدن ابزارها ←</a><a class="btn bo" href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer">دنبال کردن در لینکدین</a></div></div></div>
+
+<div class="dev-author-sec">
+<div class="sh">
+<div class="dev-author-card">
+  <div class="dev-author-inner">
+    <div class="dev-author-avatar-wrap">
+      <img src="https://github.com/hashemsh.png" alt="hashemsh - هاشم شیخی‌پور" class="dev-author-avatar" width="88" height="88" loading="lazy">
+      <span class="dev-status-badge" title="در دسترس برای همکاری و پروژه‌ها">
+        <span class="dev-status-dot"></span>
+      </span>
+    </div>
+    <div class="dev-author-info">
+      <div class="dev-author-header">
+        <div class="dev-author-names">
+          <span class="eb" style="font-size:12px">خالق و توسعه‌دهنده هاب هوش مصنوعی</span>
+          <h3 class="dev-name">هاشم شیخی‌پور <span class="dev-handle">(hashemsh)</span></h3>
+        </div>
+        <a class="btn bp dev-site-btn" href="https://hashemsh.github.io/" target="_blank" rel="noopener noreferrer">
+          <span>مشاهده وب‌سایت شخصی</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </div>
+      <p class="dev-bio">
+        توسعه‌دهنده فرانت‌اند و علاقه‌مند به هوش مصنوعی و معماری وب ماژولار. هدف من از خلق این هاب، ساخت ابزارهای کاربردی، فوق‌العاده سبک، رایگان و ۱۰۰٪ محلی در مرورگر برای طراحان، سئوکاران و برنامه‌نویسان وب فارسی است.
+      </p>
+      <div class="dev-social-row">
+        <a class="dev-social-link" href="https://hashemsh.github.io/" target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>hashemsh.github.io</span>
+        </a>
+        <a class="dev-social-link" href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <span>گیت‌هاب</span>
+        </a>
+        <a class="dev-social-link" href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          <span>لینکدین</span>
+        </a>
+        <a class="dev-social-link" href="https://t.me/init10" target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          <span>تلگرام</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
 <footer id="shared-footer"></footer>
 </div>
 
@@ -138,10 +188,10 @@
 </div>
 </button>
 
-<script src="assets/js/components/shared-layout.js?v=5" defer></script>
-<script src="assets/js/search.js?v=5" defer></script>
-<script src="assets/js/scroll.js?v=5" defer></script>
-<script src="assets/js/interactive.js?v=5" defer></script>
-<script src="assets/js/trail.js?v=5" defer></script>
+<script src="assets/js/components/shared-layout.js?v=7" defer></script>
+<script src="assets/js/search.js?v=7" defer></script>
+<script src="assets/js/scroll.js?v=7" defer></script>
+<script src="assets/js/interactive.js?v=7" defer></script>
+<script src="assets/js/trail.js?v=7" defer></script>
 </body>
 </html>

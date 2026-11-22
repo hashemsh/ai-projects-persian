@@ -88,6 +88,14 @@
       tag: 'توسعه',
       desc: 'محاسبه و مقایسه هزینه تولید عکس، ویدیو، کد و چت مدل‌های هوش مصنوعی به دلار و تومان.',
       keywords: 'محاسبه هزینه هوش مصنوعی قیمت کلود دیپ سیک اوپن ای آی قیمت دلار تومان cost ai برآورد قیمت'
+    },
+    {
+      title: 'Log Analyzer & AI Debugger',
+      url: './log-analyzer/',
+      icon: 'assets/images/tools/log-analyzer.svg',
+      tag: 'سرور',
+      desc: 'تحلیل خطاهای Nginx، PHP Fatal و Node.js همراه با تولید پرامپت عیب‌یابی در AI.',
+      keywords: 'لاگ سرور آنالیزور خطا لاگ دیباگ دیباگر لاگها ارور php fatal nginx 502 500 apache nodejs crash traceback عیب یابی'
     }
   ];
 

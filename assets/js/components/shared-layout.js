@@ -3,7 +3,7 @@
  * Clean Modular Web architecture: shared across root hub and all micro-tools.
  */
 (function () {
-  var isSub = /\/(lorem-plus|prompt-optimizer|placeholder-pro|site-auditor|utm-builder|schema-generator|qr-studio|regex-studio|webp-converter|ai-cost-estimator|styleguide)\//.test(window.location.pathname) || (document.body && document.body.dataset.root === 'sub');
+  var isSub = /\/(lorem-plus|prompt-optimizer|placeholder-pro|site-auditor|utm-builder|schema-generator|qr-studio|regex-studio|webp-converter|ai-cost-estimator|styleguide|log-analyzer)\//.test(window.location.pathname) || (document.body && document.body.dataset.root === 'sub');
   var rootPath = isSub ? '../' : './';
   var logoSrc = rootPath + 'assets/images/logo.svg';
   var hubUrl = isSub ? rootPath + 'index.html' : './';

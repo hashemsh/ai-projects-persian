@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>آنالیزور لاگ سرور و عیب‌یابی با هوش مصنوعی | Log Analyzer & AI Debugger</title>
+  <meta name="description" content="ابزار تخصصی تحلیل و ریشه‌یابی خطاهای سرور (Nginx، Apache، PHP Fatal، Node.js و Python) با تولید خودکار پرامپت مهندسی‌شده برای عیب‌یابی در هوش مصنوعی.">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="alternate icon" href="../assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=11">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script>
+    (function() {
+      var t = localStorage.getItem('hub-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      if (t === 'light') document.documentElement.classList.add('light-theme');
+    })();
+  </script>
+</head>
+<body data-root="sub" class="bg-base text-main min-h-screen font-sans antialiased selection:bg-cyan-500 selection:text-white flex flex-col">
+
+  <!-- Ambient Glow & Grid -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 right-1/4 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl opacity-60"></div>
+    <div class="absolute top-1/3 -left-40 w-[550px] h-[550px] bg-cyan-500/10 rounded-full blur-3xl opacity-50"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293d0a_1px,transparent_1px),linear-gradient(to_bottom,#1f293d0a_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+  </div>
+
+  <!-- Primary Page Container -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col flex-1 w-full">
+
+    <!-- Shared Universal Header -->
+    <header id="shared-header"></header>
+
+    <!-- Hero Showcase Header (Unified Template Aesthetic) -->
+    <header class="tool-hero text-center max-w-4xl mx-auto my-8 md:my-10 py-2 relative">
+      <span class="eb">تحلیل هوشمند خطاهای سرور • ۱۰۰٪ کلاینت‌ساید • Log Analyzer Pro</span>
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight mb-3 mx-auto text-center whitespace-nowrap tool-title" style="color:var(--ink);margin:10px auto 14px;text-align:center">
+        آنالیزور لاگ سرور و سیستم عیب‌یابی <span class="mk">با هوش مصنوعی</span>
+      </h1>
+      <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base leading-relaxed mb-6" style="color:var(--mut)">
+        تحلیل و تفکیک سریع خطاهای وب‌سرور (Nginx، Apache، PHP Fatal، Node.js و Python)، دسته‌بندی سطح بحرانی و تولید خودکار پرامپت مهندسی‌شده برای رفع سریع در مدل‌های هوش مصنوعی.
+      </p>
+      <!-- Quick Action Controls -->
+      <div class="flex items-center justify-center gap-3 flex-wrap">
+        <button type="button" id="btn-sample-nginx" class="btn bo" style="font-size:13px;padding:8px 18px"><span>نمونه Nginx 502/404</span></button>
+        <button type="button" id="btn-sample-php" class="btn bo" style="font-size:13px;padding:8px 18px"><span>نمونه PHP Fatal Error</span></button>
+        <button type="button" id="btn-sample-node" class="btn bo" style="font-size:13px;padding:8px 18px"><span>نمونه Node.js Crash</span></button>
+        <button type="button" id="btn-clear-log" class="btn bo" style="font-size:13px;padding:8px 18px;color:#f43f5e"><span>پاکسازی</span></button>
+      </div>
+    </header>
+
+    <!-- Main Workspace (2-Column Grid) -->
+    <main class="la-workspace">
+
+      <!-- Right Column: Input & Controls -->
+      <section class="la-card">
+        <div class="la-card-head">
+          <h2 class="la-card-title"><span>📥</span><span>درج خطوط لاگ سرور</span></h2>
+          <div class="flex items-center gap-2">
+            <select id="log-format-select" class="bg-slate-900/60 border border-line rounded-lg px-2.5 py-1 text-xs text-ink focus:outline-none focus:border-cyan-500">
+              <option value="auto">تشخیص خودکار فرمت</option>
+              <option value="nginx">وب‌سرور Nginx</option>
+              <option value="apache">وب‌سرور Apache</option>
+              <option value="php">پی‌اچ‌پی (PHP Fatal)</option>
+              <option value="node">نود جی‌اس (Node.js)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="la-textarea-wrap">
+          <textarea id="log-input" class="la-textarea" placeholder="متن لاگ خطای سرور را در این قسمت الصاق (Paste) کنید..."></textarea>
+        </div>
+
+        <!-- Privacy & Target Model Controls -->
+        <div class="mt-4 pt-4 border-t border-line space-y-3">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <label class="flex items-center gap-2 cursor-pointer select-none">
+              <input type="checkbox" id="anonymize-toggle" checked class="w-4 h-4 accent-cyan-500 rounded cursor-pointer">
+              <span class="text-xs font-medium text-ink">مخفی‌سازی خودکار IPها، توکن‌ها و دامنه‌های حساس (حفظ محرمانگی)</span>
+            </label>
+          </div>
+
+          <div class="flex items-center justify-between flex-wrap gap-3">
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-mut">مدل هوش مصنوعی هدف:</span>
+              <select id="ai-model-select" class="bg-slate-900/60 border border-line rounded-lg px-2.5 py-1 text-xs text-ink focus:outline-none focus:border-cyan-500">
+                <option value="chatgpt">ChatGPT (GPT-4o / o1)</option>
+                <option value="claude">Claude 3.5 Sonnet</option>
+                <option value="gemini">Google Gemini 1.5 Pro</option>
+                <option value="deepseek">DeepSeek V3 / R1</option>
+              </select>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button type="button" id="btn-run-analysis" class="btn bp" style="font-size:13px;padding:8px 20px">
+                <span>⚡ تحلیل و پردازش لاگ‌ها</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Left Column: Diagnostic Results & AI Prompt -->
+      <section class="la-card">
+        <div class="la-card-head">
+          <h2 class="la-card-title"><span>📊</span><span>نتایج عیب‌یابی و پرامپت هوش مصنوعی</span></h2>
+          <div class="flex items-center gap-2">
+            <button type="button" id="btn-export-report" class="btn bo text-xs" style="padding:4px 10px"><span>📥 خروجی گزارش Markdown</span></button>
+          </div>
+        </div>
+
+        <!-- Stats Counter Row -->
+        <div class="la-stats-grid">
+          <div class="la-stat-box">
+            <span id="stat-total-lines" class="la-stat-num text-cyan-400">۰</span>
+            <span class="la-stat-label">کل خطوط</span>
+          </div>
+          <div class="la-stat-box">
+            <span id="stat-fatals" class="la-stat-num text-rose-500">۰</span>
+            <span class="la-stat-label">خطای بحرانی</span>
+          </div>
+          <div class="la-stat-box">
+            <span id="stat-errors" class="la-stat-num text-pink-400">۰</span>
+            <span class="la-stat-label">خطای استاندارد</span>
+          </div>
+          <div class="la-stat-box">
+            <span id="stat-warnings" class="la-stat-num text-amber-400">۰</span>
+            <span class="la-stat-label">هشدارها</span>
+          </div>
+        </div>
+
+        <!-- Parsed Error Entries List -->
+        <div class="text-xs font-bold text-ink mb-2">لیست خطاهای شناسایی‌شده:</div>
+        <div id="parsed-entries-list" class="la-entry-list mb-4">
+          <!-- Dynamic error cards injected by JS -->
+        </div>
+
+        <!-- AI Debugger Prompt Box -->
+        <div class="la-prompt-box">
+          <div class="la-prompt-head">
+            <div class="flex items-center gap-2 text-xs font-bold text-indigo-300">
+              <span>🤖</span><span>پرامپت آماده ارسال به هوش مصنوعی</span>
+            </div>
+            <button type="button" id="btn-copy-prompt" class="btn bp text-xs" style="padding:4px 12px">
+              <span>📋 کپی پرامپت</span>
+            </button>
+          </div>
+          <pre id="ai-prompt-output" class="la-prompt-pre">// در حال انتظار برای تحلیل لاگ‌ها...</pre>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Educational & SEO Section -->
+    <section class="mt-16 p-6 sm:p-8 rounded-2xl border border-line bg-card/30 space-y-6">
+      <div class="border-b border-line pb-4">
+        <span class="eb">دانشنامه سئو فنی و عیب‌یابی سرور</span>
+        <h2 class="text-lg sm:text-xl font-bold text-ink whitespace-nowrap mt-2">راهنمای عیب‌یابی خطاهای رایج وب‌سرور و بهینه‌سازی عملکرد</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-4 rounded-xl border border-line bg-card/20">
+          <h3 class="text-sm font-bold text-ink mb-2 whitespace-nowrap">چرا خطای ۵۰۲ Bad Gateway در Nginx رخ می‌دهد؟</h3>
+          <p class="text-xs sm:text-sm text-mut" style="line-height: 2.15">
+            خطای ۵۰۲ زمانی اتفاق می‌افتد که Nginx به عنوان Reverse Proxy تلاش می‌کند درخواست را به سرویس پشتیبان (Upstream مانند PHP-FPM، پایتون Gunicorn یا Node.js) منتقل کند، اما آن سرویس دان شده یا پورت آن مسدود است. با اجرای دستور <code>systemctl status php-fpm</code> وضعیت سرویس را بررسی کنید.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl border border-line bg-card/20">
+          <h3 class="text-sm font-bold text-ink mb-2 whitespace-nowrap">نحوه رفع خطای Allowed memory size exhausted در PHP</h3>
+          <p class="text-xs sm:text-sm text-mut" style="line-height: 2.15">
+            این خطای بحرانی (Fatal Error) هنگامی صادر می‌شود که یک اسکریپت یا کوئری سنگین وردپرس به بیش از سقف تعیین‌شده در فایل <code>php.ini</code> نیاز داشته باشد. با تنظیم مقدار <code>memory_limit = 256M</code> یا <code>512M</code> این خطا برطرف می‌گردد.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl border border-line bg-card/20">
+          <h3 class="text-sm font-bold text-ink mb-2 whitespace-nowrap">حفظ امنیت و محرمانگی داده‌ها قبل از ارسال به AI</h3>
+          <p class="text-xs sm:text-sm text-mut" style="line-height: 2.15">
+            لاگ‌های سرور معمولاً شامل آدرس‌های آی‌پی واقعی کاربران، کلیدهای دسترسی API، نام دامنه‌ها و مسیرهای حساس هاست هستند. این ابزار با سیستم Anonymizer داخلی خود، تمامی داده‌های هویتی را پیش از ساخت پرامپت پاکسازی می‌کند تا هیچ‌گونه ریسک امنیتی متوجه سرور شما نباشد.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl border border-line bg-card/20">
+          <h3 class="text-sm font-bold text-ink mb-2 whitespace-nowrap">مزیت پرامپت مهندسی‌شده در مقابل متن خام لاگ</h3>
+          <p class="text-xs sm:text-sm text-mut" style="line-height: 2.15">
+            ارسال متن نامرتب لاگ به چت‌بات‌ها اغلب به پاسخ‌های سطحی منجر می‌شود. این ابزار با تفکیک نوع باگ و تعیین دقیق نقش سیستم دواپس، پاسخی ۳ مرحله‌ای شامل ریشه‌یابی خطا، دستورات دقیق ترمینال برای حل سریع، و اقدامات پیشگیرانه دریافت می‌کند.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Shared Universal Footer (Full-width outside container) -->
+  <footer id="shared-footer"></footer>
+
+  <!-- Universal Shared Layout Scripts -->
+  <script src="../assets/js/components/shared-layout.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

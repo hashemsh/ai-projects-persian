@@ -85,10 +85,15 @@ ai-projects-persian/
 │   ├── README.md                   # مستندات اختصاصی پروژه وب‌پی
 │   └── assets/                     # موتور رندر و فشرده‌سازی Canvas، دراپ‌زون و دانلود دسته‌ای
 │
-└── ai-cost-estimator/              # پروژه شماره ۱۰: محاسبه‌گر هزینه مدل‌های هوش مصنوعی (AI Cost Estimator)
-    ├── index.html                  # اینترفیس محاسبه‌گر هزینه مدل‌ها
-    ├── README.md                   # مستندات تخصصی محاسبه‌گر هزینه مدل‌ها
-    └── assets/                     # موتور قیمت‌گذاری، جدول مقایسه، لوگوهای WebP و دانشنامه اشتراک‌ها
+├── ai-cost-estimator/              # پروژه شماره ۱۰: محاسبه‌گر هزینه مدل‌های هوش مصنوعی (AI Cost Estimator)
+│   ├── index.html                  # اینترفیس محاسبه‌گر هزینه مدل‌ها
+│   ├── README.md                   # مستندات تخصصی محاسبه‌گر هزینه مدل‌ها
+│   └── assets/                     # موتور قیمت‌گذاری، جدول مقایسه، لوگوهای WebP و دانشنامه اشتراک‌ها
+│
+└── log-analyzer/                   # پروژه شماره ۱۱: آنالیزور لاگ سرور و سیستم عیب‌یابی با AI (Log Analyzer Pro)
+    ├── index.html                  # اینترفیس آنالیزور لاگ و عیب‌یاب
+    ├── README.md                   # مستندات فنی و راهنما
+    └── assets/                     # استایل‌های فضای کار و موتور پردازش لاگ
 ```
 
 ---
@@ -126,6 +131,9 @@ ai-projects-persian/
 
 10. **[محاسبه‌گر هزینه هوش مصنوعی (AI Cost Estimator)](https://hashemsh.github.io/ai-projects-persian/ai-cost-estimator/)** • [مستندات کامل](./ai-cost-estimator/README.md)
     - محاسبه و مقایسه زنده هزینه‌های تصویر (Google Nano Banana, Midjourney, FLUX)، ویدیو (Runway, Luma, Kling)، کدنویسی (Claude 3.5, DeepSeek V3, Cursor, v0) و چت به دلار و معادل تومان همراه با دانشنامه اشتراک ماهانه
+
+11. **[آنالیزور لاگ سرور و سیستم عیب‌یابی با AI (Log Analyzer Pro)](https://hashemsh.github.io/ai-projects-persian/log-analyzer/)** • [مستندات کامل](./log-analyzer/README.md)
+    - ابزار تخصصی تحلیل خطاهای وب‌سرور (Nginx، Apache، PHP Fatal، Node.js) با حفظ محرمانگی داده‌ها و تولید پرامپت مهندسی‌شده دواپس برای مدل‌های هوش مصنوعی
 
 ---
 

@@ -151,13 +151,24 @@ window.HubData.projects = [
     id: 10,
     category: 'dev',
     title: 'محاسبه‌گر هزینه هوش مصنوعی (AI Cost Estimator)',
-    badge: 'پروژه شماره ۱۰ • در حال توسعه ⏳',
-    badgeClass: 'bg-amber-500/20 text-amber-300 border border-amber-500/30',
+    badge: 'پروژه شماره ۱۰ • کاربردی و فعال',
     emoji: '💰',
     description: 'محاسبه و مقایسه لحظه‌ای هزینه‌های تولید عکس (Nano Banana, Midjourney)، ویدیو، کدنویسی، ساخت نرم‌افزار و چت به دلار و معادل تومان همراه با دانشنامه اشتراک ماهیانه.',
     techs: ['AI Pricing Engine', 'Live Toman Converter', 'Model Suggester', 'WebP Directory'],
     url: './ai-cost-estimator/',
     accentGrad: 'from-amber-400 via-pink-500 to-indigo-500',
     buttonGrad: 'from-amber-600 via-pink-600 to-indigo-600 hover:from-amber-500 hover:to-pink-500'
+  },
+  {
+    id: 11,
+    category: 'dev',
+    title: 'آنالیزور لاگ سرور و سیستم عیب‌یابی با AI (Log Analyzer Pro)',
+    badge: 'پروژه شماره ۱۱ • کاربردی و فعال',
+    emoji: '🩺',
+    description: 'تحلیل هوشمند و تفکیک خطاهای سرور (Nginx، Apache، PHP Fatal و Node.js)، ریشه‌یابی به زبان ساده و تولید خودکار پرامپت مهندسی‌شده عیب‌یابی برای هوش مصنوعی.',
+    techs: ['Log Parser', 'Stacktrace Engine', 'AI Prompt Builder', 'Data Sanitizer'],
+    url: './log-analyzer/',
+    accentGrad: 'from-indigo-500 via-cyan-500 to-rose-500',
+    buttonGrad: 'from-indigo-600 via-cyan-600 to-rose-600 hover:from-indigo-500 hover:to-cyan-500'
   }
 ];

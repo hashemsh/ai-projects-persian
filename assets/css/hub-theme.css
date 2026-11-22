@@ -156,3 +156,60 @@ html{scroll-behavior:smooth}
 ::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px;border:2px solid var(--bg)}
 ::-webkit-scrollbar-thumb:hover{background:var(--bdh)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dot{animation:none}.cd{transition:none}.mq-track{animation:none}}
+
+/* ==========================================================================
+   Tool Pages Spacing, Typography & Full-Width Footer Standards (UX Max)
+   ========================================================================== */
+#shared-header + * {
+  margin-top: 48px !important;
+}
+.tool-hero {
+  margin-top: 48px !important;
+  margin-bottom: 38px !important;
+  text-align: center;
+}
+.tool-title, h1.tool-heading {
+  white-space: nowrap !important;
+  font-size: clamp(20px, 3.2vw, 34px) !important;
+  line-height: 1.35 !important;
+  margin-bottom: 12px !important;
+}
+#shared-footer {
+  display: block !important;
+  width: 100% !important;
+  margin-top: 80px !important;
+  clear: both !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+.ft {
+  width: 100% !important;
+  background: var(--sub) !important;
+  color: var(--mut) !important;
+  border-top: 1px solid var(--line) !important;
+}
+.ft .sh {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 32px 24px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-size: 14px !important;
+}
+article, .tool-guide, .guide-section, section.guide, [class*="guide"] {
+  line-height: 2.15 !important;
+}
+article p, .tool-guide p, .guide-section p, section.guide p, [class*="guide"] p, .text-slate-400.text-justify, .text-slate-400.leading-relaxed, .text-slate-400.leading-loose {
+  line-height: 2.15 !important;
+  margin-bottom: 16px !important;
+  font-size: 13.5px !important;
+}
+article h2, article h3, .tool-guide h2, .tool-guide h3, .guide-section h2, .guide-section h3 {
+  white-space: nowrap !important;
+  font-size: clamp(14px, 1.8vw, 17px) !important;
+  line-height: 1.4 !important;
+  margin-bottom: 12px !important;
+}

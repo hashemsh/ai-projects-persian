@@ -26,7 +26,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=6">
+  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=8">
   <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 <body data-root="sub" class="min-h-screen relative overflow-x-hidden">
@@ -37,9 +37,9 @@
     <!-- Shared Universal Header -->
     <header id="shared-header"></header>
 
-    <div class="text-center mb-8 md:mb-10 relative">
+    <div class="tool-hero text-center mb-8 md:mb-10 relative">
       <span class="eb">استودیو هوش مصنوعی</span>
-      <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-3" style="color:var(--ink);margin:10px auto 12px">استودیو مهندسی پرامپت <span class="mk">پرامپت پلاس</span></h1>
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-black mb-3 whitespace-nowrap tool-title" style="color:var(--ink);margin:10px auto 12px">استودیو مهندسی پرامپت <span class="mk">پرامپت پلاس</span></h1>
       <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base leading-relaxed mb-5" style="color:var(--mut)">تبدیل هوشمند دستورات معمولی به پرامپت‌های سطح بالا برای ChatGPT، Claude، Gemini و DeepSeek با ترجمه خودکار و فریم‌ورک‌های استاندارد.</p>
       <div class="flex items-center justify-center gap-3 flex-wrap">
         <button id="btnOpenPresets" type="button" class="btn bo" style="font-size:13px;padding:8px 18px"><span>📚 بانک الگوهای آماده (۱۰ الگو)</span></button>
@@ -129,10 +129,10 @@
         </div>
       </div>
     </article>
-
-    <!-- Shared Universal Footer -->
-    <footer id="shared-footer"></footer>
   </div>
+
+  <!-- Shared Universal Footer (Full-Width) -->
+  <footer id="shared-footer"></footer>
 
   <div id="presetsModal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden"><div class="glass-card rounded-2xl max-w-3xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl"><div class="flex items-center justify-between p-4 border-b border-line" style="border-bottom:1px solid var(--line)"><h3 class="text-sm font-bold">📚 بانک ۱۰ الگوی آماده و استاندارد پرامپت</h3><button id="btnClosePresets" type="button" class="text-lg" style="color:var(--mut)">&times;</button></div><div id="presetsContainer" class="p-4 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-3"></div></div></div>
   <div id="guideModal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden"><div class="glass-card rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl"><div class="flex items-center justify-between p-4 border-b border-line" style="border-bottom:1px solid var(--line)"><h3 class="text-sm font-bold flex items-center gap-2" style="color:var(--bt)"><span>💡</span><span>تقلب‌نامه و تکنیک‌های طلایی مهندسی پرامپت</span></h3><button id="btnCloseGuide" type="button" class="text-lg" style="color:var(--mut)">&times;</button></div><div id="guideContainer" class="p-4 overflow-y-auto grid grid-cols-1 gap-3"></div></div></div>

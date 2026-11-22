@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=6">
+  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=8">
   <script>
     (function() {
       var t = localStorage.getItem('hub-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -59,8 +59,8 @@
         <span class="text-indigo-600 dark:text-emerald-400 font-mono">Google Rich Results Ready</span>
       </div>
 
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-4 leading-tight">
-        سازنده و اعتبارسنج داده‌های ساختاریافته <span class="bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">اسکیما پرو</span>
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-white mb-4 whitespace-nowrap tool-title">
+        اسکیما ژنراتور پرو | <span class="bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">سازنده داده‌های ساختاریافته JSON-LD</span>
       </h1>
 
       <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed mb-7">
@@ -107,7 +107,7 @@
             ۱۶ اسکیما استاندارد Google SERP
           </span>
         </div>
-        <div id="schemaTypeTabs" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-h-[350px] overflow-y-auto pl-1 pr-1">
+        <div id="schemaTypeTabs" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5 max-h-[350px] overflow-y-auto px-1 pt-4 pb-2">
           <!-- Filled by App.js -->
         </div>
       </div>
@@ -457,10 +457,10 @@
         </div>
       </div>
     </article>
-
-    <!-- Universal Shared Footer -->
-    <footer id="shared-footer"></footer>
   </div>
+
+  <!-- Universal Shared Footer (Full-Width) -->
+  <footer id="shared-footer"></footer>
 
   <!-- Toast Notification -->
   <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">

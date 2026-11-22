@@ -220,6 +220,12 @@ textarea.code-container:focus {
 }
 
 /* Tab Cards & Active States (Clean, Zero Neon) */
+#schemaTypeTabs {
+  padding-top: 14px !important;
+  padding-bottom: 10px !important;
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+}
 .schema-tab-btn {
   background: var(--sub);
   border: 1px solid var(--line);

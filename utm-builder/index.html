@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=6">
+  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=8">
   <script>
     (function() {
       var t = localStorage.getItem('hub-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -46,11 +46,11 @@
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col min-h-screen">
     <header id="shared-header"></header>
 
-    <div class="text-center mb-10 md:mb-12 relative">
+    <div class="tool-hero text-center mb-8 md:mb-10 relative">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-500 dark:text-indigo-400 text-xs md:text-sm font-semibold mb-4">
         <span>⚡ استودیوی تخصصی مارکتینگ دیجیتال</span><span class="text-slate-400 dark:text-slate-500">•</span><span class="text-indigo-600 dark:text-indigo-400 font-mono">UTM Builder Pro</span>
       </div>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-3">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-white mb-3 whitespace-nowrap tool-title">
         سازنده هوشمند لینک‌های کمپین <span class="bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">یو‌تی‌ام بیلدر پرو</span>
       </h1>
       <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed mb-6">
@@ -170,9 +170,10 @@
         <div class="p-4 rounded-xl bg-dark-900/80 border border-white/5"><h3 class="font-bold text-emerald-300 mb-1.5">📱 ۴. اتصال به بارکد QR فیزیکی</h3><p class="text-slate-400 text-justify leading-relaxed">تبدیل لینک‌های UTMدار به کیوآرکدهای قابل اسکن در بیلبورد، بسته‌بندی و رویدادهای حضوری با رهگیری ۱۰۰٪ دیجیتال در آنالیتیکس.</p></div>
       </div>
     </article>
-
-    <footer id="shared-footer"></footer>
   </div>
+
+  <!-- Universal Shared Footer (Full-Width) -->
+  <footer id="shared-footer"></footer>
 
   <!-- Modals & Toast -->
   <div id="qrModal" class="modal-backdrop-blur fixed inset-0 z-50 flex items-center justify-center p-4 hidden"><div class="glass-card bg-dark-900 border border-white/10 rounded-2xl max-w-sm w-full p-6 text-center shadow-2xl flex flex-col items-center"><h3 class="text-sm font-bold text-white mb-3">📱 بارکد QR اختصاصی کمپین</h3><div class="qr-canvas-wrap mb-3" id="qrPreviewBox"></div><p class="text-[11px] text-slate-400 mb-4">اسکن مستقیم با دوربین تمام گوشی‌های اندروید و iOS</p><div class="flex items-center gap-2 w-full"><button type="button" id="btnDownloadQr" class="flex-1 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs hover:bg-indigo-500 transition">دانلود بارکد (PNG)</button><button type="button" id="btnCloseQr" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs hover:bg-slate-700 transition">بستن</button></div></div></div>

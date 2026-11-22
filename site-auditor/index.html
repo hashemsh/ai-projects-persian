@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=6">
+  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=8">
   <script>
     (function() {
       var t = localStorage.getItem('hub-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -48,9 +48,9 @@
     <header id="shared-header"></header>
 
     <!-- Subheader / Action Bar -->
-    <div class="flex flex-wrap items-center justify-between pb-4 mb-6 border-b border-line gap-3">
+    <div class="tool-hero flex flex-wrap items-center justify-between pb-4 mt-8 sm:mt-10 mb-8 border-b border-line gap-3">
       <div class="flex items-center gap-2">
-        <h1 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+        <h1 class="text-base sm:text-lg font-black text-white flex items-center gap-2 whitespace-nowrap tool-title">
           <span>سایت آدیتور پرو</span>
           <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-500 dark:text-cyan-400 border border-cyan-500/20 font-mono">Site Auditor Pro</span>
         </h1>
@@ -184,10 +184,10 @@
         </div>
       </div>
     </div>
-
-    <!-- Shared Universal Footer -->
-    <footer id="shared-footer"></footer>
   </div>
+
+  <!-- Shared Universal Footer (Full-Width) -->
+  <footer id="shared-footer"></footer>
 
   <!-- Scripts -->
   <script src="../assets/js/components/shared-layout.js"></script>

@@ -28,6 +28,6 @@
 .drawer-foot{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:12px}
 .drawer-socials{display:flex;justify-content:space-around;font-size:13px;color:var(--mut)}
 .drawer-socials a:hover{color:var(--bt)}
-.ft{background:var(--sub);color:var(--mut);border-top:1px solid var(--line);position:relative;z-index:2}
-.ft .sh{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;padding:28px 24px;font-size:14px}
+.ft{width:100%;background:var(--sub);color:var(--mut);border-top:1px solid var(--line);position:relative;z-index:2}
+.ft .sh{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding:32px 24px;font-size:14px}
 @media (max-width:900px){.menu-btn{display:flex}.links,.nav-srch-btn,.nav-btn{display:none}.nav{margin:12px;padding:8px 12px;justify-content:space-between}.nav-actions{display:flex;align-items:center;gap:8px}}

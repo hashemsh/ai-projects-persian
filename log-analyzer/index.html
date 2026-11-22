@@ -60,7 +60,7 @@
         <div class="la-card-head">
           <h2 class="la-card-title"><span>📥</span><span>درج خطوط لاگ سرور</span></h2>
           <div class="flex items-center gap-2">
-            <select id="log-format-select" class="bg-slate-900/60 border border-line rounded-lg px-2.5 py-1 text-xs text-ink focus:outline-none focus:border-cyan-500">
+            <select id="log-format-select" class="select-custom text-xs" style="padding:5px 12px 5px 30px">
               <option value="auto">تشخیص خودکار فرمت</option>
               <option value="nginx">وب‌سرور Nginx</option>
               <option value="apache">وب‌سرور Apache</option>
@@ -86,7 +86,7 @@
           <div class="flex items-center justify-between flex-wrap gap-3">
             <div class="flex items-center gap-2">
               <span class="text-xs text-mut">مدل هوش مصنوعی هدف:</span>
-              <select id="ai-model-select" class="bg-slate-900/60 border border-line rounded-lg px-2.5 py-1 text-xs text-ink focus:outline-none focus:border-cyan-500">
+              <select id="ai-model-select" class="select-custom text-xs" style="padding:5px 12px 5px 30px">
                 <option value="chatgpt">ChatGPT (GPT-4o / o1)</option>
                 <option value="claude">Claude 3.5 Sonnet</option>
                 <option value="gemini">Google Gemini 1.5 Pro</option>
@@ -154,43 +154,78 @@
 
     </main>
 
-    <!-- Bottom Educational & SEO Section -->
-    <section class="mt-16 p-6 sm:p-8 rounded-2xl border border-line bg-card/30 space-y-6">
-      <div class="border-b border-line pb-4">
-        <span class="eb">دانشنامه سئو فنی و عیب‌یابی سرور</span>
-        <h2 class="text-lg sm:text-xl font-bold text-ink whitespace-nowrap mt-2">راهنمای عیب‌یابی خطاهای رایج وب‌سرور و بهینه‌سازی عملکرد</h2>
+    <!-- Comprehensive Educational & SEO Bento Guide Article -->
+    <article id="server-guide" class="mt-14 p-6 sm:p-8 md:p-10 rounded-2xl border border-line shadow-2xl relative overflow-hidden" style="background:var(--card);backdrop-filter:blur(16px)">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8 border-b border-line pb-8">
+        <div>
+          <span class="eb mb-3 inline-block">📖 دانشنامه سئو فنی، لینوکس و معماری وب‌سرور</span>
+          <h2 class="text-xl sm:text-2xl font-black mb-3" style="color:var(--ink);white-space:nowrap">
+            چرا تحلیل دقیق لاگ‌های سرور پایه و اساس پایداری و سئوی تکنیکال است؟
+          </h2>
+          <p class="text-xs sm:text-sm text-mut leading-loose mb-4">
+            خطاهای پنهان وب‌سرورها (مانند خطای ۵۰۲ Nginx، کمبود حافظه در PHP و خطاهای Unhandled در Node.js) نه تنها ترافیک و کاربران زنده شما را هدر می‌دهند، بلکه با افت نرخ پاسخ‌دهی (Time to First Byte) و افت ایندکس کراولرهای گوگل، رتبه سئوی سایت را در کوتاه‌ترین زمان کاهش می‌دهند. تحلیل و پاکسازی زودهنگام لاگ‌ها پایدارترین استراتژی نگهداری وب است.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
+          <div class="flex items-center justify-between text-xs font-bold mb-3" style="color:var(--ink)">
+            <span>📡 جریان معماری ارتباط وب‌سرور و سرویس‌های Upstream:</span>
+            <span class="font-mono text-cyan-400 text-[11px]">Reverse Proxy Flow</span>
+          </div>
+          <div class="space-y-2 text-xs" style="color:var(--mut)">
+            <div class="flex items-center gap-2 p-2 rounded-lg" style="background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.2)">
+              <span class="text-cyan-400">۱. کلاینت / گوگل‌بات</span>
+              <span class="text-slate-500 font-mono">──(HTTPS Request)──►</span>
+              <span class="text-ink font-bold">وب‌سرور Nginx / Apache</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-lg" style="background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.2)">
+              <span class="text-rose-400">۲. نقطه رخداد ۵۰۲</span>
+              <span class="text-slate-500 font-mono">──(Sock / Port 3000)──►</span>
+              <span class="text-rose-400 font-bold">PHP-FPM / Node.js (Down / Timeout)</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-lg" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2)">
+              <span class="text-emerald-400">۳. اقدام اصلاحی</span>
+              <span class="text-slate-500 font-mono">──(Systemctl Restart)──►</span>
+              <span class="text-emerald-400 font-bold">بازگشت وضعیت آنلاین (HTTP 200 OK)</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="p-4 rounded-xl border border-line bg-card/20">
-          <h3 class="text-sm font-bold text-ink mb-2 whitespace-nowrap">چرا خطای ۵۰۲ Bad Gateway در Nginx رخ می‌دهد؟</h3>
-          <p class="text-xs sm:text-sm text-mut" style="line-height: 2.15">
-            خطای ۵۰۲ زمانی اتفاق می‌افتد که Nginx به عنوان Reverse Proxy تلاش می‌کند درخواست را به سرویس پشتیبان (Upstream مانند PHP-FPM، پایتون Gunicorn یا Node.js) منتقل کند، اما آن سرویس دان شده یا پورت آن مسدود است. با اجرای دستور <code>systemctl status php-fpm</code> وضعیت سرویس را بررسی کنید.
+      <!-- 4-Box Bento Feature Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+        <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
+          <div class="text-xl mb-2">⚡</div>
+          <h3 class="text-sm font-bold text-ink mb-1.5 whitespace-nowrap">۱. رفع خطای ۵۰۲ Bad Gateway</h3>
+          <p class="text-mut text-justify leading-relaxed">
+            این خطا به دلیل عدم پاسخ‌گویی پروسه بک‌اند (PHP-FPM یا سرور Node) رخ می‌دهد. با دستور <code class="font-mono text-cyan-400">systemctl status php8.2-fpm</code> وضعیت سوکت را بازبینی کنید.
           </p>
         </div>
 
-        <div class="p-4 rounded-xl border border-line bg-card/20">
-          <h3 class="text-sm font-bold text-ink mb-2 whitespace-nowrap">نحوه رفع خطای Allowed memory size exhausted در PHP</h3>
-          <p class="text-xs sm:text-sm text-mut" style="line-height: 2.15">
-            این خطای بحرانی (Fatal Error) هنگامی صادر می‌شود که یک اسکریپت یا کوئری سنگین وردپرس به بیش از سقف تعیین‌شده در فایل <code>php.ini</code> نیاز داشته باشد. با تنظیم مقدار <code>memory_limit = 256M</code> یا <code>512M</code> این خطا برطرف می‌گردد.
+        <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
+          <div class="text-xl mb-2">💾</div>
+          <h3 class="text-sm font-bold text-ink mb-1.5 whitespace-nowrap">۲. رفع خطای کمبود رم (Memory Size)</h3>
+          <p class="text-mut text-justify leading-relaxed">
+            هنگام پردازش کوئری‌های سنگین وردپرس، سقف RAM پر می‌شود. با قرار دادن <code class="font-mono text-indigo-400">memory_limit = 512M</code> در فایل <code class="font-mono">php.ini</code> این خطا سریعاً مهار می‌گردد.
           </p>
         </div>
 
-        <div class="p-4 rounded-xl border border-line bg-card/20">
-          <h3 class="text-sm font-bold text-ink mb-2 whitespace-nowrap">حفظ امنیت و محرمانگی داده‌ها قبل از ارسال به AI</h3>
-          <p class="text-xs sm:text-sm text-mut" style="line-height: 2.15">
-            لاگ‌های سرور معمولاً شامل آدرس‌های آی‌پی واقعی کاربران، کلیدهای دسترسی API، نام دامنه‌ها و مسیرهای حساس هاست هستند. این ابزار با سیستم Anonymizer داخلی خود، تمامی داده‌های هویتی را پیش از ساخت پرامپت پاکسازی می‌کند تا هیچ‌گونه ریسک امنیتی متوجه سرور شما نباشد.
+        <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
+          <div class="text-xl mb-2">🛡️</div>
+          <h3 class="text-sm font-bold text-ink mb-1.5 whitespace-nowrap">۳. تضمین ۱۰۰٪ محرمانگی و Anonymizer</h3>
+          <p class="text-mut text-justify leading-relaxed">
+            این ابزار کلاینت‌ساید به صورت بومی تمام IPهای کاربران، توکن‌های امنیتی و دامنه‌های حساس را پیش از ارسال به مدل‌های هوش مصنوعی ماسک می‌کند تا حریم خصوصی سرور کاملاً حفظ شود.
           </p>
         </div>
 
-        <div class="p-4 rounded-xl border border-line bg-card/20">
-          <h3 class="text-sm font-bold text-ink mb-2 whitespace-nowrap">مزیت پرامپت مهندسی‌شده در مقابل متن خام لاگ</h3>
-          <p class="text-xs sm:text-sm text-mut" style="line-height: 2.15">
-            ارسال متن نامرتب لاگ به چت‌بات‌ها اغلب به پاسخ‌های سطحی منجر می‌شود. این ابزار با تفکیک نوع باگ و تعیین دقیق نقش سیستم دواپس، پاسخی ۳ مرحله‌ای شامل ریشه‌یابی خطا، دستورات دقیق ترمینال برای حل سریع، و اقدامات پیشگیرانه دریافت می‌کند.
+        <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
+          <div class="text-xl mb-2">🤖</div>
+          <h3 class="text-sm font-bold text-ink mb-1.5 whitespace-nowrap">۴. پرامپت مهندسی‌شده عیب‌یابی دواپس</h3>
+          <p class="text-mut text-justify leading-relaxed">
+            پرامپت ساخته‌شده با فرمت تخصصی برای هوش مصنوعی شامل ۳ گام ریشه‌یابی باگ، کدهای اصلاحی فوری خط فرمان لینوکس و تنظیمات پیشگیرانه جهت جلوگیری از تکرار مجدد قطعی است.
           </p>
         </div>
       </div>
-    </section>
+    </article>
 
   </div>
 

@@ -392,16 +392,16 @@
 
           <!-- Form Controls Showcase -->
           <div class="sg-preview-frame">
-            <div class="text-xs text-mut font-bold mb-3">فیلدهای ورودی فرم (Form Inputs):</div>
+            <div class="text-xs text-mut font-bold mb-3">فیلدهای ورودی فرم همخوان با تم (Form Inputs):</div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               <div>
                 <label class="block text-xs font-semibold text-ink mb-1.5">ورودی متن استاندارد</label>
-                <input type="text" class="w-full bg-slate-900/60 border border-line rounded-xl px-3.5 py-2.5 text-xs text-ink placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition" placeholder="مثال: https://example.com">
+                <input type="text" class="w-full rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-cyan-500 transition" placeholder="مثال: https://example.com" style="background:var(--card);color:var(--ink);border:1px solid var(--line)">
               </div>
 
               <div>
-                <label class="block text-xs font-semibold text-ink mb-1.5">منوی کشویی (Select)</label>
-                <select class="w-full bg-slate-900/60 border border-line rounded-xl px-3.5 py-2.5 text-xs text-ink focus:outline-none focus:border-cyan-500 transition">
+                <label class="block text-xs font-semibold text-ink mb-1.5">منوی کشویی سفارشی (Custom Select)</label>
+                <select class="w-full select-custom">
                   <option>گزینه اول استاندارد</option>
                   <option>گزینه دوم پیشرفته</option>
                   <option>گزینه سوم اختصاصی</option>
@@ -410,7 +410,7 @@
 
               <div>
                 <label class="block text-xs font-semibold text-ink mb-1.5">ورودی عددی (Number)</label>
-                <input type="number" value="85" class="w-full bg-slate-900/60 border border-line rounded-xl px-3.5 py-2.5 text-xs text-ink focus:outline-none focus:border-cyan-500 transition">
+                <input type="number" value="85" class="w-full rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-cyan-500 transition" style="background:var(--card);color:var(--ink);border:1px solid var(--line)">
               </div>
             </div>
           </div>
@@ -488,8 +488,8 @@
             <label class="sg-check-item" for="chk-style-4">
               <input type="checkbox" id="chk-style-4">
               <div class="sg-check-content">
-                <div class="sg-check-title">پشتیبانی کامل از دارک‌مود و لایت‌مود</div>
-                <div class="sg-check-desc">فایل <code>hub-theme.css?v=11</code> لود شده و تمام کارت‌ها و متن‌ها در هر دو حالت کنتراست استاندارد داشته باشند.</div>
+                <div class="sg-check-title">منوهای کشویی تم‌پذیر و دانشنامه بنتو (Select & Bento Guide)</div>
+                <div class="sg-check-desc">استفاده از کلاس <code>.select-custom</code> با فلش در سمت چپ (RTL)، هماهنگی با تم روشن و تاریک، و بخش آموزش پایین صفحه به صورت کارت بنتو غنی با ۴ کارت مجزا.</div>
               </div>
             </label>
           </div>
@@ -513,6 +513,14 @@
 
             <label class="sg-check-item" for="chk-hub-1">
               <input type="checkbox" id="chk-hub-1">
+              <div class="sg-check-content">
+                <div class="sg-check-title">درج کارت ابزار در گرید استاتیک (.cg) صفحه اصلی</div>
+                <div class="sg-check-desc">افزودن تگ <code>&lt;a class="cd"&gt;</code> به کانتینر <code>.cg</code> در <code>index.html</code> با تصویر SVG، عنوان، خلاصه و بج دسته‌بندی، به همراه به‌روزرسانی تیتر ویترین به «همه‌ی N ابزار».</div>
+              </div>
+            </label>
+
+            <label class="sg-check-item" for="chk-hub-1-data">
+              <input type="checkbox" id="chk-hub-1-data">
               <div class="sg-check-content">
                 <div class="sg-check-title">ثبت در آرایه ابزارها در assets/js/data/projects-data.js</div>
                 <div class="sg-check-desc">افزودن شیء کامل با شناسه ترتیبی، دسته‌بندی موضوعی، ایموجی اختصاصی، توضیحات فارسی، تگ‌های فناوری و گرادیان کارت.</div>

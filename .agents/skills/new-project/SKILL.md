@@ -71,11 +71,12 @@ Every micro-app MUST follow these non-negotiable guidelines:
    - **Mathematical Centering in RTL**: Apply `width: fit-content !important; margin: auto !important; text-align: center !important;` to `.tool-title` to eliminate any right-shift illusion.
    - **Vertical Breathing Room**: Maintain a 48px margin from the shared top nav (`#shared-header + *`).
 
-4. **Typography & Persian Rules**:
+4. **Typography & Form Standards**:
    - `<html lang="fa" dir="rtl">` with Google Fonts **Vazirmatn** (`'Vazirmatn', sans-serif`).
    - **Strict Rule:** NEVER apply `font-mono` to Persian text, numbers, or UI badges. Reserve `font-mono` strictly for English code snippets, raw identifiers, or regex tokens.
    - **Single-Line Titles:** Ensure all headings (H1, H2, H3) are single-line with `whitespace-nowrap`.
-   - **Bottom Guides Line Height:** Set `line-height: 2.15` on all educational text blocks for effortless readability.
+   - **Theme-Adaptive Custom Selects:** All dropdown menus `<select>` must use `.select-custom` with SVG arrow on the left side (in RTL) and use `var(--card)` and `var(--ink)` (NEVER hardcode `bg-slate-900` which breaks in light mode).
+   - **Structured Bento Guide Section:** The bottom of each tool page must feature a rich `<article>` bento section (dual-column overview, workflow visual card, and 4 bento feature cards with `line-height: 2.15`).
 
 5. **Full-Width Footer**:
    - Place `<footer id="shared-footer"></footer>` as a direct child of `<body>`, outside the constrained `max-w-7xl` container.
@@ -94,16 +95,20 @@ Every micro-app requires a dedicated vector SVG banner matching the visual langu
 
 ## Step 4: Hub Registration & Live Search Integration
 
-1. **Register in `assets/js/data/projects-data.js`**:
+1. **Insert Tool Card in Static Grid `.cg` in `index.html`**:
+   - Add `<a class="cd" href="./<project-slug>/">...</a>` inside `<div class="cg">` with SVG thumbnail, title, description, category tag, and `<b>رایگان</b>`.
+   - Update grid header count: `<a class="la" href="#tools">همه‌ی N ابزار ←</a>`.
+   - Add category filter chip `<span class="chip">...</span>` if introducing a new category.
+2. **Register in `assets/js/data/projects-data.js`**:
    - Add new entry with next sequential ID, category, title, badge, emoji, Persian description, tech pills, url `./<project-slug>/`, and modern gradient accent.
-2. **Register in `assets/js/search.js`**:
+3. **Register in `assets/js/search.js`**:
    - Add new entry in `toolsData` array with title, url, icon path (`assets/images/tools/<project-slug>.svg`), category tag, short description, and rich Persian/English search keywords.
-3. **Add to Marquee Ticker in `index.html`**:
+4. **Add to Marquee Ticker in `index.html`**:
    - Add the `.mq-item` anchor inside `.mq-track` (in both loops):
      ```html
      <a class="mq-item" href="./<project-slug>/"><img src="assets/images/tools/<project-slug>.svg" alt="" width="32" height="32" loading="lazy"><span>عنوان ابزار</span></a>
      ```
-4. **Update Hub Hero Stats**:
+5. **Update Hub Hero Stats**:
    - Increment the active tools count badge in root `index.html` (e.g. from ۱۰ to ۱۱).
 
 ---

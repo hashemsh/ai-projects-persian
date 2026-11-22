@@ -51,7 +51,7 @@ Use this skill whenever creating, scaffolding, or implementing a new micro-app o
    - **Zero inline styles or scripts**: All CSS in `assets/css/`, all JS in `assets/js/`.
    - **Strict relative paths**: All links must use `./assets/...` (NEVER leading `/assets/...`).
    - **Dual Compatibility**: In vanilla web apps, ensure scripts run smoothly on both `file:///` and HTTP/HTTPS.
-   - **Hard 200-line cap**: Every source file (HTML, CSS, JS) must strictly stay under 200 lines. Decompose proactively.
+   - **No Line Cap**: Files can naturally be as long as needed (>200 lines is completely acceptable). Avoid artificial over-fragmentation.
 
 3. **Shared Header & Footer Layout Integration**:
    - Every micro-app MUST integrate the central shared header and footer instead of duplicating code or creating custom back buttons:

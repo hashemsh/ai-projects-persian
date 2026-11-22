@@ -12,7 +12,7 @@ a{color:inherit;text-decoration:none}
 .hero{position:relative;text-align:center;padding:70px 0 32px}
 .gridbg{position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 0%,var(--g1),transparent 70%),radial-gradient(30% 45% at 88% 15%,var(--g2),transparent 70%)}
 .eb{display:inline-block;font-size:13px;font-weight:800;color:var(--bt);letter-spacing:.2px}
-h1{position:relative;margin:12px auto 16px;font-size:clamp(20px,3.2vw,34px);font-weight:900;line-height:1.4;max-width:960px}
+h1{position:relative;margin:12px auto 16px;font-size:clamp(20px,3.2vw,34px);font-weight:900;line-height:1.4;max-width:960px;text-align:center}
 .mk{background:linear-gradient(transparent 64%,var(--hl) 64%)}
 .lead{position:relative;color:var(--mut);max-width:760px;margin:0 auto 24px;font-size:17px;line-height:1.9}
 .hero-search-wrap{position:relative;max-width:580px;width:100%;margin:20px auto 0;padding:0 8px;z-index:30}
@@ -166,9 +166,18 @@ html{scroll-behavior:smooth}
 .tool-hero {
   margin-top: 48px !important;
   margin-bottom: 38px !important;
-  text-align: center;
+  text-align: center !important;
+  max-width: 960px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
-.tool-title, h1.tool-heading {
+.tool-hero h1, .tool-title, h1.tool-heading {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  display: block !important;
+  width: fit-content !important;
+  max-width: 100% !important;
   white-space: nowrap !important;
   font-size: clamp(20px, 3.2vw, 34px) !important;
   line-height: 1.35 !important;

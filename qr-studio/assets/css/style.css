@@ -1,89 +1,94 @@
 /* ==========================================================================
-   QR Code Studio Pro - Advanced Stylesheet
-   Modern Glassmorphic Dark UI & Print-Ready Preview Styling
+   QR Code Studio Pro - Modern Non-Neon Stylesheet
+   Full Dark / Light Mode Support via Clean Modular Tokens
    ========================================================================== */
 
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
 
-/* Universal Persian Typography */
 *, *::before, *::after {
   font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   box-sizing: border-box;
 }
 
-html, body {
-  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+body {
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+  font-family: 'Vazirmatn', sans-serif !important;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 input, button, select, textarea, optgroup {
-  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-family: 'Vazirmatn', sans-serif !important;
 }
 
-/* Glassmorphism Cards & Panels */
+/* Subtle Grid Background (Clean & Non-Neon) */
+.tool-gridbg {
+  position: absolute;
+  inset: 0;
+  height: 520px;
+  background: radial-gradient(50% 60% at 50% 0%, var(--g1), transparent 70%),
+              radial-gradient(30% 45% at 88% 15%, var(--g2), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Clean Cards & Panels */
 .glass-card {
-  background: rgba(12, 15, 29, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 4px 16px var(--sh0) !important;
+  color: var(--ink) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.glass-card-hover:hover {
-  background: rgba(17, 21, 40, 0.85);
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.25);
+.glass-card:hover {
+  border-color: var(--bdh) !important;
 }
 
-/* Glass Inputs & Textareas */
-.qr-input {
-  background: rgba(7, 9, 19, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #f1f5f9;
-  transition: all 0.2s ease;
+/* Inputs & Textareas */
+.qr-input, input[type="text"], input[type="password"], textarea, select {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  border-radius: 10px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.qr-input:focus {
-  outline: none;
-  border-color: #06b6d4;
-  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
-  background: rgba(12, 15, 29, 0.9);
+.qr-input:focus, input[type="text"]:focus, input[type="password"]:focus, textarea:focus, select:focus {
+  border-color: var(--bt) !important;
+  box-shadow: 0 0 0 3px var(--hl) !important;
+  outline: none !important;
 }
 
 .qr-input::placeholder {
-  color: #64748b;
+  color: var(--mut) !important;
 }
 
-/* Code & Raw Preview Area - Strict Monospace */
+/* Code & Raw Preview Area */
 .code-container,
 .code-container * {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
   direction: ltr;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #070913;
+  background: var(--sub);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: var(--line);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
-}
-
-/* Pulse Glow Keyframes */
-@keyframes pulseSlow {
-  0%, 100% { opacity: 0.15; transform: scale(1); }
-  50% { opacity: 0.3; transform: scale(1.08); }
-}
-
-.animate-pulse-slow {
-  animation: pulseSlow 8s infinite ease-in-out;
+  background: var(--mut);
 }
 
 /* Color Picker Customization */
@@ -100,14 +105,16 @@ input[type="color"]::-webkit-color-swatch-wrapper {
   padding: 0;
 }
 input[type="color"]::-webkit-color-swatch {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--line);
   border-radius: 10px;
 }
 
 /* Live QR Canvas Stage */
 .qr-stage-wrapper {
-  background: radial-gradient(circle at center, rgba(30, 41, 59, 0.4) 0%, rgba(7, 9, 19, 0.8) 100%);
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: inset 0 2px 10px var(--sh0) !important;
+  border-radius: 16px;
 }
 
 .qr-preview-box {
@@ -118,17 +125,123 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 /* Style Pill Active State */
+.style-pill {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--mut) !important;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.style-pill:hover {
+  background: var(--sub) !important;
+  color: var(--ink) !important;
+  border-color: var(--bt) !important;
+}
+
 .style-pill.active {
-  background: rgba(6, 182, 212, 0.15);
-  border-color: #06b6d4;
-  color: #38bdf8;
-  box-shadow: 0 0 12px rgba(6, 182, 212, 0.25);
+  background: var(--sub) !important;
+  border-color: var(--bt) !important;
+  color: var(--bt) !important;
+  box-shadow: 0 0 0 1.5px var(--bt) !important;
+  font-weight: 700;
 }
 
 /* Data Type Tab Active State */
+.type-tab {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--mut) !important;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.type-tab:hover {
+  background: var(--sub) !important;
+  color: var(--ink) !important;
+  border-color: var(--bt) !important;
+}
+
 .type-tab.active {
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.3) 0%, rgba(6, 182, 212, 0.3) 100%);
-  border-color: #38bdf8;
-  color: #ffffff;
-  box-shadow: 0 4px 16px -2px rgba(6, 182, 212, 0.3);
+  background: var(--sub) !important;
+  border-color: var(--bt) !important;
+  color: var(--bt) !important;
+  box-shadow: 0 0 0 1.5px var(--bt) !important;
+  font-weight: 700;
+}
+
+.type-tab span, .style-pill span {
+  color: inherit;
+}
+
+/* Download Buttons */
+#btnDownloadSvg {
+  background: var(--brand) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  border: none !important;
+  box-shadow: 0 4px 14px var(--sh0) !important;
+  transition: all 0.2s ease;
+}
+
+#btnDownloadSvg:hover {
+  opacity: 0.94;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--sh) !important;
+}
+
+#btnDownloadPng {
+  background: var(--bt) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  border: none !important;
+  box-shadow: 0 4px 14px var(--sh0) !important;
+  transition: all 0.2s ease;
+}
+
+#btnDownloadPng:hover {
+  opacity: 0.94;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--sh) !important;
+}
+
+/* SEO Guide */
+#seo-guide {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+}
+
+#seo-guide h2, #seo-guide h3 {
+  color: var(--ink) !important;
+}
+
+#seo-guide p {
+  color: var(--mut) !important;
+}
+
+#seo-guide .guide-subcard {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 14px;
+}
+
+/* Toast Notification */
+#toast > div {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  box-shadow: 0 12px 32px var(--sh) !important;
+}
+
+#toastTitle {
+  color: var(--ink) !important;
+}
+
+#toastMessage {
+  color: var(--mut) !important;
 }

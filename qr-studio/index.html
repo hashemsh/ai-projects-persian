@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>استودیو و ژنراتور کیوآرکد پیشرفته | QR Code Studio Pro</title>
   <meta name="description" content="طراحی و ساخت آنلاین کدهای QR فوق‌سفارشی؛ با استایل‌های مدرن نقاط، دیتاهای وای‌فای، کارت ویزیت، بانکی، لوگوی مرکزی، گرادینت و دانلود برداری SVG و PNG">
+  <script>try{var t=localStorage.getItem("theme")||localStorage.getItem("ai_hub_theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
   <!-- Dual CDN Vazirmatn Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <script>
     const _origWarn = console.warn;
     console.warn = (...args) => { if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return; _origWarn.apply(console, args); };
@@ -19,44 +19,34 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
+      darkMode: ['class', '[data-theme="dark"]'],
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Vazirmatn', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
             vazir: ['Vazirmatn', 'sans-serif']
-          },
-          colors: { dark: { 950: '#070913', 900: '#0c0f1d', 850: '#111528', 800: '#171c34' } },
-          boxShadow: { 'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)' }
+          }
         }
       }
     }
   </script>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/components/shared-nav.css">
+  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=6">
+  <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
-<body data-root="sub" class="bg-dark-950 text-slate-100 font-vazir min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-white">
-  <!-- Glowing Ambient Background Orbs -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute -top-32 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-[140px] animate-pulse-slow"></div>
-    <div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-indigo-500/15 rounded-full blur-[160px] animate-pulse-slow"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div>
-  </div>
+<body data-root="sub" class="min-h-screen relative overflow-x-hidden">
+  <!-- Subtle Non-Neon Ambient Grid Background -->
+  <div class="tool-gridbg"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col min-h-screen">
     <!-- Universal Shared Header -->
     <header id="shared-header"></header>
 
-    <!-- Hero Showcase Header with Balanced Spacing -->
-    <section class="mt-6 sm:mt-10 mb-12 sm:mb-16 text-center max-w-3xl mx-auto space-y-4 md:space-y-5">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs sm:text-sm font-semibold backdrop-blur-md shadow-sm">
-        <span>⚡</span><span>ابزار کاربردی شماره ۷ • ۱۰۰٪ کلاینت‌ساید و امن</span>
-      </div>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
-        <span>استودیو و ژنراتور کیوآرکد پیشرفته</span>
-        <span class="block mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-400 bg-clip-text text-transparent">(QR Studio Pro)</span>
+    <!-- Hero Showcase Header -->
+    <section class="mt-6 sm:mt-8 mb-10 sm:mb-12 text-center max-w-3xl mx-auto space-y-3">
+      <span class="eb">ابزار کاربردی شماره ۷ • ۱۰۰٪ کلاینت‌ساید و امن</span>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight" style="color:var(--ink);margin:10px auto 12px">
+        استودیو و ژنراتور کیوآرکد پیشرفته <span class="mk">(QR Studio Pro)</span>
       </h1>
-      <p class="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed text-justify sm:text-center max-w-2xl mx-auto">
+      <p class="text-xs sm:text-sm md:text-base leading-relaxed text-center max-w-2xl mx-auto" style="color:var(--mut)">
         طراحی و ساخت آنلاین کدهای QR فوق‌سفارشی و استاندارد؛ تولید لینک اختصاصی واتساپ با پیام آماده، تلگرام، پیج اینستاگرام، اتصال سریع وای‌فای و وب‌سایت، همراه با لوگوی مرکزی و خروجی باکیفیت وکتور SVG و PNG.
       </p>
     </section>
@@ -270,42 +260,41 @@
       </section>
     </main>
 
-    <!-- Comprehensive Educational Guide Section -->
-    <section id="qr-guide" class="mt-8 mb-12 glass-card rounded-2xl p-6 sm:p-8 space-y-6">
-      <div class="flex items-center gap-3 border-b border-white/10 pb-4">
+    <!-- Educational Guide Section -->
+    <section id="qr-guide" class="mt-8 mb-12 glass-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3 pb-4" style="border-bottom:1px solid var(--line)">
         <span class="text-2xl">💡</span>
         <div>
-          <h2 class="text-base sm:text-lg font-bold text-white">راهنمای تخصصی چاپ و استانداردهای کیوآرکد</h2>
-          <p class="text-xs text-slate-400">نکات حیاتی برای جلوگیری از خطای اسکن در چاپ بنر، کاتالوگ، بسته‌بندی و کارت ویزیت</p>
+          <h2 class="text-base sm:text-lg font-bold" style="color:var(--ink)">راهنمای تخصصی چاپ و استانداردهای کیوآرکد</h2>
+          <p class="text-xs" style="color:var(--mut)">نکات حیاتی برای جلوگیری از خطای اسکن در چاپ بنر، کاتالوگ، بسته‌بندی و کارت ویزیت</p>
         </div>
       </div>
 
-      <!-- 3D Architecture Visual Showcase -->
-      <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+      <!-- Architecture Visual Showcase -->
+      <div class="relative rounded-2xl overflow-hidden shadow-xl group" style="border:1px solid var(--line)">
         <img src="assets/images/qr-studio-banner.jpg" alt="معماری استودیو و اسکن کدهای کیوآرکد پیشرفته" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 ease-out" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent pointer-events-none"></div>
-        <div class="absolute bottom-4 right-4 left-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
-          <span class="px-3 py-1 rounded-lg bg-dark-950/80 backdrop-blur-md border border-cyan-500/30 text-cyan-300 font-semibold shadow-md">
+        <div class="p-3 text-[11px] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2" style="background:var(--sub);color:var(--mut);border-top:1px solid var(--line)">
+          <span class="font-semibold" style="color:var(--ink)">
             📱 استاندارد ISO/IEC 18004 • پشتیبانی ۱۰۰٪ توسط دوربین‌های iOS و Android
           </span>
-          <span class="text-[11px] text-slate-400 bg-dark-950/60 px-2.5 py-1 rounded-lg backdrop-blur-md">
+          <span>
             موتور رندر کلاینت‌ساید بدون ارسال دیتا به سرور
           </span>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-300 leading-relaxed">
-        <div class="p-4 rounded-xl bg-dark-900/60 border border-white/5 space-y-2">
-          <div class="font-bold text-cyan-300 flex items-center gap-1.5"><span>۱.</span><span>قانون کنتراست رنگی</span></div>
-          <p class="text-slate-400 text-justify">همواره اطمینان حاصل کنید که رنگ نقاط QR تیره و رنگ پس‌زمینه روشن باشد. سنسورهای دوربین گوشی‌های موبایل برای تفکیک سریع سلول‌ها به تضاد نوری حداقل ۷۰ درصدی نیاز دارند.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs leading-relaxed">
+        <div class="guide-subcard p-4 space-y-2">
+          <div class="font-bold flex items-center gap-1.5" style="color:var(--bt)"><span>۱.</span><span>قانون کنتراست رنگی</span></div>
+          <p class="text-justify" style="color:var(--mut)">همواره اطمینان حاصل کنید که رنگ نقاط QR تیره و رنگ پس‌زمینه روشن باشد. سنسورهای دوربین گوشی‌های موبایل برای تفکیک سریع سلول‌ها به تضاد نوری حداقل ۷۰ درصدی نیاز دارند.</p>
         </div>
-        <div class="p-4 rounded-xl bg-dark-900/60 border border-white/5 space-y-2">
-          <div class="font-bold text-indigo-300 flex items-center gap-1.5"><span>۲.</span><span>حاشیه امن (Quiet Zone)</span></div>
-          <p class="text-slate-400 text-justify">حاشیه سفید یا شفاف دور کیوآرکد نباید با متون یا المان‌های گرافیکی مجاور پوشانده شود. حداقل ۴ سلول خالی دور تا دور کد الزامی است تا الگوریتم شناسایی دوربین خطا ندهد.</p>
+        <div class="guide-subcard p-4 space-y-2">
+          <div class="font-bold flex items-center gap-1.5" style="color:var(--bt)"><span>۲.</span><span>حاشیه امن (Quiet Zone)</span></div>
+          <p class="text-justify" style="color:var(--mut)">حاشیه سفید یا شفاف دور کیوآرکد نباید با متون یا المان‌های گرافیکی مجاور پوشانده شود. حداقل ۴ سلول خالی دور تا دور کد الزامی است تا الگوریتم شناسایی دوربین خطا ندهد.</p>
         </div>
-        <div class="p-4 rounded-xl bg-dark-900/60 border border-white/5 space-y-2">
-          <div class="font-bold text-emerald-300 flex items-center gap-1.5"><span>۳.</span><span>سطح تصحیح خطا (Error Correction H)</span></div>
-          <p class="text-slate-400 text-justify">وقتی در مرکز کیوآرکد لوگو یا عکس قرار می‌دهید، سطح مقاومت (H) تا ۳۰٪ مخدوش شدن فیزیکی یا پوشش سلول‌ها را بازسازی می‌کند و تضمین می‌کند بارکد در تمام شرایط اسکن شود.</p>
+        <div class="guide-subcard p-4 space-y-2">
+          <div class="font-bold flex items-center gap-1.5" style="color:var(--bt)"><span>۳.</span><span>سطح تصحیح خطا (Error Correction H)</span></div>
+          <p class="text-justify" style="color:var(--mut)">وقتی در مرکز کیوآرکد لوگو یا عکس قرار می‌دهید، سطح مقاومت (H) تا ۳۰٪ مخدوش شدن فیزیکی یا پوشش سلول‌ها را بازسازی می‌کند و تضمین می‌کند بارکد در تمام شرایط اسکن شود.</p>
         </div>
       </div>
     </section>
@@ -317,8 +306,19 @@
   <!-- Floating Toast Notification -->
   <div id="qrToast" class="fixed bottom-6 left-6 z-50 p-4 rounded-2xl bg-dark-900/90 border border-cyan-500/30 backdrop-blur-xl shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none max-w-sm"></div>
 
+  <!-- Take Me Up (Scroll to Top) Rocket Button -->
+  <button type="button" id="take-me-up" class="take-me-up" aria-label="برو به بالا" title="برو به بالای صفحه">
+    <svg class="progress-ring" width="46" height="46" viewBox="0 0 46 46"><circle class="ring-bg" cx="23" cy="23" r="18" fill="none" stroke-width="2.5"/><circle id="scroll-progress-ring" class="ring-bar" cx="23" cy="23" r="18" fill="none" stroke-width="2.5"/></svg>
+    <div class="rocket-icon-wrap">
+      <svg class="rocket-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4.5c1.62-1.63 5-2.5 5-2.5"/><path d="M12 15v5s3.03-.55 4.5-2c1.63-1.62 2.5-5 2.5-5"/></svg>
+      <span class="thruster-flame"></span>
+    </div>
+  </button>
+
   <!-- Scripts -->
   <script src="../assets/js/components/shared-layout.js"></script>
+  <!-- Scroll to top rocket handler -->
+  <script src="../assets/js/scroll.js" defer></script>
   <script src="assets/js/vendor/qr-code-styling.js"></script>
   <script src="assets/js/vendor/jsqr.min.js"></script>
   <script src="assets/js/data/presets.js"></script>

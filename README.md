@@ -22,6 +22,12 @@ ai-projects-persian/
 ├── index.html                      # صفحه ویترین پروژه‌ها (Showcase Hub)
 ├── README.md                       # مستندات جامع ریپازیتوری
 ├── ROADMAP.md                      # نقشه راه و اهداف توسعه
+├── docs/                           # مستندات معماری و استانداردهای توسعه
+│   └── NEW_TOOL_CHECKLIST.md       # چک‌لیست و پروتکل الزامی ۵ فازی انتشار ابزار جدید
+├── styleguide/                     # راهنمای جامع استایل، دیزاین‌سیستم و کیت رابط کاربری
+│   ├── index.html                  # اینترفیس تعاملی راهنمای استایل و چک‌لیست
+│   ├── README.md                   # مستندات راهنمای استایل
+│   └── assets/                     # استایل‌ها و کنترلرهای راهنما
 ├── assets/                         # دارایی‌ها، استایل‌ها و کامپوننت‌های مشترک سراسری
 │   ├── css/
 │   │   ├── hub.css                 # استایل‌های اختصاصی صفحه اصلی
@@ -100,7 +106,7 @@ ai-projects-persian/
 3. **[پلیس‌هولدر پرو (Placeholder Pro)](https://hashemsh.github.io/ai-projects-persian/placeholder-pro/)** • [مستندات کامل](./placeholder-pro/README.md)
    - ژنراتور تصویر ماکت، وکتورهای SVG و عکس‌های استوک با ابعاد استاندارد
 
-4. **[سایت آدیتور پرو (Site Auditor Pro)](https://hashemsh.github.io/ai-projects-persian/site-auditor/)** *(در حال توسعه ⏳)* • [مستندات کامل](./site-auditor/README.md)
+4. **[سایت آدیتور پرو (Site Auditor Pro)](https://hashemsh.github.io/ai-projects-persian/site-auditor/)** • [مستندات کامل](./site-auditor/README.md)
    - استودیوی ممیزی سئو، پرفورمنس، پیش‌نمایش سرپ و بررسی دسترسی‌پذیری
 
 5. **[یو‌تی‌ام بیلدر پرو (UTM Builder Pro)](https://hashemsh.github.io/ai-projects-persian/utm-builder/)** • [مستندات کامل](./utm-builder/README.md)
@@ -118,8 +124,18 @@ ai-projects-persian/
 9. **[مبدل و فشرده‌ساز تصاویر به WebP (WebP Studio Pro)](https://hashemsh.github.io/ai-projects-persian/webp-converter/)** • [مستندات کامل](./webp-converter/README.md)
    - تبدیل و فشرده‌سازی آنلاین انواع تصاویر به WebP با کاهش حجم تا ۸۵٪، حفظ ترنسپرنسی و دانلود گروهی ۱۰۰٪ محلی در مرورگر
 
-10. **[محاسبه‌گر هزینه هوش مصنوعی (AI Cost Estimator)](https://hashemsh.github.io/ai-projects-persian/ai-cost-estimator/)** *(در حال توسعه ⏳)* • [مستندات کامل](./ai-cost-estimator/README.md)
+10. **[محاسبه‌گر هزینه هوش مصنوعی (AI Cost Estimator)](https://hashemsh.github.io/ai-projects-persian/ai-cost-estimator/)** • [مستندات کامل](./ai-cost-estimator/README.md)
     - محاسبه و مقایسه زنده هزینه‌های تصویر (Google Nano Banana, Midjourney, FLUX)، ویدیو (Runway, Luma, Kling)، کدنویسی (Claude 3.5, DeepSeek V3, Cursor, v0) و چت به دلار و معادل تومان همراه با دانشنامه اشتراک ماهانه
+
+---
+
+## 🎨 راهنمای استایل و چک‌لیست توسعه ابزارهای جدید (Style Guide & Checklist)
+
+جهت حفظ یکپارچگی طراحی، هدر/فوتر ثابت، تایپوگرافی وزیرمتن، سنتر دقیق عناوین در RTL و عدم ایجاد خطا در انتشار ابزارهای آینده، از اسناد مرجع زیر استفاده می‌شود:
+
+- 🎨 **[راهنمای جامع استایل و کیت UI (صفحه وب)](https://hashemsh.github.io/ai-projects-persian/styleguide/)** • [مستندات](./styleguide/README.md)
+- 🚀 **[پروتکل و چک‌لیست ۵ فازی ریلیز ابزار جدید](./docs/NEW_TOOL_CHECKLIST.md)**
+- 🤖 **[دستورالعمل عامل هوش مصنوعی (Agent Skill)](./.agents/skills/new-project/SKILL.md)**
 
 ---
 

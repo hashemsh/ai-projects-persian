@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>راهنمای جامع استایل و استاندارد ابزارها | Style Guide & UI Kit</title>
+  <meta name="description" content="مرجع جامع طراحی، معماری Clean Modular Web، دیزاین‌سیستم، توکن‌های رنگی و چک‌لیست ریلیز اتوماتیک میکرواپ‌های هاب هوش مصنوعی.">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="alternate icon" href="../assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=11">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script>
+    (function() {
+      var t = localStorage.getItem('hub-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      if (t === 'light') document.documentElement.classList.add('light-theme');
+    })();
+  </script>
+</head>
+<body data-root="sub" class="bg-base text-main min-h-screen font-sans antialiased selection:bg-cyan-500 selection:text-white flex flex-col">
+
+  <!-- Universal Ambient Glow & Grid -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 right-1/4 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl opacity-60"></div>
+    <div class="absolute top-1/3 -left-40 w-[550px] h-[550px] bg-indigo-500/10 rounded-full blur-3xl opacity-50"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293d0a_1px,transparent_1px),linear-gradient(to_bottom,#1f293d0a_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+  </div>
+
+  <!-- Primary Page Container -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col flex-1 w-full">
+    
+    <!-- Shared Universal Header -->
+    <header id="shared-header"></header>
+
+    <!-- Standard Hero Showcase Header (Living Demonstration) -->
+    <header class="tool-hero text-center max-w-4xl mx-auto my-8 md:my-10 py-2 relative">
+      <span class="eb">استاندارد مرجع طراحی و توسعه میکرواپ‌ها</span>
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight mb-3 mx-auto text-center whitespace-nowrap tool-title" style="color:var(--ink);margin:10px auto 14px;text-align:center">
+        راهنمای جامع استایل و استاندارد <span class="mk">ابزارهای جدید</span>
+      </h1>
+      <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base leading-relaxed mb-6" style="color:var(--mut)">
+        مرجع رسمی دیزاین‌سیستم، توکن‌های رنگی، تایپوگرافی، فواصل استاندارد و چک‌لیست ریلیز خودکار برای توسعه و انتشار بدون خطای ابزارهای یکپارچه در هاب هوش مصنوعی.
+      </p>
+      <!-- Quick Action Controls -->
+      <div class="flex items-center justify-center gap-3 flex-wrap">
+        <a href="#checklist" class="btn bp" style="font-size:13px;padding:8px 18px"><span>📋 چک‌لیست ریلیز ابزار جدید</span></a>
+        <a href="#hero-formula" class="btn bo" style="font-size:13px;padding:8px 18px"><span>🎯 ساختار هیرو و عناوین</span></a>
+        <a href="#colors" class="btn bo" style="font-size:13px;padding:8px 18px"><span>🎨 پالت رنگ و توکن‌ها</span></a>
+      </div>
+    </header>
+
+    <!-- Main Guide Grid Layout -->
+    <div class="sg-layout">
+
+      <!-- Sticky Sidebar Navigation -->
+      <aside class="sg-nav-sticky">
+        <div class="sg-nav-title">سرفصل‌های راهنما</div>
+        <a href="#philosophy" class="sg-nav-link active"><span>🏛️</span><span>معماری و فلسفه تمیز</span></a>
+        <a href="#typography" class="sg-nav-link"><span>✍️</span><span>تایپوگرافی و فونت</span></a>
+        <a href="#colors" class="sg-nav-link"><span>🎨</span><span>پالت رنگ و توکن‌ها</span></a>
+        <a href="#hero-formula" class="sg-nav-link"><span>🎯</span><span>ساختار هیرو و عنوان</span></a>
+        <a href="#spacing-grid" class="sg-nav-link"><span>📐</span><span>فاصله‌گذاری و فوتر</span></a>
+        <a href="#components" class="sg-nav-link"><span>🧩</span><span>کیت کامپوننت‌های UI</span></a>
+        <a href="#guides-seo" class="sg-nav-link"><span>📖</span><span>متون راهنما و سئو</span></a>
+        <a href="#checklist" class="sg-nav-link"><span>🚀</span><span>چک‌لیست ریلیز ابزار</span></a>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="min-w-0">
+
+        <!-- 1. Architecture & Philosophy -->
+        <section id="philosophy" class="sg-section">
+          <div class="sg-section-header">
+            <div>
+              <h2 class="sg-section-title"><span>🏛️</span><span>۱. معماری کلین وب و فلسفه توسعه (Clean Modular Web)</span></h2>
+              <p class="sg-section-desc">اصول بنیادین ساختار فایل‌ها، استقلال ماژول‌ها و استانداردهای توسعه در مخزن هاب هوش مصنوعی.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+            <div class="p-4 rounded-xl border border-line bg-card/40">
+              <h3 class="text-sm font-bold text-ink mb-2 flex items-center gap-2"><span>🚫</span><span>ممنوعیت مطلق کدهای درون‌خطی (No Inline Code)</span></h3>
+              <p class="text-xs text-mut leading-relaxed">هرگز تگ‌های <code>&lt;style&gt;</code> یا <code>&lt;script&gt;</code> حاوی کد را درون HTML قرار ندهید. استایل‌ها فقط در <code>assets/css/</code> و اسکریپت‌ها فقط در <code>assets/js/</code> نوشته می‌شوند.</p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-line bg-card/40">
+              <h3 class="text-sm font-bold text-ink mb-2 flex items-center gap-2"><span>🔗</span><span>پروتکل اکید مسیرهای نسبی (Strict Relative Paths)</span></h3>
+              <p class="text-xs text-mut leading-relaxed">تمام آدرس‌ها باید با <code>./</code> یا <code>../</code> آغاز شوند. استفاده از اسلش ریشه (مانند <code>/assets/...</code>) ممنوع است زیرا انتشار روی گیت‌هاب پیجز (GitHub Pages) را دچار شکست لینک می‌کند.</p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-line bg-card/40">
+              <h3 class="text-sm font-bold text-ink mb-2 flex items-center gap-2"><span>📂</span><span>سازگاری دوگانه سرور و فایل لوکال (Dual Compatibility)</span></h3>
+              <p class="text-xs text-mut leading-relaxed">اسکریپت‌های وانیلا باید به گونه‌ای نوشته شوند که هم روی وب‌سرور (HTTPS) و هم با باز کردن مستقیم فایل (پروتکل <code>file:///</code>) بدون خطای CORS کار کنند.</p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-line bg-card/40">
+              <h3 class="text-sm font-bold text-ink mb-2 flex items-center gap-2"><span>📏</span><span>حذف محدودیت خطوط (No Line Cap)</span></h3>
+              <p class="text-xs text-mut leading-relaxed">قانون سقف ۲۰۰ خطی برداشته شده است. فایل‌ها می‌توانند به اندازه منطقی و مورد نیاز طولانی باشند؛ هرگز فایل‌ها را بی‌جهت و مصنوعی تکه‌تکه نکنید.</p>
+            </div>
+          </div>
+
+          <div class="sg-callout info">
+            <span>💡</span>
+            <div><strong>ساختار استاندارد پوشه هر ابزار:</strong> هر ابزار جدید در پوشه مجزا با نام کوچک کباب‌کیس (مانند <code>my-new-tool/</code>) شامل فایل <code>index.html</code>، مستندات <code>README.md</code>، و پوشه <code>assets/</code> (شامل <code>css/</code> و <code>js/</code>) ایجاد می‌شود.</div>
+          </div>
+        </section>
+
+        <!-- 2. Typography Standards -->
+        <section id="typography" class="sg-section">
+          <div class="sg-section-header">
+            <div>
+              <h2 class="sg-section-title"><span>✍️</span><span>۲. استاندارد تایپوگرافی و فونت فارسی</span></h2>
+              <p class="sg-section-desc">هماهنگی بصری، انتخاب فونت، مقیاس تیترها و قوانین سخت‌گیرانه عدم استفاده از فونت مونو در متون فارسی.</p>
+            </div>
+          </div>
+
+          <div class="sg-callout danger">
+            <span>🚨</span>
+            <div>
+              <strong>قانون طلایی فونت مونو (Monospace Prohibition):</strong>
+              هرگز از کلاس <code>font-mono</code> برای متون، اعداد، اعشار، تاریخ‌ها، برچسب‌ها یا نشان‌های فارسی استفاده نکنید! فونت‌های مونوگلیف‌های فارسی را مخدوش، غیرطبیعی و ناخوانا می‌کنند. فونت مونو فقط و فقط برای کدهای انگلیسی، توکن‌های API، نام توابع و رجکس مجاز است.
+            </div>
+          </div>
+
+          <!-- Typography Scale Showcase -->
+          <div class="space-y-4 my-6">
+            <div class="p-4 rounded-xl border border-line bg-card/30 flex items-center justify-between flex-wrap gap-4">
+              <div>
+                <span class="text-xs text-mut font-mono">H1 / 28px - 32px / font-black</span>
+                <div class="text-2xl font-black text-ink whitespace-nowrap">عنوان اصلی ابزار نمونه با استایل تک‌خطی</div>
+              </div>
+              <span class="px-2.5 py-1 text-xs rounded bg-cyan-500/10 text-cyan-400 font-mono">whitespace-nowrap</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-line bg-card/30 flex items-center justify-between flex-wrap gap-4">
+              <div>
+                <span class="text-xs text-mut font-mono">H2 / 20px - 22px / font-extrabold</span>
+                <div class="text-xl font-extrabold text-ink whitespace-nowrap">عنوان بخش‌های داخلی و فرم‌ها</div>
+              </div>
+              <span class="px-2.5 py-1 text-xs rounded bg-indigo-500/10 text-indigo-400 font-mono">font-extrabold</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-line bg-card/30 flex items-center justify-between flex-wrap gap-4">
+              <div>
+                <span class="text-xs text-mut font-mono">H3 / 16px - 18px / font-bold</span>
+                <div class="text-base font-bold text-ink whitespace-nowrap">تیتر کارت‌ها و سوالات متداول راهنما</div>
+              </div>
+              <span class="px-2.5 py-1 text-xs rounded bg-emerald-500/10 text-emerald-400 font-mono">font-bold</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-line bg-card/30">
+              <span class="text-xs text-mut font-mono">Body / 14px / line-height: 2.15</span>
+              <p class="text-sm text-mut mt-2" style="line-height: 2.15">
+                متن توضیحات آموزشی و پاراگراف‌های راهنما باید حتماً دارای فاصله خطی معادل ۲.۱۵ باشند. این فاصله در زبان فارسی باعث می‌شود که اعراب، دندانه‌ها و کلمات طولانی فارسی بدون فشردگی و خستگی چشم به آسانی خوانده شوند.
+              </p>
+            </div>
+          </div>
+
+          <div class="sg-callout success">
+            <span>✨</span>
+            <div><strong>قانون تک‌خطی بودن عناوین:</strong> عناوین کلیه ابزارها (H1)، سربرگ کارت‌ها و تیترهای بخش راهنما باید تک‌خطی باشند و با کلاس <code>whitespace-nowrap</code> و تنظیم اندازه ریسپانسیو از شکستن و دو‌خطی شدن جلوگیری کنند.</div>
+          </div>
+        </section>
+
+        <!-- 3. Colors & Design Tokens -->
+        <section id="colors" class="sg-section">
+          <div class="sg-section-header">
+            <div>
+              <h2 class="sg-section-title"><span>🎨</span><span>۳. پالت رنگ و توکن‌های طراحی (Design Tokens)</span></h2>
+              <p class="sg-section-desc">رنگ‌های بنیادین، متغیرهای رسمی CSS برای تم تاریک و روشن، هایلایترها و متغیرهای کنتراست بالا. برای کپی هر توکن روی کارت آن کلیک کنید.</p>
+            </div>
+          </div>
+
+          <div class="sg-callout warning">
+            <span>⚡</span>
+            <div><strong>حذف گرادیان‌های نئونی چشم‌زن:</strong> از گرادیان‌های نئونی تند با ترکیب رنگ‌های رنگین‌کمانی در عناوین و متون پرهیز کنید. به جای آن، عنوان را با رنگ اصلی <code>var(--ink)</code> نمایش داده و کلمات کلیدی مهم را با کلاس هایلایتر <code>.mk</code> آراسته نمایید.</div>
+          </div>
+
+          <div class="sg-color-grid my-6">
+            <!-- Background Token -->
+            <div class="sg-color-card" data-copy="var(--bg)">
+              <div class="sg-swatch" style="background: var(--bg); border-bottom: 1px solid var(--line);"></div>
+              <div class="sg-color-info">
+                <div class="sg-color-name">پس‌زمینه اصلی (Canvas)</div>
+                <div class="sg-color-meta"><span>var(--bg)</span><span>#070913</span></div>
+              </div>
+            </div>
+
+            <!-- Card Token -->
+            <div class="sg-color-card" data-copy="var(--card)">
+              <div class="sg-swatch" style="background: var(--card); border-bottom: 1px solid var(--line);"></div>
+              <div class="sg-color-info">
+                <div class="sg-color-name">سطح کارت (Surface)</div>
+                <div class="sg-color-meta"><span>var(--card)</span><span>#0c0f1d</span></div>
+              </div>
+            </div>
+
+            <!-- Ink/Text Token -->
+            <div class="sg-color-card" data-copy="var(--ink)">
+              <div class="sg-swatch" style="background: var(--ink);"></div>
+              <div class="sg-color-info">
+                <div class="sg-color-name">متن اصلی (Ink)</div>
+                <div class="sg-color-meta"><span>var(--ink)</span><span>#f8fafc</span></div>
+              </div>
+            </div>
+
+            <!-- Muted Text Token -->
+            <div class="sg-color-card" data-copy="var(--mut)">
+              <div class="sg-swatch" style="background: var(--mut);"></div>
+              <div class="sg-color-info">
+                <div class="sg-color-name">متن کم‌رنگ (Muted)</div>
+                <div class="sg-color-meta"><span>var(--mut)</span><span>#94a3b8</span></div>
+              </div>
+            </div>
+
+            <!-- Cyan Accent Token -->
+            <div class="sg-color-card" data-copy="#06b6d4">
+              <div class="sg-swatch" style="background: #06b6d4;"></div>
+              <div class="sg-color-info">
+                <div class="sg-color-name">سیان هاب (Cyan Focus)</div>
+                <div class="sg-color-meta"><span>#06b6d4</span><span>Accent 1</span></div>
+              </div>
+            </div>
+
+            <!-- Indigo Accent Token -->
+            <div class="sg-color-card" data-copy="#6366f1">
+              <div class="sg-swatch" style="background: #6366f1;"></div>
+              <div class="sg-color-info">
+                <div class="sg-color-name">ایندیگو مدرن (Indigo)</div>
+                <div class="sg-color-meta"><span>#6366f1</span><span>Accent 2</span></div>
+              </div>
+            </div>
+
+            <!-- Emerald Accent Token -->
+            <div class="sg-color-card" data-copy="#10b981">
+              <div class="sg-swatch" style="background: #10b981;"></div>
+              <div class="sg-color-info">
+                <div class="sg-color-name">امرالد موفقیت (Emerald)</div>
+                <div class="sg-color-meta"><span>#10b981</span><span>Success</span></div>
+              </div>
+            </div>
+
+            <!-- Rose Accent Token -->
+            <div class="sg-color-card" data-copy="#f43f5e">
+              <div class="sg-swatch" style="background: #f43f5e;"></div>
+              <div class="sg-color-info">
+                <div class="sg-color-name">رز خطا و اخطار (Rose)</div>
+                <div class="sg-color-meta"><span>#f43f5e</span><span>Danger</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Highlighter and Badge Showcase -->
+          <div class="p-5 rounded-xl border border-line bg-card/20 space-y-4">
+            <h3 class="text-sm font-bold text-ink mb-1">استایل‌های اختصاصی هایلایتر و نشان:</h3>
+            <div class="flex items-center gap-4 flex-wrap">
+              <div class="text-base text-ink">نمایش کلمات کلیدی با <span class="mk">هایلایتر مارکر تم (.mk)</span> در متن</div>
+              <span class="eb">نشان مشخصه بالای هیرو (.eb)</span>
+              <span class="chip on">قرص فعال (.chip.on)</span>
+              <span class="chip">قرص عادی (.chip)</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Hero & Title Golden Formula -->
+        <section id="hero-formula" class="sg-section">
+          <div class="sg-section-header">
+            <div>
+              <h2 class="sg-section-title"><span>🎯</span><span>۴. فرمول طلایی هیرو و سنتر ریاضی در RTL</span></h2>
+              <p class="sg-section-desc">کد استاندارد و تغییرناپذیر هدر بالای تمام ابزارها همراه با فرمول سنتر دقیق بدون انحراف راست‌چین.</p>
+            </div>
+          </div>
+
+          <div class="sg-callout info">
+            <span>📐</span>
+            <div>
+              <strong>راز سنتر دقیق ریاضی در RTL:</strong> در حالت راست‌چین (<code>dir="rtl"</code>)، عرض باکس عنوان نباید ۱۰۰٪ کانتینر باشد زیرا در برخی مرورگرها حس انحراف به راست ایجاد می‌کند. با تعیین <code>width: fit-content !important; margin: auto !important; text-align: center !important</code>، باکس به اندازه دقیق متنش جمع شده و نسبت به کانتینر در افست ۰.۰ پیکسل کاملاً وسط‌چین می‌گردد.
+            </div>
+          </div>
+
+          <div class="sg-code-box">
+            <div class="sg-code-head">
+              <span>ساختار استاندارد هیرو در تمام ابزارها (HTML)</span>
+              <button class="sg-code-copy-btn" type="button">کپی کد کامل هیرو</button>
+            </div>
+            <pre><code>&lt;!-- Hero Showcase Header (Unified Template Aesthetic) --&gt;
+&lt;header class="tool-hero text-center max-w-4xl mx-auto my-8 md:my-10 py-2 relative"&gt;
+  &lt;!-- 1. Category / Feature Badge --&gt;
+  &lt;span class="eb"&gt;دسته‌بندی تخصصی • ویژگی کلیدی • ۱۰۰٪ محلی در مرورگر&lt;/span&gt;
+
+  &lt;!-- 2. Single-line H1 with Math Center & Highlighter --&gt;
+  &lt;h1 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight mb-3 mx-auto text-center whitespace-nowrap tool-title" style="color:var(--ink);margin:10px auto 14px;text-align:center"&gt;
+    عنوان اصلی ابزار &lt;span class="mk"&gt;نام شاخص ابزار&lt;/span&gt;
+  &lt;/h1&gt;
+
+  &lt;!-- 3. Two-line Concise Persian Description --&gt;
+  &lt;p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base leading-relaxed mb-6" style="color:var(--mut)"&gt;
+    شرح عملکرد، ارزش واقعی و کارکرد ابزار در دو خط خوانا بدون ادعاهای اضافه و با نگارش استاندارد فارسی.
+  &lt;/p&gt;
+
+  &lt;!-- 4. Optional Quick Action Buttons --&gt;
+  &lt;div class="flex items-center justify-center gap-3 flex-wrap"&gt;
+    &lt;button type="button" id="btn-primary-action" class="btn bp" style="font-size:13px;padding:8px 18px"&gt;&lt;span&gt;شروع کار / نمونه&lt;/span&gt;&lt;/button&gt;
+    &lt;button type="button" id="btn-secondary-action" class="btn bo" style="font-size:13px;padding:8px 18px"&gt;&lt;span&gt;راهنمای سریع&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+          </div>
+
+          <div class="sg-callout success">
+            <span>📏</span>
+            <div><strong>فاصله تنفس از هدر بالا:</strong> فاصله از نوار مشترک بالا همیشه معادل <code>48px</code> (کلاس <code>my-8 md:my-10</code>) است تا عنوان به منوی بالا نچسبد.</div>
+          </div>
+        </section>
+
+        <!-- 5. Spacing, Grid & Full-Width Footer -->
+        <section id="spacing-grid" class="sg-section">
+          <div class="sg-section-header">
+            <div>
+              <h2 class="sg-section-title"><span>📐</span><span>۵. سیستم فاصله‌گذاری، گرید و فوتر تمام‌عرض</span></h2>
+              <p class="sg-section-desc">قوانین جانمایی المان‌ها، چیدمان فرم در راست و پیش‌نمایش در چپ، و استقرار استاندارد فوتر.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+            <div class="p-4 rounded-xl border border-line bg-card/40">
+              <h3 class="text-sm font-bold text-ink mb-2">چیدمان فضای کار (2-Column Workspace)</h3>
+              <p class="text-xs text-mut leading-relaxed">
+                در صفحه ابزار، فرم دریافت ورودی و تنظیمات کاربر در ستون سمت راست و پنل پیش‌نمایش یا خروجی نتایج در ستون سمت چپ قرار می‌گیرد (در تبلت و موبایل به صورت عمودی استک می‌شوند).
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-line bg-card/40">
+              <h3 class="text-sm font-bold text-ink mb-2">قانون فوتر تمام‌عرض (100% Full-Width)</h3>
+              <p class="text-xs text-mut leading-relaxed">
+                تگ <code>&lt;footer id="shared-footer"&gt;&lt;/footer&gt;</code> <strong>نباید</strong> درون کانتینر محدود <code>max-w-7xl</code> قرار بگیرد. فوتر باید فرزند مستقیم <code>&lt;body&gt;</code> باشد تا پهنای کامل صفحه را پوشش دهد و حداقل <code>80px</code> فاصله عمودی از بالای خود داشته باشد.
+              </p>
+            </div>
+          </div>
+
+          <div class="sg-code-box">
+            <div class="sg-code-head">
+              <span>ساختار کلی بدنه صفحه ابزار (HTML Structure)</span>
+              <button class="sg-code-copy-btn" type="button">کپی ساختار بدنه</button>
+            </div>
+            <pre><code>&lt;body data-root="sub" class="bg-base text-main min-h-screen flex flex-col"&gt;
+  &lt;!-- کانتینر محتوایی اصلی با عرض محدود --&gt;
+  &lt;div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col flex-1 w-full"&gt;
+    &lt;header id="shared-header"&gt;&lt;/header&gt;
+    
+    &lt;!-- هیرو اختصاصی ابزار --&gt;
+    &lt;header class="tool-hero ... "&gt; ... &lt;/header&gt;
+
+    &lt;!-- فضای کار ابزار --&gt;
+    &lt;main class="space-y-6 flex-1"&gt; ... &lt;/main&gt;
+
+    &lt;!-- بخش راهنمای آموزشی پایین صفحه --&gt;
+    &lt;section class="guide-sec ... "&gt; ... &lt;/section&gt;
+  &lt;/div&gt;
+
+  &lt;!-- فوتر مشترک تمام‌عرض خارج از کانتینر --&gt;
+  &lt;footer id="shared-footer"&gt;&lt;/footer&gt;
+
+  &lt;!-- اسکریپت‌ها --&gt;
+  &lt;script src="../assets/js/components/shared-layout.js"&gt;&lt;/script&gt;
+  &lt;script src="./assets/js/app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+          </div>
+        </section>
+
+        <!-- 6. UI Components Kit -->
+        <section id="components" class="sg-section">
+          <div class="sg-section-header">
+            <div>
+              <h2 class="sg-section-title"><span>🧩</span><span>۶. کیت کامپوننت‌های تعاملی (Interactive UI Kit)</span></h2>
+              <p class="sg-section-desc">دکمه‌ها، فیلدهای فرم، کارت‌ها و عناصر رابط کاربری تست‌شده با بازخورد تعاملی زنده.</p>
+            </div>
+          </div>
+
+          <!-- Buttons Showcase -->
+          <div class="sg-preview-frame">
+            <div class="text-xs text-mut font-bold mb-3">دکمه‌های استاندارد (Buttons):</div>
+            <div class="flex items-center gap-3 flex-wrap">
+              <button type="button" class="btn bp"><span>دکمه اصلی (.btn.bp)</span></button>
+              <button type="button" class="btn bo"><span>دکمه خطی (.btn.bo)</span></button>
+              <button type="button" class="btn bo" style="color:#f43f5e;border-color:rgba(244,63,94,0.3)"><span>دکمه خطر / حذف</span></button>
+              <button type="button" class="btn bo" style="color:#10b981;border-color:rgba(16,185,129,0.3)"><span>دکمه موفقیت / تایید</span></button>
+              <button type="button" class="btn bo text-xs" style="padding:4px 10px"><span>دکمه فشرده</span></button>
+            </div>
+          </div>
+
+          <!-- Form Controls Showcase -->
+          <div class="sg-preview-frame">
+            <div class="text-xs text-mut font-bold mb-3">فیلدهای ورودی فرم (Form Inputs):</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-ink mb-1.5">ورودی متن استاندارد</label>
+                <input type="text" class="w-full bg-slate-900/60 border border-line rounded-xl px-3.5 py-2.5 text-xs text-ink placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition" placeholder="مثال: https://example.com">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-ink mb-1.5">منوی کشویی (Select)</label>
+                <select class="w-full bg-slate-900/60 border border-line rounded-xl px-3.5 py-2.5 text-xs text-ink focus:outline-none focus:border-cyan-500 transition">
+                  <option>گزینه اول استاندارد</option>
+                  <option>گزینه دوم پیشرفته</option>
+                  <option>گزینه سوم اختصاصی</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-ink mb-1.5">ورودی عددی (Number)</label>
+                <input type="number" value="85" class="w-full bg-slate-900/60 border border-line rounded-xl px-3.5 py-2.5 text-xs text-ink focus:outline-none focus:border-cyan-500 transition">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Educational & SEO Guides Section -->
+        <section id="guides-seo" class="sg-section">
+          <div class="sg-section-header">
+            <div>
+              <h2 class="sg-section-title"><span>📖</span><span>۷. ساختار متون راهنما و سئوی پایین صفحه</span></h2>
+              <p class="sg-section-desc">استاندارد جعبه‌های آموزش، پرسش‌های متداول، و بهینه‌سازی کلمات کلیدی برای افزایش رتبه سئو و راهنمایی کاربر.</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl border border-line bg-card/30 space-y-4">
+            <h3 class="text-base font-bold text-ink whitespace-nowrap">راهنمای استفاده و سوالات متداول (FAQ)</h3>
+            <p class="text-xs sm:text-sm text-mut" style="line-height: 2.15">
+              هر ابزار باید در انتهای صفحه دارای یک بخش آموزشی غنی شامل ۲ الی ۴ کارت با عناوین تک‌خطی (H3) و متن‌های روان فارسی با <code>line-height: 2.15</code> باشد تا عملکرد ابزار را بدون کلمات مبهم توضیح داده و پاسخگوی دغدغه‌های امنیتی یا کاربردی کاربر باشد.
+            </p>
+          </div>
+        </section>
+
+        <!-- 8. Interactive Automated Release Checklist -->
+        <section id="checklist" class="sg-section">
+          <div class="sg-section-header">
+            <div>
+              <h2 class="sg-section-title"><span>🚀</span><span>۸. چک‌لیست و دستورالعمل اتوماتیک افزودن ابزار جدید</span></h2>
+              <p class="sg-section-desc">این چک‌لیست به صورت خودکار و تعاملی بررسی می‌کند که ابزار جدید تمام پیش‌نیازهای دیزاین، کدنویسی، دارایی‌ها و انتشار را رعایت کرده است.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" id="sg-export-checklist-btn" class="btn bo" style="font-size:12px;padding:6px 12px"><span>📋 کپی متن چک‌لیست</span></button>
+              <button type="button" id="sg-reset-checklist-btn" class="btn bo" style="font-size:12px;padding:6px 12px;color:#f43f5e"><span>🔄 بازنشانی</span></button>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="mb-6">
+            <div class="flex items-center justify-between text-xs font-bold text-ink mb-1">
+              <span>میزان پیشرفت انتشار ابزار جدید:</span>
+              <span id="sg-checklist-progress-text" class="text-cyan-400 font-mono">۰ از ۱۲ مورد (۰٪ تکمیل)</span>
+            </div>
+            <div class="sg-progress-wrapper">
+              <div id="sg-checklist-progress-bar" class="sg-progress-bar"></div>
+            </div>
+          </div>
+
+          <!-- Group 1: Style Guide & Architecture -->
+          <div class="sg-checklist-card">
+            <h4 class="text-sm font-bold text-ink mb-3 flex items-center gap-2"><span>🎨</span><span>فاز اول: تطابق با راهنمای استایل (Style Guide Compliance)</span></h4>
+            
+            <label class="sg-check-item" for="chk-style-1">
+              <input type="checkbox" id="chk-style-1">
+              <div class="sg-check-content">
+                <div class="sg-check-title">هدر یکپارچه هیرو (Hero Showcase)</div>
+                <div class="sg-check-desc">عنوان ابزار دارای نشان <code>.eb</code>، هایلایتر <code>.mk</code>، متغیر <code>var(--ink)</code> و سنتر ریاضی کامل با <code>0.0px</code> انحراف باشد.</div>
+              </div>
+            </label>
+
+            <label class="sg-check-item" for="chk-style-2">
+              <input type="checkbox" id="chk-style-2">
+              <div class="sg-check-content">
+                <div class="sg-check-title">تایپوگرافی و عناوین تک‌خطی (Vazirmatn & Single-Line)</div>
+                <div class="sg-check-desc">عناوین شکسته و دوخطی نشوند (<code>whitespace-nowrap</code>)، فونت مونو در متون فارسی استفاده نشود و فاصله خطوط متن راهنما ۲.۱۵ باشد.</div>
+              </div>
+            </label>
+
+            <label class="sg-check-item" for="chk-style-3">
+              <input type="checkbox" id="chk-style-3">
+              <div class="sg-check-content">
+                <div class="sg-check-title">فاصله‌گذاری و فوتر تمام‌عرض (Full-Width Footer & 48px Top)</div>
+                <div class="sg-check-desc">فاصله ۴۸ پیکسلی از منوی بالا رعایت شود و فوتر مشترک خارج از کانتینر با عرض ۱۰۰٪ و فاصله ۸۰ پیکسلی قرار گیرد.</div>
+              </div>
+            </label>
+
+            <label class="sg-check-item" for="chk-style-4">
+              <input type="checkbox" id="chk-style-4">
+              <div class="sg-check-content">
+                <div class="sg-check-title">پشتیبانی کامل از دارک‌مود و لایت‌مود</div>
+                <div class="sg-check-desc">فایل <code>hub-theme.css?v=11</code> لود شده و تمام کارت‌ها و متن‌ها در هر دو حالت کنتراست استاندارد داشته باشند.</div>
+              </div>
+            </label>
+          </div>
+
+          <!-- Group 2: Assets & Visuals -->
+          <div class="sg-checklist-card">
+            <h4 class="text-sm font-bold text-ink mb-3 flex items-center gap-2"><span>🖼️</span><span>فاز دوم: طراحی و تولید تصویر وکتور اختصاصی (Visual Assets)</span></h4>
+
+            <label class="sg-check-item" for="chk-asset-1">
+              <input type="checkbox" id="chk-asset-1">
+              <div class="sg-check-content">
+                <div class="sg-check-title">ساخت تصویر وکتور در assets/images/tools/&lt;slug&gt;.svg</div>
+                <div class="sg-check-desc">ایجاد وکتور با نسبت استاندارد <code>viewBox="0 0 360 170"</code>، تم دارک، شعاع نور مدور (Radial Glow) و عناصر گرافیکی دقیق هندسی مطابق ابزارهای دیگر.</div>
+              </div>
+            </label>
+          </div>
+
+          <!-- Group 3: Central Hub Integration -->
+          <div class="sg-checklist-card">
+            <h4 class="text-sm font-bold text-ink mb-3 flex items-center gap-2"><span>🏠</span><span>فاز سوم: ادغام کامل در صفحه اصلی (Hub Integration)</span></h4>
+
+            <label class="sg-check-item" for="chk-hub-1">
+              <input type="checkbox" id="chk-hub-1">
+              <div class="sg-check-content">
+                <div class="sg-check-title">ثبت در آرایه ابزارها در assets/js/data/projects-data.js</div>
+                <div class="sg-check-desc">افزودن شیء کامل با شناسه ترتیبی، دسته‌بندی موضوعی، ایموجی اختصاصی، توضیحات فارسی، تگ‌های فناوری و گرادیان کارت.</div>
+              </div>
+            </label>
+
+            <label class="sg-check-item" for="chk-hub-2">
+              <input type="checkbox" id="chk-hub-2">
+              <div class="sg-check-content">
+                <div class="sg-check-title">ثبت در پایگاه داده جستجوی زنده در assets/js/search.js</div>
+                <div class="sg-check-desc">افزودن نام، مسیر، آیکون SVG، تگ دسته‌بندی، خلاصه و کلمات کلیدی فارسی و انگلیسی جهت جستجوی آنی کاربر.</div>
+              </div>
+            </label>
+
+            <label class="sg-check-item" for="chk-hub-3">
+              <input type="checkbox" id="chk-hub-3">
+              <div class="sg-check-content">
+                <div class="sg-check-title">افزودن به ردیف متحرک مارکی (Marquee Ticker) در index.html</div>
+                <div class="sg-check-desc">اضافه کردن المان <code>.mq-item</code> حاوی آیکون ۳۲ پیکسلی و عنوان لینک به هر دو ردیف متحرک صفحه اصلی.</div>
+              </div>
+            </label>
+
+            <label class="sg-check-item" for="chk-hub-4">
+              <input type="checkbox" id="chk-hub-4">
+              <div class="sg-check-content">
+                <div class="sg-check-title">به‌روزرسانی شمارنده تعداد ابزارها در هاب اصلی</div>
+                <div class="sg-check-desc">افزایش شمارنده کل ابزارهای فعال در بج هیرو (مثلاً «۱۱ ابزار تخصصی و کاربردی»).</div>
+              </div>
+            </label>
+          </div>
+
+          <!-- Group 4: Documentation & Roadmap -->
+          <div class="sg-checklist-card">
+            <h4 class="text-sm font-bold text-ink mb-3 flex items-center gap-2"><span>🗺️</span><span>فاز چهارم: نقشه راه و مستندات گیت‌هاب (Roadmap & Docs)</span></h4>
+
+            <label class="sg-check-item" for="chk-doc-1">
+              <input type="checkbox" id="chk-doc-1">
+              <div class="sg-check-content">
+                <div class="sg-check-title">به‌روزرسانی ROADMAP.md</div>
+                <div class="sg-check-desc">تغییر وضعیت پروژه از <code>- [ ]</code> به <code>- [x]</code> و درج لینک مستقیم پوشه ابزار جدید.</div>
+              </div>
+            </label>
+
+            <label class="sg-check-item" for="chk-doc-2">
+              <input type="checkbox" id="chk-doc-2">
+              <div class="sg-check-content">
+                <div class="sg-check-title">ثبت در README.md اصلی و ساخت README اختصاصی پوشه</div>
+                <div class="sg-check-desc">افزودن نام و لینک ابزار به لیست ابزارهای فعال در <code>README.md</code> ریشه و ایجاد مستندات کامل ابزار در پوشه خود.</div>
+              </div>
+            </label>
+          </div>
+
+          <!-- Group 5: QA & Release Gate -->
+          <div class="sg-checklist-card">
+            <h4 class="text-sm font-bold text-ink mb-3 flex items-center gap-2"><span>🛡️</span><span>فاز پنجم: تست نهایی و استقرار (Automated QA & Deploy)</span></h4>
+
+            <label class="sg-check-item" for="chk-qa-1">
+              <input type="checkbox" id="chk-qa-1">
+              <div class="sg-check-content">
+                <div class="sg-check-title">تست کامل در مرورگر، ریسپانسیو و انتشار روی برنچ main</div>
+                <div class="sg-check-desc">بررسی عدم وجود خطای جاوااسکریپت در کنسول، تست تغییر تم، عدم سرریز افقی در موبایل، و سپس کامیت و پوش روی <code>main</code>.</div>
+              </div>
+            </label>
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- Shared Universal Footer (Full-width outside container) -->
+  <footer id="shared-footer"></footer>
+
+  <!-- Universal Shared Layout Scripts -->
+  <script src="../assets/js/components/shared-layout.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

@@ -3,11 +3,12 @@
  * Clean Modular Web architecture: shared across root hub and all micro-tools.
  */
 (function () {
-  var isSub = /\/(lorem-plus|prompt-optimizer|placeholder-pro|site-auditor|utm-builder|schema-generator|qr-studio|regex-studio|webp-converter|ai-cost-estimator)\//.test(window.location.pathname) || (document.body && document.body.dataset.root === 'sub');
+  var isSub = /\/(lorem-plus|prompt-optimizer|placeholder-pro|site-auditor|utm-builder|schema-generator|qr-studio|regex-studio|webp-converter|ai-cost-estimator|styleguide)\//.test(window.location.pathname) || (document.body && document.body.dataset.root === 'sub');
   var rootPath = isSub ? '../' : './';
   var logoSrc = rootPath + 'assets/images/logo.svg';
   var hubUrl = isSub ? rootPath + 'index.html' : './';
   var toolsUrl = isSub ? rootPath + 'index.html#tools' : '#tools';
+  var styleguideUrl = isSub ? rootPath + 'styleguide/' : './styleguide/';
   var roadmapUrl = 'https://github.com/hashemsh/ai-projects-persian/blob/main/ROADMAP.md';
   var readmeUrl = 'https://github.com/hashemsh/ai-projects-persian/blob/main/README.md';
   var aboutUrl = isSub ? rootPath + 'index.html#about' : '#about';
@@ -43,6 +44,7 @@
       '  <div class="links">',
       '    <a class="' + (!isSub ? 'on' : '') + '" href="' + hubUrl + '">خانه</a>',
       '    <a href="' + toolsUrl + '">ابزارها</a>',
+      '    <a href="' + styleguideUrl + '">راهنمای استایل</a>',
       '    <a href="' + roadmapUrl + '" target="_blank" rel="noopener noreferrer">نقشه راه</a>',
       '    <a href="' + readmeUrl + '" target="_blank" rel="noopener noreferrer">مستندات</a>',
       '    <a href="' + aboutUrl + '">درباره</a>',
@@ -81,6 +83,7 @@
       '<nav class="drawer-nav">',
       '  <a class="' + (!isSub ? 'on' : '') + '" href="' + hubUrl + '">خانه</a>',
       '  <a href="' + toolsUrl + '">ابزارها</a>',
+      '  <a href="' + styleguideUrl + '">راهنمای استایل</a>',
       '  <a href="' + roadmapUrl + '" target="_blank" rel="noopener noreferrer">نقشه راه</a>',
       '  <a href="' + readmeUrl + '" target="_blank" rel="noopener noreferrer">مستندات</a>',
       '  <a href="' + aboutUrl + '">درباره‌ی هاب</a>',
@@ -105,7 +108,7 @@
     el.innerHTML = [
       '<div class="ft"><div class="sh">',
       '  <span>طراحی و توسعه توسط <a href="https://hashemsh.github.io/" target="_blank" rel="noopener noreferrer" style="color:var(--ink);font-weight:700">hashemsh</a> | قدرت‌گرفته از <a href="https://antigravity.google" target="_blank" rel="noopener noreferrer" style="color:var(--bt);font-weight:700">Antigravity</a></span>',
-      '  <span><a href="https://t.me/init10" target="_blank" rel="noopener noreferrer">تلگرام</a> · <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer">لینکدین</a> · <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer">گیت‌هاب</a></span>',
+      '  <span><a href="' + styleguideUrl + '">راهنمای استایل</a> · <a href="https://t.me/init10" target="_blank" rel="noopener noreferrer">تلگرام</a> · <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer">لینکدین</a> · <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer">گیت‌هاب</a></span>',
       '</div></div>'
     ].join('\n');
   }

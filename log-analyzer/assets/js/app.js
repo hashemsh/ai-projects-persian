@@ -15,6 +15,9 @@
   var btnClear = document.getElementById('btn-clear-log');
   var btnCopyPrompt = document.getElementById('btn-copy-prompt');
   var btnExportReport = document.getElementById('btn-export-report');
+  var fileInput = document.getElementById('log-file-input');
+  var btnUpload = document.getElementById('btn-upload-file');
+  var dropzoneEl = document.getElementById('log-dropzone');
   
   // Sample buttons
   var btnSampleNginx = document.getElementById('btn-sample-nginx');
@@ -56,6 +59,27 @@
       '<--- Last few GCs --->\nFATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory'
     ].join('\n\n')
   };
+
+  // File Upload & Drag-and-Drop Handler
+  function handleFile(file) {
+    if (!file) return;
+    if (file.size > 8 * 1024 * 1024) {
+      showToast('حجم فایل بیشتر از ۸ مگابایت است', '⚠️');
+      return;
+    }
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      if (inputEl) {
+        inputEl.value = e.target.result;
+        if (btnAnalyze) btnAnalyze.click();
+        showToast('فایل لاگ "' + file.name + '" بارگذاری شد', '📁');
+      }
+    };
+    reader.onerror = function () {
+      showToast('خطا در خواندن فایل لاگ', '⚠️');
+    };
+    reader.readAsText(file);
+  }
 
   // Toast Notification
   function showToast(msg, icon) {
@@ -266,6 +290,36 @@
 
   // Event Listeners
   function initEvents() {
+    // File Upload & Drag-and-Drop
+    if (btnUpload && fileInput) {
+      btnUpload.addEventListener('click', function () {
+        fileInput.click();
+      });
+      fileInput.addEventListener('change', function () {
+        if (this.files && this.files[0]) {
+          handleFile(this.files[0]);
+          this.value = ''; // Reset for re-uploading same file
+        }
+      });
+    }
+
+    if (dropzoneEl) {
+      dropzoneEl.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        dropzoneEl.classList.add('dragover');
+      });
+      dropzoneEl.addEventListener('dragleave', function () {
+        dropzoneEl.classList.remove('dragover');
+      });
+      dropzoneEl.addEventListener('drop', function (e) {
+        e.preventDefault();
+        dropzoneEl.classList.remove('dragover');
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+          handleFile(e.dataTransfer.files[0]);
+        }
+      });
+    }
+
     if (btnAnalyze) {
       btnAnalyze.addEventListener('click', function () {
         var text = inputEl ? inputEl.value : '';

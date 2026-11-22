@@ -23,13 +23,13 @@
 
   <!-- Ambient Glow & Grid -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute -top-40 right-1/4 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl opacity-60"></div>
-    <div class="absolute top-1/3 -left-40 w-[550px] h-[550px] bg-cyan-500/10 rounded-full blur-3xl opacity-50"></div>
+    <div class="absolute -top-40 right-1/4 w-[550px] h-[550px] bg-indigo-500/10 rounded-full blur-3xl opacity-60"></div>
+    <div class="absolute top-1/3 -left-40 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl opacity-50"></div>
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293d0a_1px,transparent_1px),linear-gradient(to_bottom,#1f293d0a_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
   </div>
 
-  <!-- Primary Page Container -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col flex-1 w-full">
+  <!-- Primary Page Container (Comfortable Max Width with Generous Margins) -->
+  <div class="relative z-10 la-container max-w-5xl mx-auto py-6 md:py-8 flex flex-col flex-1">
 
     <!-- Shared Universal Header -->
     <header id="shared-header"></header>
@@ -52,14 +52,19 @@
       </div>
     </header>
 
-    <!-- Main Workspace (2-Column Grid) -->
+    <!-- Main Workspace (Clean Vertical Stack: Input on Top, Results Below) -->
     <main class="la-workspace">
 
-      <!-- Right Column: Input & Controls -->
+      <!-- SECTION 1 (TOP): Input & Upload Log Card -->
       <section class="la-card">
         <div class="la-card-head">
-          <h2 class="la-card-title"><span>📥</span><span>درج خطوط لاگ سرور</span></h2>
-          <div class="flex items-center gap-2">
+          <h2 class="la-card-title"><span>📥</span><span>ورودی و بارگذاری لاگ سرور</span></h2>
+          <div class="flex items-center gap-2 flex-wrap">
+            <!-- File Upload Action -->
+            <input type="file" id="log-file-input" accept=".log,.txt,text/plain" style="display:none">
+            <button type="button" id="btn-upload-file" class="btn bo text-xs" style="padding:6px 14px">
+              <span>📁 آپلود فایل لاگ (.log / .txt)</span>
+            </button>
             <select id="log-format-select" class="select-custom text-xs" style="padding:5px 12px 5px 30px">
               <option value="auto">تشخیص خودکار فرمت</option>
               <option value="nginx">وب‌سرور Nginx</option>
@@ -70,8 +75,9 @@
           </div>
         </div>
 
-        <div class="la-textarea-wrap">
-          <textarea id="log-input" class="la-textarea" placeholder="متن لاگ خطای سرور را در این قسمت الصاق (Paste) کنید..."></textarea>
+        <!-- Drag & Drop Dropzone Wrapper -->
+        <div id="log-dropzone" class="la-dropzone">
+          <textarea id="log-input" class="la-textarea" placeholder="متن لاگ خطای سرور را در این کادر الصاق (Paste) کنید، یا فایل لاگ را به این کادر بکشید و رها کنید (Drag & Drop)..."></textarea>
         </div>
 
         <!-- Privacy & Target Model Controls -->
@@ -79,7 +85,7 @@
           <div class="flex items-center justify-between flex-wrap gap-2">
             <label class="flex items-center gap-2 cursor-pointer select-none">
               <input type="checkbox" id="anonymize-toggle" checked class="w-4 h-4 accent-cyan-500 rounded cursor-pointer">
-              <span class="text-xs font-medium text-ink">مخفی‌سازی خودکار IPها، توکن‌ها و دامنه‌های حساس (حفظ محرمانگی)</span>
+              <span class="text-xs font-medium text-ink">مخفی‌سازی خودکار IPها، توکن‌ها و دامنه‌های حساس (حفظ محرمانگی سرور)</span>
             </label>
           </div>
 
@@ -95,20 +101,22 @@
             </div>
 
             <div class="flex items-center gap-2">
-              <button type="button" id="btn-run-analysis" class="btn bp" style="font-size:13px;padding:8px 20px">
-                <span>⚡ تحلیل و پردازش لاگ‌ها</span>
+              <button type="button" id="btn-run-analysis" class="btn bp" style="font-size:13px;padding:8px 24px">
+                <span>⚡ تحلیل و ریشه‌یابی لاگ‌ها</span>
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Left Column: Diagnostic Results & AI Prompt -->
+      <!-- SECTION 2 (BOTTOM): Diagnostics Results & AI Debugger Prompt -->
       <section class="la-card">
         <div class="la-card-head">
           <h2 class="la-card-title"><span>📊</span><span>نتایج عیب‌یابی و پرامپت هوش مصنوعی</span></h2>
           <div class="flex items-center gap-2">
-            <button type="button" id="btn-export-report" class="btn bo text-xs" style="padding:4px 10px"><span>📥 خروجی گزارش Markdown</span></button>
+            <button type="button" id="btn-export-report" class="btn bo text-xs" style="padding:5px 12px">
+              <span>📥 دانلود گزارش Markdown</span>
+            </button>
           </div>
         </div>
 
@@ -116,25 +124,25 @@
         <div class="la-stats-grid">
           <div class="la-stat-box">
             <span id="stat-total-lines" class="la-stat-num text-cyan-400">۰</span>
-            <span class="la-stat-label">کل خطوط</span>
+            <span class="la-stat-label">کل خطوط لاگ</span>
           </div>
           <div class="la-stat-box">
             <span id="stat-fatals" class="la-stat-num text-rose-500">۰</span>
-            <span class="la-stat-label">خطای بحرانی</span>
+            <span class="la-stat-label">خطای بحرانی (Fatal)</span>
           </div>
           <div class="la-stat-box">
             <span id="stat-errors" class="la-stat-num text-pink-400">۰</span>
-            <span class="la-stat-label">خطای استاندارد</span>
+            <span class="la-stat-label">خطای استاندارد (Error)</span>
           </div>
           <div class="la-stat-box">
             <span id="stat-warnings" class="la-stat-num text-amber-400">۰</span>
-            <span class="la-stat-label">هشدارها</span>
+            <span class="la-stat-label">هشدارها (Warning)</span>
           </div>
         </div>
 
         <!-- Parsed Error Entries List -->
-        <div class="text-xs font-bold text-ink mb-2">لیست خطاهای شناسایی‌شده:</div>
-        <div id="parsed-entries-list" class="la-entry-list mb-4">
+        <div class="text-xs font-bold text-ink mb-2">لیست خطاهای استخراج‌شده و تحلیل ریشه‌ای:</div>
+        <div id="parsed-entries-list" class="la-entry-list mb-6">
           <!-- Dynamic error cards injected by JS -->
         </div>
 
@@ -142,9 +150,9 @@
         <div class="la-prompt-box">
           <div class="la-prompt-head">
             <div class="flex items-center gap-2 text-xs font-bold text-indigo-300">
-              <span>🤖</span><span>پرامپت آماده ارسال به هوش مصنوعی</span>
+              <span>🤖</span><span>پرامپت مهندسی‌شده عیب‌یابی (آماده ارسال به هوش مصنوعی)</span>
             </div>
-            <button type="button" id="btn-copy-prompt" class="btn bp text-xs" style="padding:4px 12px">
+            <button type="button" id="btn-copy-prompt" class="btn bp text-xs" style="padding:5px 14px">
               <span>📋 کپی پرامپت</span>
             </button>
           </div>
@@ -154,38 +162,35 @@
 
     </main>
 
-    <!-- Comprehensive Educational & SEO Bento Guide Article -->
-    <article id="server-guide" class="mt-14 p-6 sm:p-8 md:p-10 rounded-2xl border border-line shadow-2xl relative overflow-hidden" style="background:var(--card);backdrop-filter:blur(16px)">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8 border-b border-line pb-8">
+    <!-- Bottom Comprehensive Bento Educational Guide Article -->
+    <article id="server-guide" class="mt-14 p-6 sm:p-8 rounded-2xl border border-line shadow-2xl relative overflow-hidden" style="background:var(--card);backdrop-filter:blur(16px)">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mb-8 border-b border-line pb-6">
         <div>
-          <span class="eb mb-3 inline-block">📖 دانشنامه سئو فنی، لینوکس و معماری وب‌سرور</span>
-          <h2 class="text-xl sm:text-2xl font-black mb-3" style="color:var(--ink);white-space:nowrap">
-            چرا تحلیل دقیق لاگ‌های سرور پایه و اساس پایداری و سئوی تکنیکال است؟
+          <span class="eb mb-2.5 inline-block">📖 دانشنامه سئو فنی و ممیزی سرور</span>
+          <h2 class="text-lg sm:text-xl font-black mb-2" style="color:var(--ink);white-space:nowrap">
+            چرا تحلیل دقیق لاگ‌ها پایه و اساس سئوی تکنیکال است؟
           </h2>
-          <p class="text-xs sm:text-sm text-mut leading-loose mb-4">
-            خطاهای پنهان وب‌سرورها (مانند خطای ۵۰۲ Nginx، کمبود حافظه در PHP و خطاهای Unhandled در Node.js) نه تنها ترافیک و کاربران زنده شما را هدر می‌دهند، بلکه با افت نرخ پاسخ‌دهی (Time to First Byte) و افت ایندکس کراولرهای گوگل، رتبه سئوی سایت را در کوتاه‌ترین زمان کاهش می‌دهند. تحلیل و پاکسازی زودهنگام لاگ‌ها پایدارترین استراتژی نگهداری وب است.
+          <p class="text-xs sm:text-sm text-mut leading-relaxed">
+            خطاهای پنهان وب‌سرورها (مانند خطای ۵۰۲ Nginx، کمبود حافظه در PHP و خطاهای سرور در Node.js) با افت نرخ ایندکس کراولرهای گوگل، رتبه سئوی سایت را در کوتاه‌ترین زمان کاهش می‌دهند. تحلیل و پاکسازی زودهنگام لاگ‌ها پایدارترین استراتژی نگهداری وب است.
           </p>
         </div>
         <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
-          <div class="flex items-center justify-between text-xs font-bold mb-3" style="color:var(--ink)">
-            <span>📡 جریان معماری ارتباط وب‌سرور و سرویس‌های Upstream:</span>
-            <span class="font-mono text-cyan-400 text-[11px]">Reverse Proxy Flow</span>
+          <div class="flex items-center justify-between text-xs font-bold mb-2.5" style="color:var(--ink)">
+            <span>📡 جریان ارتباط Reverse Proxy در رخداد ۵۰۲:</span>
+            <span class="font-mono text-cyan-400 text-[10.5px]">Upstream Pipeline</span>
           </div>
-          <div class="space-y-2 text-xs" style="color:var(--mut)">
-            <div class="flex items-center gap-2 p-2 rounded-lg" style="background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.2)">
-              <span class="text-cyan-400">۱. کلاینت / گوگل‌بات</span>
-              <span class="text-slate-500 font-mono">──(HTTPS Request)──►</span>
-              <span class="text-ink font-bold">وب‌سرور Nginx / Apache</span>
+          <div class="space-y-1.5 text-xs" style="color:var(--mut)">
+            <div class="flex items-center justify-between p-1.5 rounded-lg" style="background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.2)">
+              <span class="text-cyan-400">۱. درخواست کاربر / ربات</span>
+              <span class="text-ink font-bold">Nginx / Apache</span>
             </div>
-            <div class="flex items-center gap-2 p-2 rounded-lg" style="background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.2)">
+            <div class="flex items-center justify-between p-1.5 rounded-lg" style="background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.2)">
               <span class="text-rose-400">۲. نقطه رخداد ۵۰۲</span>
-              <span class="text-slate-500 font-mono">──(Sock / Port 3000)──►</span>
-              <span class="text-rose-400 font-bold">PHP-FPM / Node.js (Down / Timeout)</span>
+              <span class="text-rose-400 font-bold">PHP-FPM / Node.js (Down)</span>
             </div>
-            <div class="flex items-center gap-2 p-2 rounded-lg" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2)">
+            <div class="flex items-center justify-between p-1.5 rounded-lg" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2)">
               <span class="text-emerald-400">۳. اقدام اصلاحی</span>
-              <span class="text-slate-500 font-mono">──(Systemctl Restart)──►</span>
-              <span class="text-emerald-400 font-bold">بازگشت وضعیت آنلاین (HTTP 200 OK)</span>
+              <span class="text-emerald-400 font-bold">دستور systemctl restart</span>
             </div>
           </div>
         </div>
@@ -194,34 +199,34 @@
       <!-- 4-Box Bento Feature Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
         <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
-          <div class="text-xl mb-2">⚡</div>
-          <h3 class="text-sm font-bold text-ink mb-1.5 whitespace-nowrap">۱. رفع خطای ۵۰۲ Bad Gateway</h3>
+          <div class="text-xl mb-1.5">⚡</div>
+          <h3 class="text-sm font-bold text-ink mb-1 whitespace-nowrap">۱. رفع خطای ۵۰۲ Bad Gateway</h3>
           <p class="text-mut text-justify leading-relaxed">
-            این خطا به دلیل عدم پاسخ‌گویی پروسه بک‌اند (PHP-FPM یا سرور Node) رخ می‌دهد. با دستور <code class="font-mono text-cyan-400">systemctl status php8.2-fpm</code> وضعیت سوکت را بازبینی کنید.
+            این خطا به دلیل عدم پاسخ‌گویی پروسه بک‌اند رخ می‌دهد. با دستور <code class="font-mono text-cyan-400">systemctl status php8.2-fpm</code> وضعیت سوکت را بازبینی کنید.
           </p>
         </div>
 
         <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
-          <div class="text-xl mb-2">💾</div>
-          <h3 class="text-sm font-bold text-ink mb-1.5 whitespace-nowrap">۲. رفع خطای کمبود رم (Memory Size)</h3>
+          <div class="text-xl mb-1.5">💾</div>
+          <h3 class="text-sm font-bold text-ink mb-1 whitespace-nowrap">۲. رفع خطای کمبود رم (Memory)</h3>
           <p class="text-mut text-justify leading-relaxed">
-            هنگام پردازش کوئری‌های سنگین وردپرس، سقف RAM پر می‌شود. با قرار دادن <code class="font-mono text-indigo-400">memory_limit = 512M</code> در فایل <code class="font-mono">php.ini</code> این خطا سریعاً مهار می‌گردد.
+            هنگام پردازش کوئری‌های سنگین وردپرس، سقف RAM پر می‌شود. با قرار دادن <code class="font-mono text-indigo-400">memory_limit = 512M</code> در فایل <code class="font-mono">php.ini</code> این خطا مهار می‌گردد.
           </p>
         </div>
 
         <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
-          <div class="text-xl mb-2">🛡️</div>
-          <h3 class="text-sm font-bold text-ink mb-1.5 whitespace-nowrap">۳. تضمین ۱۰۰٪ محرمانگی و Anonymizer</h3>
+          <div class="text-xl mb-1.5">🛡️</div>
+          <h3 class="text-sm font-bold text-ink mb-1 whitespace-nowrap">۳. حفظ ۱۰۰٪ محرمانگی و Anonymizer</h3>
           <p class="text-mut text-justify leading-relaxed">
-            این ابزار کلاینت‌ساید به صورت بومی تمام IPهای کاربران، توکن‌های امنیتی و دامنه‌های حساس را پیش از ارسال به مدل‌های هوش مصنوعی ماسک می‌کند تا حریم خصوصی سرور کاملاً حفظ شود.
+            این ابزار به صورت خودکار تمام IPهای کاربران، توکن‌ها و دامنه‌های حساس را پیش از ارسال به هوش مصنوعی ماسک می‌کند تا حریم خصوصی سرور حفظ شود.
           </p>
         </div>
 
         <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
-          <div class="text-xl mb-2">🤖</div>
-          <h3 class="text-sm font-bold text-ink mb-1.5 whitespace-nowrap">۴. پرامپت مهندسی‌شده عیب‌یابی دواپس</h3>
+          <div class="text-xl mb-1.5">🤖</div>
+          <h3 class="text-sm font-bold text-ink mb-1 whitespace-nowrap">۴. پرامپت مهندسی‌شده دواپس</h3>
           <p class="text-mut text-justify leading-relaxed">
-            پرامپت ساخته‌شده با فرمت تخصصی برای هوش مصنوعی شامل ۳ گام ریشه‌یابی باگ، کدهای اصلاحی فوری خط فرمان لینوکس و تنظیمات پیشگیرانه جهت جلوگیری از تکرار مجدد قطعی است.
+            پرامپت ساخته‌شده با فرمت تخصصی شامل ۳ گام ریشه‌یابی باگ، کدهای اصلاحی فوری خط فرمان لینوکس و تنظیمات پیشگیرانه است.
           </p>
         </div>
       </div>

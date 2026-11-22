@@ -3,29 +3,39 @@
  * Clean Modular Web Architecture - High-standard Persian Design System
  */
 
-/* Workspace Grid */
-.la-workspace {
-  display: grid;
-  grid-template-columns: minmax(360px, 1.15fr) minmax(340px, 1fr);
-  gap: 24px;
-  align-items: flex-start;
-  margin-top: 16px;
+/* Container Constraints & Breathing Margins */
+.la-container {
+  max-width: 1040px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
 }
 
-@media (max-width: 960px) {
-  .la-workspace {
-    grid-template-columns: 1fr;
-    gap: 20px;
+@media (min-width: 768px) {
+  .la-container {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
   }
+}
+
+/* Workspace Vertical Stack */
+.la-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  margin-top: 8px;
 }
 
 /* Card Surfaces */
 .la-card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 22px;
-  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(16px);
   position: relative;
 }
@@ -33,7 +43,7 @@
 @media (max-width: 640px) {
   .la-card {
     padding: 16px;
-    border-radius: 14px;
+    border-radius: 16px;
   }
 }
 
@@ -43,9 +53,9 @@
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
   padding-bottom: 14px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
 .la-card-title {
@@ -58,23 +68,30 @@
   white-space: nowrap;
 }
 
-/* Textarea & Log Console */
-.la-textarea-wrap {
+/* Textarea & Dropzone */
+.la-dropzone {
   position: relative;
   width: 100%;
+  border-radius: 14px;
+  transition: all 0.2s ease;
+}
+
+.la-dropzone.dragover {
+  border-color: #06b6d4;
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2);
 }
 
 .la-textarea {
   width: 100%;
-  min-height: 260px;
-  max-height: 480px;
+  min-height: 220px;
+  max-height: 420px;
   background: #060913;
   border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 14px;
+  padding: 16px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 12px;
-  line-height: 1.6;
+  font-size: 12.5px;
+  line-height: 1.65;
   color: #e2e8f0;
   direction: ltr;
   text-align: left;
@@ -88,12 +105,28 @@
   box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
 }
 
+/* Upload Drop Banner Helper */
+.la-upload-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: var(--mut);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 /* Stats Counter Grid */
 .la-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 640px) {
@@ -105,13 +138,13 @@
 .la-stat-box {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 10px 12px;
+  border-radius: 12px;
+  padding: 12px 14px;
   text-align: center;
 }
 
 .la-stat-num {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 900;
   color: var(--ink);
   display: block;
@@ -130,7 +163,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: 380px;
+  max-height: 440px;
   overflow-y: auto;
   padding-left: 4px;
 }
@@ -139,7 +172,7 @@
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 12px 14px;
+  padding: 14px 16px;
   transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
@@ -169,7 +202,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   flex-wrap: wrap;
   gap: 6px;
 }
@@ -177,7 +210,7 @@
 .la-badge {
   font-size: 10px;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 3px 9px;
   border-radius: 6px;
   text-transform: uppercase;
 }
@@ -214,24 +247,26 @@
 }
 
 .la-entry-msg {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--ink);
   line-height: 1.6;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   direction: ltr;
   text-align: left;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  word-break: break-word;
 }
 
 .la-entry-insight {
-  font-size: 11.5px;
+  font-size: 12px;
   color: #a5f3fc;
   background: rgba(6, 182, 212, 0.08);
-  border-radius: 6px;
-  padding: 6px 10px;
-  margin-top: 6px;
-  line-height: 1.6;
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  line-height: 1.7;
 }
 
 /* AI Prompt Output Box */
@@ -240,14 +275,14 @@
   border: 1px solid rgba(99, 102, 241, 0.3);
   border-radius: 14px;
   overflow: hidden;
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
 .la-prompt-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px;
+  padding: 12px 16px;
   background: rgba(99, 102, 241, 0.08);
   border-bottom: 1px solid rgba(99, 102, 241, 0.2);
   flex-wrap: wrap;
@@ -256,15 +291,17 @@
 
 .la-prompt-pre {
   margin: 0;
-  padding: 14px;
+  padding: 16px;
   font-size: 12px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: #e2e8f0;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  max-height: 240px;
+  max-height: 320px;
   overflow-y: auto;
   white-space: pre-wrap;
   word-break: break-word;
+  direction: ltr;
+  text-align: left;
 }
 
 /* Toast Notifications */

@@ -1,286 +1,142 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>هاب ابزارها و پروژه‌های کاربردی هوش مصنوعی | Hashem Sh</title>
-  <meta name="description" content="مجموعه ابزارها، محصولات و میکرواپ‌های کاربردی وب توسعه‌یافته با دستیاری هوش مصنوعی">
-  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-  <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="assets/js/config/tailwind-setup.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/css/hub.css">
-  <link rel="stylesheet" href="assets/css/components/shared-nav.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>هاب ابزارهای کاربردی وب | Hashem Sh</title>
+<meta name="description" content="میکرواپ‌های ماژولار فارسی برای تولید محتوا، مهندسی پرامپت، سئو و طراحی؛ رایگان و ۱۰۰٪ در مرورگر.">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="favicon.ico">
+<script>try{var t=localStorage.getItem("theme")||localStorage.getItem("ai_hub_theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/hub-theme.css?v=5">
 </head>
-<body class="bg-dark-950 text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+<body>
+<div class="pg">
+<header id="shared-header"></header>
 
-  <!-- Ambient Glowing Background & Vector Orbital Rings -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
-    <div class="absolute -top-32 right-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[140px] animate-pulse-slow"></div>
-    <div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-cyan-500/15 rounded-full blur-[160px] animate-pulse-slow"></div>
-    <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-600/15 rounded-full blur-[150px] animate-pulse-slow"></div>
+<div class="hero"><div class="gridbg"></div>
+<div class="sh">
+<span class="eb">هاب ابزارهای کاربردی وب</span>
+<h1>ابزارهایی که کار وب را <span class="mk">ساده‌تر می‌کنند.</span></h1>
+<p class="lead">میکرواپ‌های ماژولار برای تولید محتوا، مهندسی پرامپت، سئو و طراحی؛ رایگان و ۱۰۰٪ در مرورگر شما.</p>
+<div class="hero-search-wrap">
+<div class="hero-search-box">
+<span class="srch-icon" aria-hidden="true">⌕</span>
+<input type="text" id="hero-search-input" class="hero-search-input" placeholder="جستجو در بین ۱۰ ابزار هاب (سئو، پرامپت، QR، WebP، اسکیما)..." autocomplete="off" aria-label="جستجوی زنده ابزارها">
+<span class="kb">/</span>
+<button type="button" id="hero-search-clear" class="srch-clear" aria-label="پاک کردن جستجو" style="display:none">✕</button>
+</div>
+</div>
+<div class="cta"><a class="btn bp" href="#tools">دیدن همه‌ی ۱۰ ابزار ←</a></div>
+<div class="live"><i class="dot"></i><span><b style="color:var(--ink)">۱۰</b> ابزار فعال</span><span>·</span><span>متن‌باز با لایسنس MIT</span></div>
+</div></div>
 
-    <!-- Vector Anti-Aliased Orbital Motion Rings -->
-    <div class="orbital-wrapper top-10 left-6 sm:left-16 opacity-30">
-      <img src="assets/images/orbits.svg" alt="" class="w-80 h-80 sm:w-96 sm:h-96 orbital-svg spin-slow">
-    </div>
-    <div class="orbital-wrapper bottom-24 right-4 sm:right-16 opacity-25 hidden md:flex">
-      <img src="assets/images/orbits.svg" alt="" class="w-72 h-72 orbital-svg spin-reverse-slow">
-    </div>
-  </div>
+<div class="strip">
+<div class="mq-container">
+<div class="mq-track">
+<a class="mq-item" href="./ai-cost-estimator/"><img src="assets/images/tools/ai-cost-estimator.svg" alt="" width="32" height="32" loading="lazy"><span>AI Cost Estimator</span></a>
+<a class="mq-item" href="./prompt-optimizer/"><img src="assets/images/tools/prompt-optimizer.svg" alt="" width="32" height="32" loading="lazy"><span>Prompt+</span></a>
+<a class="mq-item" href="./qr-studio/"><img src="assets/images/tools/qr-studio.svg" alt="" width="32" height="32" loading="lazy"><span>QR Studio Pro</span></a>
+<a class="mq-item" href="./webp-converter/"><img src="assets/images/tools/webp-converter.svg" alt="" width="32" height="32" loading="lazy"><span>WebP Studio Pro</span></a>
+<a class="mq-item" href="./regex-studio/"><img src="assets/images/tools/regex-studio.svg" alt="" width="32" height="32" loading="lazy"><span>Regex AI Studio</span></a>
+<a class="mq-item" href="./schema-generator/"><img src="assets/images/tools/schema-generator.svg" alt="" width="32" height="32" loading="lazy"><span>Schema Generator Pro</span></a>
+<a class="mq-item" href="./utm-builder/"><img src="assets/images/tools/utm-builder.svg" alt="" width="32" height="32" loading="lazy"><span>UTM Builder Pro</span></a>
+<a class="mq-item" href="./lorem-plus/"><img src="assets/images/tools/lorem-plus.svg" alt="" width="32" height="32" loading="lazy"><span>Lorem Plus</span></a>
+<a class="mq-item" href="./placeholder-pro/"><img src="assets/images/tools/placeholder-pro.svg" alt="" width="32" height="32" loading="lazy"><span>Placeholder Pro</span></a>
+<a class="mq-item" href="./site-auditor/"><img src="assets/images/tools/site-auditor.svg" alt="" width="32" height="32" loading="lazy"><span>Site Auditor Pro</span></a>
+<a class="mq-item" href="./ai-cost-estimator/"><img src="assets/images/tools/ai-cost-estimator.svg" alt="" width="32" height="32" loading="lazy"><span>AI Cost Estimator</span></a>
+<a class="mq-item" href="./prompt-optimizer/"><img src="assets/images/tools/prompt-optimizer.svg" alt="" width="32" height="32" loading="lazy"><span>Prompt+</span></a>
+<a class="mq-item" href="./qr-studio/"><img src="assets/images/tools/qr-studio.svg" alt="" width="32" height="32" loading="lazy"><span>QR Studio Pro</span></a>
+<a class="mq-item" href="./webp-converter/"><img src="assets/images/tools/webp-converter.svg" alt="" width="32" height="32" loading="lazy"><span>WebP Studio Pro</span></a>
+<a class="mq-item" href="./regex-studio/"><img src="assets/images/tools/regex-studio.svg" alt="" width="32" height="32" loading="lazy"><span>Regex AI Studio</span></a>
+<a class="mq-item" href="./schema-generator/"><img src="assets/images/tools/schema-generator.svg" alt="" width="32" height="32" loading="lazy"><span>Schema Generator Pro</span></a>
+<a class="mq-item" href="./utm-builder/"><img src="assets/images/tools/utm-builder.svg" alt="" width="32" height="32" loading="lazy"><span>UTM Builder Pro</span></a>
+<a class="mq-item" href="./lorem-plus/"><img src="assets/images/tools/lorem-plus.svg" alt="" width="32" height="32" loading="lazy"><span>Lorem Plus</span></a>
+<a class="mq-item" href="./placeholder-pro/"><img src="assets/images/tools/placeholder-pro.svg" alt="" width="32" height="32" loading="lazy"><span>Placeholder Pro</span></a>
+<a class="mq-item" href="./site-auditor/"><img src="assets/images/tools/site-auditor.svg" alt="" width="32" height="32" loading="lazy"><span>Site Auditor Pro</span></a>
+<a class="mq-item" href="./ai-cost-estimator/" aria-hidden="true"><img src="assets/images/tools/ai-cost-estimator.svg" alt="" width="32" height="32" loading="lazy"><span>AI Cost Estimator</span></a>
+<a class="mq-item" href="./prompt-optimizer/" aria-hidden="true"><img src="assets/images/tools/prompt-optimizer.svg" alt="" width="32" height="32" loading="lazy"><span>Prompt+</span></a>
+<a class="mq-item" href="./qr-studio/" aria-hidden="true"><img src="assets/images/tools/qr-studio.svg" alt="" width="32" height="32" loading="lazy"><span>QR Studio Pro</span></a>
+<a class="mq-item" href="./webp-converter/" aria-hidden="true"><img src="assets/images/tools/webp-converter.svg" alt="" width="32" height="32" loading="lazy"><span>WebP Studio Pro</span></a>
+<a class="mq-item" href="./regex-studio/" aria-hidden="true"><img src="assets/images/tools/regex-studio.svg" alt="" width="32" height="32" loading="lazy"><span>Regex AI Studio</span></a>
+<a class="mq-item" href="./schema-generator/" aria-hidden="true"><img src="assets/images/tools/schema-generator.svg" alt="" width="32" height="32" loading="lazy"><span>Schema Generator Pro</span></a>
+<a class="mq-item" href="./utm-builder/" aria-hidden="true"><img src="assets/images/tools/utm-builder.svg" alt="" width="32" height="32" loading="lazy"><span>UTM Builder Pro</span></a>
+<a class="mq-item" href="./lorem-plus/" aria-hidden="true"><img src="assets/images/tools/lorem-plus.svg" alt="" width="32" height="32" loading="lazy"><span>Lorem Plus</span></a>
+<a class="mq-item" href="./placeholder-pro/" aria-hidden="true"><img src="assets/images/tools/placeholder-pro.svg" alt="" width="32" height="32" loading="lazy"><span>Placeholder Pro</span></a>
+<a class="mq-item" href="./site-auditor/" aria-hidden="true"><img src="assets/images/tools/site-auditor.svg" alt="" width="32" height="32" loading="lazy"><span>Site Auditor Pro</span></a>
+<a class="mq-item" href="./ai-cost-estimator/" aria-hidden="true"><img src="assets/images/tools/ai-cost-estimator.svg" alt="" width="32" height="32" loading="lazy"><span>AI Cost Estimator</span></a>
+<a class="mq-item" href="./prompt-optimizer/" aria-hidden="true"><img src="assets/images/tools/prompt-optimizer.svg" alt="" width="32" height="32" loading="lazy"><span>Prompt+</span></a>
+<a class="mq-item" href="./qr-studio/" aria-hidden="true"><img src="assets/images/tools/qr-studio.svg" alt="" width="32" height="32" loading="lazy"><span>QR Studio Pro</span></a>
+<a class="mq-item" href="./webp-converter/" aria-hidden="true"><img src="assets/images/tools/webp-converter.svg" alt="" width="32" height="32" loading="lazy"><span>WebP Studio Pro</span></a>
+<a class="mq-item" href="./regex-studio/" aria-hidden="true"><img src="assets/images/tools/regex-studio.svg" alt="" width="32" height="32" loading="lazy"><span>Regex AI Studio</span></a>
+<a class="mq-item" href="./schema-generator/" aria-hidden="true"><img src="assets/images/tools/schema-generator.svg" alt="" width="32" height="32" loading="lazy"><span>Schema Generator Pro</span></a>
+<a class="mq-item" href="./utm-builder/" aria-hidden="true"><img src="assets/images/tools/utm-builder.svg" alt="" width="32" height="32" loading="lazy"><span>UTM Builder Pro</span></a>
+<a class="mq-item" href="./lorem-plus/" aria-hidden="true"><img src="assets/images/tools/lorem-plus.svg" alt="" width="32" height="32" loading="lazy"><span>Lorem Plus</span></a>
+<a class="mq-item" href="./placeholder-pro/" aria-hidden="true"><img src="assets/images/tools/placeholder-pro.svg" alt="" width="32" height="32" loading="lazy"><span>Placeholder Pro</span></a>
+<a class="mq-item" href="./site-auditor/" aria-hidden="true"><img src="assets/images/tools/site-auditor.svg" alt="" width="32" height="32" loading="lazy"><span>Site Auditor Pro</span></a>
+</div></div></div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex flex-col min-h-screen">
+<div class="sec" id="tools"><div class="sh">
+<div class="hd"><div><span class="eb">ویترین ابزارها</span><h2>ابزارت را بردار <em>و شروع کن.</em></h2><p class="mu">هر ابزار مستقل است؛ بدون ثبت‌نام و بدون نصب.</p></div><a class="la" href="#tools">همه‌ی ۱۰ ابزار ←</a></div>
+<div class="cg">
+<a class="cd" href="./prompt-optimizer/"><div class="md"><img src="assets/images/tools/prompt-optimizer.svg" alt="Prompt+ AI Studio" class="ti" loading="lazy"></div><div class="bo2"><h3>Prompt+ — استودیو پرامپت</h3><p>مهندسی پرامپت فارسی، ترفند دوزبانه و عیارسنجی زنده برای دستورهای دقیق‌تر.</p><div class="mt"><span>پرامپت</span><b>رایگان</b></div></div></a>
+<a class="cd" href="./qr-studio/"><div class="md"><span class="bd">محبوب</span><img src="assets/images/tools/qr-studio.svg" alt="QR Studio Pro" class="ti" loading="lazy"></div><div class="bo2"><h3>QR Studio Pro</h3><p>۵ فرمت کاربردی (لینک، وای‌فای، واتساپ، تلگرام)، لوگو و خروجی SVG و PNG.</p><div class="mt"><span>مارکتینگ</span><b>رایگان</b></div></div></a>
+<a class="cd" href="./webp-converter/"><div class="md"><img src="assets/images/tools/webp-converter.svg" alt="WebP Studio Pro" class="ti" loading="lazy"></div><div class="bo2"><h3>WebP Studio Pro</h3><p>تبدیل و فشرده‌سازی تصاویر تا ۸۵٪ کم‌حجم‌تر؛ ۱۰۰٪ محلی در مرورگر.</p><div class="mt"><span>گرافیک</span><b>رایگان</b></div></div></a>
+<a class="cd" href="./regex-studio/"><div class="md"><img src="assets/images/tools/regex-studio.svg" alt="Regex AI Studio" class="ti" loading="lazy"></div><div class="bo2"><h3>Regex AI Studio</h3><p>تست زنده، تشریح مرحله‌به‌مرحله الگوها و مولد خودکار کد برای ۸ زبان.</p><div class="mt"><span>توسعه</span><b>رایگان</b></div></div></a>
+<a class="cd" href="./schema-generator/"><div class="md"><img src="assets/images/tools/schema-generator.svg" alt="Schema Generator Pro" class="ti" loading="lazy"></div><div class="bo2"><h3>Schema Generator Pro</h3><p>ساخت و اعتبارسنجی JSON-LD برای ۱۶ نوع با شبیه‌ساز زنده‌ی نتایج گوگل.</p><div class="mt"><span>سئو</span><b>رایگان</b></div></div></a>
+<a class="cd" href="./utm-builder/"><div class="md"><img src="assets/images/tools/utm-builder.svg" alt="UTM Builder Pro" class="ti" loading="lazy"></div><div class="bo2"><h3>UTM Builder Pro</h3><p>لینک کمپین، پریست ادنتورک‌های ایرانی، شبیه‌ساز GA4 و خروجی گروهی اکسل.</p><div class="mt"><span>مارکتینگ</span><b>رایگان</b></div></div></a>
+<a class="cd" href="./lorem-plus/"><div class="md"><img src="assets/images/tools/lorem-plus.svg" alt="Lorem Plus" class="ti" loading="lazy"></div><div class="bo2"><h3>Lorem Plus — لورم پلاس</h3><p>تولید محتوای هوشمند فارسی، مقاله‌ساز وبلاگ، میکروکپی UI و متون ساختاریافته.</p><div class="mt"><span>سئو</span><b>رایگان</b></div></div></a>
+<a class="cd" href="./placeholder-pro/"><div class="md"><img src="assets/images/tools/placeholder-pro.svg" alt="Placeholder Pro" class="ti" loading="lazy"></div><div class="bo2"><h3>Placeholder Pro</h3><p>ساخت تصاویر جایگزین و ماکت‌های گرافیکی وب با پالت‌های مدرن و ابعاد استاندارد.</p><div class="mt"><span>گرافیک</span><b>رایگان</b></div></div></a>
+<a class="cd" href="./site-auditor/"><div class="md"><img src="assets/images/tools/site-auditor.svg" alt="Site Auditor Pro" class="ti" loading="lazy"></div><div class="bo2"><h3>Site Auditor Pro</h3><p>ممیزی عمیق سئو فنی صفحات وب، استانداردهای Core Web Vitals و امنیت.</p><div class="mt"><span>سئو</span><b>در حال توسعه</b></div></div></a>
+<a class="cd" href="./ai-cost-estimator/"><div class="md"><img src="assets/images/tools/ai-cost-estimator.svg" alt="AI Cost Estimator" class="ti" loading="lazy"></div><div class="bo2"><h3>AI Cost Estimator</h3><p>محاسبه و مقایسه هزینه تولید عکس، ویدیو، کد و چت مدل‌های هوش مصنوعی به دلار و تومان.</p><div class="mt"><span>توسعه</span><b>در حال توسعه</b></div></div></a>
+</div>
+<div class="ch"><span class="mu">یا مستقیم سراغ حوزه‌ات برو:</span><span class="chip">سئو</span><span class="chip">پرامپت</span><span class="chip">گرافیک</span><span class="chip">توسعه</span><span class="chip">مارکتینگ</span></div>
+</div></div>
 
-    <!-- Shared Universal Header -->
-    <header id="shared-header"></header>
+<div class="sec"><div class="sh">
+<div class="hd"><div><span class="eb">چرا این هاب</span><h2>ساده. سریع. <em>رایگان.</em></h2></div><p class="mu">با هوش مصنوعی ساخته شده و برای وب فارسی نوشته شده.</p></div>
+<div class="bpn"><i class="x" style="top:-6px;right:-6px"></i><i class="x" style="top:-6px;left:-6px"></i><i class="x" style="bottom:-6px;right:-6px"></i><i class="x" style="bottom:-6px;left:-6px"></i>
+<div class="bgd">
+<div class="sp sp3"><span class="no">۰۱</span><h3>همراه با هوش مصنوعی</h3><p>پرامپت خام را بنویس و نسخه‌ی دقیق‌ترش را بگیر.</p><div style="display:flex;flex-direction:column;gap:8px;background:var(--sub);border:1px solid var(--line);border-radius:14px;padding:14px"><div class="bu u">یه مقاله درباره سئو بنویس</div><div class="bu a">نقش: متخصص سئو فارسی. ساختار: مقدمه، سه بخش، جمع‌بندی. لحن: صمیمی و حرفه‌ای.</div></div></div>
+<div class="sp"><span class="no">۰۲</span><h3>۱۰۰٪ در مرورگر</h3><p>بدون ثبت‌نام و بدون ارسال داده‌ات به سرور.</p></div>
+<div class="sp"><span class="no">۰۳</span><h3>معماری ماژولار</h3><p>بدون فریم‌ورک سنگین؛ زیر ۲۰۰ خط در هر فایل.</p></div>
+<div class="sp"><span class="no">۰۴</span><h3>خروجی آماده</h3><p>کپی، دانلود SVG و PNG، یا خروجی گروهی.</p></div>
+<div class="sp"><span class="no">۰۵</span><h3>متن‌باز با MIT</h3><p>سورس شفاف روی گیت‌هاب؛ بخوان، فورک کن، بساز.</p></div>
+<div class="sp dk sp3"><h3>ابزار بعدی را با هم بسازیم.</h3><p>اگر ابزارها به کارت آمد، با یک ستاره انگیزه‌ی ساخت ابزارهای جدید را به من بده.</p><a class="btn bg2" style="align-self:flex-start;margin-top:6px" href="https://github.com/hashemsh/ai-projects-persian" target="_blank" rel="noopener noreferrer">★ ثبت Star در گیت‌هاب</a></div>
+</div></div>
+</div></div>
 
-    <!-- Hero Showcase Section -->
-    <header class="text-center mb-14 md:mb-16">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border-indigo-500/30 text-indigo-300 text-xs md:text-sm font-medium mb-4 shadow-sm">
-        <span>⚡ محصولات و ابزارهای کاربردی وب</span>
-        <span class="text-slate-500">•</span>
-        <span class="text-cyan-400">خلق‌شده با هوش مصنوعی</span>
-      </div>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-4">
-        هاب ابزارهای <span class="text-gradient-cyan-indigo">کاربردی و مدرن وب</span>
-      </h1>
-      <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-400 leading-relaxed">
-        مجموعه‌ای از میکرواپ‌های آنلاین و ماژولار جهت ارتقای تولید محتوا، مهندسی پرامپت، و طراحی دارایی‌های گرافیکی؛ بدون وابستگی‌های سنگین و آماده بهره‌برداری.
-      </p>
+<div class="nv" id="about"><div class="sh">
+<div class="about-card"><div class="about-grid">
+<div class="about-content">
+<span class="eb">درباره‌ی هاب</span>
+<h2>با هوش مصنوعی می‌سازیم؛ <span class="gg">برای وب فارسی.</span></h2>
+<p class="mu">هر ابزار یک مشکل واقعی طراحان و مدیران سایت را حل می‌کند: داده‌ی تستی فارسی، تصویر پیش‌نمایش، بهینه‌سازی پرامپت و سئوی فنی؛ سریع، شفاف و ۱۰۰٪ رایگان در مرورگر شما.</p>
+<div class="st"><div><b>۱۰</b><span>ابزار آنلاین</span></div><div><b>۱۰۰٪</b><span>اجرا در مرورگر</span></div><div><b>رایگان</b><span>بدون نیاز به ثبت‌نام</span></div><div><b>MIT</b><span>لایسنس متن‌باز</span></div></div>
+</div>
+<div class="about-visual-box"><img src="assets/images/about-visual.svg" alt="معماری هوش مصنوعی وب فارسی" class="about-img" loading="lazy"></div>
+</div></div>
+</div></div>
 
-      <!-- Modern Live Search Bar with Debounce -->
-      <div class="search-wrapper max-w-2xl mx-auto mt-8 px-2" id="tools-search-section">
-        <div class="search-input-container relative">
-          <div class="search-glow" aria-hidden="true"></div>
-          <div class="search-input-box relative flex items-center p-1.5 sm:p-2">
-            <span class="search-icon pr-3 pl-2 text-slate-400 flex items-center justify-center">
-              <svg class="w-5 h-5 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </span>
-            <input 
-              type="text" 
-              id="tool-search-input" 
-              class="w-full bg-transparent text-white placeholder-slate-400 text-sm sm:text-base font-medium px-2 py-2 focus:outline-none" 
-              placeholder="جستجوی ابزارها (مثلاً: سئو، پرامپت، QR، WebP، اسکیما)..." 
-              autocomplete="off"
-              aria-label="جستجوی زنده ابزارها"
-            >
-            <!-- Debounce spinner -->
-            <div id="search-spinner" class="hidden items-center px-2 text-cyan-400 animate-spin">
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-              </svg>
-            </div>
-            <!-- Clear button -->
-            <button 
-              type="button" 
-              id="search-clear-btn" 
-              class="hidden items-center justify-center w-8 h-8 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-all text-sm ml-1" 
-              title="پاک کردن جستجو (Esc)"
-              aria-label="پاک کردن جستجو"
-            >
-              ✕
-            </button>
-            <!-- Keyboard Shortcut Badge -->
-            <div class="hidden sm:flex items-center gap-1 pl-2 pr-1 text-[11px] text-slate-400 select-none">
-              <kbd class="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 font-mono text-[10px] text-slate-300">Ctrl</kbd>
-              <span>+</span>
-              <kbd class="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 font-mono text-[10px] text-slate-300">K</kbd>
-            </div>
-          </div>
-        </div>
+<div class="cb"><div class="sh"><div><span class="eb">همین امروز</span><h2>قدم اول را <span class="gg">با هم برداریم.</span></h2><p class="mu" style="margin:0">ابزارها را امتحان کن و نظرت را برایم بفرست.</p></div><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn bg2" href="#tools">دیدن ابزارها ←</a><a class="btn bo" href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer">دنبال کردن در لینکدین</a></div></div></div>
+<footer id="shared-footer"></footer>
+</div>
 
-        <!-- Quick Search Tags / Preset Filters -->
-        <div class="flex items-center justify-center gap-2 flex-wrap mt-3 text-xs">
-          <span class="text-slate-400 text-[11px] font-medium">پیشنهاد سریع:</span>
-          <button type="button" class="quick-filter-tag" data-query="سئو">🔍 سئو</button>
-          <button type="button" class="quick-filter-tag" data-query="پرامپت">⚡ پرامپت</button>
-          <button type="button" class="quick-filter-tag" data-query="QR">📱 QR کد</button>
-          <button type="button" class="quick-filter-tag" data-query="WebP">🖼️ تبدیل عکس</button>
-          <button type="button" class="quick-filter-tag" data-query="Regex">⚙️ عبارات منظم</button>
-          <button type="button" class="quick-filter-tag" data-query="مارکتینگ">🎯 مارکتینگ</button>
-        </div>
+<!-- Take Me Up (Scroll to Top) Rocket Button -->
+<button type="button" id="take-me-up" class="take-me-up" aria-label="برو به بالا" title="برو به بالای صفحه">
+<svg class="progress-ring" width="46" height="46" viewBox="0 0 46 46"><circle class="ring-bg" cx="23" cy="23" r="18" fill="none" stroke-width="2.5"/><circle id="scroll-progress-ring" class="ring-bar" cx="23" cy="23" r="18" fill="none" stroke-width="2.5"/></svg>
+<div class="rocket-icon-wrap">
+<svg class="rocket-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4.5c1.62-1.63 5-2.5 5-2.5"/><path d="M12 15v5s3.03-.55 4.5-2c1.63-1.62 2.5-5 2.5-5"/></svg>
+<span class="thruster-flame"></span>
+</div>
+</button>
 
-        <!-- Search Status / Result Count Indicator -->
-        <div id="search-status-bar" class="hidden mt-3 text-center text-xs">
-          <span id="search-status-text" class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/25 inline-flex items-center gap-1.5 shadow-sm">
-          </span>
-        </div>
-      </div>
-    </header>
-
-    <!-- Categorized Projects Showcase Section -->
-    <main id="tools" class="mb-20 scroll-mt-24">
-      <div class="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
-        <div class="flex items-center gap-2.5">
-          <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></div>
-          <h2 class="text-xl sm:text-2xl font-black text-white">ویترین ابزارهای تخصصی وب</h2>
-        </div>
-        <span class="text-xs text-slate-400 font-medium bg-white/5 px-3 py-1 rounded-full border border-white/5">
-          ۹ ابزار آنلاین • ۳ دسته‌بندی موضوعی
-        </span>
-      </div>
-      <div id="projects-container"></div>
-    </main>
-
-    <!-- What We Do / Mission Section -->
-    <section class="mb-20">
-      <div class="text-center mb-10">
-        <h2 class="text-2xl font-black text-white mb-2.5">در این هاب دقیقاً چه کار می‌کنیم؟</h2>
-        <p class="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">ارزش‌آفرینی از طریق ترکیب هوش مصنوعی مولد و مهندسی خلاق وب</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Bento Card 1: Problem Solving -->
-        <div class="mission-bento-card p-6 sm:p-7 group text-cyan-400 border-cyan-500/20 hover:border-cyan-500/50 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <div class="mission-icon-box bg-cyan-500/15 border border-cyan-500/30 text-cyan-400">🎯</div>
-              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/25">حل مسئله واقعی</span>
-            </div>
-            <h3 class="text-base sm:text-lg font-black text-white mb-2.5 group-hover:text-cyan-300 transition">حل چالش‌های وب فارسی</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">ابزارهای ما گلوگاه‌های واقعی طراحان و مدیران سایت‌ها از جمله تولید داده‌های تستی فارسی، ساخت سریع تصاویر پیش‌نمایش و بهینه‌سازی پرامپت‌ها را حل می‌کنند.</p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-cyan-400/80 font-semibold flex items-center gap-1">
-            <span>تمرکز بر خروجی‌های کاربردی</span><span>←</span>
-          </div>
-        </div>
-
-        <!-- Bento Card 2: Clean Architecture -->
-        <div class="mission-bento-card p-6 sm:p-7 group text-indigo-400 border-indigo-500/20 hover:border-indigo-500/50 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <div class="mission-icon-box bg-indigo-500/15 border border-indigo-500/30 text-indigo-400">⚙️</div>
-              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/25">معماری تمیز</span>
-            </div>
-            <h3 class="text-base sm:text-lg font-black text-white mb-2.5 group-hover:text-indigo-300 transition">معماری ماژولار و مستقل</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">توسعه به روش Clean Modular Web؛ سورس‌کدهای شفاف، کامپوننت‌های مستقل، بدون فریم‌ورک‌های سنگین، با نهایت سرعت لود و استاندارد سئو و دسترسی‌پذیری.</p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-indigo-400/80 font-semibold flex items-center gap-1">
-            <span>زیر ۲۰۰ خط در هر فایل</span><span>←</span>
-          </div>
-        </div>
-
-        <!-- Bento Card 3: Frictionless Run -->
-        <div class="mission-bento-card p-6 sm:p-7 group text-pink-400 border-pink-500/20 hover:border-pink-500/50 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <div class="mission-icon-box bg-pink-500/15 border border-pink-500/30 text-pink-400">🚀</div>
-              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/25">اجرای آنی</span>
-            </div>
-            <h3 class="text-base sm:text-lg font-black text-white mb-2.5 group-hover:text-pink-300 transition">استفاده ۱۰۰٪ رایگان و آزاد</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">تمام ابزارها ۱۰۰٪ سمت کلاینت و کلاود اجرا می‌شوند. بدون نیاز به ثبت‌نام یا اشتراک پولی، می‌توانید فوراً نتایج را کپی، دانلود یا خروجی بگیرید.</p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/5 text-[11px] text-pink-400/80 font-semibold flex items-center gap-1">
-            <span>کپی، دانلود و خروجی درجا</span><span>←</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Accordion Section -->
-    <section class="mb-20 max-w-3xl mx-auto w-full">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl font-black text-white mb-2">پرسش‌های متداول (FAQ)</h2>
-        <p class="text-xs sm:text-sm text-slate-400">پاسخ به سوالات متداول درباره ابزارها و نحوه توسعه آن‌ها</p>
-      </div>
-      <div id="faq-list" class="space-y-3.5"></div>
-    </section>
-
-    <!-- Creator / About Section -->
-    <section class="mb-16">
-      <div class="glass-card rounded-3xl p-6 sm:p-8 md:p-10 border border-white/10 relative overflow-hidden">
-        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-10">
-          <div class="flex-shrink-0">
-            <div class="creator-avatar-wrap">
-              <div class="creator-avatar-glow"></div>
-              <div class="creator-avatar-frame">
-                <img src="assets/images/hashem.jpg" alt="هاشم شیخی‌پور | Hashem Sheikhypour" class="creator-avatar-img">
-              </div>
-            </div>
-          </div>
-          <div class="flex-grow text-center md:text-right">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-indigo-500/15 text-indigo-300 text-xs font-semibold border border-indigo-500/25 mb-2.5">
-              <span>توسعه‌دهنده نرم‌افزار &amp; معمار محصولات وب</span>
-            </div>
-            <h2 class="text-2xl md:text-3xl font-black text-white mb-3">هاشم شیخی‌پور <span class="text-sm font-normal text-slate-400 font-mono">(Hashem Sh)</span></h2>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5 max-w-2xl">
-              توسعه‌دهنده نرم‌افزار با علاقه عمیق به تلفیق مهندسی مدرن وب و هوش مصنوعی مولد. تمرکز من بر خلق راه‌حل‌های سریع، کاربرپسند و نوآورانه است که فرآیندهای فنی را ساده‌تر کرده و ابزارهای ملموس و کارآمد به جامعه وب ارائه دهند.
-            </p>
-            <div class="flex items-center gap-3 justify-center md:justify-start flex-wrap">
-              <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0077b5]/20 hover:bg-[#0077b5]/35 text-[#38bdf8] border border-[#0077b5]/40 text-xs font-bold transition">
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45c-.95 0-1.72.78-1.72 1.73s.77 1.73 1.72 1.73 1.72-.78 1.72-1.73-.77-1.73-1.72-1.73Z"/></svg>
-                <span>پروفایل لینکدین</span>
-              </a>
-              <a href="https://t.me/init10" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#229ED9]/20 hover:bg-[#229ED9]/35 text-[#38bdf8] border border-[#229ED9]/40 text-xs font-bold transition">
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-                <span>ارتباط مستقیم در تلگرام (@init10)</span>
-              </a>
-              <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 text-xs font-bold transition">
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                <span>مخازن گیت‌هاب</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Community Support & Star Banner Section -->
-    <section class="mb-16">
-      <div class="glass-card rounded-3xl p-6 sm:p-8 md:p-10 border border-white/10 relative overflow-hidden text-center">
-        <!-- Banner Image with Ambient Glow and Rounded Corners -->
-        <div class="relative max-w-4xl mx-auto mb-8 group">
-          <div class="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 via-indigo-500 to-pink-500 rounded-2xl sm:rounded-3xl blur-xl opacity-30 group-hover:opacity-60 transition duration-500 pointer-events-none"></div>
-          <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-dark-900">
-            <img src="assets/images/banner.jpg" alt="AI Projects Hub - ویترین ابزارهای کاربردی وب" class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition duration-500">
-          </div>
-        </div>
-
-        <!-- Supportive Text & Call to Action -->
-        <div class="max-w-2xl mx-auto">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/25 text-xs font-semibold mb-3">
-            <span>⭐️ حمایت از توسعه متن‌باز</span>
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-black text-white mb-3">
-            این ابزارها برات کاربردی بود؟ <span class="text-gradient-cyan-indigo">با یک ستاره حامیش باش!</span>
-          </h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
-            تمامی این میکرواپ‌ها ۱۰۰٪ رایگان، بدون تبلیغات و با عشق برای ارتقای جامعه وب فارسی توسعه داده می‌شوند. اگر ابزارهای این هاب در کار، تولید محتوا یا پروژه‌هات بهت کمک کردند، با دادن یک <strong class="text-amber-400 font-bold">Star در گیت‌هاب</strong> یا همراهی در <strong class="text-cyan-400 font-bold">لینکدین</strong>، بزرگ‌ترین انگیزه و انرژی رو برای ساخت ابزارهای جدیدتر به من می‌دی! ❤️
-          </p>
-          <div class="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
-            <a href="https://github.com/hashemsh/ai-projects-persian" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-amber-500/25 transition transform hover:scale-[1.03]">
-              <span class="text-base">★</span>
-              <span>ثبت Star در گیت‌هاب</span>
-            </a>
-            <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0077b5]/25 hover:bg-[#0077b5]/40 text-[#38bdf8] border border-[#0077b5]/50 font-bold text-xs sm:text-sm transition transform hover:scale-[1.03]">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45c-.95 0-1.72.78-1.72 1.73s.77 1.73 1.72 1.73 1.72-.78 1.72-1.73-.77-1.73-1.72-1.73Z"/></svg>
-              <span>دنبال کردن در لینکدین</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Shared Universal Footer -->
-    <footer id="shared-footer"></footer>
-
-  </div>
-
-  <!-- Modular Application Scripts -->
-  <script src="assets/js/components/shared-layout.js"></script>
-  <script src="assets/js/data/projects-data.js"></script>
-  <script src="assets/js/data/faq-data.js"></script>
-  <script src="assets/js/ui/cursor.js"></script>
-  <script src="assets/js/ui/tilt.js"></script>
-  <script src="assets/js/ui/projects-renderer.js"></script>
-  <script src="assets/js/ui/faq.js"></script>
-  <script src="assets/js/ui/rocket.js"></script>
-  <script src="assets/js/ui/search.js"></script>
-  <script src="assets/js/main.js"></script>
+<script src="assets/js/components/shared-layout.js?v=5" defer></script>
+<script src="assets/js/search.js?v=5" defer></script>
+<script src="assets/js/scroll.js?v=5" defer></script>
+<script src="assets/js/interactive.js?v=5" defer></script>
+<script src="assets/js/trail.js?v=5" defer></script>
 </body>
 </html>

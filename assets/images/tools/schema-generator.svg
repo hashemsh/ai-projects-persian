@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 170" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_schema" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#091b15"/>
+      <stop offset="100%" stop-color="#0f2920"/>
+    </linearGradient>
+    <radialGradient id="glow_schema" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="360" height="170" fill="url(#bg_schema)"/>
+  <circle cx="180" cy="85" r="90" fill="url(#glow_schema)"/>
+  <!-- Central Glass Card -->
+  <rect x="70" y="25" width="220" height="120" rx="16" fill="#0c241c" fill-opacity="0.8" stroke="#059669" stroke-width="1.2"/>
+  <!-- Top: Golden Stars Review Badge -->
+  <g transform="translate(180, 48)" text-anchor="middle">
+    <rect x="-48" y="-12" width="96" height="22" rx="11" fill="#451a03" fill-opacity="0.6" stroke="#f59e0b" stroke-width="0.8"/>
+    <text x="0" y="3.5" fill="#fbbf24" font-size="12" letter-spacing="3">★★★★★</text>
+  </g>
+  <!-- Schema Tree Graph (Connected Nodes) -->
+  <!-- Connection Lines -->
+  <path d="M180 72 L180 84 M180 84 L125 106 M180 84 L180 106 M180 84 L235 106" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <!-- Root Node -->
+  <circle cx="180" cy="72" r="12" fill="#047857" stroke="#34d399" stroke-width="1.5"/>
+  <circle cx="180" cy="72" r="4" fill="#ffffff"/>
+  <!-- Subnode 1 (Left) -->
+  <circle cx="125" cy="112" r="10" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <circle cx="125" cy="112" r="3" fill="#6ee7b7"/>
+  <!-- Subnode 2 (Center) -->
+  <circle cx="180" cy="112" r="10" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <circle cx="180" cy="112" r="3" fill="#6ee7b7"/>
+  <!-- Subnode 3 (Right) -->
+  <circle cx="235" cy="112" r="10" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <circle cx="235" cy="112" r="3" fill="#6ee7b7"/>
+</svg>

@@ -1,183 +1,179 @@
 /**
- * Universal Shared Header and Footer Navigation Component (< 200 lines)
- * With categorized dropdown submenus, smooth section scrolling and dual theme support.
+ * Universal Shared Header & Footer Layout Component (< 200 lines)
+ * Clean Modular Web architecture: shared across root hub and all micro-tools.
  */
-(function() {
-  function getTheme() {
-    return localStorage.getItem('ai_hub_theme') === 'light';
+(function () {
+  var isSub = /\/(lorem-plus|prompt-optimizer|placeholder-pro|site-auditor|utm-builder|schema-generator|qr-studio|regex-studio|webp-converter|ai-cost-estimator)\//.test(window.location.pathname) || (document.body && document.body.dataset.root === 'sub');
+  var rootPath = isSub ? '../' : './';
+  var logoSrc = rootPath + 'assets/images/logo.svg';
+  var hubUrl = isSub ? rootPath + 'index.html' : './';
+  var toolsUrl = isSub ? rootPath + 'index.html#tools' : '#tools';
+  var roadmapUrl = rootPath + 'ROADMAP.md';
+  var readmeUrl = rootPath + 'README.md';
+  var aboutUrl = isSub ? rootPath + 'index.html#about' : '#about';
+
+  var root = document.documentElement;
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function currentTheme() {
+    return root.getAttribute('data-theme') ||
+           localStorage.getItem('theme') ||
+           localStorage.getItem('ai_hub_theme') ||
+           (mq.matches ? 'dark' : 'light');
   }
 
-  function applyTheme(isLight) {
-    document.documentElement.classList.toggle('light-theme', isLight);
-    const icon = document.getElementById('theme-toggle-icon');
-    if (icon) icon.textContent = isLight ? '☀️' : '🌙';
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    root.classList.toggle('light-theme', t === 'light');
+    try {
+      localStorage.setItem('theme', t);
+      localStorage.setItem('ai_hub_theme', t);
+    } catch (_) {}
+    var tg = document.querySelector('[data-theme-toggle]');
+    if (tg) tg.setAttribute('aria-pressed', String(t === 'dark'));
+  }
+  applyTheme(currentTheme());
+
+  function renderHeader() {
+    var el = document.getElementById('shared-header');
+    if (!el) return;
+    el.innerHTML = [
+      '<div class="nav">',
+      '  <a class="logo" href="' + hubUrl + '"><img src="' + logoSrc + '" alt="لوگو" class="logo-img" width="30" height="30"><span>هاب ابزارها</span></a>',
+      '  <div class="links">',
+      '    <a class="' + (!isSub ? 'on' : '') + '" href="' + hubUrl + '">خانه</a>',
+      '    <a href="' + toolsUrl + '">ابزارها</a>',
+      '    <a href="' + roadmapUrl + '">نقشه راه</a>',
+      '    <a href="' + readmeUrl + '">مستندات</a>',
+      '    <a href="' + aboutUrl + '">درباره</a>',
+      '  </div>',
+      '  <button class="nav-srch-btn" type="button" aria-label="جستجو در ابزارها">',
+      '    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>',
+      '    <span>جستجو</span><span class="kb">/</span>',
+      '  </button>',
+      '  <div class="nav-actions" style="display:flex;align-items:center;gap:8px">',
+      '    <button class="tg" type="button" data-theme-toggle aria-label="تغییر تم روشن/تیره" aria-pressed="' + String(currentTheme() === 'dark') + '">◐</button>',
+      '    <button class="menu-btn" type="button" aria-label="باز کردن منو" aria-expanded="false" id="menu-toggle">',
+      '      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>',
+      '    </button>',
+      '    <a class="btn bp nav-btn" href="https://github.com/hashemsh/ai-projects-persian" target="_blank" rel="noopener noreferrer">ستاره در گیت‌هاب</a>',
+      '  </div>',
+      '</div>'
+    ].join('\n');
   }
 
-  function toggleTheme() {
-    const isLight = !document.documentElement.classList.contains('light-theme');
-    applyTheme(isLight);
-    try { localStorage.setItem('ai_hub_theme', isLight ? 'light' : 'dark'); } catch (_) {}
+  function renderDrawer() {
+    if (document.getElementById('mobile-drawer')) return;
+    var backdrop = document.createElement('div');
+    backdrop.className = 'drawer-backdrop';
+    backdrop.id = 'drawer-backdrop';
+
+    var drawer = document.createElement('aside');
+    drawer.className = 'drawer';
+    drawer.id = 'mobile-drawer';
+    drawer.setAttribute('aria-label', 'منوی موبایل');
+    drawer.setAttribute('aria-hidden', 'true');
+    drawer.innerHTML = [
+      '<div class="drawer-head">',
+      '  <a class="logo" href="' + hubUrl + '"><img src="' + logoSrc + '" alt="لوگو" class="logo-img" width="30" height="30"><span>هاب ابزارها</span></a>',
+      '  <button class="drawer-close" type="button" id="drawer-close" aria-label="بستن منو">✕</button>',
+      '</div>',
+      '<nav class="drawer-nav">',
+      '  <a class="' + (!isSub ? 'on' : '') + '" href="' + hubUrl + '">خانه</a>',
+      '  <a href="' + toolsUrl + '">ابزارها</a>',
+      '  <a href="' + roadmapUrl + '">نقشه راه</a>',
+      '  <a href="' + readmeUrl + '">مستندات</a>',
+      '  <a href="' + aboutUrl + '">درباره‌ی هاب</a>',
+      '</nav>',
+      '<div class="drawer-foot">',
+      '  <a class="btn bp" style="width:100%;justify-content:center" href="https://github.com/hashemsh/ai-projects-persian" target="_blank" rel="noopener noreferrer">★ ستاره در گیت‌هاب</a>',
+      '  <div class="drawer-socials">',
+      '    <a href="https://t.me/init10" target="_blank" rel="noopener noreferrer">تلگرام</a>',
+      '    <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer">لینکدین</a>',
+      '    <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer">گیت‌هاب</a>',
+      '  </div>',
+      '</div>'
+    ].join('\n');
+
+    document.body.appendChild(backdrop);
+    document.body.appendChild(drawer);
   }
 
-  applyTheme(getTheme());
-
-  function initSharedLayout() {
-    const path = window.location.pathname;
-    const isSub = /\/(lorem-plus|prompt-optimizer|placeholder-pro|site-auditor|utm-builder|schema-generator|qr-studio|regex-studio|webp-converter|ai-cost-estimator)\//.test(path) || (document.body && document.body.dataset.root === 'sub');
-    const rootPath = isSub ? '../' : './';
-    const logoSrc = isSub ? '../assets/images/logo.svg' : 'assets/images/logo.svg';
-    const hubUrl = isSub ? '../' : './';
-    const toolsUrl = isSub ? '../#tools' : '#tools';
-    const isToolsActive = isSub || window.location.hash.includes('tools');
-
-    const subCats = [
-      { id: 'seo-tools', title: 'ابزارهای سئو', desc: 'اسکیما، ممیزی سایت و محتوا', icon: '🔍' },
-      { id: 'marketing-tools', title: 'ابزارهای مارکتینگ', desc: 'کمپین UTM و استودیو QR', icon: '🎯' },
-      { id: 'dev-tools', title: 'ابزارهای برنامه‌نویسی', desc: 'پرامپت پلاس و دیزاین موکاپ', icon: '💻' }
-    ];
-
-    renderHeader(hubUrl, toolsUrl, logoSrc, isToolsActive, isSub, subCats);
-    renderFooter(hubUrl, toolsUrl, logoSrc);
-    applyTheme(document.documentElement.classList.contains('light-theme'));
+  function renderFooter() {
+    var el = document.getElementById('shared-footer');
+    if (!el) return;
+    el.innerHTML = [
+      '<div class="ft"><div class="sh">',
+      '  <span>طراحی و توسعه توسط <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer" style="color:var(--ink);font-weight:700">هاشم شیخی‌پور (Hashem Sh)</a> | قدرت‌گرفته از <a href="https://antigravity.google" target="_blank" rel="noopener noreferrer" style="color:var(--bt);font-weight:700">Antigravity</a></span>',
+      '  <span><a href="https://t.me/init10" target="_blank" rel="noopener noreferrer">تلگرام</a> · <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer">لینکدین</a> · <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer">گیت‌هاب</a></span>',
+      '</div></div>'
+    ].join('\n');
   }
 
-  function renderHeader(hubUrl, toolsUrl, logoSrc, isToolsActive, isSub, subCats) {
-    const headerEl = document.getElementById('shared-header');
-    if (!headerEl) return;
+  function wireEvents() {
+    var tg = document.querySelector('[data-theme-toggle]');
+    if (tg) {
+      tg.addEventListener('click', function () {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+      });
+    }
 
-    const desktopSubHtml = subCats.map(c => `
-      <a href="${isSub ? '../#' + c.id : '#' + c.id}" class="nav-dropdown-item">
-        <span class="text-base">${c.icon}</span>
-        <div>
-          <div class="dropdown-title">${c.title}</div>
-          <div class="dropdown-desc">${c.desc}</div>
-        </div>
-      </a>
-    `).join('');
+    var navSrch = document.querySelector('.nav-srch-btn');
+    if (navSrch) {
+      navSrch.addEventListener('click', function (e) {
+        if (e && e.preventDefault) e.preventDefault();
+        var inp = document.getElementById('hero-search-input');
+        if (inp) {
+          inp.focus();
+          inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(function () { inp.focus(); }, 40);
+        } else {
+          window.location.href = toolsUrl;
+        }
+      });
+    }
 
-    const mobileSubHtml = subCats.map(c => `
-      <a href="${isSub ? '../#' + c.id : '#' + c.id}" class="mobile-subnav-link">
-        <span>${c.icon}</span>
-        <span>${c.title}</span>
-      </a>
-    `).join('');
+    var menuBtn = document.getElementById('menu-toggle');
+    var drawer = document.getElementById('mobile-drawer');
+    var backdrop = document.getElementById('drawer-backdrop');
+    var closeBtn = document.getElementById('drawer-close');
+    if (!menuBtn || !drawer || !backdrop) return;
 
-    const isLight = document.documentElement.classList.contains('light-theme');
+    function openDrawer() {
+      drawer.classList.add('open');
+      backdrop.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
 
-    headerEl.innerHTML = `
-      <nav class="shared-navbar px-4 sm:px-6 py-3.5 mb-8 md:mb-12 shadow-glass relative z-50">
-        <div class="flex items-center justify-between gap-3">
-          <a href="${hubUrl}" class="flex items-center gap-3 group transition">
-            <div class="w-10 h-10 rounded-xl bg-dark-900 border border-indigo-500/30 p-1 flex items-center justify-center shadow-glow-indigo group-hover:scale-105 transition">
-              <img src="${logoSrc}" alt="AI Nexus Logo" class="w-full h-full object-contain">
-            </div>
-            <div>
-              <span class="brand-title font-black text-sm sm:text-base text-white group-hover:text-cyan-300 transition block">هاب پروژه‌های هوش مصنوعی</span>
-              <span class="text-[10px] text-slate-400 font-mono tracking-wider">AI Apps &amp; Production Micro-Tools</span>
-            </div>
-          </a>
-
-          <!-- Desktop Navigation with Categorized Dropdown -->
-          <div class="hidden sm:flex items-center gap-1.5 bg-dark-900/60 p-1.5 rounded-2xl border border-white/5">
-            <a href="${hubUrl}" class="shared-nav-link ${!isToolsActive ? 'active' : ''}">
-              <span class="nav-icon">🏠</span><span>صفحه اصلی</span>
-            </a>
-            <div class="nav-dropdown-container">
-              <a href="${toolsUrl}" class="shared-nav-link ${isToolsActive ? 'active' : ''}">
-                <span class="nav-icon">⚡</span><span>ابزارها</span>
-                <svg class="w-3.5 h-3.5 opacity-70 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-              </a>
-              <div class="nav-dropdown-menu">
-                <a href="${toolsUrl}" class="nav-dropdown-item border-b border-white/5 pb-2 mb-1">
-                  <span class="text-base">✨</span>
-                  <div>
-                    <div class="dropdown-title">همه ابزارها</div>
-                    <div class="dropdown-desc">مشاهده تمام ابزارهای فعال</div>
-                  </div>
-                </a>
-                ${desktopSubHtml}
-              </div>
-            </div>
-          </div>
-
-          <!-- Actions -->
-          <div class="flex items-center gap-2">
-            <a href="https://github.com/hashemsh/ai-projects-persian" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white text-xs font-semibold border border-white/10 transition">
-              <span class="text-amber-400">★</span><span>Star on GitHub</span>
-            </a>
-            <button type="button" id="btn-theme-toggle" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition flex items-center justify-center text-sm" aria-label="تغییر تم">
-              <span id="theme-toggle-icon">${isLight ? '☀️' : '🌙'}</span>
-            </button>
-            <button type="button" id="btn-toggle-mobile-menu" class="sm:hidden p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition" aria-label="منوی سایت">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Mobile Drawer with Sub-categories -->
-        <div id="mobile-nav-menu" class="mobile-nav-menu sm:hidden pt-3 border-t border-white/10 mt-3 flex flex-col gap-1.5">
-          <a href="${hubUrl}" class="shared-nav-link ${!isToolsActive ? 'active' : ''}">
-            <span class="nav-icon">🏠</span><span>صفحه اصلی</span>
-          </a>
-          <a href="${toolsUrl}" class="shared-nav-link ${isToolsActive ? 'active' : ''}">
-            <span class="nav-icon">⚡</span><span>همه ابزارها</span>
-          </a>
-          <div class="mobile-subnav">${mobileSubHtml}</div>
-        </div>
-      </nav>
-    `;
-
-    const mobMenu = headerEl.querySelector('#mobile-nav-menu');
-    headerEl.querySelector('#btn-toggle-mobile-menu')?.addEventListener('click', () => mobMenu?.classList.toggle('open'));
-    headerEl.querySelectorAll('#mobile-nav-menu a')?.forEach(a => a.addEventListener('click', () => mobMenu?.classList.remove('open')));
-    headerEl.querySelector('#btn-theme-toggle')?.addEventListener('click', toggleTheme);
+    menuBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    backdrop.addEventListener('click', closeDrawer);
+    drawer.querySelectorAll('a').forEach(function (l) { l.addEventListener('click', closeDrawer); });
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+    });
   }
 
-  function renderFooter(hubUrl, toolsUrl, logoSrc) {
-    const footerEl = document.getElementById('shared-footer');
-    if (!footerEl) return;
-
-    footerEl.innerHTML = `
-      <div class="shared-footer-card px-6 py-6 border border-white/10 shadow-glass mt-14 mb-4">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-right mb-4">
-          <div class="flex items-center gap-3">
-            <img src="${logoSrc}" alt="AI Nexus" class="w-8 h-8">
-            <div class="text-xs text-slate-400 font-medium" dir="ltr">
-              <span>Designed &amp; Developed by</span>
-              <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer" class="font-bold text-white hover:text-cyan-400 transition ml-1">Hashem Sh</a>
-            </div>
-          </div>
-          <div class="flex items-center gap-2 flex-wrap justify-center text-xs">
-            <a href="https://github.com/hashemsh" target="_blank" rel="noopener noreferrer" class="social-pill"><span>🐙</span><span>GitHub</span></a>
-            <a href="https://www.linkedin.com/in/hashemsheikhypour" target="_blank" rel="noopener noreferrer" class="social-pill"><span>💼</span><span>LinkedIn</span></a>
-            <a href="https://t.me/init10" target="_blank" rel="noopener noreferrer" class="social-pill"><span>✈️</span><span>Telegram</span></a>
-          </div>
-          <div class="flex items-center gap-1.5 text-xs text-slate-400 font-medium" dir="ltr">
-            <span>Powered by</span>
-            <span class="px-2 py-0.5 rounded-lg bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 font-semibold">Antigravity</span>
-          </div>
-        </div>
-        <div class="pt-3 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">
-          <div>ویترین ابزارها و میکرواپ‌های وب توسعه‌یافته با دستیاری هوش مصنوعی</div>
-          <div class="flex items-center gap-3">
-            <a href="${hubUrl}" class="hover:text-slate-300 transition">صفحه اصلی</a>
-            <span>•</span>
-            <a href="${toolsUrl}" class="hover:text-slate-300 transition">ابزارها</a>
-            <span>•</span>
-            <a href="https://github.com/hashemsh/ai-projects-persian/issues/new" target="_blank" rel="noopener noreferrer" class="text-amber-400/90 hover:text-amber-300 transition flex items-center gap-1">
-              <span>⚠️</span><span>گزارش باگ یا پیشنهاد</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    `;
+  function init() {
+    renderHeader();
+    renderDrawer();
+    renderFooter();
+    wireEvents();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSharedLayout);
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    initSharedLayout();
+    init();
   }
 })();

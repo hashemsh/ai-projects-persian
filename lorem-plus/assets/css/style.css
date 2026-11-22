@@ -1,9 +1,9 @@
 /* ==========================================================================
-   لورم پلاس | استایل‌های سفارشی، افکت‌های شیشه‌ای، فونت‌ها و کامپوننت‌ها
-   زیر ۲۰۰ سطر - سازگار با Clean Modular Web
+   لورم پلاس | استایل‌های مدرن با الهام از قالب جدید هاب (بدون Neon)
+   سازگار کامل با تم تیره و روشن (Dark / Light Theme Tokens)
    ========================================================================== */
 
-/* Persian Web Fonts (Rastikerdar Open-Source Fonts via jsdelivr CDN) */
+/* Persian Web Fonts */
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.6.1/dist/font-face.css');
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.5/dist/font-face.css');
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css');
@@ -13,16 +13,37 @@ html {
 }
 
 * {
+  box-sizing: border-box;
   font-family: 'Vazirmatn', sans-serif;
 }
 
-/* Font Preview Classes for Output Box */
+body {
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Subtle Grid Background (Clean & Non-Neon) */
+.tool-gridbg {
+  position: absolute;
+  inset: 0;
+  height: 520px;
+  background: radial-gradient(50% 60% at 50% 0%, var(--g1), transparent 70%),
+              radial-gradient(30% 45% at 88% 15%, var(--g2), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Typography Preview Classes */
 .font-vazirmatn, .font-vazirmatn * { font-family: 'Vazirmatn', sans-serif !important; }
 .font-shabnam, .font-shabnam * { font-family: 'Shabnam', sans-serif !important; }
 .font-samim, .font-samim * { font-family: 'Samim', sans-serif !important; }
 .font-sahel, .font-sahel * { font-family: 'Sahel', sans-serif !important; }
 
-/* Smooth Content Transition Animation */
+/* Smooth Content Transition */
 @keyframes content-fade {
   from { opacity: 0.3; transform: translateY(3px); }
   to { opacity: 1; transform: translateY(0); }
@@ -34,90 +55,299 @@ html {
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
-::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.4); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.7); }
+::-webkit-scrollbar-track { background: var(--sub); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--mut); }
 
-/* Glassmorphism Styles */
+/* Clean Modern Card Surfaces (Replacing Neon Glass) */
 .glass-card {
-  background: rgba(15, 20, 42, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 4px 16px var(--sh0) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.glass-card-hover {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+.glass-card:hover {
+  border-color: var(--bdh) !important;
 }
 
-.glass-card-hover:hover {
-  transform: translateY(-2px);
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.2);
+/* Clean Form Inputs */
+.glass-input, input[type="text"], input[type="number"], select {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  border-radius: 10px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.glass-input {
-  background: rgba(11, 15, 33, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.2s ease;
+.glass-input:focus, input[type="text"]:focus, input[type="number"]:focus, select:focus {
+  border-color: var(--bt) !important;
+  box-shadow: 0 0 0 3px var(--hl) !important;
+  outline: none !important;
 }
 
-.glass-input:focus {
-  border-color: rgba(99, 102, 241, 0.6);
-  box-shadow: 0 0 15px -3px rgba(99, 102, 241, 0.3);
-}
-
-/* Background pulse glow animation */
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.55; transform: scale(1.08); }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 8s infinite ease-in-out;
-}
-
-/* Type buttons active styling */
+/* Type Buttons (Scenario Selection) */
 .type-btn {
-  background: rgba(11, 15, 33, 0.6);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: none !important;
 }
 
 .type-btn:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  background: rgba(99, 102, 241, 0.08);
+  background: var(--sub) !important;
+  border-color: var(--bt) !important;
 }
 
 .type-btn.active {
-  border-color: rgba(99, 102, 241, 0.8) !important;
-  background: rgba(99, 102, 241, 0.15) !important;
-  box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35);
+  background: var(--sub) !important;
+  border-color: var(--bt) !important;
+  box-shadow: 0 0 0 1.5px var(--bt) !important;
 }
 
-/* Live Typography Output formatting */
+.type-btn span {
+  color: var(--ink);
+  transition: color 0.2s ease;
+}
+
+.type-btn:hover span, .type-btn.active span {
+  color: var(--bt) !important;
+}
+
+.type-btn p {
+  color: var(--mut) !important;
+}
+
+/* Sub-type buttons */
+.sub-type-btn {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--mut) !important;
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.sub-type-btn:hover {
+  background: var(--sub) !important;
+  color: var(--ink) !important;
+  border-color: var(--line) !important;
+}
+
+.sub-type-btn.active-sub {
+  background: var(--bt) !important;
+  color: #fff !important;
+  border-color: var(--bt) !important;
+  font-weight: 700;
+}
+
+/* Preset Chips */
+.preset-chip {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--mut) !important;
+  border-radius: 8px;
+  padding: 3px 10px;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.preset-chip:hover {
+  background: var(--sub) !important;
+  color: var(--ink) !important;
+}
+
+.preset-chip.active-chip {
+  background: var(--bt) !important;
+  color: #fff !important;
+  border-color: var(--bt) !important;
+  font-weight: 700;
+}
+
+/* Font Size Buttons */
+.font-size-btn {
+  background: transparent !important;
+  color: var(--mut) !important;
+  border: none;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 11px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.font-size-btn:hover {
+  color: var(--ink) !important;
+}
+
+.font-size-btn.active-size {
+  background: var(--bt) !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+
+/* View Mode Tabs */
+#tabPreview, #tabRaw, #tabJson {
+  background: transparent !important;
+  color: var(--mut) !important;
+  border: none !important;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+#tabPreview:hover, #tabRaw:hover, #tabJson:hover {
+  color: var(--ink) !important;
+}
+
+#tabPreview.bg-indigo-600, #tabRaw.bg-indigo-600, #tabJson.bg-indigo-600 {
+  background: var(--bt) !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+
+/* Unit Switcher */
+#unitParagraphs, #unitWords {
+  background: transparent !important;
+  color: var(--mut) !important;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+#unitParagraphs.bg-indigo-600, #unitWords.bg-indigo-600 {
+  background: var(--bt) !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+
+/* Range Slider */
+input[type="range"] {
+  accent-color: var(--bt) !important;
+}
+
+/* Generate Button */
+#btnGenerate {
+  background: var(--bt) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  padding: 13px 24px !important;
+  border: none !important;
+  box-shadow: 0 4px 14px var(--sh0) !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#btnGenerate:hover {
+  opacity: 0.94;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--sh) !important;
+}
+
+/* Copy & Export Toolbar Buttons */
+#btnCopy {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease;
+}
+
+#btnCopy:hover {
+  background: var(--bt) !important;
+  color: #fff !important;
+  border-color: var(--bt) !important;
+}
+
+#btnCopyJson {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--brand) !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease;
+}
+
+#btnCopyJson:hover {
+  background: var(--brand) !important;
+  color: #fff !important;
+  border-color: var(--brand) !important;
+}
+
+#btnCopyFaqSchema {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  color: #d97706 !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease;
+}
+
+#btnCopyFaqSchema:hover {
+  background: #d97706 !important;
+  color: #fff !important;
+  border-color: #d97706 !important;
+}
+
+#btnDownload, #btnClear {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--mut) !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease;
+}
+
+#btnDownload:hover {
+  color: var(--ink) !important;
+  border-color: var(--bt) !important;
+}
+
+#btnClear:hover {
+  color: #ef4444 !important;
+  border-color: #ef4444 !important;
+}
+
+/* Rendered Preview Area */
 .rendered-preview {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
   line-height: 2.1;
-  color: #e2e8f0;
+  border-radius: 14px;
 }
 
 .rendered-preview p {
   margin-bottom: 1.25rem;
+  color: var(--ink);
 }
 
 .rendered-preview h2 {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--ink);
   margin-top: 1.5rem;
   margin-bottom: 0.85rem;
   padding-bottom: 0.35rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--line);
 }
 
 .rendered-preview h3 {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #93c5fd;
+  color: var(--bt);
   margin-top: 1.2rem;
   margin-bottom: 0.6rem;
 }
@@ -130,42 +360,44 @@ html {
 
 .rendered-preview li {
   margin-bottom: 0.4rem;
-  color: #cbd5e1;
+  color: var(--ink);
 }
 
 .rendered-preview blockquote {
-  border-right: 4px solid #6366f1;
-  padding: 0.6rem 1rem;
+  border-right: 4px solid var(--bt);
+  padding: 0.75rem 1.2rem;
   margin: 1.25rem 0;
-  background: rgba(99, 102, 241, 0.08);
+  background: var(--card);
   border-radius: 0 0.5rem 0.5rem 0;
-  color: #cbd5e1;
+  color: var(--ink);
   font-style: italic;
+  border: 1px solid var(--line);
+  border-right: 4px solid var(--bt);
 }
 
 .rendered-preview strong {
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.15);
-  padding: 0.1rem 0.35rem;
+  color: var(--bt);
+  background: var(--hl);
+  padding: 0.15rem 0.4rem;
   border-radius: 0.25rem;
   font-weight: 700;
 }
 
 .rendered-preview .cta-box {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(236, 72, 153, 0.15));
-  border: 1px dashed rgba(99, 102, 241, 0.4);
+  background: var(--card);
+  border: 1.5px dashed var(--line);
   padding: 1rem 1.25rem;
   border-radius: 0.75rem;
   margin: 1rem 0;
   font-weight: 600;
-  color: #f8fafc;
+  color: var(--ink);
   display: block;
 }
 
-/* Microcopy UI Components Styling */
+/* Microcopy UI Components inside Preview */
 .rendered-preview .faq-item {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card);
+  border: 1px solid var(--line);
   border-radius: 0.75rem;
   padding: 1rem 1.25rem;
   margin-bottom: 0.85rem;
@@ -173,7 +405,7 @@ html {
 
 .rendered-preview .faq-question {
   font-weight: 700;
-  color: #67e8f9;
+  color: var(--bt);
   margin-bottom: 0.4rem;
   display: flex;
   align-items: center;
@@ -181,17 +413,71 @@ html {
 }
 
 .rendered-preview .testimonial-card {
-  background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card);
+  border: 1px solid var(--line);
   border-radius: 1rem;
   padding: 1.25rem;
   margin-bottom: 1rem;
 }
 
 .rendered-preview .pricing-card {
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: var(--card);
+  border: 1px solid var(--line);
   border-radius: 1rem;
   padding: 1.5rem;
   margin-bottom: 1.25rem;
+}
+
+/* Raw / Code Textarea */
+#outputRaw, #outputJson {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+}
+
+/* Meta Stats */
+#statParagraphs, #statWords, #statChars, #statReadingTime, #statSeoLength {
+  color: var(--ink) !important;
+}
+
+/* SEO Guide Section */
+#seo-guide {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 6px 24px var(--sh0) !important;
+}
+
+#seo-guide h2 {
+  color: var(--ink) !important;
+}
+
+#seo-guide h3 {
+  color: var(--ink) !important;
+}
+
+#seo-guide p {
+  color: var(--mut) !important;
+}
+
+#seo-guide .guide-subcard {
+  background: var(--sub) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 14px;
+}
+
+/* Toast Widget */
+#toast > div {
+  background: var(--card) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  box-shadow: 0 12px 32px var(--sh) !important;
+}
+
+#toastTitle {
+  color: var(--ink) !important;
+}
+
+#toastMessage {
+  color: var(--mut) !important;
 }

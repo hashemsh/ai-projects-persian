@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>لورم پلاس | ابزار هوشمند تولید متن، سئو، اسکیما و کانتنت تخصصی</title>
   <meta name="description" content="تولیدکننده پیشرفته متن ساختگی، مقالات وبلاگی، میکروکپی‌های UI، اسکیما مارک‌آپ گوگل و تصاویر پلیس‌هولدر برای طراحان وب و سئوکاران">
+  <script>try{var t=localStorage.getItem("theme")||localStorage.getItem("ai_hub_theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
@@ -12,7 +13,7 @@
   <!-- Google Fonts: Vazirmatn -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Suppress Play CDN production warning in console -->
   <script>
@@ -23,74 +24,48 @@
     };
   </script>
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS CDN (Layout utilities only, themed via CSS variables) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
+      darkMode: ['class', '[data-theme="dark"]'],
       theme: {
         extend: {
           fontFamily: {
             vazir: ['Vazirmatn', 'sans-serif'],
-          },
-          colors: {
-            dark: {
-              950: '#070913',
-              900: '#0c0f1d',
-              850: '#111528',
-              800: '#171c34',
-              700: '#232b4d',
-            },
-            accent: {
-              cyan: '#06b6d4',
-              indigo: '#6366f1',
-              purple: '#a855f7',
-              pink: '#ec4899',
-              emerald: '#10b981',
-              amber: '#f59e0b'
-            }
-          },
-          boxShadow: {
-            'glow-indigo': '0 0 35px -5px rgba(99, 102, 241, 0.35)',
-            'glow-cyan': '0 0 35px -5px rgba(6, 182, 212, 0.35)',
-            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
           }
         }
       }
     }
   </script>
 
-  <!-- Custom Stylesheet (with Shabnam, Samim & Sahel fonts) -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/components/shared-nav.css">
+  <!-- Global Hub Theme & Local Custom Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=6">
+  <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
-<body data-root="sub" class="bg-dark-950 text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+<body data-root="sub" class="min-h-screen relative overflow-x-hidden">
 
-  <!-- Ambient Glowing Background Elements -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute -top-32 right-1/4 w-96 h-96 bg-indigo-600/25 rounded-full blur-[140px] animate-pulse-slow"></div>
-    <div class="absolute top-1/3 -left-20 w-[420px] h-[420px] bg-cyan-500/20 rounded-full blur-[160px] animate-pulse-slow" style="animation-delay: 2s;"></div>
-    <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-[150px] animate-pulse-slow" style="animation-delay: 4s;"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-15"></div>
-  </div>
+  <!-- Subtle Non-Neon Ambient Grid Background -->
+  <div class="tool-gridbg"></div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col min-h-screen">
     <!-- Shared Universal Header -->
     <header id="shared-header"></header>
 
-    <!-- Header Section -->
+    <!-- Header / Hero Section (Clean New Template Aesthetic) -->
     <div class="text-center mb-8 md:mb-10 relative">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-3">
-        تولیدکننده محتوای تخصصی <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">لورم پلاس</span>
+      <span class="eb">استودیو تولید محتوا</span>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-3" style="color:var(--ink);margin:10px auto 12px">
+        تولیدکننده محتوای تخصصی <span class="mk">لورم پلاس</span>
       </h1>
-      <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base text-slate-400 leading-relaxed mb-6">
+      <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base leading-relaxed mb-6" style="color:var(--mut)">
         تولید آنی مقالات وبلاگی، میکروکپی‌های UI، اسکیما مارک‌آپ گوگل (JSON-LD)، تصاویر جایگزین و لورم ایپسوم استاندارد با فونت‌های محبوب فارسی.
       </p>
 
-      <!-- Guide Button with Smooth Scroll -->
+      <!-- Guide Button -->
       <div class="flex items-center justify-center gap-3 flex-wrap">
-        <a href="#seo-guide" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card hover:border-indigo-500/50 text-xs font-bold text-cyan-300 transition shadow-sm hover:scale-105 transform">
-          <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <a href="#seo-guide" class="btn bo" style="font-size:13px;padding:8px 18px">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--bt)">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
           </svg>
           <span>📖 راهنمای جامع ابزار، تایپوگرافی فارسی و اسکیما سئو</span>
@@ -478,69 +453,67 @@
     </main>
 
     <!-- Comprehensive Technical & SEO Guide Article -->
-    <article id="seo-guide" class="mt-14 glass-card rounded-2xl p-6 sm:p-8 md:p-10 border border-white/10 shadow-glass">
+    <article id="seo-guide" class="mt-14 glass-card p-6 sm:p-8 md:p-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs font-bold mb-4">
-            <span>📖 راهنمای تخصصی محتوای ماکت، سئو و تایپوگرافی وب فارسی</span>
-          </div>
-          <h2 class="text-xl sm:text-2xl md:text-3xl font-black text-white mb-6 leading-snug">
-            چرا متن ساختگی واقع‌گرایانه و ساختاریافته <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">لورم پلاس</span> فرآیند طراحی وب را متحول می‌کند؟
+          <span class="eb mb-3">راهنمای تخصصی محتوای ماکت، سئو و تایپوگرافی</span>
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-black mb-4 leading-snug">
+            چرا متن ساختگی واقع‌گرایانه و ساختاریافته <span class="mk">لورم پلاس</span> فرآیند طراحی وب را متحول می‌کند؟
           </h2>
-          <p class="text-xs sm:text-sm text-slate-300 text-justify leading-loose mb-6">
+          <p class="text-xs sm:text-sm text-justify leading-loose mb-6">
             در گذشته طراحان وب فارسی ناچار بودند از عبارات نامفهوم و غیرمعقول یا تکرار بی‌هدف کلمات لاتین برای پر کردن قالب‌های وب استفاده کنند. این امر باعث می‌شد رفتار واقعی فونت‌ها در کشیدگی کلمات، اعراب‌گذاری و فاصله‌گذاری خطوط به درستی سنجیده نشود. استودیو «لورم پلاس» با تکیه بر ۶ سناریوی محتوایی واقعی (متن استاندارد، مقالات سئو با تیتربندی کامل، میکروکپی‌های نرخ تبدیل، سوالات متداول و فراخوان به اقدام فروش) بستری فراهم می‌کند که قالب وب‌سایت پیش از ورود محتوای نهایی، در شرایط عملیاتی واقعی تست شود.
           </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
-            <div class="p-4 rounded-xl bg-dark-900/80 border border-white/5">
-              <h3 class="font-bold text-cyan-300 mb-2">📑 ساختار مقاله‌ساز وبلاگ (H2, H3, Lists)</h3>
-              <p class="text-slate-400 text-justify leading-loose">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div class="guide-subcard p-4">
+              <h3 class="font-bold mb-2">📑 ساختار مقاله‌ساز وبلاگ (H2, H3, Lists)</h3>
+              <p class="text-justify leading-loose">
                 تست کامل سلسله‌مراتب عناوین تیتر، زیرتیترها، نقل‌قول‌ها و لیست‌های بالت‌پوینت در قالب‌های مدرن CMS.
               </p>
             </div>
-            <div class="p-4 rounded-xl bg-dark-900/80 border border-white/5">
-              <h3 class="font-bold text-indigo-300 mb-2">⚡ اسکیما مارک‌آپ گوگل (JSON-LD)</h3>
-              <p class="text-slate-400 text-justify leading-loose">
+            <div class="guide-subcard p-4">
+              <h3 class="font-bold mb-2">⚡ اسکیما مارک‌آپ گوگل (JSON-LD)</h3>
+              <p class="text-justify leading-loose">
                 تولید خودکار کدهای ساختاریافته سوالات متداول جهت تصاحب بخش Rich Snippets و افزایش CTR در نتایج گوگل.
               </p>
             </div>
           </div>
         </div>
-        <figure class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+        <figure class="relative rounded-2xl overflow-hidden border border-line shadow-xl group" style="border:1px solid var(--line)">
           <img src="assets/images/lorem-plus-banner.jpg" alt="استودیوی هوشمند تولید متن، سئو و اسکیما لورم پلاس" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500" loading="lazy">
-          <figcaption class="absolute bottom-0 inset-x-0 bg-dark-950/85 backdrop-blur-md p-3 text-[11px] text-slate-300 text-center border-t border-white/10">
+          <figcaption class="p-3 text-[11px] text-center" style="background:var(--sub);color:var(--mut);border-top:1px solid var(--line)">
             معماری تولید محتوای تخصصی، ساختار مقاله وبلاگی و کد اسکیما در لورم پلاس
           </figcaption>
         </figure>
       </div>
 
       <!-- Extended Detailed Explanations Below the Media Grid -->
-      <div class="border-t border-white/10 pt-8 mt-4 space-y-8">
+      <div class="pt-8 mt-4 space-y-8" style="border-top:1px solid var(--line)">
         <div>
-          <h3 class="text-lg sm:text-xl font-black text-white mb-3 flex items-center gap-2">
-            <span class="text-cyan-400">۱.</span>
+          <h3 class="text-lg sm:text-xl font-black mb-3 flex items-center gap-2">
+            <span style="color:var(--bt)">۱.</span>
             <span>نقش حیاتی میکروکپی‌های UI در بهینه‌سازی نرخ تبدیل (CRO)</span>
           </h3>
-          <p class="text-xs sm:text-sm text-slate-300 text-justify leading-loose mb-3">
+          <p class="text-xs sm:text-sm text-justify leading-loose mb-3">
             متن‌های کوتاه رابط کاربری یا میکروکپی‌ها نظیر سوالات متداول، تاییدیه‌های مشتریان و کارت‌های تعرفه، نقاط عطف تصمیم‌گیری کاربران هستند. در لورم پلاس، این المان‌ها بر اساس الگوهای اثبات‌شده روانشناسی فروش نگارش شده‌اند تا طراحان بدون درگیر شدن با محتوای فرضی، کامپوننت‌های آکاردئونی و کارت‌های گرید را با حجم متنی واقعی و چیدمان استاندارد پیاده‌سازی نمایند.
           </p>
         </div>
 
         <div>
-          <h3 class="text-lg sm:text-xl font-black text-white mb-3 flex items-center gap-2">
-            <span class="text-indigo-400">۲.</span>
+          <h3 class="text-lg sm:text-xl font-black mb-3 flex items-center gap-2">
+            <span style="color:var(--bt)">۲.</span>
             <span>تزریق طبیعی کلمات کلیدی سئو و تاثیر آن در خوانایی متن</span>
           </h3>
-          <p class="text-xs sm:text-sm text-slate-300 text-justify leading-loose mb-3">
+          <p class="text-xs sm:text-sm text-justify leading-loose mb-3">
             با قابلیت تزریق کلمه کلیدی، می‌توانید نام برند، خدمت یا واژه هدف سئو را به صورت خودکار و برجسته (در تگ strong) در فواصل طبیعی پاراگراف‌ها جایگذاری کنید. این امکان به متخصصان سئو و طراحان اجازه می‌دهد چگالی کلیدواژه (Keyword Density) و چشم‌نوازی بولد شدن کلمات را پیش از انتشار نهایی مقاله تحلیل کنند.
           </p>
         </div>
 
         <div>
-          <h3 class="text-lg sm:text-xl font-black text-white mb-3 flex items-center gap-2">
-            <span class="text-purple-400">۳.</span>
+          <h3 class="text-lg sm:text-xl font-black mb-3 flex items-center gap-2">
+            <span style="color:var(--bt)">۳.</span>
             <span>مقایسه زنده ۴ تایپ‌فیس برتر وب فارسی در پیش‌نمایش خروجی</span>
           </h3>
-          <p class="text-xs sm:text-sm text-slate-300 text-justify leading-loose">
+          <p class="text-xs sm:text-sm text-justify leading-loose">
             هر فونت فارسی ویژگی‌های هندسی و ارتفاع سطر (Line Height) منحصربه‌فردی دارد. لورم پلاس با پیش‌نمایش درجا روی فونت‌های وزیرمتن (Vazirmatn)، شبنم (Shabnam)، صمیم (Samim) و ساحل (Sahel) به شما این توانایی را می‌دهد که رندر حروف، زیبایی چیدمان و خوانایی متون طولانی را در تایپ‌فیس‌های گوناگون به صورت زنده مقایسه و ارزیابی نمایید.
           </p>
         </div>
@@ -566,8 +539,19 @@
     </div>
   </div>
 
+  <!-- Take Me Up (Scroll to Top) Rocket Button -->
+  <button type="button" id="take-me-up" class="take-me-up" aria-label="برو به بالا" title="برو به بالای صفحه">
+    <svg class="progress-ring" width="46" height="46" viewBox="0 0 46 46"><circle class="ring-bg" cx="23" cy="23" r="18" fill="none" stroke-width="2.5"/><circle id="scroll-progress-ring" class="ring-bar" cx="23" cy="23" r="18" fill="none" stroke-width="2.5"/></svg>
+    <div class="rocket-icon-wrap">
+      <svg class="rocket-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4.5c1.62-1.63 5-2.5 5-2.5"/><path d="M12 15v5s3.03-.55 4.5-2c1.63-1.62 2.5-5 2.5-5"/></svg>
+      <span class="thruster-flame"></span>
+    </div>
+  </button>
+
   <!-- Shared Component Script -->
   <script src="../assets/js/components/shared-layout.js"></script>
+  <!-- Scroll to top rocket handler -->
+  <script src="../assets/js/scroll.js" defer></script>
   <!-- Modular JavaScript Application Scripts (CORS-safe for file:/// and HTTP) -->
   <script src="assets/js/data.js"></script>
   <script src="assets/js/app.js"></script>

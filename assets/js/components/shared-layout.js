@@ -164,10 +164,73 @@
     });
   }
 
+  function renderTakeMeUp() {
+    var btn = document.getElementById('take-me-up');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.type = 'button';
+      btn.id = 'take-me-up';
+      btn.className = 'take-me-up';
+      btn.setAttribute('aria-label', 'برو به بالا');
+      btn.setAttribute('title', 'برو به بالای صفحه');
+      btn.innerHTML = [
+        '<svg class="progress-ring" width="46" height="46" viewBox="0 0 46 46">',
+        '  <circle class="ring-bg" cx="23" cy="23" r="18" fill="none" stroke-width="2.5"/>',
+        '  <circle id="scroll-progress-ring" class="ring-bar" cx="23" cy="23" r="18" fill="none" stroke-width="2.5"/>',
+        '</svg>',
+        '<div class="rocket-icon-wrap">',
+        '  <svg class="rocket-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">',
+        '    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>',
+        '    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>',
+        '    <path d="M9 12H4s.55-3.03 2-4.5c1.62-1.63 5-2.5 5-2.5"/>',
+        '    <path d="M12 15v5s3.03-.55 4.5-2c1.63-1.62 2.5-5 2.5-5"/>',
+        '  </svg>',
+        '  <span class="thruster-flame"></span>',
+        '</div>'
+      ].join('');
+      document.body.appendChild(btn);
+    }
+
+    var ring = document.getElementById('scroll-progress-ring');
+    var circumference = 2 * Math.PI * 18;
+    if (ring) {
+      ring.style.strokeDasharray = circumference;
+      ring.style.strokeDashoffset = circumference;
+    }
+
+    function onScroll() {
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = maxScroll > 0 ? Math.min(1, Math.max(0, scrollY / maxScroll)) : 0;
+      if (ring) {
+        ring.style.strokeDashoffset = circumference - (circumference * progress);
+      }
+      if (scrollY > 260) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+        btn.classList.remove('launching');
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      btn.classList.add('launching');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(function () {
+        btn.classList.remove('launching');
+      }, 900);
+    });
+  }
+
   function init() {
     renderHeader();
     renderDrawer();
     renderFooter();
+    renderTakeMeUp();
     wireEvents();
   }
 

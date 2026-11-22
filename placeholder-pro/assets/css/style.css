@@ -1,92 +1,110 @@
 /* ==========================================================================
-   پلیس‌هولدر پرو | استایل‌های سفارشی، افکت‌های شیشه‌ای و محیط پیش‌نمایش
+   Placeholder Pro - Clean Modern Software Stylesheet
+   Matching New Design Template & Persian Typography (Vazirmatn)
    ========================================================================== */
 
-/* Persian Web Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;500;600;700;800;900&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.6.1/dist/font-face.css');
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.5/dist/font-face.css');
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css');
 
-html {
-  scroll-behavior: smooth;
+/* Universal Typography */
+*, *::before, *::after {
+  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  box-sizing: border-box;
 }
 
-* {
-  font-family: 'Vazirmatn', sans-serif;
+html, body, input, button, select, textarea, optgroup {
+  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* Custom Scrollbars */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+.font-mono, pre, code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(236, 72, 153, 0.4);
-  border-radius: 9999px;
+/* Tool Top Grid Gradient (Clean, Non-Neon) */
+.tool-gridbg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(236, 72, 153, 0.08), transparent 70%),
+    radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 0);
+  background-size: 100% 100%, 32px 32px;
+  opacity: 0.6;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(236, 72, 153, 0.7);
+[data-theme="light"] .tool-gridbg {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(236, 72, 153, 0.06), transparent 70%),
+    radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.04) 1px, transparent 0);
+  opacity: 0.8;
 }
 
-/* Glassmorphism Classes */
+/* Glassmorphism Surface Cards */
 .glass-card {
-  background: rgba(17, 21, 40, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
 }
 
+.glass-card:hover {
+  border-color: rgba(236, 72, 153, 0.35);
+}
+
+/* Glass Inputs */
 .glass-input {
-  background: rgba(12, 15, 29, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--sub);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
 }
 
 .glass-input:focus {
+  outline: none;
   border-color: #ec4899;
-  box-shadow: 0 0 15px rgba(236, 72, 153, 0.25);
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+  background: var(--card);
 }
 
-/* Range Slider Customization */
-input[type=range] {
-  accent-color: #ec4899;
-}
-
-/* Background Ambient Pulse Animation */
-@keyframes pulse-slow {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.55;
-    transform: scale(1.08);
-  }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 8s infinite ease-in-out;
+.glass-input::placeholder {
+  color: var(--mut);
 }
 
 /* Checkerboard Background for Canvas Viewport */
 .checkerboard-bg {
-  background-color: #0b0f19;
+  background-color: var(--sub);
   background-image: 
-    linear-gradient(45deg, #131b2e 25%, transparent 25%), 
-    linear-gradient(-45deg, #131b2e 25%, transparent 25%), 
-    linear-gradient(45deg, transparent 75%, #131b2e 75%), 
-    linear-gradient(-45deg, transparent 75%, #131b2e 75%);
+    linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%), 
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.03) 75%), 
+    linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.03) 75%);
   background-size: 20px 20px;
   background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
 }
 
-/* Color swatch circles */
+[data-theme="light"] .checkerboard-bg {
+  background-color: #f8fafc;
+  background-image: 
+    linear-gradient(45deg, #e2e8f0 25%, transparent 25%), 
+    linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #e2e8f0 75%), 
+    linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+}
+
+/* Color Swatches */
 .color-swatch {
   width: 24px;
   height: 24px;
@@ -101,12 +119,12 @@ input[type=range] {
 }
 
 .color-swatch.active {
-  border-color: #ffffff;
+  border-color: var(--bt);
   transform: scale(1.2);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Custom color picker input styling */
+/* Color Picker Input */
 input[type="color"] {
   -webkit-appearance: none;
   border: none;
@@ -122,6 +140,63 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 }
 
 input[type="color"]::-webkit-color-swatch {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--line);
   border-radius: 8px;
+}
+
+/* Range Slider */
+input[type=range] {
+  accent-color: #ec4899;
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] .text-white {
+  color: var(--ink) !important;
+}
+
+[data-theme="light"] .text-slate-300 {
+  color: #1e293b !important;
+}
+
+[data-theme="light"] .text-slate-400 {
+  color: var(--mut) !important;
+}
+
+[data-theme="light"] .text-slate-500 {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .bg-dark-950 {
+  background-color: var(--sub) !important;
+}
+
+[data-theme="light"] .bg-dark-900,
+[data-theme="light"] .bg-dark-900\/80 {
+  background-color: var(--card) !important;
+}
+
+[data-theme="light"] .border-white\/5,
+[data-theme="light"] .border-white\/10 {
+  border-color: var(--line) !important;
+}
+
+[data-theme="light"] .bg-white\/5,
+[data-theme="light"] .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mut);
 }

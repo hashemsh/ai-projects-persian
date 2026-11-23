@@ -11,6 +11,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/hub-theme.css?v=11">
+  <script>
+    const _origWarn = console.warn;
+    console.warn = (...args) => { if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return; _origWarn.apply(console, args); };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          fontFamily: { vazir: ['Vazirmatn', 'sans-serif'], sans: ['Vazirmatn', 'sans-serif'] },
+          colors: {
+            brand: '#06b6d4',
+            dark: { 950: 'var(--bg)', 900: 'var(--card)', 850: 'var(--sub)', 800: 'var(--line)' }
+          }
+        }
+      }
+    };
+  </script>
   <link rel="stylesheet" href="./assets/css/style.css">
   <script>
     (function() {
@@ -162,33 +181,33 @@
 
     </main>
 
-    <!-- Bottom Comprehensive Bento Educational Guide Article -->
-    <article id="server-guide" class="mt-14 p-6 sm:p-8 rounded-2xl border border-line shadow-2xl relative overflow-hidden" style="background:var(--card);backdrop-filter:blur(16px)">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mb-8 border-b border-line pb-6">
-        <div>
+    <!-- Bottom Comprehensive Bento Educational Guide Article Box -->
+    <article id="server-guide" class="la-card la-guide-card">
+      <div class="la-guide-header">
+        <div class="la-guide-intro">
           <span class="eb mb-2.5 inline-block">📖 دانشنامه سئو فنی و ممیزی سرور</span>
-          <h2 class="text-lg sm:text-xl font-black mb-2" style="color:var(--ink);white-space:nowrap">
+          <h2 class="la-guide-title">
             چرا تحلیل دقیق لاگ‌ها پایه و اساس سئوی تکنیکال است؟
           </h2>
-          <p class="text-xs sm:text-sm text-mut leading-relaxed">
+          <p class="la-guide-desc">
             خطاهای پنهان وب‌سرورها (مانند خطای ۵۰۲ Nginx، کمبود حافظه در PHP و خطاهای سرور در Node.js) با افت نرخ ایندکس کراولرهای گوگل، رتبه سئوی سایت را در کوتاه‌ترین زمان کاهش می‌دهند. تحلیل و پاکسازی زودهنگام لاگ‌ها پایدارترین استراتژی نگهداری وب است.
           </p>
         </div>
-        <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
-          <div class="flex items-center justify-between text-xs font-bold mb-2.5" style="color:var(--ink)">
+        <div class="la-guide-pipeline">
+          <div class="la-pipeline-head">
             <span>📡 جریان ارتباط Reverse Proxy در رخداد ۵۰۲:</span>
             <span class="font-mono text-cyan-400 text-[10.5px]">Upstream Pipeline</span>
           </div>
-          <div class="space-y-1.5 text-xs" style="color:var(--mut)">
-            <div class="flex items-center justify-between p-1.5 rounded-lg" style="background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.2)">
+          <div class="space-y-1.5 text-xs">
+            <div class="la-pipeline-step step-1">
               <span class="text-cyan-400">۱. درخواست کاربر / ربات</span>
               <span class="text-ink font-bold">Nginx / Apache</span>
             </div>
-            <div class="flex items-center justify-between p-1.5 rounded-lg" style="background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.2)">
+            <div class="la-pipeline-step step-2">
               <span class="text-rose-400">۲. نقطه رخداد ۵۰۲</span>
               <span class="text-rose-400 font-bold">PHP-FPM / Node.js (Down)</span>
             </div>
-            <div class="flex items-center justify-between p-1.5 rounded-lg" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2)">
+            <div class="la-pipeline-step step-3">
               <span class="text-emerald-400">۳. اقدام اصلاحی</span>
               <span class="text-emerald-400 font-bold">دستور systemctl restart</span>
             </div>
@@ -197,35 +216,35 @@
       </div>
 
       <!-- 4-Box Bento Feature Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-        <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
-          <div class="text-xl mb-1.5">⚡</div>
-          <h3 class="text-sm font-bold text-ink mb-1 whitespace-nowrap">۱. رفع خطای ۵۰۲ Bad Gateway</h3>
-          <p class="text-mut text-justify leading-relaxed">
+      <div class="la-bento-grid">
+        <div class="la-bento-box">
+          <div class="la-bento-icon">⚡</div>
+          <h3 class="la-bento-title">۱. رفع خطای ۵۰۲ Bad Gateway</h3>
+          <p class="la-bento-text">
             این خطا به دلیل عدم پاسخ‌گویی پروسه بک‌اند رخ می‌دهد. با دستور <code class="font-mono text-cyan-400">systemctl status php8.2-fpm</code> وضعیت سوکت را بازبینی کنید.
           </p>
         </div>
 
-        <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
-          <div class="text-xl mb-1.5">💾</div>
-          <h3 class="text-sm font-bold text-ink mb-1 whitespace-nowrap">۲. رفع خطای کمبود رم (Memory)</h3>
-          <p class="text-mut text-justify leading-relaxed">
+        <div class="la-bento-box">
+          <div class="la-bento-icon">💾</div>
+          <h3 class="la-bento-title">۲. رفع خطای کمبود رم (Memory)</h3>
+          <p class="la-bento-text">
             هنگام پردازش کوئری‌های سنگین وردپرس، سقف RAM پر می‌شود. با قرار دادن <code class="font-mono text-indigo-400">memory_limit = 512M</code> در فایل <code class="font-mono">php.ini</code> این خطا مهار می‌گردد.
           </p>
         </div>
 
-        <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
-          <div class="text-xl mb-1.5">🛡️</div>
-          <h3 class="text-sm font-bold text-ink mb-1 whitespace-nowrap">۳. حفظ ۱۰۰٪ محرمانگی و Anonymizer</h3>
-          <p class="text-mut text-justify leading-relaxed">
+        <div class="la-bento-box">
+          <div class="la-bento-icon">🛡️</div>
+          <h3 class="la-bento-title">۳. حفظ ۱۰۰٪ محرمانگی و Anonymizer</h3>
+          <p class="la-bento-text">
             این ابزار به صورت خودکار تمام IPهای کاربران، توکن‌ها و دامنه‌های حساس را پیش از ارسال به هوش مصنوعی ماسک می‌کند تا حریم خصوصی سرور حفظ شود.
           </p>
         </div>
 
-        <div class="p-4 rounded-xl border border-line" style="background:rgba(255,255,255,0.02)">
-          <div class="text-xl mb-1.5">🤖</div>
-          <h3 class="text-sm font-bold text-ink mb-1 whitespace-nowrap">۴. پرامپت مهندسی‌شده دواپس</h3>
-          <p class="text-mut text-justify leading-relaxed">
+        <div class="la-bento-box">
+          <div class="la-bento-icon">🤖</div>
+          <h3 class="la-bento-title">۴. پرامپت مهندسی‌شده دواپس</h3>
+          <p class="la-bento-text">
             پرامپت ساخته‌شده با فرمت تخصصی شامل ۳ گام ریشه‌یابی باگ، کدهای اصلاحی فوری خط فرمان لینوکس و تنظیمات پیشگیرانه است.
           </p>
         </div>

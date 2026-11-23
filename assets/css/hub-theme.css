@@ -226,6 +226,7 @@ article h2, article h3, .tool-guide h2, .tool-guide h3, .guide-section h2, .guid
 }
 
 /* Universal Standard Layout & Container Utilities */
+.border-line { border-color: var(--line) !important; }
 .max-w-3xl { max-width: 48rem !important; }
 .max-w-4xl { max-width: 56rem !important; }
 .max-w-5xl { max-width: 64rem !important; }

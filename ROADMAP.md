@@ -119,6 +119,7 @@
 | ۹ | **مبدل و فشرده‌ساز تصاویر (WebP Studio Pro)** | 💻 ابزار برنامه‌نویسی و وب | Canvas API, Blob Engine, Batch WebP, Zero-Server | [مشاهده آنلاین](./webp-converter/) | فعال ✅ |
 | ۱۰ | **محاسبه‌گر هزینه هوش مصنوعی (AI Cost Estimator)** | 💻 ابزار برنامه‌نویسی و AI | Pricing Engine, Live Toman Converter, WebP Directory | [مشاهده آنلاین](./ai-cost-estimator/) | فعال ✅ |
 | ۱۱ | **آنالیزور لاگ سرور و عیب‌یابی با AI (Log Analyzer Pro)** | 💻 ابزار توسعه و دواپس | Log Parser, Stacktrace Engine, AI Prompt Builder, Data Sanitizer | [مشاهده آنلاین](./log-analyzer/) | فعال ✅ |
+| ۱۲ | **دایرکتوری و راهنمای مدل‌های هوش مصنوعی (AI Directory)** | 🤖 ابزار برنامه‌نویسی و AI | AI Directory, Live Search, Model Matrix, Zero Server | [مشاهده آنلاین](./ai-directory/) | فعال ✅ |
 
 ---
 

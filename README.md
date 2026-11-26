@@ -135,6 +135,9 @@ ai-projects-persian/
 11. **[آنالیزور لاگ سرور و سیستم عیب‌یابی با AI (Log Analyzer Pro)](https://hashemsh.github.io/ai-projects-persian/log-analyzer/)** • [مستندات کامل](./log-analyzer/README.md)
     - ابزار تخصصی تحلیل خطاهای وب‌سرور (Nginx، Apache، PHP Fatal، Node.js) با حفظ محرمانگی داده‌ها و تولید پرامپت مهندسی‌شده دواپس برای مدل‌های هوش مصنوعی
 
+12. **[دایرکتوری و راهنمای مدل‌های هوش مصنوعی (AI Models Directory)](https://hashemsh.github.io/ai-projects-persian/ai-directory/)** • [مستندات کامل](./ai-directory/README.md)
+    - بانک جامع بیش از ۵۰ مدل هوش مصنوعی جهان، جستجوی زنده عملکردی، جدول راهنمای کاربرد سریع، آدرس وب‌سایت‌های رسمی و دانشنامه مقایسه‌ای متقارن ۲×۲
+
 ---
 
 ## 🎨 راهنمای استایل و چک‌لیست توسعه ابزارهای جدید (Style Guide & Checklist)

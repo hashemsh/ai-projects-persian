@@ -170,5 +170,17 @@ window.HubData.projects = [
     url: './log-analyzer/',
     accentGrad: 'from-indigo-500 via-cyan-500 to-rose-500',
     buttonGrad: 'from-indigo-600 via-cyan-600 to-rose-600 hover:from-indigo-500 hover:to-cyan-500'
+  },
+  {
+    id: 12,
+    category: 'dev',
+    title: 'دایرکتوری و راهنمای مدل‌های هوش مصنوعی (AI Directory)',
+    badge: 'پروژه شماره ۱۲ • کاربردی و فعال',
+    emoji: '🤖',
+    description: 'بانک اطلاعاتی و دایرکتوری به‌روز بیش از ۵۰ مدل هوش مصنوعی جهان؛ جستجوی هوشمند عملکردی، شناخت کاربردها، دسته‌بندی موضوعی و دسترسی مستقیم.',
+    techs: ['AI Directory', 'Live Search', 'Model Matrix', 'Zero Server'],
+    url: './ai-directory/',
+    accentGrad: 'from-cyan-400 via-indigo-500 to-purple-500',
+    buttonGrad: 'from-cyan-600 via-indigo-600 to-purple-600 hover:from-cyan-500 hover:to-indigo-500'
   }
 ];

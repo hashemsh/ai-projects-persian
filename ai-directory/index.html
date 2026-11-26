@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دایرکتوری و راهنمای جامع مدل‌های هوش مصنوعی | AI Models & Tools Directory</title>
+  <meta name="description" content="بانک اطلاعاتی و دایرکتوری به‌روز مدل‌ها و ابزارهای هوش مصنوعی جهان؛ جستجوی هوشمند، عملکرد و کاربردهای تخصصی هر مدل، لینک مستقیم و دسته‌بندی موضوعی.">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="alternate icon" href="../assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/hub-theme.css?v=11">
+  <script>
+    const _origWarn = console.warn;
+    console.warn = (...args) => { if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return; _origWarn.apply(console, args); };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          fontFamily: { vazir: ['Vazirmatn', 'sans-serif'], sans: ['Vazirmatn', 'sans-serif'] },
+          colors: {
+            brand: '#06b6d4',
+            dark: { 950: 'var(--bg)', 900: 'var(--card)', 850: 'var(--sub)', 800: 'var(--line)' }
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script>
+    (function() {
+      var t = localStorage.getItem('hub-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      if (t === 'light') document.documentElement.classList.add('light-theme');
+    })();
+  </script>
+</head>
+<body data-root="sub" class="bg-base text-main min-h-screen font-sans antialiased selection:bg-cyan-500 selection:text-white flex flex-col">
+
+  <!-- Ambient Glow & Background Grid -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 right-1/4 w-[550px] h-[550px] bg-cyan-500/10 rounded-full blur-3xl opacity-50"></div>
+    <div class="absolute top-1/3 -left-40 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-3xl opacity-50"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293d0a_1px,transparent_1px),linear-gradient(to_bottom,#1f293d0a_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+  </div>
+
+  <!-- Primary Page Container (Comfortable Max Width with Generous Margins) -->
+  <div class="relative z-10 aid-container max-w-6xl mx-auto py-6 md:py-8 flex flex-col flex-1">
+
+    <!-- Shared Universal Header -->
+    <header id="shared-header"></header>
+
+    <!-- Hero Showcase Header (Unified Template Aesthetic) -->
+    <header class="tool-hero text-center max-w-4xl mx-auto my-8 md:my-10 py-2 relative">
+      <span class="eb">دایرکتوری جامع ابزارها • آپدیت ۲۰۲۵-۲۰۲۶ • AI Directory</span>
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight mb-3 mx-auto text-center whitespace-nowrap tool-title" style="color:var(--ink);margin:10px auto 14px;text-align:center">
+        دایرکتوری و راهنمای جامع <span class="mk">مدل‌های هوش مصنوعی</span>
+      </h1>
+      <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base leading-relaxed mb-6" style="color:var(--mut)">
+        بانک به‌روز و جامع برترین هوش مصنوعی‌های جهان؛ جستجوی هوشمند عملکردی، بررسی دقیق کاربردها، دسته‌بندی موضوعی و دسترسی مستقیم به وب‌سایت‌های رسمی.
+      </p>
+    </header>
+
+    <!-- Search & Control Panel Card -->
+    <section class="aid-controls-card">
+      <!-- Search Input Bar -->
+      <div class="aid-search-wrap">
+        <span class="aid-search-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </span>
+        <input type="text" id="aid-search-input" class="aid-search-input" placeholder="جستجو بر اساس نام مدل (ChatGPT، Claude، DeepSeek)، کاربرد (کدنویسی، تصویرسازی، استدلال...) یا کمپانی..." autocomplete="off">
+        <button type="button" id="aid-search-clear" class="aid-search-clear" style="display:none" title="پاک کردن متن">✕</button>
+        <span class="aid-search-kb" title="کلید میانبر فوکوس">/</span >
+      </div>
+
+      <!-- Category Filter Chips -->
+      <div id="aid-category-chips" class="aid-chips-scroll">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Filter Meta & Pricing Row -->
+      <div class="aid-filter-meta">
+        <span id="aid-results-count" class="aid-results-count">در حال بارگذاری مدل‌ها...</span>
+        <div class="flex items-center gap-2">
+          <label for="aid-pricing-select" class="text-xs text-mut font-medium">نوع دسترسی:</label>
+          <select id="aid-pricing-select" class="select-custom text-xs" style="padding:6px 14px 6px 32px">
+            <option value="all">همه پلن‌ها و لایسنس‌ها</option>
+            <option value="open-source">فقط متن‌باز (Open Source)</option>
+            <option value="free">۱۰۰٪ کاملاً رایگان</option>
+            <option value="freemium">دارای سهمیه رایگان (Freemium)</option>
+            <option value="paid">پلن پولی / اشتراکی</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section: Desktop Table -->
+    <section class="aid-table-card">
+      <div class="aid-table-wrap">
+        <table class="aid-table">
+          <thead>
+            <tr>
+              <th style="width:72px">لوگو</th>
+              <th style="width:230px">نام و سازنده</th>
+              <th style="width:190px">آدرس وب‌سایت</th>
+              <th>عملکرد و کاری که میشه باهاش کرد (خلاصه و روان)</th>
+            </tr>
+          </thead>
+          <tbody id="aid-table-body">
+            <!-- Populated dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Results Section: Mobile Adaptive Cards View -->
+    <div id="aid-mobile-cards" class="aid-mobile-cards">
+      <!-- Populated dynamically by app.js for mobile viewports -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="aid-empty-state" class="aid-empty-state">
+      <div class="aid-empty-icon">🔍</div>
+      <h3 class="aid-empty-title">هیچ مدلی با این عبارت یا فیلتر یافت نشد!</h3>
+      <p class="aid-empty-desc">می‌توانید کلمه جستجو را کوتاه‌تر کنید یا فیلترهای دسته‌بندی را به حالت پیش‌فرض برگردانید.</p>
+      <button type="button" id="aid-reset-filters" class="btn bo text-xs" style="padding:8px 20px">
+        <span>🔄 پاکسازی همه فیلترها</span>
+      </button>
+    </div>
+
+    <!-- Bottom Comprehensive Bento Educational Guide Article Box -->
+    <article id="ai-guide" class="la-card la-guide-card">
+      <!-- Dual-column Overview Header -->
+      <div class="la-guide-header">
+        <div class="la-guide-intro">
+          <span class="eb mb-2.5 inline-block">📖 راهنمای انتخاب هوش مصنوعی مناسب</span>
+          <h2 class="la-guide-title">
+            چگونه بهترین ابزار هوش مصنوعی را برای کار خود انتخاب کنیم؟
+          </h2>
+          <p class="la-guide-desc">
+            تنوع مدل‌های زبانی و تخصصی هوش مصنوعی ممکن است گیج‌کننده باشد. هر مدل بر اساس داده‌های آموزشی، ساختار معماری و الگوریتم‌های ترازسازی (Alignment) در زمینه خاصی می‌درخشد. شناخت تفاوت‌های بنیادی، کلید صرفه‌جویی در زمان و دستیابی به بالاترین راندمان خروجی است.
+          </p>
+        </div>
+        <div class="la-guide-pipeline">
+          <div class="la-pipeline-head">
+            <span>🧭 نقشه راه انتخاب سریع مدل بر اساس وظیفه:</span>
+            <span class="font-mono text-cyan-400 text-[10.5px]">AI Routing Matrix</span>
+          </div>
+          <div class="space-y-1.5 text-xs">
+            <div class="la-pipeline-step step-1">
+              <span class="text-cyan-400">۱. کدنویسی و ساخت فرانت‌اند</span>
+              <span class="text-ink font-bold">Claude 3.5 Sonnet / Cursor / v0</span>
+            </div>
+            <div class="la-pipeline-step step-2">
+              <span class="text-purple-400">۲. استدلال ریاضی و عمیق رایگان</span>
+              <span class="text-purple-400 font-bold">DeepSeek-R1 / OpenAI o1</span>
+            </div>
+            <div class="la-pipeline-step step-3">
+              <span class="text-emerald-400">۳. تصویرسازی و هنر سینمایی</span>
+              <span class="text-emerald-400 font-bold">Midjourney v6.1 / Flux.1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4-Box Bento Feature Grid (Two Columns, Two Rows 2x2) -->
+      <div class="la-bento-grid">
+        <div class="la-bento-box">
+          <div class="la-bento-icon">🧠</div>
+          <h3 class="la-bento-title">۱. مقایسه مدل‌های متنی (Claude vs GPT vs DeepSeek)</h3>
+          <p class="la-bento-text">
+            برای کدنویسی و لحن طبیعی فارسی، <strong>Claude 3.5 Sonnet</strong> بی‌رقیب است. برای چت چندرسانه‌ای صوتی <strong>GPT-4o</strong> پیشنهاد می‌شود و برای استدلال سنگین ریاضی بدون پرداخت هزینه، <strong>DeepSeek-R1</strong> انتخاب اول است.
+          </p>
+        </div>
+
+        <div class="la-bento-box">
+          <div class="la-bento-icon">🎨</div>
+          <h3 class="la-bento-title">۲. تصویرسازی: تفاوت Midjourney با Flux و Recraft</h3>
+          <p class="la-bento-text">
+            برای عکس‌های پرتره و سینمایی <strong>Midjourney</strong> بالاترین زیبایی‌شناسی را دارد. اگر نوشتن حروف و متون انگلیسی روی عکس مهم است <strong>Flux.1</strong> بهترین گزینه است، و برای طراحی وکتور خالص SVG باید از <strong>Recraft</strong> استفاده کنید.
+          </p>
+        </div>
+
+        <div class="la-bento-box">
+          <div class="la-bento-icon">⚡</div>
+          <h3 class="la-bento-title">۳. تحول در ساخت نرم‌افزار با ادیتورهای مدرن</h3>
+          <p class="la-bento-text">
+            به جای کپی‌پیست دستی کدها، ادیتور <strong>Cursor</strong> کل مخزن کد شما را می‌شناسد. برای راه‌اندازی سریع دموی رابط کاربری در چند ثانیه <strong>v0.dev</strong> و برای اجرای فول‌استک در مرورگر <strong>Bolt.new</strong> معجزه می‌کنند.
+          </p>
+        </div>
+
+        <div class="la-bento-box">
+          <div class="la-bento-icon">🔒</div>
+          <h3 class="la-bento-title">۴. حفظ حریم خصوصی با مدل‌های محلی آفلاین</h3>
+          <p class="la-bento-text">
+            اگر داده‌های مالی، کدهای محرمانه شرکتی یا اطلاعات پزشکی دارید، مدل‌های متن‌باز مثل <strong>Llama 3.3</strong> و <strong>DeepSeek</strong> را با ابزار Ollama روی کامپیوتر خود اجرا کنید تا هیچ اطلاعاتی به اینترنت ارسال نشود.
+          </p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Shared Universal Footer (Full-width outside container) -->
+  <footer id="shared-footer"></footer>
+
+  <!-- Toast Notification Container -->
+  <div id="aid-toast" class="aid-toast"></div>
+
+  <!-- Shared Layout & App Scripts -->
+  <script src="../assets/js/components/shared-layout.js"></script>
+  <script src="./assets/js/data/ai-models-data.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

@@ -96,6 +96,14 @@
       tag: 'سرور',
       desc: 'تحلیل خطاهای Nginx، PHP Fatal و Node.js همراه با تولید پرامپت عیب‌یابی در AI.',
       keywords: 'لاگ سرور آنالیزور خطا لاگ دیباگ دیباگر لاگها ارور php fatal nginx 502 500 apache nodejs crash traceback عیب یابی'
+    },
+    {
+      title: 'AI Models Directory — دایرکتوری هوش مصنوعی',
+      url: './ai-directory/',
+      icon: 'assets/images/tools/ai-directory.svg',
+      tag: 'هوش مصنوعی',
+      desc: 'بانک جامع بیش از ۵۰ مدل هوش مصنوعی، عملکرد، کاربردهای هر مدل و لینک وب‌سایت رسمی.',
+      keywords: 'دایرکتوری مدل هوش مصنوعی کاتالوگ لیست هوش مصنوعی ها chatgpt claude deepseek gemini midjourney flux suno cursor v0 bolt llm مدل ها'
     }
   ];
 

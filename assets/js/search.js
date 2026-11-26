@@ -103,7 +103,7 @@
       icon: 'assets/images/tools/ai-directory.svg',
       tag: 'هوش مصنوعی',
       desc: 'بانک جامع بیش از ۵۰ مدل هوش مصنوعی، عملکرد، کاربردهای هر مدل و لینک وب‌سایت رسمی.',
-      keywords: 'دایرکتوری مدل هوش مصنوعی کاتالوگ لیست هوش مصنوعی ها chatgpt claude deepseek gemini midjourney flux suno cursor v0 bolt llm مدل ها'
+      keywords: 'دایرکتوری مدل هوش مصنوعی کاتالوگ لیست هوش مصنوعی ها chatgpt gpt-5 claude 5 claude 5.5 deepseek v4 deepseek r1 gemini 3.8 gemini 3 midjourney v7 flux suno v5 cursor v0 bolt llama 4 grok 3 llm مدل ها'
     }
   ];
 

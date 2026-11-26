@@ -88,14 +88,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
-  padding: 8px 10px;
+  gap: 8px;
+  padding: 9px 12px;
   border-radius: 12px;
   background: var(--bg);
   border: 1px solid var(--line);
   color: var(--ink);
   font-family: 'Vazirmatn', sans-serif;
-  font-size: 11.5px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -123,14 +123,14 @@
 .aid-cat-btn-content {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .aid-cat-btn-icon {
-  font-size: 14px;
+  font-size: 15px;
   flex-shrink: 0;
   line-height: 1;
 }
@@ -139,14 +139,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 11.5px;
+  font-size: 13px;
   font-weight: 700;
 }
 
 .aid-cat-btn-count {
-  font-size: 10px;
+  font-size: 11.5px;
   font-weight: 800;
-  padding: 1px 6px;
+  padding: 2px 8px;
   border-radius: 9999px;
   background: var(--card);
   border: 1px solid var(--line);
@@ -299,7 +299,7 @@
 }
 
 .aid-results-count {
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--mut);
 }
@@ -324,7 +324,7 @@
   width: 100%;
   border-collapse: collapse;
   text-align: right;
-  font-size: 13.5px;
+  font-size: 14px;
 }
 
 .aid-table thead {
@@ -333,10 +333,10 @@
 }
 
 .aid-table th {
-  padding: 14px 18px;
-  font-size: 12.5px;
+  padding: 16px 20px;
+  font-size: 14px;
   font-weight: 800;
-  color: var(--mut);
+  color: var(--ink);
   white-space: nowrap;
 }
 
@@ -408,14 +408,14 @@
 }
 
 .aid-item-name {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
   color: var(--ink);
   line-height: 1.35;
 }
 
 .aid-item-provider {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--mut);
   font-weight: 500;
 }
@@ -429,9 +429,9 @@
 }
 
 .aid-badge {
-  font-size: 10.5px;
+  font-size: 11.5px;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 3px 9px;
   border-radius: 6px;
 }
 
@@ -472,7 +472,7 @@
   align-items: center;
   gap: 5px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 600;
   color: #06b6d4;
   text-decoration: none;
@@ -488,14 +488,14 @@
 .aid-btn-copy {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   margin-top: 8px;
   background: var(--sub);
   border: 1px solid var(--line);
   color: var(--mut);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -515,9 +515,9 @@
 }
 
 .aid-best-for {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--ink);
-  line-height: 1.6;
+  line-height: 1.7;
   margin-bottom: 6px;
 }
 
@@ -527,9 +527,9 @@
 }
 
 .aid-desc-text {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--mut);
-  line-height: 1.7;
+  line-height: 1.85;
   margin: 0 0 8px 0;
 }
 
@@ -541,11 +541,11 @@
 }
 
 .aid-cap-pill {
-  font-size: 10.5px;
+  font-size: 12px;
   color: var(--mut);
   background: var(--sub);
   border: 1px solid var(--line);
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 9999px;
   white-space: nowrap;
 }
@@ -603,9 +603,9 @@
   background: rgba(6, 182, 212, 0.1);
   border: 1px solid rgba(6, 182, 212, 0.25);
   color: #06b6d4;
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 700;
-  padding: 7px 14px;
+  padding: 8px 16px;
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.15s ease;
@@ -633,15 +633,16 @@
 }
 
 .aid-empty-title {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 800;
   color: var(--ink);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .aid-empty-desc {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--mut);
+  line-height: 1.8;
   margin-bottom: 16px;
 }
 
@@ -729,15 +730,15 @@
 }
 
 .la-guide-desc {
-  font-size: 13px;
+  font-size: 14.5px;
   color: var(--mut);
-  line-height: 2;
+  line-height: 2.1;
   margin: 0;
   text-align: justify;
 }
 
 .la-guide-pipeline {
-  padding: 16px;
+  padding: 18px;
   border-radius: 14px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.02);
@@ -747,7 +748,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 700;
   color: var(--ink);
   margin-bottom: 12px;
@@ -757,10 +758,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: 8px;
-  font-size: 12px;
-  margin-bottom: 6px;
+  font-size: 13px;
+  margin-bottom: 8px;
 }
 
 .la-pipeline-step:last-child {
@@ -798,7 +799,7 @@
 }
 
 .la-bento-box {
-  padding: 18px 16px;
+  padding: 20px 18px;
   border-radius: 14px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.02);
@@ -816,22 +817,23 @@
 }
 
 .la-bento-icon {
-  font-size: 22px;
-  margin-bottom: 8px;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .la-bento-title {
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 800;
   color: var(--ink);
-  margin-bottom: 8px;
-  white-space: nowrap;
+  margin-bottom: 10px;
+  white-space: normal;
+  line-height: 1.45;
 }
 
 .la-bento-text {
-  font-size: 12px;
+  font-size: 13.5px;
   color: var(--mut);
-  line-height: 2;
+  line-height: 2.1;
   margin: 0;
   text-align: justify;
 }

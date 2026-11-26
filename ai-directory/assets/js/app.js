@@ -115,7 +115,15 @@
     document.body.removeChild(textarea);
   }
 
-  // Render Category Chips
+  // Get official Logo HTML (SVG/PNG local asset with fallback)
+  function getLogoHtml(item) {
+    if (item.logoFile) {
+      return '<img src="./assets/images/logos/' + item.logoFile + '" alt="' + item.name + '" class="aid-logo-img" loading="lazy" onerror="this.style.display=\'none\'">';
+    }
+    return logos[item.logoKey] || logos.defaultAi;
+  }
+
+  // Render Category Buttons (4 per row grid, no scroll)
   function renderCategoryChips() {
     if (!categoryContainer) return;
     categoryContainer.innerHTML = '';
@@ -123,7 +131,7 @@
     data.categories.forEach(function (cat) {
       var btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'aid-chip' + (state.category === cat.id ? ' active' : '');
+      btn.className = 'aid-cat-btn' + (state.category === cat.id ? ' active' : '');
       btn.setAttribute('data-category', cat.id);
       
       // Count for category
@@ -131,7 +139,13 @@
         ? items.length 
         : items.filter(function (i) { return i.category === cat.id; }).length;
 
-      btn.innerHTML = '<span>' + cat.icon + ' ' + cat.name + '</span><span class="aid-chip-count">' + count + '</span>';
+      btn.innerHTML = [
+        '<div class="aid-cat-btn-content">',
+        '  <span class="aid-cat-btn-icon">' + cat.icon + '</span>',
+        '  <span class="aid-cat-btn-title">' + cat.name + '</span>',
+        '</div>',
+        '<span class="aid-cat-btn-count">' + count + '</span>'
+      ].join('');
 
       btn.addEventListener('click', function () {
         state.category = cat.id;
@@ -165,7 +179,7 @@
     if (tableBody) {
       var rowsHtml = '';
       filtered.forEach(function (item) {
-        var logoSvg = logos[item.logoKey] || logos.defaultAi;
+        var logoHtml = getLogoHtml(item);
         var pricingBadgeClass = item.pricing === 'open-source' ? 'aid-badge-open' :
                                (item.pricing === 'free' ? 'aid-badge-free' : 'aid-badge-paid');
 
@@ -174,7 +188,7 @@
           '  <!-- Col 1: Logo -->',
           '  <td class="aid-col-logo">',
           '    <div class="aid-logo-box" title="' + item.provider + '">',
-          '      ' + logoSvg,
+          '      ' + logoHtml,
           '    </div>',
           '  </td>',
           '  <!-- Col 2: Name & Provider -->',
@@ -221,7 +235,7 @@
     if (mobileList) {
       var cardsHtml = '';
       filtered.forEach(function (item) {
-        var logoSvg = logos[item.logoKey] || logos.defaultAi;
+        var logoHtml = getLogoHtml(item);
         var pricingBadgeClass = item.pricing === 'open-source' ? 'aid-badge-open' :
                                (item.pricing === 'free' ? 'aid-badge-free' : 'aid-badge-paid');
 
@@ -229,7 +243,7 @@
           '<article class="aid-mobile-card">',
           '  <div class="aid-card-header">',
           '    <div class="aid-logo-box">',
-          '      ' + logoSvg,
+          '      ' + logoHtml,
           '    </div>',
           '    <div class="aid-card-header-info">',
           '      <h3 class="aid-item-name">' + item.name + '</h3>',

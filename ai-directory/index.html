@@ -48,7 +48,7 @@
   </div>
 
   <!-- Primary Page Container (Comfortable Max Width with Generous Margins) -->
-  <div class="relative z-10 aid-container max-w-6xl mx-auto py-6 md:py-8 flex flex-col flex-1">
+  <div class="relative z-10 aid-container max-w-[1400px] mx-auto py-6 md:py-8 flex flex-col flex-1">
 
     <!-- Shared Universal Header -->
     <header id="shared-header"></header>
@@ -66,6 +66,17 @@
 
     <!-- Search & Control Panel Card -->
     <section class="aid-controls-card">
+      <!-- Category Filter Buttons (Above Search Bar - 4 Per Row Grid, No Scroll) -->
+      <div class="aid-categories-section">
+        <div class="aid-categories-label">
+          <span class="aid-cat-label-dot"></span>
+          <span>دسته‌بندی موضوعی ابزارها و مدل‌ها:</span>
+        </div>
+        <div id="aid-category-chips" class="aid-categories-grid">
+          <!-- Rendered dynamically by app.js (4 columns on desktop, 2 on mobile) -->
+        </div>
+      </div>
+
       <!-- Search Input Bar -->
       <div class="aid-search-wrap">
         <span class="aid-search-icon">
@@ -74,11 +85,6 @@
         <input type="text" id="aid-search-input" class="aid-search-input" placeholder="جستجو بر اساس نام مدل (ChatGPT، Claude، DeepSeek)، کاربرد (کدنویسی، تصویرسازی، استدلال...) یا کمپانی..." autocomplete="off">
         <button type="button" id="aid-search-clear" class="aid-search-clear" style="display:none" title="پاک کردن متن">✕</button>
         <span class="aid-search-kb" title="کلید میانبر فوکوس">/</span >
-      </div>
-
-      <!-- Category Filter Chips -->
-      <div id="aid-category-chips" class="aid-chips-scroll">
-        <!-- Rendered dynamically by app.js -->
       </div>
 
       <!-- Filter Meta & Pricing Row -->
